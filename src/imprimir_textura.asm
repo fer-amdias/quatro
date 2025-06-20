@@ -11,11 +11,11 @@
 # a4 = C = n de colunas da textura
 
 
-PROC_IMPRIMIR_TEXTURA: 	
+PROC_IMPRIMIR_TEXTURA: 	li t0, 320			# t0 = LVGA (largura VGA)
 			li t3,0xFF000000		# endereco da memoria VGA
-			mul t0, a3, a2			# t0 = pL = Y * L
+			mul t0, a2, t0			# t0 = pL = Y * LVGA
 			add t0, t0, a1			# t0 = pL + X
-			add a0, a0, t0			# E += pL + X, indo pra posicao em que queremos imprimir
+			add t3, t3, t0			# VGA += pL + X, indo pra posicao em que queremos imprimir
 			
 # t3 = P  = endereco do pixel vga atual
 # a0 = E  = endereco do pixel textura atual
@@ -33,7 +33,7 @@ P_IT1_PROXIMA_LINHA:    addi t4, t4, 1 			# CL++
 			mv t5, zero			# CC = 0
 			addi t6, a4, -320 		# t6 = -320+C -- lembre-se que a tela eh 240 por 320!
 			neg t6, t6			# t6 = 320-C
-			add a0, a0, t6			# E += 320-C (t6)
+			add t3, t3, t6			# E += 320-C (t6)
 				
 			# SE CL == L: SAI DO LOOP
 			# podemos jogar isso aqui pois soh aqui CL eh incrementado
@@ -47,7 +47,7 @@ P_IT1_LOOP:		lbu t0, (a0)			# coloca a informacao do pixel em I (I = informacao 
 							# SENAO:
 			sb t0,	(t3)			# 	imprime o pixel
 P_IT1_PULA_PIXEL:	addi a0, a0, 1			# E++
-			addi t3, t3 1			# P++ 
+			addi t3, t3, 1			# P++ 
 			addi t5, t5, 1			# CC++ 
 			
 			# SE C == CC, VAI PARA A PROXIMA LINHA
