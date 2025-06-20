@@ -31,7 +31,8 @@ PROC_IMPRIMIR_TEXTURA:
 			
 P_IT1_PROXIMA_LINHA:    addi t4, t4, 1 			# CL++
 			mv t5, zero			# CC = 0
-			addi t6, a4, -320 		# t6 = 320-C -- lembre-se que a tela eh 240 por 320!
+			addi t6, a4, -320 		# t6 = -320+C -- lembre-se que a tela eh 240 por 320!
+			neg t6, t6			# t6 = 320-C
 			add a0, a0, t6			# E += 320-C (t6)
 				
 			# SE CL == L: SAI DO LOOP
