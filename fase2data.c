@@ -2,53 +2,40 @@
 #include <stdlib.h>
 #include <string.h>
 
-// cada caractere vira um quadrado 10 por 10
-
-void printar_linha_como_quadrado(FILE* data ,unsigned char * linha, int tamanho){
-
-    
-    for (int i = 0; i < 10; i++)
-    // printa linha (x10) dez vezes
-
-        for (int j = 0; j < tamanho; j++){
-            for (int k = 0; k < 10; k++){
-                fprintf(data, "%d,", linha[j]);
-            }
-        }
-    fprintf(data, "\n");
-}
-
 void char2value(unsigned char * array, int tamanho){
     for (int i = 0; i < tamanho; i++){
 
         switch(array[i]){
+            case '0':   // nada
+                array[i] = 0;
+                break;
             case '-':   // parede
             case '|':   // parede
-                array[i] = 255;
+                array[i] = 1;
                 break;
             case 'C':   // comeco da fase
-                array[i] = 99;
+                array[i] = 2;
                 break;
             case 'F':   // fim da fase
-                array[i] = 100;
+                array[i] = 3;
                 break;
             case 'B':   // bloco quebravel
-                array[i] = 250;
+                array[i] = 4;
                 break;
             case 'P':   // power-up 1
-                array[i] = 241;
+                array[i] = 5;
                 break;
             case 'p':   // power-up 2
-                array[i] = 242;
+                array[i] = 6;
                 break;
             case 'E':   // elevador
-                array[i] = 50;
+                array[i] = 7;
                 break;
-            case 'f':   // fonte da juventude
-                array[i] = 42;
+            case 's':   // scroll
+                array[i] = 8;
                 break;
             default:    // tipos de inimigo
-                array[i] -= 48;
+                array[i] -= 39; // a tabela ascii comeca com 49 = '1', 50 = '2', etc; entao os inimigos vao comecar a contar a partir do 10
         }
     }
 }
@@ -59,24 +46,28 @@ int lvl2data(const char * nome, FILE* lvl, FILE* data){
     int altura, largura;
     fscanf(lvl, "%d %d\n", &altura, &largura);
 
-    fprintf(data, "%s: .word %d, %d\n.byte ", nome, altura*10, largura*10);
+    fprintf(data, "%s: .word %d, %d\n.byte ", nome, altura, largura);
 
     unsigned char linha[256]; 
 
     while (fgets(linha, sizeof(linha), lvl)) {
-    // pular comentarios
-    if (linha[0] == '#')
-        continue;
+        // pular comentarios
+        if (linha[0] == '#')
+            continue;
 
-    // tira comentarios inline
-    char *comment = strchr(linha, '#');
-    if (comment) *comment = '\0'; 
+        // tira comentarios inline
+        char *comment = strchr(linha, '#');
+        if (comment) *comment = '\0'; 
 
-    // converte char em valores pro arquivo .data
-    char2value(linha, largura);
+        // converte char em valores pro arquivo .data
+        char2value(linha, largura);
 
-    printar_linha_como_quadrado(data, linha, largura);
-}
+        // imprime caractere por caractere
+        for (int i = 0; i < largura; i++){
+            fprintf(data, "%d, ", linha[i]);
+        }
+        fputc('\n', data);
+    }
 
 
 };
@@ -94,6 +85,7 @@ int main(int argc, char** argv){
 
     if (mapa_lvl == NULL){
         printf("Arquivo nao encontrado.\n");
+        return 404; // hehe
     }
 
     char nome[30];
@@ -109,4 +101,6 @@ int main(int argc, char** argv){
 
     fclose(mapa_lvl);
     fclose(mapa_data);
+
+    printf("Arquivo convertido com sucesso: %s.data\n", nome);
 }
