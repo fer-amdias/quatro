@@ -1,3 +1,5 @@
+# DEPRECADO! UTILIZE MAIN.
+
 .data
 .include "..\example.data"
 .include "..\Texturas\placeholder.data"
@@ -21,7 +23,7 @@
 				# Preenche a tela de preto
 FASE_TESTE_1:			li t1,0xFF000000		# endereco inicial da Memoria VGA - Frame 0
 				li t2,0xFF012C00		# endereco final 
-				li t3,0x00000000		# cor preto|preto|preto|preto
+				li t3,0x07070707		# cor preto|preto|preto|preto
 FASE_TESTE_LOOP_1: 		beq t1,t2,FASE_TESTE_INICIO	# Se for o �ltimo endere�o ent�o sai do loop
 				sw t3,0(t1)			# escreve a word na mem�ria VGA
 				addi t1,t1,4			# soma 4 ao endere�o
