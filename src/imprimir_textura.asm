@@ -1,3 +1,20 @@
+##############################################################
+# PROC_IMPRIMIR_TEXTURA				             #
+# Imprime uma textura de tamanho variavel em uma coordenada  #
+# X Y.							     #
+# 							     #
+# ARGUMENTOS:						     #
+#	A0 : ENDERECO DA TEXTURA A SER IMPRESSA              #
+# 	A1 : POSICAO X                                       #
+#       A2 : POSICAO Y                                       #
+#       A3 : NUMERO DE LINHAS DA TEXTURA (ALTURA)            #
+#       A4 : NUMERO DE COLUNAS DA TEXTURA (LARGURA)          #
+# RETORNOS:                                                  #
+#       (nenhum)                                             #
+##############################################################
+
+
+
 .text
 
 .eqv COR_TRANSPARENTE 0xC0  # magenta (192)
