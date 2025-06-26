@@ -6,17 +6,16 @@
 # ARGUMENTOS:						     #
 #	A0 : ENDERECO DO MAPA A SER IMPRESSO                 #
 # 	A1 : ENDERECO DA TEXTURA DO MAPA                     #
+#							     #
 # RETORNOS:                                                  #
-#       (nenhum)                                             #
+#       A0 : QUANTIDADE DE INIMIGOS REGISTRADOS              #
 ##############################################################
 
 # prefixo interno: P_IF1_
 
 
 .data
-.include "..\example.data"
-.include "..\Texturas\placeholder.data"
-
+CONTADOR_INIMIGOS: .byte 0
 
 .text
 
@@ -35,23 +34,28 @@
 # a1 = endereco da textura
 
 
-# s0 = Em = endereço do mapa
-# s1 = L  = n de linhas no mapa
-# s2 = C  = n de colunas no mapa
-# s3 = CC = contador de colunas
-# s4 = CL = contador de linhas
-# s5 = Et = endereço da textura desse mapa
+# s0  = Em  = endereï¿½o do mapa
+# s1  = L   = n de linhas no mapa
+# s2  = C   = n de colunas no mapa
+# s3  = CC  = contador de colunas
+# s4  = CL  = contador de linhas
+# s5  = Et  = endereï¿½o da textura desse mapa
 
-# s6 = X  = posicao X de impressao da proxima textura
-# s7 = Y  = posicao Y de impressao da proxima textura
+# s6  = X   = posicao X de impressao da proxima textura
+# s7  = Y   = posicao Y de impressao da proxima textura
 
-# s8 = A  = area do sprite
+# s8  = A   = area do sprite
+
+# s9  = Vi  = endereco do vetor de inimigos
+# s10 = Vpi = endereco do vetor de posicao dos inimigos
+# s11 = Vdi = endereco do vetor de direcao dos inimigos
 
 
-# como estamos usando os registradores salvos... precisamos garantir que tudo esteja como estava quando retornarmos a funcao.
+# como estamos usando os registradores salvos... precisamos garantir que tudo esteja como estava quando retornarmos o procedimento. 
+# Como essa nao eh uma *leaf procedure*, ou seja, chamamos outros procedimentos dentro dele, temos que salvar ra tambem
 
 PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
-				addi sp, sp, -36
+				addi sp, sp, -52
 				sw   s0, 0(sp)
 				sw   s1, 4(sp)
 				sw   s2, 8(sp)
@@ -61,9 +65,21 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				sw   s6, 24(sp)
 				sw   s7, 28(sp)
 				sw   s8, 32(sp)
+				sw   s9, 36(sp)
+				sw   s10, 40(sp)
+				sw   s11, 44(sp)
+				sw   ra,  48(sp)
 
-
-				mv s0, a0 			# carrega o endereço da fase de a0 para s0 (Em)
+				# salva os argumentos de funcao
+				mv s0, a0			# endereco do mapa    				(Em)
+				mv s5, a1	 		# endereco da textura 				(Et)
+				addi s5, s5, 8			# pula pros bytes de informacao da textura
+				
+				# salva o endereco dos vetores 
+				la s9, INIMIGOS			# Vi  : Vetor de inimigos
+				la s10, INIMIGOS_POSICAO	# Vpi : Vetor posicao de inimigos
+				la s11, INIMIGOS_DIRECAO	# Vdi : Vetor direcao de inimigos
+				
 				lw s1, (s0)			# carrega o n de linhas em s1 (L)
 				lw s2, 4(s0)			# carrega o n de colunas em s2 (C)
 				addi s0, s0, 8			# pula os words de linha e coluna para os bytes de informacao
@@ -75,7 +91,7 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				mul s2, s2, t0			# C *= TAMANHO_SPRITE
 				
 				# agora devemos propriamente centralizar a imagem
-				# a impressao começara do canto superior esquerdo
+				# a impressao comeï¿½ara do canto superior esquerdo
 				# entao temos que calcular onde ele vai estar
 				# na verdade eh bem simples
 				# a distancia do canto superor esquerdo pro centro eh L/2 e C/2
@@ -92,24 +108,61 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				
 				mv s3, zero			# CC = 0
 				mv s4, zero  	   		# CL = 0
-				mv s5, a1	 		# carrega o endereco da textura
-				addi s5, s5, 8			# pula pros bytes de informacao
+				
 
 # t0 = tI = informacao do tile
+# t6 = tI * AREA_SPRITE
 
 				li s8, AREA_SPRITE		# A = AREA_SPRITE
 P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
-				mul t0, t0, s8			# t0 = tI * 400
+				mul t6, t0, s8			# t6 = tI * AREA_SPRITE
 				
-				# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
-				# a0 = aE0 = endereco da textura (.data)
-				# a1 = aX  = pos X
-				# a2 = aY  = pos Y
-				# a3 = aL  = n de linhas da textura
-				# a4 = aC  = n de colunas da textura
+				# se o numero do tile for 10 ou mais, temos que registrar o inimigo no vetor necessario
+				li t1, 10
+				bge t0, t1, P_IF1_REGISTRAR_INIMIGO
+				
+				j P_IF1_LOOP_CONT
+
+# QUANDO ENCONTRARMOS UM TILE DE INIMIGO:		
+P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
+				# entao guardamos na memoria
 				
 				
-				add a0, s5, t0			# aE0 = eT + (tI * 400) = pula pra textura associada com o tile
+				# t1 = endereco do contador
+				# t2 = contador de inimigos
+				la t1, CONTADOR_INIMIGOS
+				lbu t2, (t1)
+				
+				sb t0, (s9)			# salva o inimigo no vetor de inimigos (Vi)
+				sh s6, (s10)			# salva a posicao X do inimigo no vetor de posicao (Vpi)
+				sh s7, 2(s10)			# salva a posicao Y do inimigo no vetor de posicao (Vpi)
+				
+				li t3, 0
+				sb t3, (s11)			# zera a direcao em Vdi, para ser calculada quando eles forem posicionados
+				
+				addi s9, s9, 1			# avanca pro proximo byte no endereco do vetor
+				addi s10, s10, 4		# avanca uma word (duas half-words) no endereco do vetor de posicao
+				addi s11, s11, 1		# avanca um byte no endereco do vetor de direcao
+				addi t2, t2, 1			# adiciona um no contador de inimigos
+				
+				# terminamos!
+				sb t2, (t1)			# bota o valor de volta no endereco
+				
+				li t6, 0			# seta tI*400 para 0
+								# isso vai fazer com que uma casa em branco seja colocada no tile sob os pes do inimigo
+								
+				j P_IF1_LOOP_CONT		# continua o loop
+				
+				
+				
+P_IF1_LOOP_CONT:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
+				# 	a0 = aE0 = endereco da textura (.data)
+				# 	a1 = aX  = pos X
+				# 	a2 = aY  = pos Y
+				# 	a3 = aL  = n de linhas da textura
+				# 	a4 = aC  = n de colunas da textura
+
+				add a0, s5, t6			# aE0 = eT + (tI * 400) = pula pra textura associada com o tile
 				mv a1, s6			# aX = X
 				mv a2, s7			# aY = Y
 				li a3, TAMANHO_SPRITE		# aL = L
@@ -148,8 +201,15 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				lw   s6, 24(sp)
 				lw   s7, 28(sp)
 				lw   s8, 32(sp)
-				addi sp, sp, 36
-
+				lw   s9, 36(sp)
+				lw   s10, 40(sp)
+				lw   s11, 44(sp)
+				lw   ra,  48(sp)
+				addi sp, sp, 52
+				
+				la t0, CONTADOR_INIMIGOS
+				lb a0, (t0)			# salva o valor de retorno (quantidade de inimigos contados)
+				sb zero, (t0)			# zera o contador pra uso futuro
 
 
 				ret
