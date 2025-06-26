@@ -34,12 +34,12 @@ CONTADOR_INIMIGOS: .byte 0
 # a1 = endereco da textura
 
 
-# s0  = Em  = endereï¿½o do mapa
+# s0  = Em  = endereço do mapa
 # s1  = L   = n de linhas no mapa
 # s2  = C   = n de colunas no mapa
 # s3  = CC  = contador de colunas
 # s4  = CL  = contador de linhas
-# s5  = Et  = endereï¿½o da textura desse mapa
+# s5  = Et  = endereço da textura desse mapa
 
 # s6  = X   = posicao X de impressao da proxima textura
 # s7  = Y   = posicao Y de impressao da proxima textura
@@ -91,7 +91,7 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				mul s2, s2, t0			# C *= TAMANHO_SPRITE
 				
 				# agora devemos propriamente centralizar a imagem
-				# a impressao comeï¿½ara do canto superior esquerdo
+				# a impressao começara do canto superior esquerdo
 				# entao temos que calcular onde ele vai estar
 				# na verdade eh bem simples
 				# a distancia do canto superor esquerdo pro centro eh L/2 e C/2
@@ -112,7 +112,7 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 
 # t0 = tI = informacao do tile
 # t6 = tI * AREA_SPRITE
-
+				
 				li s8, AREA_SPRITE		# A = AREA_SPRITE
 P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
 				mul t6, t0, s8			# t6 = tI * AREA_SPRITE
@@ -121,6 +121,9 @@ P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
 				li t1, 10
 				bge t0, t1, P_IF1_REGISTRAR_INIMIGO
 				
+				# se o numero do tile for 2, essa eh a posicao de comeco do jogo! temos que posicionar o jogador
+				li t1, 2
+				beq t0, t1, P_IF1_REGISTRAR_JOGADOR
 				j P_IF1_LOOP_CONT
 
 # QUANDO ENCONTRARMOS UM TILE DE INIMIGO:		
@@ -153,6 +156,14 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 								
 				j P_IF1_LOOP_CONT		# continua o loop
 				
+				
+				
+# SE ENCONTRARMOS UM TILE DE COMECO DE FASE:
+P_IF1_REGISTRAR_JOGADOR:	la t1, POSICAO_JOGADOR
+				sh s6, 0(t1)			# salva posicao X do tile nas coordenadas do jogador
+				sh s7, 2(t1)			# salva posicao Y do tile nas coordenadas do jogor
+				
+				# era so isso mesmo
 				
 				
 P_IF1_LOOP_CONT:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
