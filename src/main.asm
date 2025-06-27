@@ -4,6 +4,10 @@
 .include "..\example.data"
 .include "..\Texturas\placeholder.data"
 
+MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado."
+MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo."
+MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal."
+
 .text
 
 MAIN: 
