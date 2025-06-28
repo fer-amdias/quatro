@@ -3,6 +3,7 @@
 .include ".\memoria.asm"
 .include "..\example.data"
 .include "..\Texturas\placeholder.data"
+.include "..\Texturas\jogador.data"
 
 MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado."
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo."
@@ -50,9 +51,12 @@ MAIN:
 		#			REIMPRIMIR OS TILES EM QUE OS INIMIGOS ESTAVAM
 		#			CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
 		#
+		#			ATUALIZAR HEADS-UP DISPLAY
+		#			MOSTRAR VIDAS RESTANTES, TEMPO RESTANTE, INIMIGOS RESTANTES, BOMBAS DISPONIVEIS, N DO CAPITULO E FASE
+		#
 		#			TOCAR AUDIO
 		#			TOCAR MUSICA
-			
+		
 		
 FIM:		
 
@@ -72,7 +76,8 @@ FIM:
 
 .include ".\imprimir_fase.asm"
 .include ".\preencher_tela.asm"
-#.include ".\imprimir_textura.asm" --- comentado pois imprimir_fase.asm jah inclui o procedimento
+.include ".\imprimir_textura.asm" 
+.include ".\imprimir_jogador.asm"
 
 
 
