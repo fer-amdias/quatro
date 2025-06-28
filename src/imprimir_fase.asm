@@ -106,6 +106,10 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				neg s7, s7			# Y = -L/2
 				addi s7, s7, CENTRO_VGA_Y       # Y = CENTRO_VGA_Y - L/2
 				
+				la t0, POSICOES_MAPA		# carrega o endereco de posicao do mapa
+				sb s6, (t0)			# salva a posicao X do canto superior esquerdo do mapa
+				sb s7, 1(t0)			# salva a posicao Y do canto superior esquero do mapa
+				
 				mv s3, zero			# CC = 0
 				mv s4, zero  	   		# CL = 0
 				
@@ -225,14 +229,7 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 
 				ret
 					
-##############################################################
-# Include de prodcedimentos feito no final do codigo, sempre #
-# Colocar no topo vai fazer os procedimentos serem chamados  #
-# ANTES do nosso codigo que queremos executar                #
-##############################################################
-
-.include ".\imprimir_textura.asm"
-				
+		
 				
 
 
