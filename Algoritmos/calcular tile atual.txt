@@ -1,0 +1,24 @@
+PROC CALCULAR TILE ATUAL:
+	
+	X = X - POS_MAPA_X
+	Y = Y - POS_MAPA_Y
+
+	X = X/TAMANHO_TILE
+	Y = Y/TAMANHO_TILE
+
+	# calcula quantas posicoes vamos pular
+	IDX = Y*N_COLUNAS + X
+
+	# o mais 8 eh pra pular os bytes de informacao
+	E = endereço textura mapa + 8
+	
+	E = E + IDX
+
+	T = valor(E)
+	
+	a0 = T
+	a1 = X
+	a2 = Y
+
+	return ;)
+
