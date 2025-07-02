@@ -31,8 +31,6 @@ PROC_IMPRIMIR_BUFFER:		la t0, POSICOES_MAPA		# pega as posicoes do canto superio
 				
 				la t6, FASE_BUFFER		# t6 = endereco do buffer
 				
-				print_int(t6)
-				
 				li t0, 320			# t0 = LVGA (largura VGA)
 				mul t0, t3, t0			# t0 = pL = Y * LVGA
 				add t0, t0, t2			# t0 = pL + X
