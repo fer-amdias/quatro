@@ -27,7 +27,7 @@ MAIN:
 		la a1, placeholder
 		jal PROC_IMPRIMIR_FASE
 		
-		
+
 LOOP_MENOR:	
 		# argumentos de REGISTRAR_MOVIMENTO:
 		#	a0: M: modo
@@ -40,7 +40,7 @@ LOOP_MENOR:
 		#	a3: t: endereco da textura do mapa
 		# retorno:
 		#	a0: V: se o jogador estah vivo (1 ou 0)
-		
+						
 		jal PROC_IMPRIMIR_BUFFER
 		li a0, 0
 		la a1, jogador
@@ -85,7 +85,7 @@ LOOP_MENOR:
 			
 		
 FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
-
+		quebra_de_linha
 
 		li a7, 10			# syscall pra terminar o programa
 		ecall				# estritamente necessario pra impedir que o programa continue ate entrar no codigo dentro dos includes. 
