@@ -117,8 +117,10 @@ PROC_MOVER_JOGADOR:	addi sp, sp, -8
 			la t2, INIMIGOS_TAMANHO		
 			lw t2, (t2)			# carrega as dimensoes de inimigos em t2
 			
-			lh t3, (a3)			# carrega dimensao X do jogador
-			lh t4, 4(a3)			# carrega dimensao Y do jogador
+			lhu t3, (a3)			# carrega dimensao X do jogador
+			lhu t4, 4(a3)			# carrega dimensao Y do jogador
+			
+			
 			
 # t5 = IX  = pos X do inimigo
 # t6 = IY  = pos Y do inimigo
@@ -225,8 +227,6 @@ P_MJ1_LOOP_CONT_1:	li a0, 2
 			# se ainda tiver inimigos, continua o loop
 			bnez t0, P_MJ1_LOOP_COLISAO_INIMIGOS
 			
-			mv a0, zero			# reseta a0 para nao mexer com os cheques de modo de movimento abaixo
-			
 			# agora eh hora de checar tiles ao redor para ver se temos paredes
 			# temos que checar pros 4 cantos
 			
@@ -301,8 +301,8 @@ P_MJ1_MOVER:
 			beq s0, t0, P_MJ1_FIM
 			
 			la t0, POSICAO_JOGADOR
-			sw t1, (t0)
-			sw t2, 2(t0)
+			sh t1, (t0)
+			sh t2, 2(t0)
 			
 			j P_MJ1_FIM 	# terminamos
 			
@@ -312,7 +312,15 @@ P_MJ1_MORTE_1:		mv a0, zero			# se ele morreu
 			j P_MJ1_MORTE_2			# pula a proxima instrucao :)
 
 
-P_MJ1_FIM: 		li a0, 1			# retorna que ele esta vivo
+P_MJ1_FIM: 		quebra_de_linha
+			print_int (a3)
+			quebra_de_linha
+			print_int (a4)
+			quebra_de_linha
+
+
+
+			li a0, 1			# retorna que ele esta vivo
 P_MJ1_MORTE_2:		lw ra, (sp)			# carrega o endereco de retorno previo
 			lw s0, 4(sp)			# carrega s0 original
 			addi sp, sp, 8		
