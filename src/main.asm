@@ -41,18 +41,6 @@ LOOP_MENOR:
 		# retorno:
 		#	a0: V: se o jogador estah vivo (1 ou 0)
 		
-		li a0, 3
-		la t0, POSICAO_JOGADOR
-		lh a1, (t0)
-		lh a2, 2(t0)
-		la a3, jogador
-		la a4, example
-		la a5, placeholder
-		
-		jal PROC_MOVER_JOGADOR
-
-LOOP_MENOR:		
-						
 		jal PROC_IMPRIMIR_BUFFER
 		li a0, 0
 		la a1, jogador
