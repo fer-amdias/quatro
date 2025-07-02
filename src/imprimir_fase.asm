@@ -25,21 +25,17 @@ CONTADOR_INIMIGOS: .byte 0
 .eqv CENTRO_VGA_X 160
 .eqv CENTRO_VGA_Y 120
 
-# tamanho de uma textura de mapa
-.eqv TAMANHO_SPRITE 20
-.eqv AREA_SPRITE 400
-
 
 # a0 = endereco do mapa
 # a1 = endereco da textura
 
 
-# s0  = Em  = endereï¿½o do mapa
+# s0  = Em  = endereço do mapa
 # s1  = L   = n de linhas no mapa
 # s2  = C   = n de colunas no mapa
 # s3  = CC  = contador de colunas
 # s4  = CL  = contador de linhas
-# s5  = Et  = endereï¿½o da textura desse mapa
+# s5  = Et  = endereço da textura desse mapa
 
 # s6  = X   = posicao X de impressao da proxima textura
 # s7  = Y   = posicao Y de impressao da proxima textura
@@ -99,7 +95,7 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				sh s1, (t0)		
 				
 				# agora devemos propriamente centralizar a imagem
-				# a impressao comeï¿½ara do canto superior esquerdo
+				# a impressao começara do canto superior esquerdo
 				# entao temos que calcular onde ele vai estar
 				# na verdade eh bem simples
 				# a distancia do canto superor esquerdo pro centro eh L/2 e C/2

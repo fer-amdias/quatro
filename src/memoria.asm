@@ -23,6 +23,10 @@
 
 .include "./macros.asm"
 
+# tamanho de uma textura de mapa
+.eqv TAMANHO_SPRITE 20
+.eqv AREA_SPRITE 400
+
 .data
 
 FRAME_DE_IMPRESSAO: .word 0xFF000000
