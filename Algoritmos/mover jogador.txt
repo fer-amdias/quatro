@@ -1,0 +1,24 @@
+# 
+
+PROC MOVER JOGADOR
+
+Argumentos:
+PX = pos X
+PY = pos Y
+MODO = mover sem checar paredes ou inimigos (MPI, 0), mover sem checar inimigos (MI, 1), mover normalmente (M, 2)
+
+MODO M (2):
+
+se um dos quatro cantos na posicao escolhida estiverem ENTRE os pontos de um inimigo: DERROTA
+
+MODO MI (1):
+
+calcular tile dos quatro cantos do jogador na posicao escolhida
+se qualquer um dos tiles nao for andavel: CANCELAR
+
+MODO MPI (0):
+MOVER:
+imprimir textura do jogador na posicao escolhida
+seta a posicao do jogador para posicao atual
+
+ret
