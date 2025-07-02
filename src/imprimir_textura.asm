@@ -44,7 +44,7 @@ P_IT1_CONT:
 			li t0, 320			# t0 = LVGA (largura VGA) // largura do buffer
 			mul t0, a2, t0			# t0 = pL = Y * LVGA
 			add t0, t0, a1			# t0 = pL + X
-			add t3, t3, t0			# VGA += pL + X, indo pra posicao em que queremos imprimir
+			add t3, t3, t0			# VGA/BUFFER += pL + X, indo pra posicao em que queremos imprimir
 			
 # t3 = P  = endereco do pixel vga atual
 # a0 = E  = endereco do pixel textura atual
