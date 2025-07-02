@@ -1,0 +1,81 @@
+#################################################################
+# PROC_REGISTRAR_MOVIMENTO				       	#
+# Registra input do teclado e move na direcao escolhida		#
+# Basicamente um wrapper para PROC_MOVER_JOGADOR		#
+# 							     	#
+# ARGUMENTOS:						     	#
+#	A0 : MODO (0, 1, 2 OU 3)                        	#
+#	A1 : ENDERECO DE TEXTURA DO JOGADOR			#
+#	A2 : ENDERECO DO MAPA					#
+#	A3 : ENDERECO DA TEXTURA DO MAPA			#
+# RETORNOS:                                                  	#
+#       A0 : SE O JOGADOR ESTAH VIVO (0 OU 1)                  	#
+#################################################################
+
+.text
+.eqv TECLA_W 119
+.eqv TECLA_A 97
+.eqv TECLA_S 115
+.eqv TECLA_D 100
+
+PROC_REGISTRAR_MOVIMENTO:
+			addi sp, sp, -4			# abre espaco na stack
+			sw ra, (sp)			# salva o registrador de retorno anterior
+		
+			li t1,0xFF200000		# carrega o endereço de controle do KDMMIO
+			lw t0,0(t1)			# Le bit de Controle Teclado
+			andi t0,t0,0x0001		# mascara o bit menos significativo
+		   	beq t0,zero,PROC_REGISTRAR_MOVIMENTO   	   	# Se não há tecla pressionada então vai para FIM
+		  	lw t2,4(t1)  			# le o valor da tecla 
+			
+			li t0, 97
+			blt t2, t0, P_RM1_FIM
+			
+# Do procedimento PROC_MOVER_JOGADOR		
+# argumentos:
+#	a0: M: modo (0, 1, 2, 3)  ---> guardado em s0
+#	a1: X: pos X
+#	a2: Y: pos Y
+#	a3: T: endereco da textura do jogador
+#	a4: E: endereco do mapa 
+#	a5: t: endereco da textura do mapa
+# retorno:
+#	a0: V: se o jogador estah vivo (1 ou 0)
+			
+			mv a5, a3
+			mv a4, a2
+			mv a3, a1
+			
+			la t0, POSICAO_JOGADOR
+			lhu a1, (t0)		# pos X do jogador
+			lhu a2, 2(t0) 		# pos y do jogador
+			
+			li t0, TECLA_W
+			beq t2, t0, P_RM1_W
+			li t0, TECLA_A
+			beq t2, t0, P_RM1_A
+			li t0, TECLA_S
+			beq t2, t0, P_RM1_S
+			li t0, TECLA_D
+			beq t2, t0, P_RM1_D
+			
+			j P_RM1_FIM
+			
+P_RM1_W:		addi a2, a2, -1		# move para cima
+			j P_RM1_MOVER
+P_RM1_A:		addi a1, a1, -1		# move para esquerda
+			j P_RM1_MOVER
+P_RM1_S:		addi a2, a2, 1		# move para baixo
+			j P_RM1_MOVER
+P_RM1_D:		addi a2, a2, 1		# move para a direita
+			j P_RM1_MOVER
+			
+P_RM1_MOVER:		j PROC_MOVER_JOGADOR		# finaliza o movimento	
+	
+P_RM1_FIM:		lw ra, (sp)
+			addi sp, sp, 4			# recupera o registrador de retorno anterior
+			ret
+
+	
+	
+	
