@@ -21,7 +21,7 @@
 
 .text
 
-.include "./macros.asm"
+.include ".\macros.asm"
 
 # tamanho de uma textura de mapa
 .eqv TAMANHO_SPRITE 20
