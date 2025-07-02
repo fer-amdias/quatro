@@ -1,7 +1,7 @@
 ##############################################################
 # PROC_PREENCHER_TELA 				       	     #
 # Muda cada pixel do frame fornecido para ter a cor          #
-# fornecido.			                             #
+# fornecida.			                             #
 # 							     #
 # ARGUMENTOS:						     #
 #	A0 : COR DE PREENCHIMENTO                            #
