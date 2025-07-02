@@ -66,8 +66,8 @@ P_IB1_LOOP_PRINTAR_NA_TELA:	lb t0, (t6)			# carrega o pixel em IDX_BUFFER
 				addi t1, t1, 1			# IDX_VGA++
 				addi t6, t6, 1			# IDX_BUFFER++
 				
-				# se CC == nC: proxima linha
-				beq t5, t3, P_IB1_TELA_PROX_LINHA
+				# se CC >= nC: proxima linha
+				bge t5, t3, P_IB1_TELA_PROX_LINHA
 				
 				j P_IB1_LOOP_PRINTAR_NA_TELA
 
@@ -79,8 +79,8 @@ P_IB1_TELA_PROX_LINHA:		mv t5, zero			# CC = 0
 				add t1, t0, t1			# IDX_VGA += 320 - nC
 				add t6, t0, t6			# IDX_BUFFER += 320 - nC
 				
-				# se CL == nL: finalizar
-				beq t4, t2, P_IB1_FIM	
+				# se CL >= nL: finalizar
+				bge t4, t2, P_IB1_FIM	
 				
 				j P_IB1_LOOP_PRINTAR_NA_TELA
 				
