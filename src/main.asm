@@ -5,9 +5,9 @@
 .include "..\Texturas\placeholder.data"
 .include "..\Texturas\jogador.data"
 
-MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado."
-MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo."
-MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal."
+MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
+MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
+MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
 
 .text
 
@@ -17,7 +17,7 @@ MAIN:
 
 		li a0, 0x00			# preto
 		li a1, 0			# frame 0
-		jal PROC_PREENCHER_TELA		# preenche a tela de preto
+		 jal PROC_PREENCHER_TELA		# preenche a tela de preto
 		
 		# PROC_IMPRIMIR_FASE tem dois argumentos: 
 		#	a0 (endereco do mapa);
@@ -27,7 +27,45 @@ MAIN:
 		la a1, placeholder
 		jal PROC_IMPRIMIR_FASE
 		
+		
+		# argumentos de MOVER_JOGADOR:
+		#	a0: M: modo
+		#		M == 0: Modo mover sem checar paredes nem inimigos
+		#		M == 1: Modo mover sem checar inimigos
+		#		M == 2: Modo mover
+		#		M == 3: modo posicionar
+		#	a1: X: pos X
+		#	a2: Y: pos Y
+		#	a3: T: endereco da textura do jogador
+		#	a4: E: endereco do mapa 
+		#	a5: t: endereco da textura do mapa
+		# retorno:
+		#	a0: V: se o jogador estah vivo (1 ou 0)
+		
+		li a0, 3
+		la t0, POSICAO_JOGADOR
+		lh a1, (t0)
+		lh a2, 2(t0)
+		la a3, jogador
+		la a4, example
+		la a5, placeholder
+		
+		jal PROC_MOVER_JOGADOR
+
+LOOP_MENOR:		
+						
 		jal PROC_IMPRIMIR_BUFFER
+		li a0, 3
+		la t0, POSICAO_JOGADOR
+		lh a1, (t0)
+		lh a2, 2(t0)
+		la a3, jogador
+		la a4, example
+		la a5, placeholder
+		
+		jal PROC_MOVER_JOGADOR
+		
+		
 		
 		# O QUE PRECISA SER COLOCADO AQUI:
 		#	 INTRO DO JOGO
@@ -35,11 +73,12 @@ MAIN:
 		#	 LOOP MAIOR DO JOGO:
 # FEITO				IMPRESSAO DO MAPA		
 # FEITO				POSICIONAMENTO DE INIMIGOS (UTILIZANDO UM VETOR NA MEMORIA PARA GUARDAR TODOS ELES)
-# FEITO				POSICIONAMENTO DO JOGADOR  (UTILIZANDO POSICAO_PLAYER)
+# FEITO				POSICIONAMENTO DO JOGADOR  (UTILIZANDO POSICAO_JOGADOR)
 		#		IMPRESSAO DO INIMIGO E DO JOGADOR
 		#		LOOP MENOR DO JOGO:
+# FEITO				IMPRIMIR BUFFER DE FASE
+		#
 		#			REGISTRAR MOVIMENTO DE JOGADOR
-		#			DESIMPRIMIR JOGADOR (E O(S) TILE(S) QUE ELE ESTAVA)
 		#			REIMPRIMIR JOGADOR
 		#
 		#			REGISTRAR USO DE BOMBAS
@@ -48,9 +87,6 @@ MAIN:
 		#			IMPLEMENTAR DANO DA EXPLOSAO
 		#
 		#			CALCULAR MOVIMENTO DOS INIMIGOS
-		#			DESIMPRIMIR INIMIGOS
-		#			DESIMPRIMIR OS TILES EM QUE OS INIMIGOS ESTAVAM
-		#			REIMPRIMIR OS TILES EM QUE OS INIMIGOS ESTAVAM
 		#			CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
 		#
 		#			ATUALIZAR HEADS-UP DISPLAY
@@ -60,7 +96,10 @@ MAIN:
 		#			TOCAR MUSICA
 		
 		
-FIM:		
+		
+			
+		
+FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 
 
 		li a7, 10			# syscall pra terminar o programa
@@ -79,7 +118,9 @@ FIM:
 .include ".\imprimir_fase.asm"
 .include ".\preencher_tela.asm"
 .include ".\imprimir_textura.asm" 
-.include ".\imprimir_jogador.asm"
+.include ".\calcular_tile_atual.asm"
+.include ".\mover_jogador.asm"
+.include ".\imprimir_buffer.asm"
 
 
 
