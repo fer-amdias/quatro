@@ -25,6 +25,8 @@
 
 .data
 
+FRAME_DE_IMPRESSAO: .word 0xFF000000
+
 POSICOES_MAPA: .byte 0, 0
 POSICAO_JOGADOR: .half 0, 0
 FASE_ATUAL: .byte 0
@@ -36,3 +38,7 @@ INIMIGOS_POSICAO: .half 0 		# alinhamento do vetor
 INIMIGOS_DIRECAO: .byte 0 		# alinhamento do vetor
 		  .space 31		# cada inimigo vai ter uma direcao salvo em um byte.														
 
+FASE_BUFFER: 	  .byte 0 
+		  .space 76799		# onde manteremos o background de cada nivel, quase como uma layer
+FASE_BUFFER_COL:  .half 0		# quantas colunas tem no mapa no buffer
+FASE_BUFFER_LIN:  .half 0		# quantas linhas tem no mapa no buffer

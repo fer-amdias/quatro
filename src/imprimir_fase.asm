@@ -34,12 +34,12 @@ CONTADOR_INIMIGOS: .byte 0
 # a1 = endereco da textura
 
 
-# s0  = Em  = endereço do mapa
+# s0  = Em  = endereï¿½o do mapa
 # s1  = L   = n de linhas no mapa
 # s2  = C   = n de colunas no mapa
 # s3  = CC  = contador de colunas
 # s4  = CL  = contador de linhas
-# s5  = Et  = endereço da textura desse mapa
+# s5  = Et  = endereï¿½o da textura desse mapa
 
 # s6  = X   = posicao X de impressao da proxima textura
 # s7  = Y   = posicao Y de impressao da proxima textura
@@ -90,8 +90,16 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				mul s1, s1, t0			# L *= TAMANHO_SPRITE
 				mul s2, s2, t0			# C *= TAMANHO_SPRITE
 				
+				# agora temos o tamanho do mapa em pixels, e devemos salva-lo na memoria para utilizacao do buffer
+				
+				la t0, FASE_BUFFER_COL		# n de colunas da fase no buffer
+				sh s2, (t0)
+				
+				la t0, FASE_BUFFER_LIN		# n de linhas da fase no buffer
+				sh s1, (t0)		
+				
 				# agora devemos propriamente centralizar a imagem
-				# a impressao começara do canto superior esquerdo
+				# a impressao comeï¿½ara do canto superior esquerdo
 				# entao temos que calcular onde ele vai estar
 				# na verdade eh bem simples
 				# a distancia do canto superor esquerdo pro centro eh L/2 e C/2
@@ -182,6 +190,7 @@ P_IF1_LOOP_CONT:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
 				mv a2, s7			# aY = Y
 				li a3, TAMANHO_SPRITE		# aL = L
 				li a4, TAMANHO_SPRITE		# aC = C
+				li a7, 1			# printa no BUFFER
 				
 				jal PROC_IMPRIMIR_TEXTURA	# chamada o procedimento de impressao de textura
 				
@@ -207,6 +216,9 @@ P_IF1_PROXIMA_LINHA:		sub s6, s6, s2			# X -= C, voltando ele pra posicao inicia
 				j P_IF1_LOOP_1
 
 P_IF1_FIM:			# traz os registradores salvos de volta da stack
+				# sim, eu sei, eu nao devia ter usado registradores salvo, eu devia ter usado os temporarios, etc
+				# sim, dava pra otimizar esse uso horrivel de registradores, mas, tipo, n
+				# n vou
 				lw   s0, 0(sp)
 				lw   s1, 4(sp)
 				lw   s2, 8(sp)

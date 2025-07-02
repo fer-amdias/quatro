@@ -9,6 +9,7 @@
 #       A2 : POSICAO Y                                       #
 #       A3 : NUMERO DE LINHAS DA TEXTURA (ALTURA)            #
 #       A4 : NUMERO DE COLUNAS DA TEXTURA (LARGURA)          #
+#	A7 : MODO DE IMPRESSAO (0: TELA, 1: BUFFER)
 # RETORNOS:                                                  #
 #       (nenhum)                                             #
 ##############################################################
@@ -26,10 +27,21 @@
 # a2 = pos Y
 # a3 = L = n de linhas da textura
 # a4 = C = n de colunas da textura
+# a5 = MODO = modo de impressao (0: tela, 1: buffer)
 
 
-PROC_IMPRIMIR_TEXTURA: 	li t0, 320			# t0 = LVGA (largura VGA)
-			li t3,0xFF000000		# endereco da memoria VGA
+PROC_IMPRIMIR_TEXTURA: 	li t0, 1
+			beq a7, t0, P_IT1_MODO_1		# se o modo for 1, carrega o buffer
+
+			la t3, FRAME_DE_IMPRESSAO	# senao, carrega o frame de impressao
+			lw t3, (t3)			# endereco do frame
+			j P_IT1_CONT			# pula o codigo de modo 1
+			
+P_IT1_MODO_1:		la t3, FASE_BUFFER
+
+P_IT1_CONT:		
+
+			li t0, 320			# t0 = LVGA (largura VGA) // largura do buffer
 			mul t0, a2, t0			# t0 = pL = Y * LVGA
 			add t0, t0, a1			# t0 = pL + X
 			add t3, t3, t0			# VGA += pL + X, indo pra posicao em que queremos imprimir
