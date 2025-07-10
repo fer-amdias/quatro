@@ -1,9 +1,7 @@
 .data
-
-.include ".\memoria.asm"
-.include "..\example.data"
-.include "..\Texturas\placeholder.data"
-.include "..\Texturas\jogador.data"
+.include "example.data"
+.include "Texturas/placeholder.data"
+.include "Texturas/jogador.data"
 
 MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
@@ -12,12 +10,26 @@ MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
 .text
 
 MAIN: 
+		
+		#### ALOCACAO DO FRAME_BUFFER ####
+		li a7, 9
+		li a0, 76800
+		ecall
+		
+		sw a0, FRAME_BUFFER_PTR, t0
+		
+		# adiciona 76800 em a0 usando t0 como temporario
+		li t0, 76800
+		add a0, a0, t0	
+		
+		sw a0, FRAME_BUFFER_FIM_PTR, t0
+		
 
 		# PROC_PREENCHER_TELA tem dois argumentos: a0 (cor a preencher) e a1 (frame a preencher)
 
 		li a0, 0x00			# preto
 		li a1, 0			# frame 0
-		 jal PROC_PREENCHER_TELA		# preenche a tela de preto
+		jal PROC_PREENCHER_TELA		# preenche a tela de preto
 		
 		# PROC_IMPRIMIR_FASE tem dois argumentos: 
 		#	a0 (endereco do mapa);
@@ -29,6 +41,14 @@ MAIN:
 		
 
 LOOP_MENOR:	
+
+		li a0, 0x00			# preto
+		li a1, 1
+		jal PROC_PREENCHER_TELA		# preenche a tela de preto
+		
+						
+		jal PROC_IMPRIMIR_BUFFER_DE_FASE
+		
 		# argumentos de REGISTRAR_MOVIMENTO:
 		#	a0: M: modo
 		#		M == 0: Modo mover sem checar paredes nem inimigos
@@ -37,17 +57,16 @@ LOOP_MENOR:
 		#		M == 3: modo posicionar
 		#	a1: T: endereco da textura do jogador
 		#	a2: E: endereco do mapa 
-		#	a3: t: endereco da textura do mapa
 		# retorno:
 		#	a0: V: se o jogador estah vivo (1 ou 0)
-						
-		jal PROC_IMPRIMIR_BUFFER
-		li a0, 0
+		
+		li a0, 1
 		la a1, jogador
 		la a2, example
-		la a3, placeholder
 		
 		jal PROC_REGISTRAR_MOVIMENTO
+		
+		jal PROC_DESENHAR
 		
 		j LOOP_MENOR
 		
@@ -63,8 +82,8 @@ LOOP_MENOR:
 		#		LOOP MENOR DO JOGO:
 # FEITO				IMPRIMIR BUFFER DE FASE
 		#
-		#			REGISTRAR MOVIMENTO DE JOGADOR
-		#			REIMPRIMIR JOGADOR
+# FEITO					REGISTRAR MOVIMENTO DE JOGADOR
+# FEITO					REIMPRIMIR JOGADOR
 		#
 		#			REGISTRAR USO DE BOMBAS
 		#			CALCULAR TEMPO RESTANTE DE EXPLOSAO
@@ -80,6 +99,9 @@ LOOP_MENOR:
 		#			TOCAR AUDIO
 		#			TOCAR MUSICA
 		
+		
+		
+		.include "memoria.s"
 		
 		
 			
@@ -99,14 +121,14 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 # Colocar no topo vai fazer os procedimentos serem chamados  #
 # ANTES do nosso codigo que queremos executar                #
 ##############################################################
-
-.include ".\imprimir_fase.asm"
-.include ".\preencher_tela.asm"
-.include ".\imprimir_textura.asm" 
-.include ".\calcular_tile_atual.asm"
-.include ".\mover_jogador.asm"
-.include ".\imprimir_buffer.asm"
-.include ".\registrar_movimento.asm"
+.include "imprimir_fase.s"
+.include "preencher_tela.s"
+.include "imprimir_textura.s" 
+.include "calcular_tile_atual.s"
+.include "mover_jogador.s"
+.include "imprimir_buffer_de_fase.s"
+.include "registrar_movimento.s"
+.include "desenhar.s"
 
 
 

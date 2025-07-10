@@ -5,25 +5,21 @@
 # 							     #
 # ARGUMENTOS:						     #
 #	A0 : COR DE PREENCHIMENTO                            #
-#	A1 : FRAME (0 OU 1)                                  #
+#	A1 : FRAME (0 OU 1 (frame buffer))                   #
 # RETORNOS:                                                  #
 #       (nenhum)                                             #
 ##############################################################
 
 .text
 
-			# condicoes de teste
-			li a0, 0x07			# vermelho
-			li a1, 1			# frame 1 
-
 PROC_PREENCHER_TELA:	beqz a1, P_PT1_EH_FRAME_0	# se A1 == 0, vai pra P_PT1_EH_FRAME_0; senao, fica
 
-P_PT1_EH_FRAME_1:	li t1, 0xFF100000		# carrega o endereco do frame 1
-			li t2,0xFF012C00		# endereco final 
+P_PT1_EH_FRAME_1:	lw t1, FRAME_BUFFER_PTR		# carrega o endereco do frame buffer
+			lw t2, FRAME_BUFFER_FIM_PTR	# endereco final 
 			j P_PT1_MAIN			# pula ppra main do procedimento
 			
 P_PT1_EH_FRAME_0:	li t1, 0xFF000000		# carrega o endereco do frame 0
-			li t2,0xFF012C00		# endereco final 
+			li t2, 0xFF012C00		# endereco final 
 			j P_PT1_MAIN			# pula pra main do procedimento
 
 P_PT1_MAIN:		# a0 eh a cor de preenchimento

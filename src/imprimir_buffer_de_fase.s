@@ -1,7 +1,7 @@
 #################################################################
-# PROC_IMPRIMIR_BUFFER 				       	     	#
-# Imprime o buffer de fase na tela, sobrescrevendo a fase       #
-# impressa na tela.						#
+# PROC_IMPRIMIR_BUFFER_DE_FASE 				       	#
+# Imprime o buffer de fase no buffer de frame, fazendo com que	#
+# ela apareca na tela						#
 #								#
 # ARGUMENTOS:						     	#
 #	(nenhum)						#
@@ -15,29 +15,26 @@
 
 .text
 
-#	t1 = IDX_VGA
+#	t1 = IDX_FRAME_BUFFER
 #	t2 = pos X do canto superior esquerdo do mapa
 #	t3 = pos Y do canto superior esquerdo do mapa
 
 # 	t6 = IDX_BUFFER
 
-PROC_IMPRIMIR_BUFFER:		la t0, POSICOES_MAPA		# pega as posicoes do canto superior esquerdo do mapa
-				lb t2, (t0)			# carrega a posicao X do canto superior esquerdo do mapa
-				lb t3, 1(t0)			# carrega a posicao Y do canto superior esquero do mapa
+PROC_IMPRIMIR_BUFFER_DE_FASE:	la t0, POSICOES_MAPA		# pega as posicoes do canto superior esquerdo do mapa
+				lhu t2, (t0)			# carrega a posicao X do canto superior esquerdo do mapa
+				lhu t3, 2(t0)			# carrega a posicao Y do canto superior esquero do mapa
 				
 				
-				la t1, FRAME_DE_IMPRESSAO	# endereco do endereco da memoria VGA
-				lw t1, (t1)			# carrega o endereco VGA em t3
+				lw t1, FRAME_BUFFER_PTR		# endereco do endereco do frame buffer, onde imprimimos tudo durante o draw cycle
 				
 				la t6, FASE_BUFFER		# t6 = endereco do buffer
 				
 				li t0, 320			# t0 = LVGA (largura VGA)
 				mul t0, t3, t0			# t0 = pL = Y * LVGA
 				add t0, t0, t2			# t0 = pL + X
-				add t1, t1, t0			# IDX_VGA = VGA + pL + X, indo pra posicao em que queremos imprimir
-				add t6, t6, t0			# IDX_BUFFER = BUFFER + pL + X, indo pra posicao em que queremos imprimir
-				
-				print_int(t6)
+				add t1, t1, t0			# IDX_FRAME_BUFFER = FRAME_BUFFER + pL + X, indo pra posicao em que queremos imprimir
+				add t6, t6, t0			# IDX_FASE_BUFFER = FASE_BUFFER + pL + X, indo pra posicao em que queremos imprimir
 
 				mv t4, zero			# CL = 0
 				mv t5, zero			# CC = 0
@@ -50,19 +47,19 @@ PROC_IMPRIMIR_BUFFER:		la t0, POSICOES_MAPA		# pega as posicoes do canto superio
 				# carrega as dimensoes da fase no buffer
 				
 				la t0, FASE_BUFFER_LIN
-				lh t2, (t0)
+				lhu t2, (t0)
 
 				la t0, FASE_BUFFER_COL
-				lh t3, (t0)
+				lhu t3, (t0)
 				
 
-P_IB1_LOOP_PRINTAR_NA_TELA:	lb t0, (t6)			# carrega o pixel em IDX_BUFFER
-				sb t0, (t1)			# salva o pixel em IDX_BUFFER em IDX_VGA
+P_IB1_LOOP_PRINTAR_NA_TELA:	lb t0, (t6)			# carrega o pixel localizado em IDX_BUFFER
+				sb t0, (t1)			# salva o pixel localizado em IDX_BUFFER em IDX_FRAME_BUFFER
 				
 				addi t5, t5, 1			# CC++
 				
-				addi t1, t1, 1			# IDX_VGA++
-				addi t6, t6, 1			# IDX_BUFFER++
+				addi t1, t1, 1			# IDX_FRAME_BUFFER++
+				addi t6, t6, 1			# IDX_FASE_BUFFER++
 				
 				# se CC >= nC: proxima linha
 				bge t5, t3, P_IB1_TELA_PROX_LINHA
@@ -74,8 +71,8 @@ P_IB1_TELA_PROX_LINHA:		mv t5, zero			# CC = 0
 				
 				addi t0, t3, -320 		# t0 = -320+nC -- lembre-se que a tela eh 240 por 320!
 				neg t0, t0			# t0 = 320-nC
-				add t1, t0, t1			# IDX_VGA += 320 - nC
-				add t6, t0, t6			# IDX_BUFFER += 320 - nC
+				add t1, t0, t1			# IDX_FRAME_BUFFER += 320 - nC
+				add t6, t0, t6			# IDX_FASE_BUFFER += 320 - nC
 				
 				# se CL >= nL: finalizar
 				bge t4, t2, P_IB1_FIM	

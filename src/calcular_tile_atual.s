@@ -15,7 +15,6 @@
 #	A4 : POSICAO Y DO TILE				     #
 ##############################################################
 
-
 .text
 .eqv TAMANHO_SPRITE 20	# tamanho padrao de um tile
 
@@ -23,8 +22,8 @@ PROC_CALCULAR_TILE_ATUAL:
 
 			# temos que calcular que valor esse X e Y dah e em que tile ele estah. 
 			la t0, POSICOES_MAPA		# carregamos a posicao do mapa em t0. aqui teremos X em (t0) e Y em 1(t0).
-			lb t1, 0(t0)			# POSICAO_MAPA_X
-			lb t2, 1(t0)			# POSICAO_MAPA_Y
+			lhu t1, 0(t0)			# POSICAO_MAPA_X
+			lhu t2, 2(t0)			# POSICAO_MAPA_Y
 			
 			# t1 = X
 			# t2 = Y
@@ -38,7 +37,7 @@ PROC_CALCULAR_TILE_ATUAL:
 			div t1, t1, t0			# X /= tamanho_sprite
 			div t2, t2, t0			# Y /= tamanho_sprite
 	
-			lw t0, (a0)			# t0 = N_COL : Numero de Colunas (primeiro valor no endereco do mapa)
+			lw t0, 4(a0)			# t0 = N_COL : Numero de Colunas (segundo valor no endereco do mapa)
 	
 			# t0 = idx
 			mul t0, t2, t0			# idx = Y * N_COL
@@ -53,17 +52,16 @@ PROC_CALCULAR_TILE_ATUAL:
 			# t5 = pos X na tela do tile
 			# t6 = pos Y na tela do tile
 			la t0, POSICOES_MAPA
-			lb t3, (t0)			# carrega a pos X do mapa
-			lb t4, 1(t0)			# carrega a pos Y do mapa
+			lhu t3, (t0)			# carrega a pos X do mapa
+			lhu t4, 2(t0)			# carrega a pos Y do mapa
 			
 			# t0 = tamanho_sprite (qqr dimensao assumindo tile quadrado (naturalmente)
 			li t0, TAMANHO_SPRITE
 			
 			mul t5, t1, t0			# X *= tamanho_sprite
 			mul t6, t2, t0			# Y *= tamanho_sprite
-			
-			add t5, t5, t3			# X += pos X do mapa
-			add t6, t6, t4			# Y += pos Y do mapa
+
+
 			
 		######## retornos ########
 			lb a0, (a0) 			# ret_a0 = informacao do TILE

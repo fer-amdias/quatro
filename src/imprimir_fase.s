@@ -9,14 +9,10 @@
 #							     #
 # RETORNOS:                                                  #
 #       A0 : QUANTIDADE DE INIMIGOS REGISTRADOS              #
+#	A1 : ENDERECO DO TILEMAP GERADO			     #
 ##############################################################
 
 # prefixo interno: P_IF1_
-
-
-.data
-CONTADOR_INIMIGOS: .byte 0
-
 .text
 
 
@@ -45,6 +41,39 @@ CONTADOR_INIMIGOS: .byte 0
 # s9  = Vi  = endereco do vetor de inimigos
 # s10 = Vpi = endereco do vetor de posicao dos inimigos
 # s11 = Vdi = endereco do vetor de direcao dos inimigos
+
+
+P_IF1_SUBPROC_CRIAR_TILEMAP:
+	
+	# t2 = total_bytes = L * C	
+	mul t2, s1, s2
+	
+	# aloca memoria na heap pro mapa
+	li a7, 9
+	mv a0, t2
+	ecall
+	
+	# a1 = Etm = endereco do tilemap do mapa
+	mv a1, a0
+	
+	# t5 = Em = endereco inicial do mapa (sem contar words de linha e coluna)	
+	mv t5, s0
+	
+	sw s1, 
+	
+P_IF1_TILEMAP_LOOP:
+    lb t0, 0(t5)
+    sb t0, 0(a1)
+    addi t5, t5, 1
+    addi a1, a1, 1
+    addi t2, t2, -1
+    bnez t2, P_IF1_TILEMAP_LOOP
+    
+P_IF1_TILEMAP_FIM:
+
+	ret
+
+
 
 
 # como estamos usando os registradores salvos... precisamos garantir que tudo esteja como estava quando retornarmos o procedimento. 
@@ -80,6 +109,8 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				lw s2, 4(s0)			# carrega o n de colunas em s2 (C)
 				addi s0, s0, 8			# pula os words de linha e coluna para os bytes de informacao
 				
+				jal P_IF1_SUBPROC_CRIAR_TILEMAP
+				
 				# devemos agora calcular a posicao X e Y que o mapa deve estar
 				# primeiramente, devemos multiplicar L e C pelo tamanho do sprite para ter
 				li t0, TAMANHO_SPRITE
@@ -95,9 +126,6 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				sh s1, (t0)		
 				
 				# agora devemos propriamente centralizar a imagem
-				# a impressao começara do canto superior esquerdo
-				# entao temos que calcular onde ele vai estar
-				# na verdade eh bem simples
 				# a distancia do canto superor esquerdo pro centro eh L/2 e C/2
 				# entao botamos X = CENTRO_VGA_X - C/2
 				# igualmente, 	Y = CENTRO_VGA_Y - L/2
@@ -111,8 +139,8 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				addi s7, s7, CENTRO_VGA_Y       # Y = CENTRO_VGA_Y - L/2
 				
 				la t0, POSICOES_MAPA		# carrega o endereco de posicao do mapa
-				sb s6, (t0)			# salva a posicao X do canto superior esquerdo do mapa
-				sb s7, 1(t0)			# salva a posicao Y do canto superior esquero do mapa
+				sh s6, (t0)			# salva a posicao X do canto superior esquerdo do mapa
+				sh s7, 2(t0)			# salva a posicao Y do canto superior esquero do mapa
 				
 				mv s3, zero			# CC = 0
 				mv s4, zero  	   		# CL = 0
@@ -132,7 +160,26 @@ P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
 				# se o numero do tile for 2, essa eh a posicao de comeco do jogo! temos que posicionar o jogador
 				li t1, 2
 				beq t0, t1, P_IF1_REGISTRAR_JOGADOR
+				
+				# se o numero for 3 (fim da fase), 5 (power up 1) ou 6 (power up 2), temos que esconder o bloco atras de um bloco quebravel
+				li t1, 3
+				beq t0, t1, P_IF1_ESCONDER_TILE
+				li t1, 5
+				beq t0, t1, P_IF1_ESCONDER_TILE
+				li t1, 6
+				beq t0, t1, P_IF1_ESCONDER_TILE
+				
 				j P_IF1_LOOP_CONT
+				
+				
+# QUANDO ENCONTRAR-MOS UM TILE QUE FICA ESCONDIDO DETRAS DE UM BLOCO QUEBRAVEL... imprimimos um bloco quebravel
+P_IF1_ESCONDER_TILE:		li t0, 4
+				mul t6, t0, s8			# t6 = I_bloco_quebravel * AREA_SPRITE
+
+				# e soh
+				j P_IF1_LOOP_CONT
+				
+				
 
 # QUANDO ENCONTRARMOS UM TILE DE INIMIGO:		
 P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
@@ -157,7 +204,7 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 				addi t2, t2, 1			# adiciona um no contador de inimigos
 				
 				# terminamos!
-				sb t2, (t1)			# bota o valor de volta no endereco
+				sb t2, (t1)			# atualiza o contador de inimigos
 				
 				li t6, 0			# seta tI*400 para 0
 								# isso vai fazer com que uma casa em branco seja colocada no tile sob os pes do inimigo
@@ -168,8 +215,11 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 				
 # SE ENCONTRARMOS UM TILE DE COMECO DE FASE:
 P_IF1_REGISTRAR_JOGADOR:	la t1, POSICAO_JOGADOR
-				sh s6, 0(t1)			# salva posicao X do tile nas coordenadas do jogador
-				sh s7, 2(t1)			# salva posicao Y do tile nas coordenadas do jogor
+				addi t0, s6, 2
+				sh t0, 0(t1)			# salva posicao X do tile nas coordenadas do jogador
+				
+				addi t0, s7, 2
+				sh t0, 2(t1)			# salva posicao Y do tile nas coordenadas do jogor
 				
 				# era so isso mesmo
 				
@@ -232,7 +282,6 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				
 				la t0, CONTADOR_INIMIGOS
 				lb a0, (t0)			# salva o valor de retorno (quantidade de inimigos contados)
-				sb zero, (t0)			# zera o contador pra uso futuro
 
 
 				ret
