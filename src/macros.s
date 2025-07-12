@@ -51,3 +51,10 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	ecall
 .end_macro
 
+.macro fim
+	.text
+	li a7, 10
+	ecall
+.end_macro
+
+
