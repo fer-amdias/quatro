@@ -20,7 +20,7 @@
 PROC_CALCULAR_TILE_ATUAL:
 
 			# temos que calcular que valor esse X e Y dah e em que tile ele estah. 
-			la t0, POSICOES_MAPA		# carregamos a posicao do mapa em t0. aqui teremos X em (t0) e Y em 1(t0).
+			la t0, POSICOES_MAPA		# carregamos a posicao do mapa em t0. aqui teremos X em (t0) e Y em 2(t0).
 			lhu t1, 0(t0)			# POSICAO_MAPA_X
 			lhu t2, 2(t0)			# POSICAO_MAPA_Y
 			
