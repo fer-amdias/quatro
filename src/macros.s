@@ -9,10 +9,8 @@
 # arquivos .s.					#
 #################################################
 
-
 .data 
-MACRO_DATA_QUEBRA_DE_LINHA: .ascii "\n\0"
-
+MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 
 .macro print(%string_address)
 	.text
@@ -21,9 +19,9 @@ MACRO_DATA_QUEBRA_DE_LINHA: .ascii "\n\0"
 	ecall
 .end_macro
 
-.macro print_literal(%string_literal)
+.macro print_literal(%str)
 	.data
-	var: .string %string_literal
+	var: .string %str
 	
 	.text
 		li a7, 4
