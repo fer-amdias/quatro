@@ -24,9 +24,9 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	var: .string %str
 	
 	.text
-		li a7, 4
-		la a0, var
-		ecall
+	li a7, 4
+	la a0, var
+	ecall
 .end_macro
 	
 
