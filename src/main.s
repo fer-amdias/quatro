@@ -7,6 +7,9 @@ MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
 MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
 
+
+		.include "memoria.s"
+
 .text
 
 MAIN: 
@@ -98,12 +101,7 @@ LOOP_MENOR:
 		#
 		#			TOCAR AUDIO
 		#			TOCAR MUSICA
-		
-		
-		
-		.include "memoria.s"
-		
-		
+		#
 			
 		
 FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
