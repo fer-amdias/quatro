@@ -16,7 +16,6 @@
 ##############################################################
 
 .text
-.eqv TAMANHO_SPRITE 20	# tamanho padrao de um tile
 
 PROC_CALCULAR_TILE_ATUAL:
 
