@@ -44,6 +44,16 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	ecall
 .end_macro
 
+.macro print_literal_ln(%str)
+	.data
+	var: .string %str
+	
+	.text
+	li a7, 4
+	la a0, var
+	ecall
+.end_macro
+
 .macro print_hex(%int)
 	.text
 	li a7, 34
