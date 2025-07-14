@@ -56,6 +56,10 @@ PROC_REGISTRAR_MOVIMENTO:
 			beq t2, t0, P_RM1_S
 			li t0, 'd'
 			beq t2, t0, P_RM1_D
+			li t0, '\n'
+			beq t2, t0, P_RM1_ENTER
+			li t0, ' '
+			beq t2, t0, P_RM1_SPACEBAR
 			li t0, 8	# backspace
 			beq t2, t0, P_RM1_BACKSPACE
 			
@@ -79,6 +83,26 @@ P_RM1_D:		addi a1, a1, 1		# move para a direita
 			li t2, 1
 			sb t2, (t1)		# coloca a direcao como para a direita (1)
 			j P_RM1_MOVER
+			
+P_RM1_ENTER:
+P_RM1_SPACEBAR:
+			addi sp, sp, -12
+			sw a0, (sp)
+			sw a1, 4(sp)
+			sw a2, 8(sp)
+			la a2, explosivos
+			
+			la t0, POSICAO_JOGADOR
+			lhu a0, (t0)		# pos X do jogador
+			lhu a1, 2(t0) 		# pos y do jogador
+			
+			jal PROC_COLOCAR_BOMBA
+			lw a0, (sp)
+			lw a1, 4(sp)
+			lw a2, 8(sp)
+			addi sp, sp, 12
+			j P_RM1_MOVER
+			
 P_RM1_BACKSPACE:	fim
 
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
@@ -94,6 +118,8 @@ P_RM1_MOVER:		call PROC_MOVER_JOGADOR		# finaliza o movimento
 	
 P_RM1_FIM:		lw ra, (sp)
 			addi sp, sp, 4			# recupera o registrador de retorno anterior
+			
+	
 			ret
 
 	

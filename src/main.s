@@ -1,4 +1,5 @@
 .data
+.include "Texturas/explosivos.data"
 .include "example.data"
 .include "Texturas/placeholder.data"
 .include "Texturas/jogador.data"

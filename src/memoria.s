@@ -26,6 +26,7 @@
 .eqv AREA_SPRITE 400
 .eqv FRAME_0 0xFF000000
 .eqv FRAME_0_FIM 0xFF012C00
+.eqv STRUCT_BOMBAS_OFFSET 12
 
 .data
 
@@ -63,3 +64,17 @@ FRAME_BUFFER_FIM_PTR:	.byte 0		# endereco final do buffer
 TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
 			.space 192	# 16 * 12 sendo o tamanho maximo do buffer
 			
+			# struct BOMBAS {
+BOMBAS:			.half 0   	# short int POSICAO_X;			(0 a 240)
+			.half 0 	# short int POSICAO_Y;			(0 a 320)
+			.byte 0		# bool EXISTE;				(0 ou 1)
+			.byte 0		# unsigned char CONTAGEM_REGRESSIVA;    (0 a 3)
+			.space 2	# (espacamento)
+			.word 0xFFFFFFFF# int timestamp_de_transicao		(timestamp de quanto a gente quer diminiuir a contagem)
+			# }
+			
+			# espaco pra 3 mais bombas
+			.space 12
+			.space 12
+			.space 12
+		
