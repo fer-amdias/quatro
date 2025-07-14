@@ -65,7 +65,7 @@ LOOP_MENOR:
 		
 		li a0, 1
 		la a1, jogador
-		la a2, example
+		la a2, TILEMAP_BUFFER
 		
 		jal PROC_REGISTRAR_MOVIMENTO
 		

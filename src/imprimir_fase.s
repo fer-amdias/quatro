@@ -1,7 +1,8 @@
 ##############################################################
 # PROC_IMPRIMIR FASE 				       	     #
 # Imprime um mapa, dado um endereco do mapa e da textura do  #
-# mapa. Tambem salva a posicao dele na memoria.              #
+# mapa. Tambem salva a posicao dele e cria um tilemap        #
+# modificavel na memoria.             			     #
 # 							     #
 # ARGUMENTOS:						     #
 #	A0 : ENDERECO DO MAPA A SER IMPRESSO                 #
@@ -9,7 +10,6 @@
 #							     #
 # RETORNOS:                                                  #
 #       A0 : QUANTIDADE DE INIMIGOS REGISTRADOS              #
-#	A1 : ENDERECO DO TILEMAP GERADO			     #
 ##############################################################
 
 # prefixo interno: P_IF1_
@@ -44,33 +44,31 @@
 
 
 P_IF1_SUBPROC_CRIAR_TILEMAP:
+	# t2 = linhas * colunas (total de bytes)
+	mul t2, s2, s1
 	
-	# t2 = total_bytes = L * C	
-	mul t2, s1, s2
-	
-	# aloca memoria na heap pro mapa
-	li a7, 9
-	mv a0, t2
-	ecall
-	
-	# a1 = Etm = endereco do tilemap do mapa
-	mv a1, a0
+	# t1 = Etm
+	la t1, TILEMAP_BUFFER
 	
 	# t5 = Em = endereco inicial do mapa (sem contar words de linha e coluna)	
 	mv t5, s0
 	
-	sw s1, 
+	# adiciona linhas e colunas aos primeiros enderecos do mapa
+	sw s1, (t1)
+	sw s2, 4(t1)
+	addi t1, t1, 8
 	
+		
+	# pega tudo que estah no arquivo de mapa e passa pro buffer
 P_IF1_TILEMAP_LOOP:
-    lb t0, 0(t5)
-    sb t0, 0(a1)
-    addi t5, t5, 1
-    addi a1, a1, 1
-    addi t2, t2, -1
-    bnez t2, P_IF1_TILEMAP_LOOP
+    	lb t0, 0(t5)
+   	sb t0, 0(t1)
+   	addi t5, t5, 1
+    	addi t1, t1, 1
+    	addi t2, t2, -1
+    	bnez t2, P_IF1_TILEMAP_LOOP
     
 P_IF1_TILEMAP_FIM:
-
 	ret
 
 
@@ -110,6 +108,10 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				addi s0, s0, 8			# pula os words de linha e coluna para os bytes de informacao
 				
 				jal P_IF1_SUBPROC_CRIAR_TILEMAP
+				
+				
+				
+				
 				
 				# devemos agora calcular a posicao X e Y que o mapa deve estar
 				# primeiramente, devemos multiplicar L e C pelo tamanho do sprite para ter
