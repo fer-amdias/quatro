@@ -1,7 +1,7 @@
 #################################################################
-# PROC_REGISTRAR_MOVIMENTO				       	#
-# Registra input do teclado e move na direcao escolhida		#
-# Basicamente um wrapper para PROC_MOVER_JOGADOR		#
+# PROC_REGISTRAR_MOVIMENTO					       	#
+# Registra input do teclado e toma uma acao de acordo com a 	#
+# tecla apertada.						#
 # 							     	#
 # ARGUMENTOS:						     	#
 #	A0 : MODO (0, 1, 2 OU 3)                        	#
@@ -23,8 +23,8 @@ PROC_REGISTRAR_MOVIMENTO:
 		   	beq t0,zero,P_RM1_SEM_MOVIMENTO_1 # Se n�o h� tecla pressionada ent�o vai para FIM
 		  	lw t2,4(t1)  			# le o valor da tecla 
 			
-			li t0, 97
-			blt t2, t0, P_RM1_SEM_MOVIMENTO_1
+
+			beqz t2, P_RM1_SEM_MOVIMENTO_1
 			
 # Do procedimento PROC_MOVER_JOGADOR		
 # argumentos:
@@ -76,7 +76,7 @@ P_RM1_A:		addi a1, a1, -1		# move para esquerda
 			j P_RM1_MOVER
 			
 P_RM1_S:		addi a2, a2, 1		# move para baixo
-			sb x0, (t1)		# coloca a direcao como para baixo (0) 
+			sb zero, (t1)		# coloca a direcao como para baixo (0) 
 			j P_RM1_MOVER
 			
 P_RM1_D:		addi a1, a1, 1		# move para a direita
