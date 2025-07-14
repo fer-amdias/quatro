@@ -17,10 +17,10 @@ PROC_REGISTRAR_MOVIMENTO:
 			addi sp, sp, -4			# abre espaco na stack
 			sw ra, (sp)			# salva o registrador de retorno anterior
 		
-			li t1,0xFF200000		# carrega o endereço de controle do KDMMIO
+			li t1,0xFF200000		# carrega o endereï¿½o de controle do KDMMIO
 			lw t0,0(t1)			# Le bit de Controle Teclado
 			andi t0,t0,0x0001		# mascara o bit menos significativo
-		   	beq t0,zero,P_RM1_SEM_MOVIMENTO_1 # Se não há tecla pressionada então vai para FIM
+		   	beq t0,zero,P_RM1_SEM_MOVIMENTO_1 # Se nï¿½o hï¿½ tecla pressionada entï¿½o vai para FIM
 		  	lw t2,4(t1)  			# le o valor da tecla 
 			
 			li t0, 97
@@ -56,6 +56,8 @@ PROC_REGISTRAR_MOVIMENTO:
 			beq t2, t0, P_RM1_S
 			li t0, 'd'
 			beq t2, t0, P_RM1_D
+			li t0, 8	# backspace
+			beq t2, t0, P_RM1_BACKSPACE
 			
 			j P_RM1_SEM_MOVIMENTO_2
 			
@@ -77,7 +79,8 @@ P_RM1_D:		addi a1, a1, 1		# move para a direita
 			li t2, 1
 			sb t2, (t1)		# coloca a direcao como para a direita (1)
 			j P_RM1_MOVER
-			
+P_RM1_BACKSPACE:	fim
+
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			mv a4, a2
 			mv a3, a1
