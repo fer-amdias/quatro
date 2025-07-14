@@ -128,6 +128,7 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 .include "imprimir_buffer_de_fase.s"
 .include "registrar_movimento.s"
 .include "desenhar.s"
+.include "colocar_bomba.s"
 
 
 
