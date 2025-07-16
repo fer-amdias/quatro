@@ -50,20 +50,44 @@ P_IF1_SUBPROC_CRIAR_TILEMAP:
 	# t1 = Etm
 	la t1, TILEMAP_BUFFER
 	
-	# t5 = Em = endereco inicial do mapa (sem contar words de linha e coluna)	
-	mv t5, s0
+	# t6 = Em = endereco inicial do mapa (sem contar words de linha e coluna)	
+	mv t6, s0
 	
 	# adiciona linhas e colunas aos primeiros enderecos do mapa
 	sw s1, (t1)
 	sw s2, 4(t1)
 	addi t1, t1, 8
 	
-		
+	# os tres blocos especiais que estarao escondidos como paredes quebraveis
+	li t3, 5
+	li t4, 6
+	li t5, 3
 	# pega tudo que estah no arquivo de mapa e passa pro buffer
 P_IF1_TILEMAP_LOOP:
-    	lb t0, 0(t5)
+	li t3, 5			# como usamos ele de novo mais em baixo, temos que recarregalo aqui no loop
+    	lb t0, 0(t6)
+    	
+    	# se for um bloco especial, mascara no tilemap como parede quebravel
+    	beq t0, t3, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE #marrapaz que nome grande
+    	beq t0, t4, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE
+    	beq t0, t5, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE
+    	
+    	# se for um inimigo, bota um tile andavel no lugar
+    	li t3, 10
+    	bge t0, t3, P_IF1_TILEMAP_LOOP_IGNORAR_INIMIGO
+    	j P_IF1_TILEMAP_LOOP_CONT
+    	
+P_IF1_TILEMAP_LOOP_IGNORAR_INIMIGO:
+	li t0, 0
+	j P_IF1_TILEMAP_LOOP_CONT
+    
+# mascara como 4 (parede quebravel)
+P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE:
+	li t0, 4
+    	
+P_IF1_TILEMAP_LOOP_CONT:    	
    	sb t0, 0(t1)
-   	addi t5, t5, 1
+   	addi t6, t6, 1
     	addi t1, t1, 1
     	addi t2, t2, -1
     	bnez t2, P_IF1_TILEMAP_LOOP
