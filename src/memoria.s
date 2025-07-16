@@ -28,6 +28,13 @@
 .eqv FRAME_0_FIM 0xFF012C00
 .eqv STRUCT_BOMBAS_OFFSET 12
 
+# offsets da struct de bomba
+.eqv BOMBAS_POS_X  0
+.eqv BOMBAS_POS_Y  2
+.eqv BOMBAS_EXISTE 4
+.eqv BOMBAS_CONTAGEM_REGRESSIVA 5
+.eqv BOMBAS_MS_DE_TRANSICAO 8
+
 .data
 
 POSICOES_MAPA: .half 0, 0
