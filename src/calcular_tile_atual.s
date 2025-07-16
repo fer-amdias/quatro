@@ -1,7 +1,7 @@
 ##############################################################
 # PROC_CALCULAR_TILE_ATUAL			             #
 # Calcula o tile atual de uma coordenada X e Y e retorna a   #
-# 							     #
+# informacao, linha, coluna, x e y.			     #
 # 							     #
 # ARGUMENTOS:						     #
 #	A0 : ENDERECO DO MAPA (.data)			     #
