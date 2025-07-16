@@ -70,6 +70,11 @@ LOOP_MENOR:
 		
 		jal PROC_REGISTRAR_MOVIMENTO
 		
+		la a0, explosivos
+		la a1, placeholder
+		la a2, example
+		jal PROC_BOMBA_MANAGER
+		
 		jal PROC_DESENHAR
 		
 		j LOOP_MENOR
