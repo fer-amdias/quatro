@@ -63,7 +63,7 @@ PROC_CALCULAR_TILE_ATUAL:
 
 			
 		######## retornos ########
-			lb a0, (a0) 			# ret_a0 = informacao do TILE
+			lbu a0, (a0) 			# ret_a0 = informacao do TILE
 			mv a1, t1			# ret_a1 = X do tile em respeito a cada tile
 			mv a2, t2			# ret_a2 = Y do tile em respeito a cada tile
 			mv a3, t5			# ret_a3 = X do tile em respeito ao canto superior esquerdo na tela
