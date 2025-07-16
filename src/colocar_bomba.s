@@ -54,11 +54,11 @@ PROC_COLOCAR_BOMBA:
 			la t5, BOMBAS			# t5 = EB = endereco do array de struct de bombas
 	
 			
-P_CB1_LOOP_1:		lb t3, 4(t5)			# t3 = bomba.existe
+P_CB1_LOOP_1:		lbu t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			beqz t3, P_CB1_LOOP_1_CONT	# se !bomba.existe, pula a checagem dessa bomba
 			
-			lh t1, (t5)			# t1 = bomba.posicao_x
-			lh t2, 2(t5)			# t2 = bomba.posicao_y
+			lh t1, BOMBAS_POS_X(t5)		# t1 = bomba.posicao_x
+			lh t2, BOMBAS_POS_Y(t5)			# t2 = bomba.posicao_y
 			
 			# se as posicoes forem diferentes, continua
 			bne t1, a0, P_CB1_LOOP_1_CONT
@@ -77,20 +77,20 @@ P_CB1_LOOP_1_CONT:	addi t5, t5, STRUCT_BOMBAS_OFFSET # desloca o array em uma po
 			li t4, 4
 			la t5, BOMBAS			# t5 = EB = endereco do array de struct de bombas
 
-P_CB1_LOOP_2:		lb t3, 4(t5)			# t3 = bomba.existe
+P_CB1_LOOP_2:		lb t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			bnez t3, P_CB1_LOOP_2_CONT	# se bomba.existe, pula a checagem dessa bomba
 			
 			li t1, 1
-			sh a0, (t5)			# salva a pos x da bomba
-			sh a1, 2(t5)			# salva a pos y da bomba
-			sb t1, 4(t5)			# salva que a bomba existe
+			sh a0, BOMBAS_POS_X(t5)		# salva a pos x da bomba
+			sh a1, BOMBAS_POS_Y(t5)		# salva a pos y da bomba
+			sb t1, BOMBAS_EXISTE(t5)	# salva que a bomba existe
 			
 			li t1, 3
-			sb t1, 5(t5)			# salva a contagem regressiva como 3
+			sb t1, BOMBAS_CONTAGEM_REGRESSIVA(t5)	# salva a contagem regressiva como 3
 
-			csrr t1, time
-			addi t1, t1, 1000			# adiciona 1000 milisegundos
-			sw t1, 8(t5)			# salva os milisegundos ateh a contagem regressiva abaixar em 1
+			csrr t1, time			# pega o tempo atual
+			addi t1, t1, 1000		# adiciona 1000 milisegundos
+			sw t1, BOMBAS_MS_DE_TRANSICAO(t5)			# salva os milisegundos ateh a contagem regressiva abaixar em 1
 			
 			j P_CB1_IMPRIMIR_BOMBA
 
@@ -139,8 +139,6 @@ P_CB1_FIM:		lw ra, (sp)
 			lw a6, 16(sp)
 			lw a7, 20(sp)
 			addi sp, sp, 24
-			print_int(a0)
-			quebra_de_linha
 			ret
 			
 			
