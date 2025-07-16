@@ -26,6 +26,7 @@
 .eqv AREA_SPRITE 400
 .eqv FRAME_0 0xFF000000
 .eqv FRAME_0_FIM 0xFF012C00
+
 .eqv STRUCT_BOMBAS_OFFSET 12
 
 # offsets da struct de bomba
