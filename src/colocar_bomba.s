@@ -67,8 +67,6 @@ P_CB1_LOOP_1:		lbu t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			j P_CB1_SEM_BOMBA
 			
 P_CB1_LOOP_1_CONT:	addi t5, t5, STRUCT_BOMBAS_OFFSET # desloca o array em uma posicao
-			addi t0, t0, 1		# i++
-			blt t0, t4, P_CB1_LOOP_1# se i < 4, continuar
 			
 #### cacando uma posicao disponivel
 
