@@ -113,8 +113,7 @@ PROC_MOVER_JOGADOR:	addi sp, sp, -8
 			la t0, INIMIGOS_QUANTIDADE
 			lw t0, (t0)			# carrega a qtd de inimigos em t0
 			la t1, INIMIGOS_POSICAO		# carrega o vetor de posicao de inimigos em t1
-			la t2, INIMIGOS_TAMANHO		
-			lw t2, (t2)			# carrega as dimensoes de inimigos em t2
+			lI t2, TAMANHO_SPRITE		# carrega as dimensoes dos inimigos
 			
 			lhu t3, (a3)			# carrega dimensao X do jogador
 			lhu t4, 4(a3)			# carrega dimensao Y do jogador

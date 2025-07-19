@@ -50,16 +50,15 @@ DIRECAO_JOGADOR: .byte 0
 
 FASE_ATUAL: .byte 0
 
-INIMIGOS_QUANTIDADE: 	.word 0		# quantidade de inimigos no mundo
+INIMIGOS_QUANTIDADE: 	.word 0		# quantidade de inimigos inicialmente no mundo
 INIMIGOS:         	.byte 0 	# alihamento do vetor
 	          	.space 31 	# cada inimigo vai ser salvo em um byte, dando um total de 32 inimigos nesse vetor
 INIMIGOS_POSICAO: 	.half 0 	# alinhamento do vetor
 	          	.space 127	# cada inimigo vai ter uma posicao de half-word (x) e half-word (y).
 INIMIGOS_DIRECAO: 	.byte 0 	# alinhamento do vetor
-		  	.space 31	# cada inimigo vai ter uma direcao salvo em um byte.	
-INIMIGOS_TAMANHO:	.word 20	# cada inimigo eh 20 por 20 por padrao			
+		  	.space 31	# cada inimigo vai ter uma direcao salvo em um byte.		
 
-CONTADOR_INIMIGOS: .byte 0										
+CONTADOR_INIMIGOS: 	.byte 0		# quantidade de inimigos atualmente vivos							
 
 FASE_BUFFER: 	  	.byte 0 
 		  	.space 76799	# onde manteremos o background de cada nivel, quase como uma layer
