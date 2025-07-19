@@ -26,12 +26,12 @@
 # a1 = endereco da textura
 
 
-# s0  = Em  = endere�o do mapa
+# s0  = Em  = endereco do mapa
 # s1  = L   = n de linhas no mapa
 # s2  = C   = n de colunas no mapa
 # s3  = CC  = contador de colunas
 # s4  = CL  = contador de linhas
-# s5  = Et  = endere�o da textura desse mapa
+# s5  = Et  = endereco da textura desse mapa
 
 # s6  = X   = posicao X de impressao da proxima textura
 # s7  = Y   = posicao Y de impressao da proxima textura
