@@ -336,7 +336,7 @@ P_MJ1_IMPRIMIR:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
 			
 			# tambem temos que pular aC * aL * direcao para chegar no index correspondente ah textura correta!
 			mul t0, a3, a4			# idx = aC * aL
-			lw t1, DIRECAO_JOGADOR		# carrega a direcao do jogador
+			lb t1, DIRECAO_JOGADOR		# carrega a direcao do jogador
 			mul t0, t0, t1			# idx = aC * aL * direcao do jogador
 			add a0, t0, a0			# aE0 += idx
 			
