@@ -60,8 +60,6 @@ PROC_CALCULAR_TILE_ATUAL:
 			mul t5, t1, t0			# X *= tamanho_sprite
 			mul t6, t2, t0			# Y *= tamanho_sprite
 
-
-			
 		######## retornos ########
 			lbu a0, (a0) 			# ret_a0 = informacao do TILE
 			mv a1, t1			# ret_a1 = X do tile em respeito a cada tile
