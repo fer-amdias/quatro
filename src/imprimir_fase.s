@@ -26,12 +26,12 @@
 # a1 = endereco da textura
 
 
-# s0  = Em  = endereço do mapa
+# s0  = Em  = endereï¿½o do mapa
 # s1  = L   = n de linhas no mapa
 # s2  = C   = n de colunas no mapa
 # s3  = CC  = contador de colunas
 # s4  = CL  = contador de linhas
-# s5  = Et  = endereço da textura desse mapa
+# s5  = Et  = endereï¿½o da textura desse mapa
 
 # s6  = X   = posicao X de impressao da proxima textura
 # s7  = Y   = posicao Y de impressao da proxima textura
@@ -231,6 +231,9 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 				
 				# terminamos!
 				sb t2, (t1)			# atualiza o contador de inimigos
+				
+				la t1, INIMIGOS_QUANTIDADE
+				sw t2, (t1)			# atualiza a quantidade de inimigos
 				
 				li t6, 0			# seta tI*400 para 0
 								# isso vai fazer com que uma casa em branco seja colocada no tile sob os pes do inimigo
