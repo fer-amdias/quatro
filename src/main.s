@@ -1,4 +1,5 @@
 .data
+.include "Texturas/inimigos.data"
 .include "Texturas/explosivos.data"
 .include "example.data"
 .include "Texturas/placeholder.data"
@@ -7,10 +8,6 @@
 MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
 MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
-
-
-		.include "memoria.s"
-
 .text
 
 MAIN: 
@@ -49,7 +46,6 @@ LOOP_MENOR:
 		li a0, 0x00			# preto
 		li a1, 1
 		jal PROC_PREENCHER_TELA		# preenche a tela de preto
-		
 						
 		jal PROC_IMPRIMIR_BUFFER_DE_FASE
 		
@@ -67,8 +63,10 @@ LOOP_MENOR:
 		li a0, 1
 		la a1, jogador
 		la a2, TILEMAP_BUFFER
-		
 		jal PROC_REGISTRAR_MOVIMENTO
+		
+		la a0, inimigos
+		jal PROC_INIMIGOS_MANAGER
 		
 		la a0, explosivos
 		la a1, placeholder
@@ -121,7 +119,7 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 
 
 ##############################################################
-# Include de prodcedimentos feito no final do codigo, sempre #
+# Include de prodcedimentos feito no final do codigo, pois   #
 # Colocar no topo vai fazer os procedimentos serem chamados  #
 # ANTES do nosso codigo que queremos executar                #
 ##############################################################
@@ -134,6 +132,9 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 .include "registrar_movimento.s"
 .include "desenhar.s"
 .include "colocar_bomba.s"
+.include "bomba_manager.s"
+.include "inimigos_manager.s"
+.include "manipular_tilemap.s" 
 
 
 
