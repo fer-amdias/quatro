@@ -12,6 +12,8 @@
 .data 
 MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 
+# ATENCAO: ISSO NAO FUNCIONA NO FPGRARS
+# soh no rars... por algum motivo.
 .macro print(%string_address)
 	.text
 	li a7, 4
@@ -44,6 +46,15 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	ecall
 .end_macro
 
+.macro print_int_ln(%int)
+	.text
+	li a7, 36
+	mv a0, %int
+	ecall
+	
+	quebra_de_linha
+.end_macro
+
 .macro print_literal_ln(%str)
 	.data
 	var: .string %str
@@ -52,12 +63,27 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	li a7, 4
 	la a0, var
 	ecall
+	
+	li a7, 4
+	la a0, MACRO_DATA_QUEBRA_DE_LINHA
+	ecall
 .end_macro
 
 .macro print_hex(%int)
 	.text
 	li a7, 34
 	mv a0, %int
+	ecall
+.end_macro
+
+.macro print_hex_ln(%int)
+	.text
+	li a7, 34
+	mv a0, %int
+	ecall
+	
+	li a7, 4
+	la a0, MACRO_DATA_QUEBRA_DE_LINHA
 	ecall
 .end_macro
 
