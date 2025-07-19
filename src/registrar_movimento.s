@@ -1,5 +1,5 @@
 #################################################################
-# PROC_REGISTRAR_MOVIMENTO					       	#
+# PROC_REGISTRAR_MOVIMENTO					#
 # Registra input do teclado e toma uma acao de acordo com a 	#
 # tecla apertada.						#
 # 							     	#
@@ -114,7 +114,7 @@ P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			
 P_RM1_SEM_MOVIMENTO_2:	li a0, 3
 			
-P_RM1_MOVER:		call PROC_MOVER_JOGADOR		# finaliza o movimento	
+P_RM1_MOVER:		jal PROC_MOVER_JOGADOR		# finaliza o movimento	
 	
 P_RM1_FIM:		lw ra, (sp)
 			addi sp, sp, 4			# recupera o registrador de retorno anterior
