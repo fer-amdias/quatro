@@ -14,77 +14,6 @@
 # PREFIXO INTERNO: P_BM1_
 
 
-
-
-
-# ARGUMENTOS:
-#	a0 = valor do tile a ser escrito
-#	a1 = pos X
-#	a2 = pos Y
-P_BM1_SUBPROC_ESCREVER_TILEMAP:
-			la t0, TILEMAP_BUFFER			# carrega o buffer
-			
-			### normaliza a posicao para corresponder ahs linhas e colunas que precisamos acessar
-			la t2, POSICOES_MAPA
-				
-			lhu t3, (t2)				# t3 = pos_mapa_X; 
-			lhu t4, 2(t2)				# t4 = pos_mapa_Y;
-			
-			sub a1, a1, t3				# pos_X -= pos_mapa_X; 
-			sub a2, a2, t4				# pos_Y -= pos_mapa_Y;
-			
-			li t2, TAMANHO_SPRITE
-			div a1, a1, t2				# N_coluna = pos_X / TAMANHO_SPRITE
-			div a2, a2, t2				# N_linha = pos_Y / TAMANHO_SPRITE
-			
-			lw t1, 4(t0)				# carrega numero de colunas
-			addi t0, t0, 8				# pula bytes de informacao
-			
-			mul t1, a2, t1				# t1 = idx = N_linha * n de colunas
-			add t1, t1, a1				# idx += N_coluna
-			
-			add t0, t0, t1				# buffer += idx (pula pra posicao desejada)
-	 		sb a0, (t0)				# guarda o tile
-			ret
-		
-# ARGUMENTOS:
-#	a0 = valor a ser somado
-#	a1 = pos X
-#	a2 = pos Y
-# RETORNOS:
-#	a0 = novo valor do tile
-P_BM1_SUBPROC_SOMAR_TILEMAP:
-			la t0, TILEMAP_BUFFER			# carrega o buffer
-			
-			### normaliza a posicao para corresponder ahs linhas e colunas que precisamos acessar
-			la t2, POSICOES_MAPA
-				
-			lhu t3, (t2)				# t3 = pos_mapa_X; 
-			lhu t4, 2(t2)				# t4 = pos_mapa_Y;
-			
-			sub a1, a1, t3				# pos_X -= pos_mapa_X; 
-			sub a2, a2, t4				# pos_Y -= pos_mapa_Y;
-			
-			li t2, TAMANHO_SPRITE
-			div a1, a1, t2				# N_coluna = pos_X / TAMANHO_SPRITE
-			div a2, a2, t2				# N_linha = pos_Y / TAMANHO_SPRITE
-			
-			lw t1, 4(t0)				# carrega numero de colunas
-			addi t0, t0, 8				# pula bytes de informacao
-			
-			mul t1, a2, t1				# t1 = idx = N_linha * n de colunas
-			add t1, t1, a1				# idx += N_coluna
-			
-			add t0, t0, t1				# buffer += idx (pula pra posicao desejada)
-			
-			lbu t1, (t0)				# pega o tile
-			add t1, t1, a0				# soma a0
-	 		sb t1, (t0)				# bota de volta
-	 		
-	 		mv a0, t1
-			ret
-
-
 # ARGUMENTOS:
 #	a0 = igual
 #	a1 = igual
@@ -163,10 +92,10 @@ P_BM1_SUBPROC_EXPLODIR:
 			
 			
 			# adiciona 100 para marcar explosao
-			li a0, 100
-			lw a3, 12(sp)
-			lw a4, 16(sp)
-			jal P_BM1_SUBPROC_SOMAR_TILEMAP
+			lw a1, 12(sp)
+			lw a2, 16(sp)
+			jal VIRTUALPROC_EXPLODIR_TILE_EM_TILEMAP
+			
 			
 			
 			
@@ -228,7 +157,8 @@ P_BM1_SUBPROC_RESTAURAR:
 			li a0, -100				# desfaz a explosao
 			lw a1, 12(sp)				# pos x
 			lw a2, 16(sp)				# pos y
-			jal P_BM1_SUBPROC_SOMAR_TILEMAP
+			li a7, 1				# modo incrementar
+			jal PROC_MANIPULAR_TILEMAP
 			
 			li t0, 4
 			beq a0, t0, P_BM1_DELETAR_PAREDE
@@ -248,16 +178,20 @@ P_BM1_DELETAR_PAREDE:
 			li t0, 4
 			beq a0, t0, P_BM1_PULAR_PAREDE		# se o tile for 4, entao n tinha nada atras da parede, e portanto, devemos substitui-la com absolutamente nada (tile andavel)
 			
+			# restaura com o valor original
+			# a0 jah carregado
 			lw a1, 12(sp)				# pos x
 			lw a2, 16(sp)				# pos y
-			jal P_BM1_SUBPROC_ESCREVER_TILEMAP
+			li a7, 0				# modo escrita
+			jal PROC_MANIPULAR_TILEMAP
 			j P_BM1_RESTAURAR_CONT
 			
-P_BM1_PULAR_PAREDE:	# deixa como vazio
+P_BM1_PULAR_PAREDE:	# deixa tile como vazio
 			li a0, 0
 			lw a1, 12(sp)				# pos x
 			lw a2, 16(sp)				# pos y
-			jal P_BM1_SUBPROC_ESCREVER_TILEMAP
+			li a7, 0				# modo escrita
+			jal PROC_MANIPULAR_TILEMAP
 P_BM1_RESTAURAR_CONT:	
 			### imprimindo na tilemap e no fase buffer           				
 			lw a1, 4(sp)				# a1 = endereco da textura do mapa
