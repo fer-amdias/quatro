@@ -85,6 +85,20 @@ P_CB1_LOOP_2:		lb t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			
 			li t1, 3
 			sb t1, BOMBAS_CONTAGEM_REGRESSIVA(t5)	# salva a contagem regressiva como 3
+			
+			addi sp, sp, -12
+			sw a0, (sp)
+			sw a1, 4(sp)
+			sw a2, 8(sp)
+			
+			mv a2, a1			# pos y
+			mv a1, a0			# pos x
+			jal VIRTUALPROC_COLOCAR_BOMBA_EM_TILEMAP
+			
+			lw a0, (sp)
+			lw a1, 4(sp)
+			lw a2, 8(sp)
+			addi sp, sp, 12
 
 			csrr t1, time			# pega o tempo atual
 			addi t1, t1, 1000		# adiciona 1000 milisegundos
