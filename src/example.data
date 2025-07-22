@@ -1,8 +1,10 @@
 example: .word 7, 11
 .byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 
 1, 2, 1, 0, 1, 0, 1, 4, 1, 5, 1, 
-1, 0, 0, 0, 4, 4, 0, 0, 0, 3, 1, 
-1, 4, 1, 0, 1, 10, 1, 10, 1, 8, 1, 
-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+1, 0, 0, 0, 4, 6, 0, 0, 0, 3, 1, 
+1, 4, 1, 0, 1, 10, 1, 11, 1, 0, 1, 
+1, 0, 0, 0, 0, 0, 0, 0, 0, 8, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+
+example.scroll: .asciz "Isso eh um pergaminho.\nCuidado! Cada verso\nnao pode passar de 30 colunas.\nPode ter um total de 14 versos\nno maximo. Mais que isso, nao\ngaranto que fique bom.\n\nAss, eu.\n\n\n\n\n\n\n\nPressione ENTER para fechar."
