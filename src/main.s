@@ -6,6 +6,7 @@
 .include "example.data"
 .include "Texturas/placeholder.data"
 .include "Texturas/jogador.data"
+.include "Texturas/pergaminho.data"
 
 MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
@@ -101,8 +102,21 @@ LOOP_MENOR:
 		
 		# se o jogador nao estah vivo
 		beqz a0, FIM			# mata o jogador (claro)
+		
+		li t0, POWERUP_1
+		beq a1, t0, mPOWERUP_TAMANHO_BOMBA
+		
+		li t0, POWERUP_2
+		beq a1, t0, mPOWERUP_QTD_BOMBAS
+		
+		li t0, PERGAMINHO
+		beq a1, t0, mPERGAMINHO
+		
 		li t0, 100
 		bge a1, t0, FIM			# jogador esteve na explosao
+		
+		j LOOP_MENOR_CONT
+		
 mPOWERUP_TAMANHO_BOMBA:	
 		li t0, 1
 		sb t0, POWERUP_TAMANHO_BOMBA, t1
@@ -113,7 +127,27 @@ mPOWERUP_QTD_BOMBAS:
 		sb t0, POWERUP_QTD_BOMBAS, t1
 		sobrescrever_tile_atual(0, placeholder)	# marca o tile como vazio
 		j LOOP_MENOR_CONT
+mPERGAMINHO:	
+		#	A0 : endereco da textura de pergaminho			
+		#	A1 : endereco do texto do pergaminho			
+		#	A2 : endereco da textura do mapa			
+		la a0, pergaminho
+		la a1, example.scroll
+		la a2, placeholder
+		jal PROC_MOSTRAR_PERGAMINHO
 LOOP_MENOR_CONT:
+		
+		lb t0, PERGAMINHO_NA_TELA
+		beqz t0, LOOP_MENOR_CONT2
+		
+		la a0, pergaminho
+		la a1, example.scroll
+		la a2, placeholder
+		jal PROC_MOSTRAR_PERGAMINHO
+		
+		# se o pergaminho estah na tela, devemos continuar a mostra-lo
+	
+LOOP_MENOR_CONT2:	
 		jal PROC_DESENHAR
 		
 		j LOOP_MENOR
@@ -136,10 +170,10 @@ LOOP_MENOR_CONT:
 # FEITO					REGISTRAR USO DE BOMBAS
 # FEITO					CALCULAR TEMPO RESTANTE DE EXPLOSAO
 # FEITO					EXPLODIR BOMBAS IMINENTES
-# PARCIALMENTE FEITO			IMPLEMENTAR DANO DA EXPLOSAO				# o jogador por enquanto eh imortal :)
+# FEITO			IMPLEMENTAR DANO DA EXPLOSAO				
 		#
 # FEITO					CALCULAR MOVIMENTO DOS INIMIGOS
-		#			CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
+# FEITO					CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
 		#
 		#			ATUALIZAR HEADS-UP DISPLAY
 		#			MOSTRAR VIDAS RESTANTES, TEMPO RESTANTE, INIMIGOS RESTANTES, BOMBAS DISPONIVEIS, N DO CAPITULO E FASE
@@ -178,8 +212,8 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 .include "inimigos_manager.s"
 .include "manipular_tilemap.s" 
 .include "checar_colisoes.s" 
-
-
+.include "imprimir_string.s"
+.include "mostrar_pergaminho.s"
 
 
 
