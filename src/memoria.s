@@ -94,3 +94,7 @@ BOMBAS:			.half 0   	# short int POSICAO_X;			(0 a 240)
 			.space 12
 			.space 12
 		
+POWERUP_TAMANHO_BOMBA:	.byte 0
+POWERUP_QTD_BOMBAS:	.byte 0
+
+
