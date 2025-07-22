@@ -4,7 +4,7 @@
 # tecla apertada.						#
 # 							     	#
 # ARGUMENTOS:						     	#
-#	A0 : MODO (0, 1, 2 OU 3)                        	#
+#	A0 : MODO (0, 1, OU 2)  	                      	#
 #	A1 : ENDERECO DE TEXTURA DO JOGADOR			#
 #	A2 : ENDERECO DO MAPA					#
 # RETORNOS:                                                  	#
@@ -98,7 +98,6 @@ P_RM1_SPACEBAR:
 			la t0, POSICAO_JOGADOR
 			lhu a0, (t0)		# pos X do jogador
 			lhu a1, 2(t0) 		# pos y do jogador
-			
 			jal PROC_COLOCAR_BOMBA
 			
 			lw a0, (sp)
