@@ -37,6 +37,8 @@
 .eqv BOMBAS_MS_DE_TRANSICAO 8
 
 .data
+junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
+
 JOGO_PAUSADO: 		.byte 0
 
 POSICOES_MAPA: .half 0, 0
