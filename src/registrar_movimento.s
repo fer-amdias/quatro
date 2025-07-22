@@ -65,21 +65,21 @@ PROC_REGISTRAR_MOVIMENTO:
 			
 			j P_RM1_SEM_MOVIMENTO_2
 			
-P_RM1_W:		addi a2, a2, -1		# move para cima
+P_RM1_W:		addi a2, a2, -2		# move para cima
 			li t2, 2
 			sb t2, (t1)		# coloca a direcao como para cima (2)
 			j P_RM1_MOVER
 			
-P_RM1_A:		addi a1, a1, -1		# move para esquerda
+P_RM1_A:		addi a1, a1, -2		# move para esquerda
 			li t2, 3
 			sb t2, (t1)		# coloca a direcao como para a esquerda (3)
 			j P_RM1_MOVER
 			
-P_RM1_S:		addi a2, a2, 1		# move para baixo
+P_RM1_S:		addi a2, a2, 2		# move para baixo
 			sb zero, (t1)		# coloca a direcao como para baixo (0) 
 			j P_RM1_MOVER
 			
-P_RM1_D:		addi a1, a1, 1		# move para a direita
+P_RM1_D:		addi a1, a1, 2		# move para a direita
 			li t2, 1
 			sb t2, (t1)		# coloca a direcao como para a direita (1)
 			j P_RM1_MOVER
