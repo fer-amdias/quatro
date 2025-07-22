@@ -248,6 +248,11 @@ PROC_BOMBA_MANAGER:
 			# o loop vai de i = 0 a i = 3
 			li s1, 0
 			li s2, 4
+			
+			lbu t0, POWERUP_QTD_BOMBAS
+			bnez t0, P_BM1_LOOP_1
+			
+			li s2, 1	# se o powerup de qtd de bombas nao tiver sido pego, so deixa o jogador usar um espaco de bomba
 	
 			# for (i = 0; i < 4; i++)
 P_BM1_LOOP_1:		csrr t2, time				# t2 = time
@@ -330,6 +335,38 @@ P_BM1_LOOP_1_EXPLODIR:
 			sub a3, a3, t0		# vai pro tile ah esquerda
 			jal P_BM1_SUBPROC_EXPLODIR
 			
+			# checa se o jogador pegou o powerup de tamanho de bomba
+			lbu t0, POWERUP_TAMANHO_BOMBA
+			beqz t0, P_BM1_LOOP_1_CONT	
+			
+			# se sim, aumenta o tamanho da explosao
+			
+			lhu a3, BOMBAS_POS_X(s0)		# carrega pos x
+			lhu a4, BOMBAS_POS_Y(s0)		# carrega pos y
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a4, a4, t0				# vai pro tile acima
+			jal P_BM1_SUBPROC_EXPLODIR
+				
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			add a4, a4, t0		
+			add a4, a4, t0				# vai pro tile abaixo
+			jal P_BM1_SUBPROC_EXPLODIR
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a4, a4, t0
+			add a3, a3, t0				# vai pro tile ah direita
+			jal P_BM1_SUBPROC_EXPLODIR
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a3, a3, t0
+			sub a3, a3, t0		# vai pro tile ah esquerda
+			jal P_BM1_SUBPROC_EXPLODIR
+			
 			j P_BM1_LOOP_1_CONT
 
 
@@ -358,6 +395,38 @@ P_BM1_LOOP_1_FINALIZAR_EXPLOSAO:
 			jal P_BM1_SUBPROC_RESTAURAR
 			
 			sb x0, BOMBAS_EXISTE(s0)		# deleta a bomba
+			
+			# checa se o jogador pegou o powerup de tamanho de bomba
+			lbu t0, POWERUP_TAMANHO_BOMBA
+			beqz t0, P_BM1_LOOP_1_CONT	
+			
+			# se sim, aumenta o tamanho da explosao
+			
+			lhu a3, BOMBAS_POS_X(s0)		# carrega pos x
+			lhu a4, BOMBAS_POS_Y(s0)		# carrega pos y   
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a4, a4, t0				# vai pro tile acima
+			jal P_BM1_SUBPROC_RESTAURAR
+				
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			add a4, a4, t0		
+			add a4, a4, t0				# vai pro tile abaixo
+			jal P_BM1_SUBPROC_RESTAURAR
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a4, a4, t0
+			add a3, a3, t0				# vai pro tile ah direita
+			jal P_BM1_SUBPROC_RESTAURAR
+			
+			li t0, TAMANHO_SPRITE
+			slli t0, t0, 1				# multiplica por 2, pulando 2 tiles em vez de 1
+			sub a3, a3, t0
+			sub a3, a3, t0				# vai pro tile ah esquerda
+			jal P_BM1_SUBPROC_RESTAURAR
 			
 P_BM1_LOOP_1_CONT:	addi s0, s0, STRUCT_BOMBAS_OFFSET 	# desloca o array em uma posicao
 			addi s1, s1, 1				# i++

@@ -101,6 +101,19 @@ LOOP_MENOR:
 		
 		# se o jogador nao estah vivo
 		beqz a0, FIM			# mata o jogador (claro)
+		li t0, 100
+		bge a1, t0, FIM			# jogador esteve na explosao
+mPOWERUP_TAMANHO_BOMBA:	
+		li t0, 1
+		sb t0, POWERUP_TAMANHO_BOMBA, t1
+		sobrescrever_tile_atual(0, placeholder)	# marca o tile onde tava o powerup como vazio
+		j LOOP_MENOR_CONT
+mPOWERUP_QTD_BOMBAS:	
+		li t0, 1
+		sb t0, POWERUP_QTD_BOMBAS, t1
+		sobrescrever_tile_atual(0, placeholder)	# marca o tile como vazio
+		j LOOP_MENOR_CONT
+LOOP_MENOR_CONT:
 		jal PROC_DESENHAR
 		
 		j LOOP_MENOR

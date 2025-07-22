@@ -52,6 +52,11 @@ PROC_COLOCAR_BOMBA:
 			li t4, 4
 			
 			la t5, BOMBAS			# t5 = EB = endereco do array de struct de bombas
+			
+			lbu t0, POWERUP_QTD_BOMBAS
+			bnez t0, P_CB1_LOOP_1
+			
+			li t4, 1	# se o powerup de qtd de bombas nao tiver sido pego, so deixa o jogador usar um espaco de bomba
 	
 			
 P_CB1_LOOP_1:		lbu t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
@@ -70,9 +75,10 @@ P_CB1_LOOP_1_CONT:	addi t5, t5, STRUCT_BOMBAS_OFFSET # desloca o array em uma po
 			
 #### cacando uma posicao disponivel
 
-			# LOOP de i = 0 a 3
+			# LOOP de i = 0 a i = 3
+
+			# reseta i
 			li t0, 0
-			li t4, 4
 			la t5, BOMBAS			# t5 = EB = endereco do array de struct de bombas
 
 P_CB1_LOOP_2:		lb t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe

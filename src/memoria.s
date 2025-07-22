@@ -14,8 +14,7 @@
 #								#
 # 								#
 #  COMO USO ESSE MODULO?					#
-#  Basta dar um .include "./memoria.asm" no inicio do		#
-#  da main. 							#
+#  Basta dar um .include "./memoria.s" no inicio da main.	#
 #								#
 #################################################################
 
@@ -36,6 +35,11 @@
 .eqv BOMBAS_CONTAGEM_REGRESSIVA 5
 .eqv BOMBAS_MS_DE_TRANSICAO 8
 
+.eqv POWERUP_1  5
+.eqv POWERUP_2  6
+.eqv ELEVADOR 	7
+.eqv PERGAMINHO 8
+
 .data
 junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
 
@@ -52,6 +56,8 @@ DIRECAO_JOGADOR: .byte 0
 
 
 FASE_ATUAL: .byte 0
+
+# era pra inimigos ser um vetor de structs mas eu soh fui ter essa ideia quando fiz as bombas serem vetores de structs, e ahi n dava mais tempo de refatorar o codigo
 
 INIMIGOS_QUANTIDADE: 	.word 0		# quantidade de inimigos inicialmente no mundo
 INIMIGOS:         	.byte 0 	# alihamento do vetor
