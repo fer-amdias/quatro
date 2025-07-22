@@ -1,0 +1,35 @@
+DATA: 
+.byte jogo_pausado 0
+.byte pergaminho_na_tela 0
+.byte enter_cooldown 0
+
+
+PROC_MOSTRAR_PERGAMINHO:
+
+se !pergaminho_na_tela:
+
+	# coloquemos um cooldown de 500 segundos antes do usuario poder apertar enter e fechar o pergaminho
+	# pra evitar que o usuario feche sem querer ou que o enter que ele tava apertando antes acabe fechando o pergaminho
+	enter_cooldown = timenow + 500 
+else:
+	if (timenow > enter_cooldown):
+		pergaminho_na_tela = 0
+		jogo_pausado = 0
+		return
+	
+
+imprimir textura de pergaminho em (0, 0)
+
+pega texto do pergaminho no arquivo .data da fase
+
+ecall de impressao de string em (40, 80)
+
+jogo_pausado = 1
+pergaminho_na_tela = 1
+
+return
+
+
+
+
+
