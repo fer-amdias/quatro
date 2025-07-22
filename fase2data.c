@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_VERSOS 14
+
 void char2value(unsigned char * array, int tamanho){
     for (int i = 0; i < tamanho; i++){
 
         switch(array[i]){
+            case ' ':   // nada
             case '0':   // nada
                 array[i] = 0;
                 break;
@@ -50,10 +53,16 @@ int lvl2data(const char * nome, FILE* lvl, FILE* data){
 
     unsigned char linha[256]; 
 
-    while (fgets(linha, sizeof(linha), lvl)) {
+    short scroll = 0; // assume-se que nao hah scroll
+
+    for (int i = 0; i < altura; i++) {
+        fgets(linha, sizeof(linha), lvl);
         // pular comentarios
-        if (linha[0] == '#')
+        if (linha[0] == '#'){
+            i--;
             continue;
+        }
+            
 
         // tira comentarios inline
         char *comment = strchr(linha, '#');
@@ -69,7 +78,30 @@ int lvl2data(const char * nome, FILE* lvl, FILE* data){
         fputc('\n', data);
     }
 
+    // soh resta agora ver se tem pergaminho
+    while(fgets(linha, sizeof(linha), lvl)){
+        if (linha[0] == '!'){
+            scroll = 1;
+            break;         // achamos o pergaminho
+        }
+    }
 
+    int versos = 0;
+
+    if (scroll){
+        fprintf(data, "\n%s.scroll: .asciz \"", nome);
+
+        while (fgets(linha, sizeof(linha), lvl)) {
+            char *newline = strchr(linha, '\n'); 
+            if (newline) *newline = '\0'; // tira o enter no final
+            fprintf(data, "%s\\n", linha);
+            versos++;
+        }
+
+        for (int i = versos; i < MAX_VERSOS; i++)
+            fprintf(data, "\\n");
+        fprintf(data, "\\nPressione ENTER para fechar.\"");
+    }
 };
 
 int main(int argc, char** argv){

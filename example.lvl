@@ -1,7 +1,19 @@
-5 11
+7 11
 
 -----------
-|C|0|0|B|B|
-|000BB000B|
-|B|0|1|1|s|
+|00000000B|
+|C|0|0|B|P|
+|000Bp000F|
+|B|0|1|2|s|
+|000000000|
 -----------
+
+!   # lembre-se sempre de incluir o ponto de exclamacao antes do pergaminho! e ele deve estar sozinho na linha!
+Isso eh um pergaminho.
+Cuidado! Cada verso
+nao pode passar de 30 colunas.
+Pode ter um total de 14 versos
+no maximo. Mais que isso, nao
+garanto que fique bom.
+
+Ass, eu.
