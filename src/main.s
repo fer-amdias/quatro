@@ -164,7 +164,7 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 .include "bomba_manager.s"
 .include "inimigos_manager.s"
 .include "manipular_tilemap.s" 
-
+.include "checar_colisoes.s" 
 
 
 
