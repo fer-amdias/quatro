@@ -1,0 +1,31 @@
+CHECAR COLISOES:
+
+pega posicoes do jogador e carrega em t0 e t1
+
+a0 = 1			// assumimos que o jogador esteja vivo desde o comeco
+
+for loop com inimigos
+
+para cada inimigo:
+	se direcao = 4 continue; (o inimigo jah morreu)
+	pega posicao do inimigo
+	para cada canto do jogador:
+
+		// checar se estah dentro do inimigo
+		SE x_inimigo < x_canto < x_inimigo + tamanho_sprite 
+		&& 
+		SE y_inimigo < y_canto < y_inimigo + tamanho_sprite:
+			COLISAO!!!!!!!
+			a0 = 0
+			break
+
+salva a0 na stack
+
+checa tile debaixo do jogador no tilemap
+a1 = tile
+
+retorna a0 da stack
+
+ret
+
+		
