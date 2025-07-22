@@ -151,7 +151,6 @@ P_IM1_EH_ANDAVEL:	li a0, 1
 P_IM1_NAO_EH_ANDAVEL:	li a0, 0
 
 P_IM1_SUBPROC_EH_ANDAVEL_FIM:
-
 			mv t0, a0
 			mv a0, t0
 		
@@ -220,7 +219,15 @@ PROC_INIMIGOS_MANAGER:
 			li s10, 0				# senao, marca como estando no cooldown
 			j P_IM1_LOOP_1
 			
-P_IM1_PROSSEGUIR:	addi t1, t1, 25				# adiciona 25 milisegundos no cooldown -- 40 ciclos por segundo -- 2 tiles por segundo (considerando tamanho_tile = 20
+P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
+			beqz t2, P_IM1_PROSSEGUIR2		# se nao estiver pausado, prossiga
+			
+			# caso contrario, marca como 'estando no cooldown'
+			li s10, 0
+			j P_IM1_LOOP_1
+
+P_IM1_PROSSEGUIR2:	csrr t2, time
+			addi t1, t2, 30				# adiciona 30 milisegundos no cooldown -- 33 ciclos por segundo -- >2 tiles por segundo (considerando tamanho_tile = 20
 			sw t1, (t0)				# guarda a nova timestamp
 			li s10, 11				# marca como fora do cooldown
 	
@@ -488,10 +495,7 @@ P_IM1_FRENTE_NAO_ANDAVEL:
 			# se esquerda = 1, anda pra esquerda
 			bnez s8, P_IM1_ESQUERDA_ANDAVEL
 			j P_IM1_DIREITA_ANDAVEL
-			
-FIM_FIM:		fim
-			
-			
+					
 P_IM1_DECIDIR_ESQUERDA_DIREITA:
 			# o desafio de todo adolescente
 			

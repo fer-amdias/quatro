@@ -37,6 +37,7 @@
 .eqv BOMBAS_MS_DE_TRANSICAO 8
 
 .data
+JOGO_PAUSADO: 		.byte 0
 
 POSICOES_MAPA: .half 0, 0
 POSICAO_JOGADOR: .half 0, 0

@@ -16,7 +16,10 @@
 PROC_REGISTRAR_MOVIMENTO:
 			addi sp, sp, -4			# abre espaco na stack
 			sw ra, (sp)			# salva o registrador de retorno anterior
-		
+			
+			lb t0, JOGO_PAUSADO
+			bnez t0, P_RM1_FIM		# nao se move se o jogo estah pausado
+			
 			li t1,0xFF200000		# carrega o endere�o de controle do KDMMIO
 			lw t0,0(t1)			# Le bit de Controle Teclado
 			andi t0,t0,0x0001		# mascara o bit menos significativo
@@ -97,6 +100,7 @@ P_RM1_SPACEBAR:
 			lhu a1, 2(t0) 		# pos y do jogador
 			
 			jal PROC_COLOCAR_BOMBA
+			
 			lw a0, (sp)
 			lw a1, 4(sp)
 			lw a2, 8(sp)
