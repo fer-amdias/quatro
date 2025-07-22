@@ -44,6 +44,7 @@
 junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
 
 JOGO_PAUSADO: 		.byte 0
+PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 
 POSICOES_MAPA: .half 0, 0
 POSICAO_JOGADOR: .half 0, 0
