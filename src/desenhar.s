@@ -1,9 +1,9 @@
 ##############################################################
 # PROC_DESENHAR		 				     #
-# Mostra 			                             #
+# Imprime buffer de frame na tela			     #
 # 							     #
 # ARGUMENTOS:						     #
-#	(nenhum)
+#	(nenhum)					     #
 # RETORNOS:                                                  #
 #       (nenhum)                                             #
 ##############################################################
