@@ -1,3 +1,5 @@
+.include "memoria.s"
+
 .data
 .include "Texturas/inimigos.data"
 .include "Texturas/explosivos.data"
@@ -40,6 +42,19 @@ MAIN:
 		la a1, placeholder
 		jal PROC_IMPRIMIR_FASE
 		
+		li s0, 1 
+		
+		### PEGAR LARGURA E ALTURA DO JOGADOR ###
+		la t0, jogador
+		lw s1, (t0)		
+		lw s2, 4(t0)
+		
+		# corrige a altura do jogador
+		li t0, 6
+		div s2, s2, t0
+		
+		# s0 = LARGURA DO JOGADOR
+		# s1 = ALTURA DO JOGADOR
 
 LOOP_MENOR:	
 
@@ -51,10 +66,9 @@ LOOP_MENOR:
 		
 		# argumentos de REGISTRAR_MOVIMENTO:
 		#	a0: M: modo
-		#		M == 0: Modo mover sem checar paredes nem inimigos
-		#		M == 1: Modo mover sem checar inimigos
-		#		M == 2: Modo mover
-		#		M == 3: modo posicionar
+		#		M == 0: Modo mover sem checar paredes
+		#		M == 1: Modo mover
+		#		M == 2: Modo posicionar
 		#	a1: T: endereco da textura do jogador
 		#	a2: E: endereco do mapa 
 		# retorno:
@@ -73,6 +87,20 @@ LOOP_MENOR:
 		la a2, example
 		jal PROC_BOMBA_MANAGER
 		
+		# PROC_CHECAR_COLISOES				       	     	
+		# ARGUMENTOS:						     	
+		#	A0 : largura do jogador					
+		#	A1 : altura do jogador					
+		# RETORNOS:                                                  	
+		#       A0 : se o jogador continua vivo				
+		#	A1 : o tile em que o jogador atualmente estah		
+		
+		mv a0, s1
+		mv a1, s2
+		jal PROC_CHECAR_COLISOES
+		
+		# se o jogador nao estah vivo
+		beqz a0, FIM			# mata o jogador (claro)
 		jal PROC_DESENHAR
 		
 		j LOOP_MENOR
