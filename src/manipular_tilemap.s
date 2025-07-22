@@ -23,6 +23,34 @@
 # (principalmente se nao der tempo de otimizar essa bagunca)
 
 PROC_MANIPULAR_TILEMAP:
+
+			# sanity check
+			# eh essencial fazer isso pro jogo nao crashar quando a explosao sair pra fora do mapa
+			
+			la t2, POSICOES_MAPA
+			lh t0, (t2)				# x do mapa
+			lh t1, 2(t2)				# y do mapa
+			
+			# se x ou y estiverem fora do mapa
+			blt a1, t0, P_MT1_SEM_TILE
+			blt a2, t1, P_MT1_SEM_TILE
+			
+			li t2, 320				# largura vga
+			sub t0, t2, t0				# x final do mapa = vga - x do mapa
+			li t2, 240				# altura vga
+			sub t1, t2, t1				# y final do mapa = vga - y do mapa
+			
+			# se x ou y estiverem fora do mapa
+			bgt a1, t0, P_MT1_SEM_TILE
+			bgt a2, t1, P_MT1_SEM_TILE
+			
+			j P_MT1_CONT
+			
+P_MT1_SEM_TILE:		li t1, -1				# nao existe esse tile rapaz
+			j P_MT1_FIM
+
+P_MT1_CONT:
+
 			la t0, TILEMAP_BUFFER			# carrega o buffer
 			
 			### normaliza a posicao para corresponder ahs linhas e colunas que precisamos acessar
