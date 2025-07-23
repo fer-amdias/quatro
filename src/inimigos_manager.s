@@ -26,6 +26,8 @@
 # retornos: 
 #	a0 = 1 ou 0
 
+# essa funcao tambem eh usada para manipular o tempo restante. eh imperativo inclui-la mesmo em fases sem inimigos.
+
 .data
 INIMIGOS_COOLDOWN_TIMESTAMP: .word 0
 
@@ -227,7 +229,7 @@ P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
 			j P_IM1_LOOP_1
 
 P_IM1_PROSSEGUIR2:	csrr t2, time
-			addi t1, t2, 30				# adiciona 30 milisegundos no cooldown -- 33 ciclos por segundo -- >2 tiles por segundo (considerando tamanho_tile = 20
+			addi t1, t2, 30				# adiciona 30 milisegundos no cooldown -- 33 ciclos por segundo -- > ~2 tiles por segundo (considerando tamanho_tile = 20)
 			sw t1, (t0)				# guarda a nova timestamp
 			
 			la t0, SEGUNDOS_RESTANTE_Q10		# atualiza os segundos restantes na fase (sim, ESSE PROCEDIMENTO UTILIZA 
