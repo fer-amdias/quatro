@@ -105,6 +105,11 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 			# t6 = y do inimigo
 			# a1 = largura do jogador
 			# a2 = altura do jogador
+			
+			# carrega a posicao do jogador
+			la t0, POSICAO_JOGADOR
+			lh t1, (t0)
+			lh t2, 2(t0)
 
 P_CC1_CANTO_SUPERIOR_ESQUERDO:
 
