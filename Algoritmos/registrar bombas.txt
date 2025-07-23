@@ -53,5 +53,38 @@ PROC_CHECAR_BOMBA
 
 		ms_de_transicao = unix_time + 1000;
 		
+
+
+
+
+LOGICA DE EXPLOSAO
+
+pega tile atual
+imprime textura de explosao
+
+pega tile acima (-20 Y)
+SUBPROC_EXPLODIR
+
+pega tile abaixo (+40 Y)
+SUBPROC_EXPLODIR
+
+pega tile do lado (-20 Y, +20 X)
+SUBPROC_EXPLODIR
+
+pega tile do outro (-20 X)
+SUBPROC_EXPLODIR
+
+SUBPROC_EXPLODIR:
+
+pega tile x = a0, y = a1
+checa
+se tipo != 1 (parede)
+imprime textura de explosao
+adiciona 100 no tilemap
+
+
+
+pegar tile atual
+printar tile 
 	
  	
