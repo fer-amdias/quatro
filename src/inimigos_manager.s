@@ -229,7 +229,14 @@ P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
 P_IM1_PROSSEGUIR2:	csrr t2, time
 			addi t1, t2, 30				# adiciona 30 milisegundos no cooldown -- 33 ciclos por segundo -- >2 tiles por segundo (considerando tamanho_tile = 20
 			sw t1, (t0)				# guarda a nova timestamp
-			li s10, 11				# marca como fora do cooldown
+			
+			la t0, SEGUNDOS_RESTANTE_Q10		# atualiza os segundos restantes na fase (sim, ESSE PROCEDIMENTO UTILIZA 
+			lw t1, (t0)				# carrega os segundos atuais
+			addi t1, t1, -30			# subtrai 30/1024 (eh necessario arredondar aqui pq estamos usando ponto fixo binario enquanto o registrador time usa decimal.
+			sw t1, (t0)				# guarda o novo valor
+			
+			
+			li s10, 1				# marca como fora do cooldown
 	
 			
 P_IM1_LOOP_1:		

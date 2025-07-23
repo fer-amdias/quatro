@@ -65,6 +65,7 @@ FASE1:
 
 		la a0, example
 		la a1, placeholder
+		li a2, 100		# 100 segundos de limite
 		jal PROC_IMPRIMIR_FASE
 		
 		li s0, 1 
@@ -189,6 +190,11 @@ LOOP_MENOR_CONT:
 		# se o pergaminho estah na tela, devemos continuar a mostra-lo
 	
 LOOP_MENOR_CONT2:	
+
+		lw t0, SEGUNDOS_RESTANTE_Q10
+		bltz t0, MORTE
+
+
 		la a0, explosivos
 		la a1, placeholder
 		la a2, example

@@ -45,7 +45,10 @@ junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou 
 
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
+
+SEGUNDOS_RESTANTE_Q10:	.word 102400		# quantos segundos ateh a fase acabar, com 10 casas binairias (/1024). Padrao: 100 segundos  
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
+# caso esteje cacando onde que os segundos sao atualizados: inimigos manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
 
 POSICOES_MAPA: .half 0, 0
 POSICAO_JOGADOR: .half 0, 0
@@ -57,7 +60,7 @@ DIRECAO_JOGADOR: .byte 0
 			# 3 = PARA A ESQUERDA
 
 
-FASE_ATUAL: .byte 0
+
 
 # era pra inimigos ser um vetor de structs mas eu soh fui ter essa ideia quando fiz as bombas serem vetores de structs, e ahi n dava mais tempo de refatorar o codigo
 

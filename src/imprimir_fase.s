@@ -7,6 +7,7 @@
 # ARGUMENTOS:						     #
 #	A0 : ENDERECO DO MAPA A SER IMPRESSO                 #
 # 	A1 : ENDERECO DA TEXTURA DO MAPA                     #
+#	A2 : LIMITE DE SEGUNDOS DA FASE			     #
 #							     #
 # RETORNOS:                                                  #
 #       A0 : QUANTIDADE DE INIMIGOS REGISTRADOS              #
@@ -116,6 +117,9 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				sw   s10, 40(sp)
 				sw   s11, 44(sp)
 				sw   ra,  48(sp)
+
+				slli t0, a2, 10
+				sw t0, SEGUNDOS_RESTANTE_Q10, t1
 
 				# salva os argumentos de funcao
 				mv s0, a0			# endereco do mapa    				(Em)
