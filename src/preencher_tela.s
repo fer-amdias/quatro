@@ -1,15 +1,13 @@
-##############################################################
-# PROC_PREENCHER_TELA 				       	     #
-# Muda cada pixel do frame fornecido para ter a cor          #
-# fornecida.			                             #
-# 							     #
-# ARGUMENTOS:						     #
-#	A0 : COR DE PREENCHIMENTO                            #
-#	A1 : FRAME (0 OU 1 (frame buffer))                   #
-# RETORNOS:                                                  #
-#       (nenhum)                                             #
-##############################################################
-
+#################################################################
+# PROC_PREENCHER_TELA 				       	     	#
+# Muda cada pixel do frame fornecido para ter a cor fornecida 	#
+# 							     	#
+# ARGUMENTOS:						     	#
+#	A0 : COR DE PREENCHIMENTO                            	#
+#	A1 : FRAME (0 OU 1 (frame buffer))                   	#
+# RETORNOS:                                                  	#
+#       (nenhum)                                             	#
+#################################################################
 .text
 
 PROC_PREENCHER_TELA:	beqz a1, P_PT1_EH_FRAME_0	# se A1 == 0, vai pra P_PT1_EH_FRAME_0; senao, fica
