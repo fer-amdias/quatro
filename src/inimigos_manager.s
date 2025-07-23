@@ -426,8 +426,8 @@ P_IM1_FRENTE_ANDAVEL:
 			# temos nosso range!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			# agora soh devemos sortear um numero aleatorio
 			
-			# seta a seed aleatoria como o tempo atual em ms e o index como o ciclo atual
-			csrr a1, time
+			# seta a seed aleatoria como o ciclo atual e o index como o ciclo atual tambem
+			csrr a1, cycle
 			csrr a0, cycle
 			li a7, 40
 			ecall				# coloca a seed
@@ -512,8 +512,8 @@ P_IM1_FRENTE_NAO_ANDAVEL:
 P_IM1_DECIDIR_ESQUERDA_DIREITA:
 			# o desafio de todo adolescente
 			
-			# seta a seed aleatoria como o tempo atual em ms e o index como o ciclo atual
-			csrr a1, time
+			# seta a seed aleatoria como o ciclo atual e o index como o ciclo atual tambem
+			csrr a1, cycle
 			csrr a0, cycle
 			li a7, 40
 			ecall				# coloca a seed
