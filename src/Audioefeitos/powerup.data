@@ -1,0 +1,28 @@
+powerup:
+    .byte 75, 0, 127
+    .space 1
+    .word 93
+    .word 0
+
+    .byte 80, 0, 127
+    .space 1
+    .word 93
+    .word 0
+
+    .byte 80, 0, 127
+    .space 1
+    .word 93
+    .word 93
+
+    .byte 85, 0, 127
+    .space 1
+    .word 93
+    .word 93
+
+    .byte 92, 0, 127
+    .space 1
+    .word 93
+    .word 187
+
+powerup_FIM:
+    .word 0 0 0

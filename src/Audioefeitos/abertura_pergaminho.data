@@ -1,0 +1,23 @@
+abertura_pergaminho:
+    .byte 69, 73, 127
+    .space 1
+    .word 187
+    .word 0
+
+    .byte 73, 73, 127
+    .space 1
+    .word 187
+    .word 187
+
+    .byte 75, 73, 127
+    .space 1
+    .word 187
+    .word 375
+
+    .byte 76, 73, 127
+    .space 1
+    .word 187
+    .word 562
+
+pergaminho_FIM:
+    .word 0 0 0

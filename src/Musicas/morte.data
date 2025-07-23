@@ -1,0 +1,63 @@
+morte:
+    .byte 51, 0, 127
+    .space 1
+    .word 250
+    .word 0
+
+    .byte 56, 0, 127
+    .space 1
+    .word 250
+    .word 0
+
+    .byte 80, 13, 127
+    .space 1
+    .word 500
+    .word 0
+
+    .byte 49, 0, 127
+    .space 1
+    .word 250
+    .word 500
+
+    .byte 52, 0, 127
+    .space 1
+    .word 250
+    .word 500
+
+    .byte 76, 13, 127
+    .space 1
+    .word 500
+    .word 500
+
+    .byte 44, 0, 127
+    .space 1
+    .word 250
+    .word 1000
+
+    .byte 51, 0, 127
+    .space 1
+    .word 250
+    .word 1000
+
+    .byte 75, 13, 127
+    .space 1
+    .word 500
+    .word 1000
+
+    .byte 44, 0, 127
+    .space 1
+    .word 250
+    .word 1500
+
+    .byte 49, 0, 127
+    .space 1
+    .word 750
+    .word 1500
+
+    .byte 73, 13, 127
+    .space 1
+    .word 500
+    .word 1500
+
+morte_FIM:
+    .word 0 0 0
