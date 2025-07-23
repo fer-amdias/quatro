@@ -292,6 +292,12 @@ P_IM1_MATAR_INIMIGO:	slli t0, s6, 2			# idx = 4 * i     		(queremos pular 1 word
 			add t1, s2, s6			# idx = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])
 			li t0, 4
 			sb t0, (t1)			# salva a direcao como 4 (morreu)
+			
+			# marca que um inimigo morreu
+			la t0, CONTADOR_INIMIGOS
+			lb t1, (t0)
+			addi t1, t1, -1
+			sb t1, (t0)
 			j P_IM1_LOOP_1_PRINT
 			
 
