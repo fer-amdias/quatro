@@ -7,6 +7,9 @@
 .include "Texturas/placeholder.data"
 .include "Texturas/jogador.data"
 .include "Texturas/pergaminho.data"
+.include "Musicas/internationale.data"
+.include "Audioefeitos/powerup.data"
+.include "Audioefeitos/abertura_pergaminho.data"
 
 MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
 MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
@@ -38,7 +41,22 @@ MAIN:
 		# PROC_IMPRIMIR_FASE tem dois argumentos: 
 		#	a0 (endereco do mapa);
 		#	a1 (endereco da textura); 
+		### BOTA A MUSICA PRA TOCAR ### 
+		# PROC_TOCAR_AUDIO
+		# ARGUMENTOS:						     	
+		#	A0 : MODO (0 = continuar tocando, 1 = tocar nova)	
+		#	caso a0 = 1:						
+		#		A1 = endereco onde estah o audio		
+		#		A2 = track para sobrescrever (1, 2 ou 3)	
+		#		A3 = modo de loop (0, 1)			
+		# RETORNOS:                                                  	
+		#       (nenhum)                           
 		
+		li a0, 1
+		la a1, internationale
+		li a2, 1
+		li a3, 1
+		jal PROC_TOCAR_AUDIO   
 		la a0, example
 		la a1, placeholder
 		jal PROC_IMPRIMIR_FASE
@@ -118,16 +136,38 @@ LOOP_MENOR:
 		j LOOP_MENOR_CONT
 		
 mPOWERUP_TAMANHO_BOMBA:	
+
+		li a0, 1
+		la a1, powerup
+		li a2, 2
+		li a3, 0
+		jal PROC_TOCAR_AUDIO   
+
 		li t0, 1
 		sb t0, POWERUP_TAMANHO_BOMBA, t1
 		sobrescrever_tile_atual(0, placeholder)	# marca o tile onde tava o powerup como vazio
 		j LOOP_MENOR_CONT
 mPOWERUP_QTD_BOMBAS:	
+		li a0, 1
+		la a1, powerup
+		li a2, 2
+		li a3, 0
+		jal PROC_TOCAR_AUDIO  
+
 		li t0, 1
 		sb t0, POWERUP_QTD_BOMBAS, t1
 		sobrescrever_tile_atual(0, placeholder)	# marca o tile como vazio
 		j LOOP_MENOR_CONT
 mPERGAMINHO:	
+		lb t0, PERGAMINHO_NA_TELA
+		bnez t0, mPERGAMINHO_2
+		# toca efeito sonoro de abertura de pergaminho
+		li a0, 1
+		la a1, abertura_pergaminho
+		li a2, 2
+		li a3, 0
+		jal PROC_TOCAR_AUDIO  
+mPERGAMINHO_2:	
 		#	A0 : endereco da textura de pergaminho			
 		#	A1 : endereco do texto do pergaminho			
 		#	A2 : endereco da textura do mapa			
@@ -149,6 +189,8 @@ LOOP_MENOR_CONT:
 	
 LOOP_MENOR_CONT2:	
 		jal PROC_DESENHAR
+		li a0, 0
+		jal PROC_TOCAR_AUDIO
 		
 		j LOOP_MENOR
 		
@@ -178,8 +220,8 @@ LOOP_MENOR_CONT2:
 		#			ATUALIZAR HEADS-UP DISPLAY
 		#			MOSTRAR VIDAS RESTANTES, TEMPO RESTANTE, INIMIGOS RESTANTES, BOMBAS DISPONIVEIS, N DO CAPITULO E FASE
 		#
-		#			TOCAR AUDIO
-		#			TOCAR MUSICA
+# FEITO					TOCAR AUDIO
+# FEITO					TOCAR MUSICA
 		
 		
 			
@@ -214,6 +256,7 @@ FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 .include "checar_colisoes.s" 
 .include "imprimir_string.s"
 .include "mostrar_pergaminho.s"
+.include "tocar_audio.s"
 
 
 

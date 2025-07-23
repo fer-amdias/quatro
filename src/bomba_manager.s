@@ -33,6 +33,17 @@ P_BM1_SUBPROC_EXPLODIR:
 			sw a4, 16(sp)
 			sw ra, 20(sp)
 			
+			# toca o efeito sonoro de bomba
+			li a0, 37		
+			li a1, 2000		# 1000 ms
+			li a2, 127		# instrumento de explosao
+			li a3, 127		# volume maximo
+			li a7, 31		# MidiOut
+			ecall
+			
+			lw a0, (sp)
+			lw a1, 4(sp)
+			
 			
 			# PROC_CALCULAR_TILE_ATUAL			           						     
 			# ARGUMENTOS:						     
