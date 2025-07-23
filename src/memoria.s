@@ -99,4 +99,5 @@ BOMBAS:			.half 0   	# short int POSICAO_X;			(0 a 240)
 POWERUP_TAMANHO_BOMBA:	.byte 0
 POWERUP_QTD_BOMBAS:	.byte 0
 
+MORTE_TIMESTAMP:	.word 0 	# timestamp de quando o jogador morreu
 
