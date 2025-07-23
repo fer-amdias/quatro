@@ -1,7 +1,7 @@
 DATA: 
 .byte jogo_pausado 0
 .byte pergaminho_na_tela 0
-.byte enter_cooldown 0
+.word enter_cooldown 0
 
 
 PROC_MOSTRAR_PERGAMINHO:
@@ -12,7 +12,7 @@ se !pergaminho_na_tela:
 	# pra evitar que o usuario feche sem querer ou que o enter que ele tava apertando antes acabe fechando o pergaminho
 	enter_cooldown = timenow + 500 
 else:
-	if (timenow > enter_cooldown):
+	if (timenow > enter_cooldown) && enter pressionado:
 		pergaminho_na_tela = 0
 		jogo_pausado = 0
 		return

@@ -1,0 +1,198 @@
+example:
+    .byte 48, 19, 127
+    .space 1
+    .word 150
+    .word 0
+
+    .byte 36, 114, 127
+    .space 1
+    .word 150
+    .word 0
+
+    .byte 50, 19, 127
+    .space 1
+    .word 150
+    .word 300
+
+    .byte 38, 68, 81
+    .space 1
+    .word 150
+    .word 300
+
+    .byte 48, 19, 127
+    .space 1
+    .word 150
+    .word 1349
+
+    .byte 36, 114, 127
+    .space 1
+    .word 150
+    .word 1349
+
+    .byte 50, 19, 127
+    .space 1
+    .word 150
+    .word 1650
+
+    .byte 53, 19, 127
+    .space 1
+    .word 150
+    .word 1949
+
+    .byte 41, 114, 127
+    .space 1
+    .word 150
+    .word 1949
+
+    .byte 52, 19, 127
+    .space 1
+    .word 150
+    .word 2250
+
+    .byte 40, 68, 81
+    .space 1
+    .word 150
+    .word 2250
+
+    .byte 55, 19, 127
+    .space 1
+    .word 150
+    .word 3150
+
+    .byte 43, 114, 127
+    .space 1
+    .word 150
+    .word 3150
+
+    .byte 57, 19, 127
+    .space 1
+    .word 150
+    .word 3449
+
+    .byte 45, 114, 127
+    .space 1
+    .word 150
+    .word 3449
+
+    .byte 55, 19, 127
+    .space 1
+    .word 150
+    .word 3749
+
+    .byte 43, 114, 127
+    .space 1
+    .word 150
+    .word 3749
+
+    .byte 53, 19, 127
+    .space 1
+    .word 150
+    .word 4050
+
+    .byte 41, 114, 127
+    .space 1
+    .word 150
+    .word 4050
+
+    .byte 41, 68, 81
+    .space 1
+    .word 150
+    .word 4050
+
+    .byte 52, 19, 127
+    .space 1
+    .word 150
+    .word 4949
+
+    .byte 53, 19, 127
+    .space 1
+    .word 150
+    .word 5250
+
+    .byte 41, 114, 127
+    .space 1
+    .word 150
+    .word 5250
+
+    .byte 52, 19, 127
+    .space 1
+    .word 150
+    .word 5550
+
+    .byte 50, 19, 127
+    .space 1
+    .word 150
+    .word 5850
+
+    .byte 38, 68, 81
+    .space 1
+    .word 150
+    .word 5850
+
+    .byte 50, 19, 127
+    .space 1
+    .word 150
+    .word 6749
+
+    .byte 48, 19, 127
+    .space 1
+    .word 150
+    .word 7050
+
+    .byte 36, 114, 127
+    .space 1
+    .word 150
+    .word 7050
+
+    .byte 47, 19, 127
+    .space 1
+    .word 150
+    .word 7350
+
+    .byte 35, 114, 127
+    .space 1
+    .word 150
+    .word 7350
+
+    .byte 48, 19, 127
+    .space 1
+    .word 150
+    .word 7649
+
+    .byte 36, 114, 127
+    .space 1
+    .word 150
+    .word 7649
+
+    .byte 36, 68, 81
+    .space 1
+    .word 150
+    .word 7649
+
+    .byte 48, 19, 127
+    .space 1
+    .word 150
+    .word 8399
+
+    .byte 52, 19, 127
+    .space 1
+    .word 150
+    .word 8399
+
+    .byte 55, 19, 127
+    .space 1
+    .word 150
+    .word 8399
+
+    .byte 36, 114, 127
+    .space 1
+    .word 150
+    .word 8399
+
+    .byte 43, 114, 127
+    .space 1
+    .word 150
+    .word 8399
+
+example_FIM:
+    .word 0 0 0

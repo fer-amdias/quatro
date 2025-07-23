@@ -1,20 +1,17 @@
 .include "memoria.s"
 
 .data
-.include "Texturas/inimigos.data"
-.include "Texturas/explosivos.data"
-.include "example.data"
-.include "Texturas/placeholder.data"
-.include "Texturas/jogador.data"
-.include "Texturas/pergaminho.data"
-.include "Musicas/internationale.data"
-.include "Musicas/morte.data"
-.include "Audioefeitos/powerup.data"
-.include "Audioefeitos/abertura_pergaminho.data"
+.include "../assets/texturas/inimigos.data"
+.include "../assets/texturas/explosivos.data"
+.include "../assets/fases/example.data"
+.include "../assets/texturas/placeholder.data"
+.include "../assets/texturas/jogador.data"
+.include "../assets/texturas/pergaminho.data"
+.include "../assets/musicas/internationale.data"
+.include "../assets/audioefeitos/morte.data"
+.include "../assets/audioefeitos/powerup.data"
+.include "../assets/audioefeitos/abertura_pergaminho.data"
 
-MENSAGEM_DEBUG_INICIALIZACAO: .string "Bom dia! Jogo inicializado.\n"
-MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
-MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
 .text
 
 MAIN:         		
@@ -199,10 +196,17 @@ LOOP_MENOR_CONT2:
 		la a1, placeholder
 		la a2, example
 		jal PROC_BOMBA_MANAGER
+
 		li a0, 1	# capitulo 1
 		li a1, 1	# fase 1
 		jal PROC_IMPRIMIR_HUD
+
 		jal PROC_DESENHAR
+		
+		# print_int(s0)
+		addi s0, s0, 1
+		# quebra_de_linha
+		
 		li a0, 0
 		jal PROC_TOCAR_AUDIO
 		
@@ -269,10 +273,7 @@ MORTE_LOOP:
 		
 		
 		
-FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
-		quebra_de_linha
-
-		li a7, 10			# syscall pra terminar o programa
+FIM:		li a7, 10			# syscall pra terminar o programa
 		ecall				# estritamente necessario pra impedir que o programa continue ate entrar no codigo dentro dos includes. 
 		
 

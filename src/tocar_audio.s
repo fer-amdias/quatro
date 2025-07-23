@@ -13,7 +13,6 @@
 #################################################################
 
 .data
-.include "Musicas/teste2.data"
 
 TRACK1:
 	TRACK1_ATIVO: 		.word 0	# se estah tocando ou nao
