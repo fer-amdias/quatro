@@ -45,6 +45,7 @@ junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou 
 
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
+VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
 
 POSICOES_MAPA: .half 0, 0
 POSICAO_JOGADOR: .half 0, 0
