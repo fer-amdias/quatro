@@ -133,7 +133,8 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				
 				jal P_IF1_SUBPROC_CRIAR_TILEMAP
 				
-				
+				sw zero, INIMIGOS_QUANTIDADE, t0
+				sw zero, CONTADOR_INIMIGOS, t0
 				
 				
 				
