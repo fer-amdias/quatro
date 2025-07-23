@@ -62,10 +62,7 @@ PROC_CHECAR_COLISOES:
 			addi sp, sp, -4
 			sw ra, (sp)
 
-			# carrega a posicao do jogador
-			la t0, POSICAO_JOGADOR
-			lh t1, (t0)
-			lh t2, 2(t0)
+			
 			
 			# reorganiza os argumentos
 			# a1 = LARGURA_JOGADOR
