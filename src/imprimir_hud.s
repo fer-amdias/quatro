@@ -12,7 +12,7 @@
 # Prefixo interno: P_IH1_
 .data
 HUD_FASE_ATUAL: .string "CH C, FASE F"
-HUD_INIMIGOS_RESTANTES: .string "INIMIGOS: 0X"
+HUD_INIMIGOS_RESTANTES: .string "INIMIGOS:  X"
 HUD_VIDAS_RESTANTES: .string "VIDAS: X"
 
 
