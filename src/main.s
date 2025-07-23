@@ -199,6 +199,9 @@ LOOP_MENOR_CONT2:
 		la a1, placeholder
 		la a2, example
 		jal PROC_BOMBA_MANAGER
+		li a0, 1	# capitulo 1
+		li a1, 1	# fase 1
+		jal PROC_IMPRIMIR_HUD
 		jal PROC_DESENHAR
 		li a0, 0
 		jal PROC_TOCAR_AUDIO
