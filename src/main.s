@@ -8,6 +8,7 @@
 .include "Texturas/jogador.data"
 .include "Texturas/pergaminho.data"
 .include "Musicas/internationale.data"
+.include "Musicas/morte.data"
 .include "Audioefeitos/powerup.data"
 .include "Audioefeitos/abertura_pergaminho.data"
 
@@ -16,8 +17,7 @@ MENSAGEM_DEBUG_INICIO_JOGO: .string "Inicializando jogo.\n"
 MENSAGEM_DEBUG_INICIO_LOOP_PRINCIPAL: .string "Inicializando loop principal.\n"
 .text
 
-MAIN: 
-		
+MAIN:         		
 		#### ALOCACAO DO FRAME_BUFFER ####
 		li a7, 9
 		li a0, 76800
@@ -41,6 +41,11 @@ MAIN:
 		# PROC_IMPRIMIR_FASE tem dois argumentos: 
 		#	a0 (endereco do mapa);
 		#	a1 (endereco da textura); 
+		
+FASE1:		
+		sw zero, POWERUP_TAMANHO_BOMBA, t0
+		sw zero, POWERUP_QTD_BOMBAS, t0   
+
 		### BOTA A MUSICA PRA TOCAR ### 
 		# PROC_TOCAR_AUDIO
 		# ARGUMENTOS:						     	
@@ -57,6 +62,7 @@ MAIN:
 		li a2, 1
 		li a3, 1
 		jal PROC_TOCAR_AUDIO   
+
 		la a0, example
 		la a1, placeholder
 		jal PROC_IMPRIMIR_FASE
@@ -101,11 +107,6 @@ LOOP_MENOR:
 		la a0, inimigos
 		jal PROC_INIMIGOS_MANAGER
 		
-		la a0, explosivos
-		la a1, placeholder
-		la a2, example
-		jal PROC_BOMBA_MANAGER
-		
 		# PROC_CHECAR_COLISOES				       	     	
 		# ARGUMENTOS:						     	
 		#	A0 : largura do jogador					
@@ -119,7 +120,7 @@ LOOP_MENOR:
 		jal PROC_CHECAR_COLISOES
 		
 		# se o jogador nao estah vivo
-		beqz a0, FIM			# mata o jogador (claro)
+		beqz a0, MORTE			# mata o jogador (claro)
 		
 		li t0, POWERUP_1
 		beq a1, t0, mPOWERUP_TAMANHO_BOMBA
@@ -131,7 +132,7 @@ LOOP_MENOR:
 		beq a1, t0, mPERGAMINHO
 		
 		li t0, 100
-		bge a1, t0, FIM			# jogador esteve na explosao
+		bge a1, t0, MORTE		# jogador esteve na explosao
 		
 		j LOOP_MENOR_CONT
 		
@@ -188,6 +189,10 @@ LOOP_MENOR_CONT:
 		# se o pergaminho estah na tela, devemos continuar a mostra-lo
 	
 LOOP_MENOR_CONT2:	
+		la a0, explosivos
+		la a1, placeholder
+		la a2, example
+		jal PROC_BOMBA_MANAGER
 		jal PROC_DESENHAR
 		li a0, 0
 		jal PROC_TOCAR_AUDIO
@@ -212,7 +217,7 @@ LOOP_MENOR_CONT2:
 # FEITO					REGISTRAR USO DE BOMBAS
 # FEITO					CALCULAR TEMPO RESTANTE DE EXPLOSAO
 # FEITO					EXPLODIR BOMBAS IMINENTES
-# FEITO			IMPLEMENTAR DANO DA EXPLOSAO				
+# FEITO					IMPLEMENTAR DANO DA EXPLOSAO				
 		#
 # FEITO					CALCULAR MOVIMENTO DOS INIMIGOS
 # FEITO					CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
@@ -224,7 +229,36 @@ LOOP_MENOR_CONT2:
 # FEITO					TOCAR MUSICA
 		
 		
-			
+MORTE:		
+		jal PROC_DESENHAR	
+
+		li a0, 1		
+		la a1, morte
+		li a2, 1		# track 1 pra sobrescrever a musica
+		li a3, 0
+		jal PROC_TOCAR_AUDIO 
+		
+		csrr t0, time
+		sw t0, MORTE_TIMESTAMP, t1	# salva a timestamp da morte
+MORTE_LOOP:	
+		mv a0, zero			# modo continuar tocando
+		jal PROC_TOCAR_AUDIO 
+		
+		csrr t0, time
+		li t1, -6000
+		add t0, t0, t1			# subtrai 6 segundos do tempo atual
+		
+		lw t1, MORTE_TIMESTAMP
+		blt t0, t1, MORTE_LOOP
+		
+		lb t0, VIDAS_RESTANTES
+		beqz t0, FIM
+		addi t0, t0, -2 		# atualiza as vidas restantes (-2 pra compensar com o +1 da fase)
+		sb t0, VIDAS_RESTANTES, t1
+		
+		j FASE1
+		
+		
 		
 FIM:		print (MENSAGEM_DEBUG_INICIALIZACAO)
 		quebra_de_linha

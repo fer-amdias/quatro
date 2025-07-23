@@ -311,6 +311,12 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				
 				la t0, CONTADOR_INIMIGOS
 				lb a0, (t0)			# salva o valor de retorno (quantidade de inimigos contados)
+				
+				# adiciona uma vida
+				la t0, VIDAS_RESTANTES
+				lbu t1, (t0)
+				addi t1, t1, 1
+				sb t1, (t0)
 
 
 				ret
