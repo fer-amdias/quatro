@@ -55,9 +55,9 @@ P_BM1_SUBPROC_EXPLODIR:
 			#	A1 : COLUNA EM QUE O TILE ESTAH LOCALIZADO NO .data  
 			#	A2 : LINHA EM QUE O TILE ESTAH LOCALIZADO NO .data   
 			
-			mv a0, a2
-			mv a1, a3
-			mv a2, a4
+			lw a0, 8(sp)
+			lw a1, 12(sp)
+			lw a2, 16(sp)
 			
 			jal PROC_CALCULAR_TILE_ATUAL
 			
@@ -250,6 +250,10 @@ PROC_BOMBA_MANAGER:
 			sw s0, 4(sp)
 			sw s1, 8(sp)
 			sw s2, 12(sp)
+			
+			# nao administra as bombas se o jogo estiver pausado
+			lb t0, JOGO_PAUSADO
+			bnez t0, P_BM1_FIM
 			
 			addi a0, a0, 8				# pula 2 words, as words de informacao de dimensoes da textura
 
