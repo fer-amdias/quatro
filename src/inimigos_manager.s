@@ -219,6 +219,8 @@ PROC_INIMIGOS_MANAGER:
 			bge t2, t1, P_IM1_PROSSEGUIR		# se for maior que o cooldown, podemos prosseguir com a funcao
 			
 			li s10, 0				# senao, marca como estando no cooldown
+			
+			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
 			j P_IM1_LOOP_1
 			
 P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
@@ -226,6 +228,7 @@ P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
 			
 			# caso contrario, marca como 'estando no cooldown'
 			li s10, 0
+			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
 			j P_IM1_LOOP_1
 
 P_IM1_PROSSEGUIR2:	csrr t2, time
@@ -239,6 +242,8 @@ P_IM1_PROSSEGUIR2:	csrr t2, time
 			
 			
 			li s10, 1				# marca como fora do cooldown
+			
+			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
 	
 			
 P_IM1_LOOP_1:		
