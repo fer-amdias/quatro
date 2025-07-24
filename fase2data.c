@@ -34,8 +34,12 @@ void char2value(unsigned char * array, int tamanho){
             case 'E':   // elevador
                 array[i] = 7;
                 break;
+            case 'S':
             case 's':   // scroll
                 array[i] = 8;
+                break;
+            case 'Z':   // especial -- uso depende do capitulo
+                array[i] = 9;
                 break;
             default:    // tipos de inimigo
                 array[i] -= 39; // a tabela ascii comeca com 49 = '1', 50 = '2', etc; entao os inimigos vao comecar a contar a partir do 10
