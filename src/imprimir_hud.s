@@ -5,6 +5,7 @@
 # ARGUMENTOS:						     	#
 #	a0 = capitulo atual (0 - 9)				#
 #	a1 = fase atual (0 - 9)					#
+#	a2 = cor do HUD como 0x0000BBFF (background-foreground)	#
 # RETORNOS:                                                  	#
 #       (nenhum)                                             	#
 #################################################################
@@ -19,8 +20,9 @@ HUD_VIDAS_RESTANTES: .string "VIDAS: X"
 .text
 
 PROC_IMPRIMIR_HUD:
-		addi sp, sp, -4
+		addi sp, sp, -8
 		sw ra, (sp)
+		sw a2, 4(sp)		# salva a cor
 		
 		
 		
@@ -44,6 +46,7 @@ P_IH1_TEMPO_RESTANTE:
 		
 
 		lw t0, SEGUNDOS_RESTANTE_Q10
+		blt t0, x0, P_IH1_INIMIGOS_RESTANTES	# nao imprime o tempo se ele for negativo
 		srai t0, t0, 10			# transforma de ponto fixo Q10 pra inteiro
 		
 		# PROC_IMPRIMIR_INTEIRO				       	     	
@@ -54,10 +57,10 @@ P_IH1_TEMPO_RESTANTE:
 		#	A1 : X							
 		#	A2 : Y						
 		#	A3 : cores (0x0000bbff)			
-		mv a0, t0
-		li a1, 152
-		li a2, 8		# imprime em (152, 8) 
-		li a3, 0x0000C7FF
+		mv a0, t0		# inteiro
+		li a1, 152		# x 
+		li a2, 8		# y
+		lw a3, 4(sp)	
 		jal PROC_IMPRIMIR_INTEIRO
 		
 P_IH1_INIMIGOS_RESTANTES:
@@ -69,7 +72,7 @@ P_IH1_INIMIGOS_RESTANTES:
 		la a0, HUD_INIMIGOS_RESTANTES	# carrega a string
 		li a1, 217
 		li a2, 8		# imprime em (217, 8)
-		li a3, 0x0000C7FF
+		lw a3, 4(sp)
 		jal PROC_IMPRIMIR_STRING
 		
 P_IH1_VIDAS_RESTANTES:
@@ -82,13 +85,14 @@ P_IH1_VIDAS_RESTANTES:
 		la a0, HUD_VIDAS_RESTANTES	# carrega a string
 		li a1, 8
 		li a2, 224		# imprime em (8, 8)
-		li a3, 0x0000C7FF
+		lw a3, 4(sp)
 		jal PROC_IMPRIMIR_STRING
 		
 		
 P_IH1_FIM:
 		lw ra, (sp)
-		addi sp, sp, 4
+		# descarta a2
+		addi sp, sp, 8
 		ret
 		
 		
