@@ -1,281 +1,93 @@
+#################################################################
+# QUATRO	 					       	#
+# Um jogo feito como projeto de primeiro semestre para o 	#
+# componente Introdução a Sistemas Computacionais na 		#
+# Universidade de Brasília.					#
+#								#
+# Escrito no primeiro semestre de 2025				#
+# Apresentado em 24/07/2025					#
+# 							     	#
+# v0.1								#
+#								#
+# Fernando de Almeida Mendes Dias				#
+#################################################################
+
+#########################################
+#		ATENCAO			#
+#					#
+# Nao rode esse programa usando o RARS.	#
+# Ele nem vai compilar. Utilize, em	#
+# vez disso, a versao 1.13.0 8 bit.	#	https://github.com/LeoRiether/FPGRARS/releases/tag/v1.13.0
+# 					#
+#########################################
+
+
 .include "memoria.s"
 
 .data
+.include "../assets/logoquatro.data"
+.include "../assets/texturas/ch0.data"
+.include "../assets/fases/ch0_fase1.data"
+.include "../assets/fases/ch0_fase2.data"
+.include "../assets/fases/ch0_fase3.data"
+.include "../assets/fases/ch0_fase4.data"
+.include "../assets/fases/ch0_fase5.data"
+.include "../assets/fases/ch0_fase6.data"
+.include "../assets/fases/ch0_fase7.data"
+.include "../assets/fases/ch0_fase8.data"
+.include "../assets/fases/ch1_fase1.data"
+.include "../assets/fases/ch1_fase2.data"
+.include "../assets/fases/ch1_fase3.data"
+.include "../assets/fases/ch1_fase4.data"
+.include "../assets/fases/ch1_fase5.data"
+.include "../assets/texturas/ch1.data"
+.include "../assets/texturas/pergaminho_ch1.data"
 .include "../assets/texturas/inimigos.data"
 .include "../assets/texturas/explosivos.data"
-.include "../assets/fases/example.data"
 .include "../assets/texturas/placeholder.data"
 .include "../assets/texturas/jogador.data"
 .include "../assets/texturas/pergaminho.data"
 .include "../assets/musicas/internationale.data"
+.include "../assets/musicas/intro_tune.data"
+.include "../assets/musicas/west__hurrian_song.data"
 .include "../assets/audioefeitos/morte.data"
+.include "../assets/audioefeitos/morte_ch3.data"
 .include "../assets/audioefeitos/powerup.data"
+.include "../assets/audioefeitos/powerup_ch3.data"
 .include "../assets/audioefeitos/abertura_pergaminho.data"
+.include "../assets/audioefeitos/abertura_scroll_ch3.data"
 
 .text
 
-MAIN:         		
-		#### ALOCACAO DO FRAME_BUFFER ####
-		li a7, 9
-		li a0, 76800
-		ecall
-		
-		sw a0, FRAME_BUFFER_PTR, t0
-		
-		# adiciona 76800 em a0 usando t0 como temporario
-		li t0, 76800
-		add a0, a0, t0	
-		
-		sw a0, FRAME_BUFFER_FIM_PTR, t0
-		
+MAIN:
 
-		# PROC_PREENCHER_TELA tem dois argumentos: a0 (cor a preencher) e a1 (frame a preencher)
-
-		li a0, 0x00			# preto
-		li a1, 0			# frame 0
-		jal PROC_PREENCHER_TELA		# preenche a tela de preto
-		
-		# PROC_IMPRIMIR_FASE tem dois argumentos: 
-		#	a0 (endereco do mapa);
-		#	a1 (endereco da textura); 
-		
-FASE1:		
-		sw zero, POWERUP_TAMANHO_BOMBA, t0
-		sw zero, POWERUP_QTD_BOMBAS, t0   
-
-		### BOTA A MUSICA PRA TOCAR ### 
-		# PROC_TOCAR_AUDIO
-		# ARGUMENTOS:						     	
-		#	A0 : MODO (0 = continuar tocando, 1 = tocar nova)	
-		#	caso a0 = 1:						
-		#		A1 = endereco onde estah o audio		
-		#		A2 = track para sobrescrever (1, 2 ou 3)	
-		#		A3 = modo de loop (0, 1)			
-		# RETORNOS:                                                  	
-		#       (nenhum)                           
-		
-		li a0, 1
-		la a1, internationale
-		li a2, 1
-		li a3, 1
-		jal PROC_TOCAR_AUDIO   
-
-		la a0, example
-		la a1, placeholder
-		li a2, 100		# 100 segundos de limite
-		jal PROC_IMPRIMIR_FASE
-		
-		li s0, 1 
-		
-		### PEGAR LARGURA E ALTURA DO JOGADOR ###
-		la t0, jogador
-		lw s1, (t0)		
-		lw s2, 4(t0)
-		
-		# corrige a altura do jogador
-		li t0, 6
-		div s2, s2, t0
-		
-		# s0 = LARGURA DO JOGADOR
-		# s1 = ALTURA DO JOGADOR
-
-LOOP_MENOR:	
-
-		li a0, 0x00			# preto
-		li a1, 1
-		jal PROC_PREENCHER_TELA		# preenche a tela de preto
-						
-		jal PROC_IMPRIMIR_BUFFER_DE_FASE
-		
-		# argumentos de REGISTRAR_MOVIMENTO:
-		#	a0: M: modo
-		#		M == 0: Modo mover sem checar paredes
-		#		M == 1: Modo mover
-		#		M == 2: Modo posicionar
-		#	a1: T: endereco da textura do jogador
-		#	a2: E: endereco do mapa 
-		# retorno:
-		#	a0: V: se o jogador estah vivo (1 ou 0)
-		
-		li a0, 1
-		la a1, jogador
-		la a2, TILEMAP_BUFFER
-		jal PROC_REGISTRAR_MOVIMENTO
-		
-		la a0, inimigos
-		jal PROC_INIMIGOS_MANAGER
-		
-		# PROC_CHECAR_COLISOES				       	     	
-		# ARGUMENTOS:						     	
-		#	A0 : largura do jogador					
-		#	A1 : altura do jogador					
-		# RETORNOS:                                                  	
-		#       A0 : se o jogador continua vivo				
-		#	A1 : o tile em que o jogador atualmente estah		
-		
-		mv a0, s1
-		mv a1, s2
-		jal PROC_CHECAR_COLISOES
-		
-		# se o jogador nao estah vivo
-		beqz a0, MORTE			# mata o jogador (claro)
-		
-		li t0, POWERUP_1
-		beq a1, t0, mPOWERUP_TAMANHO_BOMBA
-		
-		li t0, POWERUP_2
-		beq a1, t0, mPOWERUP_QTD_BOMBAS
-		
-		li t0, PERGAMINHO
-		beq a1, t0, mPERGAMINHO
-		
-		li t0, 100
-		bge a1, t0, MORTE		# jogador esteve na explosao
-		
-		j LOOP_MENOR_CONT
-		
-mPOWERUP_TAMANHO_BOMBA:	
-
-		li a0, 1
-		la a1, powerup
-		li a2, 2
-		li a3, 0
-		jal PROC_TOCAR_AUDIO   
-
-		li t0, 1
-		sb t0, POWERUP_TAMANHO_BOMBA, t1
-		sobrescrever_tile_atual(0, placeholder)	# marca o tile onde tava o powerup como vazio
-		j LOOP_MENOR_CONT
-mPOWERUP_QTD_BOMBAS:	
-		li a0, 1
-		la a1, powerup
-		li a2, 2
-		li a3, 0
-		jal PROC_TOCAR_AUDIO  
-
-		li t0, 1
-		sb t0, POWERUP_QTD_BOMBAS, t1
-		sobrescrever_tile_atual(0, placeholder)	# marca o tile como vazio
-		j LOOP_MENOR_CONT
-mPERGAMINHO:	
-		lb t0, PERGAMINHO_NA_TELA
-		bnez t0, mPERGAMINHO_2
-		# toca efeito sonoro de abertura de pergaminho
-		li a0, 1
-		la a1, abertura_pergaminho
-		li a2, 2
-		li a3, 0
-		jal PROC_TOCAR_AUDIO  
-mPERGAMINHO_2:	
-		#	A0 : endereco da textura de pergaminho			
-		#	A1 : endereco do texto do pergaminho			
-		#	A2 : endereco da textura do mapa			
-		la a0, pergaminho
-		la a1, example.scroll
-		la a2, placeholder
-		jal PROC_MOSTRAR_PERGAMINHO
-LOOP_MENOR_CONT:
-		
-		lb t0, PERGAMINHO_NA_TELA
-		beqz t0, LOOP_MENOR_CONT2
-		
-		la a0, pergaminho
-		la a1, example.scroll
-		la a2, placeholder
-		jal PROC_MOSTRAR_PERGAMINHO
-		
-		# se o pergaminho estah na tela, devemos continuar a mostra-lo
+	#### ALOCACAO DO FRAME_BUFFER ####
+	li a7, 9
+	li a0, 76800
+	ecall
 	
-LOOP_MENOR_CONT2:	
+	sw a0, FRAME_BUFFER_PTR, t0
+	
+	# adiciona 76800 em a0 usando t0 como temporario
+	li t0, 76800
+	add a0, a0, t0	
+	
+	sw a0, FRAME_BUFFER_FIM_PTR, t0
 
-		lw t0, SEGUNDOS_RESTANTE_Q10
-		bltz t0, MORTE
+IR_MENU:
+	jal ROTINA_MENU_PRINCIPAL
+	li t0, 1
+	beq a0, t0, CAP1		# ir p
+	
+	jal ROTINA_CAPITULO_0
+	beqz a0, IR_MENU
 
+CAP1:	
+	jal ROTINA_CAPITULO_1
+	beqz a0, IR_MENU
+	
+	fim
 
-		la a0, explosivos
-		la a1, placeholder
-		la a2, example
-		jal PROC_BOMBA_MANAGER
-
-		li a0, 1	# capitulo 1
-		li a1, 1	# fase 1
-		jal PROC_IMPRIMIR_HUD
-
-		jal PROC_DESENHAR
-		
-		# print_int(s0)
-		addi s0, s0, 1
-		# quebra_de_linha
-		
-		li a0, 0
-		jal PROC_TOCAR_AUDIO
-		
-		j LOOP_MENOR
-		
-		
-		# O QUE PRECISA SER COLOCADO AQUI:
-		#	 INTRO DO JOGO
-		#	 LOOP DO MENU ( E SELECAO DE OPCOES )
-		#	 LOOP MAIOR DO JOGO:
-# FEITO				IMPRESSAO DO MAPA		
-# FEITO				POSICIONAMENTO DE INIMIGOS (UTILIZANDO UM VETOR NA MEMORIA PARA GUARDAR TODOS ELES)
-# FEITO				POSICIONAMENTO DO JOGADOR  (UTILIZANDO POSICAO_JOGADOR)
-# FEITO				IMPRESSAO DO INIMIGO E DO JOGADOR
-		#		LOOP MENOR DO JOGO:
-# FEITO				IMPRIMIR BUFFER DE FASE
-		#
-# FEITO					REGISTRAR MOVIMENTO DE JOGADOR
-# FEITO					REIMPRIMIR JOGADOR
-		#
-# FEITO					REGISTRAR USO DE BOMBAS
-# FEITO					CALCULAR TEMPO RESTANTE DE EXPLOSAO
-# FEITO					EXPLODIR BOMBAS IMINENTES
-# FEITO					IMPLEMENTAR DANO DA EXPLOSAO				
-		#
-# FEITO					CALCULAR MOVIMENTO DOS INIMIGOS
-# FEITO					CALCULAR SE ALGUM INIMIGO TOCOU NO JOGADOR
-		#
-# FEITO					ATUALIZAR HEADS-UP DISPLAY
-# FEITO					MOSTRAR VIDAS RESTANTES, TEMPO RESTANTE, INIMIGOS RESTANTES, N DO CAPITULO E FASE
-		#
-# FEITO					TOCAR AUDIO
-# FEITO					TOCAR MUSICA
-		
-		
-MORTE:		
-		jal PROC_DESENHAR	
-
-		li a0, 1		
-		la a1, morte
-		li a2, 1		# track 1 pra sobrescrever a musica
-		li a3, 0
-		jal PROC_TOCAR_AUDIO 
-		
-		csrr t0, time
-		sw t0, MORTE_TIMESTAMP, t1	# salva a timestamp da morte
-MORTE_LOOP:	
-		mv a0, zero			# modo continuar tocando
-		jal PROC_TOCAR_AUDIO 
-		
-		csrr t0, time
-		li t1, -6000
-		add t0, t0, t1			# subtrai 6 segundos do tempo atual
-		
-		lw t1, MORTE_TIMESTAMP
-		blt t0, t1, MORTE_LOOP
-		
-		lb t0, VIDAS_RESTANTES
-		beqz t0, FIM
-		addi t0, t0, -2 		# atualiza as vidas restantes (-2 pra compensar com o +1 da fase)
-		sb t0, VIDAS_RESTANTES, t1
-		
-		j FASE1
-		
-		
-		
-FIM:		li a7, 10			# syscall pra terminar o programa
-		ecall				# estritamente necessario pra impedir que o programa continue ate entrar no codigo dentro dos includes. 
-		
 
 
 
@@ -303,7 +115,6 @@ FIM:		li a7, 10			# syscall pra terminar o programa
 .include "tocar_audio.s"
 .include "imprimir_inteiro.s"
 .include "imprimir_hud.s"
-
-
-
-
+.include "menu_principal.s"
+.include "capitulo_0.s"
+.include "capitulo_1.s"

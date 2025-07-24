@@ -7,31 +7,12 @@
 # RETORNOS:                                                  	#
 #       (nenhum)                                             	#
 #################################################################
-.include "memoria.s"
 
 .data
-.include "../assets/texturas/ch0.data"
-.include "../assets/fases/ch0_fase1.data"
-.include "../assets/fases/ch0_fase2.data"
-.include "../assets/fases/ch0_fase3.data"
-.include "../assets/fases/ch0_fase4.data"
-.include "../assets/fases/ch0_fase5.data"
-.include "../assets/fases/ch0_fase6.data"
-.include "../assets/fases/ch0_fase7.data"
-.include "../assets/fases/ch0_fase8.data"
-.include "../assets/texturas/inimigos.data"
-.include "../assets/texturas/explosivos.data"
-.include "../assets/fases/example.data"
-.include "../assets/texturas/placeholder.data"
-.include "../assets/texturas/jogador.data"
-.include "../assets/texturas/pergaminho.data"
-.include "../assets/musicas/internationale.data"
-.include "../assets/audioefeitos/morte.data"
-.include "../assets/audioefeitos/powerup.data"
-.include "../assets/audioefeitos/abertura_pergaminho.data"
 
 PERGAMINHO_NO_INICIO: .word 0
-MODO_SAIDA_LIVRE:     .word 0
+
+.text
 
 CAPITULO_0:
 		# int fase, label mapa, int tempo_limite, 
@@ -120,6 +101,9 @@ LOOP%fase :
 		bnez t0, TUTORIAL_DISPLAY%fase	# se pergaminho_no_inicio = 1, mostra o pergaminho
 		
 		li t0, SAIDA
+		beq a1, t0, mSAIDA%fase
+		
+		li t0, ELEVADORR
 		beq a1, t0, mSAIDA%fase
 		
 		j LOOP_MENOR_CONT%fase
@@ -249,11 +233,11 @@ MORTE_LOOP%fase :
 		sb t0, VIDAS_RESTANTES, t1
 		
 		j FASE%fase
+DERROTA%fase :
+		li a0, 0
+		j FIM
 VITORIA%fase :
 		li a0, 1
-		j FIM
-DERROTA%fase :	
-		li a0, 0
 FIM: 
 		lw ra, (sp)
 		addi sp, sp, 4
@@ -266,44 +250,25 @@ ROTINA_CAPITULO_0:
 		addi sp, sp, -4
 		sw ra, (sp)
 		
-		#### ALOCACAO DO FRAME_BUFFER ####
-		li a7, 9
-		li a0, 76800
-		ecall
-		
-		sw a0, FRAME_BUFFER_PTR, t0
-		
-		# adiciona 76800 em a0 usando t0 como temporario
-		li t0, 76800
-		add a0, a0, t0	
-		
-		sw a0, FRAME_BUFFER_FIM_PTR, t0
-		
+		li t0, 1
+		sw t0, VIDAS_RESTANTES, t1
 		#############
 		
 		jal C0_FASE1
-		beqz a0, C0_FIM
 		
 		jal C0_FASE2	
-		beqz a0, C0_FIM
 		
 		jal C0_FASE3
-		beqz a0, C0_FIM
 		
 		jal C0_FASE4
-		beqz a0, C0_FIM
 		
 		jal C0_FASE5
-		beqz a0, C0_FIM
 		
 		jal C0_FASE6
-		beqz a0, C0_FIM
 		
 		jal C0_FASE7
-		beqz a0, C0_FIM
 		
 		jal C0_FASE8
-		beqz a0, C0_FIM
 		
 		j C0_FIM
 		
@@ -347,30 +312,7 @@ C0_FASE8:
 		
 C0_FIM:		lw ra, (sp)
 		addi sp, sp, 4
-		fim
+		ret
 
-##############################################################
-# Include de prodcedimentos feito no final do codigo, pois   #
-# Colocar no topo vai fazer os procedimentos serem chamados  #
-# ANTES do nosso codigo que queremos executar                #
-##############################################################
-.include "imprimir_fase.s"
-.include "preencher_tela.s"
-.include "imprimir_textura.s" 
-.include "calcular_tile_atual.s"
-.include "mover_jogador.s"
-.include "imprimir_buffer_de_fase.s"
-.include "registrar_movimento.s"
-.include "desenhar.s"
-.include "colocar_bomba.s"
-.include "bomba_manager.s"
-.include "inimigos_manager.s"
-.include "manipular_tilemap.s" 
-.include "checar_colisoes.s" 
-.include "imprimir_string.s"
-.include "mostrar_pergaminho.s"
-.include "tocar_audio.s"
-.include "imprimir_inteiro.s"
-.include "imprimir_hud.s"
 
 		
