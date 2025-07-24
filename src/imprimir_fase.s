@@ -330,7 +330,7 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				
 				# adiciona uma vida
 				la t0, VIDAS_RESTANTES
-				lbu t1, (t0)
+				lb t1, (t0)
 				li t2, MAX_VIDAS
 				bge t1, t2, P_IF1_MAX_VIDAS	# se vidas >= MAX_VIDAS, nao incrementa (eh o maximo
 				addi t1, t1, 1
