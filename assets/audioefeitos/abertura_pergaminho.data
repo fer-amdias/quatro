@@ -19,5 +19,5 @@ abertura_pergaminho:
     .word 187
     .word 562
 
-pergaminho_FIM:
+abertura_pergaminho_FIM:
     .word 0 0 0
