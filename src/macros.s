@@ -114,6 +114,10 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 .macro sobrescrever_tilemap_rg(%x, %y, %valor, %reg_textura_mapa)
 	mv t0, %reg_textura_mapa
 	
+	li t1, AREA_SPRITE
+	li t2, %valor
+	mul t1, t1, t2
+	add t0, t1, t0			# pula pro endereco do tile TEXTURAS + (TILE * AREA_SPRITE)
 	
 
 	addi sp, sp, -12
@@ -152,6 +156,11 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 # int valor, rg textura_mapa
 .macro sobrescrever_tile_atual_rg(%valor, %reg_textura_mapa)
 	mv t6, %reg_textura_mapa
+	
+	li t0, AREA_SPRITE
+	li t1, %valor
+	mul t0, t0, t1
+	add t6, t6, t0			# pula pro endereco do tile TEXTURAS + (TILE * AREA_SPRITE)
 
 	addi sp, sp, -4
 	sw t6, (sp)
