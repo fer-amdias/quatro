@@ -61,18 +61,25 @@ P_IF1_SUBPROC_CRIAR_TILEMAP:
 	
 	# os tres blocos especiais que estarao escondidos como paredes quebraveis
 	li t3, 5
-	li t4, 6
+	# li t4, 6	 # colocado um pouco abaixo em t3
 	li t5, 3
 	# pega tudo que estah no arquivo de mapa e passa pro buffer
+	
+	lw t4, MODO_SAIDA_LIVRE		# ver se podemos deixar a saida descoberta
 P_IF1_TILEMAP_LOOP:
 	li t3, 5			# como usamos ele de novo mais em baixo, temos que recarregalo aqui no loop
     	lb t0, 0(t6)
     	
     	# se for um bloco especial, mascara no tilemap como parede quebravel
     	beq t0, t3, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE #marrapaz que nome grande
-    	beq t0, t4, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE
-    	beq t0, t5, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE
     	
+    	li t3, 6
+    	beq t0, t3, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE
+    	
+	bnez t4, P_IF1_TILEMAP_LOOP_SAIDALIVRE		
+    	beq t0, t5, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE # cobre a saida se o modo saida livre estiver desligado
+   
+P_IF1_TILEMAP_LOOP_SAIDALIVRE: 	
     	# se for um inimigo, bota um tile andavel no lugar
     	li t3, 10
     	bge t0, t3, P_IF1_TILEMAP_LOOP_IGNORAR_INIMIGO
@@ -193,11 +200,15 @@ P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
 				beq t0, t1, P_IF1_REGISTRAR_JOGADOR
 				
 				# se o numero for 3 (fim da fase), 5 (power up 1) ou 6 (power up 2), temos que esconder o bloco atras de um bloco quebravel
-				li t1, 3
+				li t1, 6
 				beq t0, t1, P_IF1_ESCONDER_TILE
 				li t1, 5
 				beq t0, t1, P_IF1_ESCONDER_TILE
-				li t1, 6
+				
+				lw t1, MODO_SAIDA_LIVRE	
+				bnez t1, P_IF1_LOOP_CONT # nao esconde a saida se o modo eh saida livre
+				
+				li t1, 3
 				beq t0, t1, P_IF1_ESCONDER_TILE
 				
 				j P_IF1_LOOP_CONT
