@@ -260,10 +260,10 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 				
 # SE ENCONTRARMOS UM TILE DE COMECO DE FASE:
 P_IF1_REGISTRAR_JOGADOR:	la t1, POSICAO_JOGADOR
-				addi t0, s6, 2
+				addi t0, s6, 4
 				sh t0, 0(t1)			# salva posicao X do tile nas coordenadas do jogador
 				
-				addi t0, s7, 2
+				addi t0, s7, 4
 				sh t0, 2(t1)			# salva posicao Y do tile nas coordenadas do jogor
 				
 				# era so isso mesmo
