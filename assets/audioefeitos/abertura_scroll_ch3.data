@@ -1,0 +1,28 @@
+abertura_scroll_ch3:
+    .byte 66, 0, 127
+    .space 1
+    .word 500
+    .word 0
+
+    .byte 69, 0, 127
+    .space 1
+    .word 500
+    .word 125
+
+    .byte 71, 0, 127
+    .space 1
+    .word 500
+    .word 250
+
+    .byte 73, 0, 127
+    .space 1
+    .word 500
+    .word 375
+
+    .byte 76, 0, 127
+    .space 1
+    .word 500
+    .word 500
+
+abertura_scroll_ch3_FIM:
+    .word 0 0 0

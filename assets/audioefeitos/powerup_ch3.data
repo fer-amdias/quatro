@@ -1,0 +1,18 @@
+powerup_ch3:
+    .byte 93, 0, 127
+    .space 1
+    .word 250
+    .word 250
+
+    .byte 97, 0, 127
+    .space 1
+    .word 250
+    .word 375
+
+    .byte 102, 0, 127
+    .space 1
+    .word 250
+    .word 500
+
+powerup_ch3_FIM:
+    .word 0 0 0

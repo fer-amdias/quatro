@@ -1,0 +1,58 @@
+morte_ch3:
+    .byte 54, 74, 127
+    .space 1
+    .word 562
+    .word 0
+
+    .byte 59, 74, 127
+    .space 1
+    .word 562
+    .word 0
+
+    .byte 54, 74, 127
+    .space 1
+    .word 562
+    .word 562
+
+    .byte 52, 74, 127
+    .space 1
+    .word 562
+    .word 750
+
+    .byte 57, 74, 127
+    .space 1
+    .word 562
+    .word 750
+
+    .byte 49, 74, 127
+    .space 1
+    .word 187
+    .word 1312
+
+    .byte 47, 74, 127
+    .space 1
+    .word 562
+    .word 1500
+
+    .byte 52, 74, 127
+    .space 1
+    .word 562
+    .word 1500
+
+    .byte 45, 74, 127
+    .space 1
+    .word 187
+    .word 2062
+
+    .byte 42, 74, 127
+    .space 1
+    .word 937
+    .word 2250
+
+    .byte 47, 74, 127
+    .space 1
+    .word 937
+    .word 2250
+
+morte_ch3_FIM:
+    .word 0 0 0

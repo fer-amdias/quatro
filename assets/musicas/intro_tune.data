@@ -1,0 +1,788 @@
+intro_tune:
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 0
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 1333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 1666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 1999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 2666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 2999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 3333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 3999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 4333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 4666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 5333
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 5666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 5999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 6666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 6999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 7333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 7999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 8333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 8666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 9333
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 9666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 9999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 10666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 10999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 11333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 11999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 12333
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 12666
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 13333
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 13666
+
+    .byte 63, 0, 127
+    .space 1
+    .word 333
+    .word 13999
+
+    .byte 61, 0, 127
+    .space 1
+    .word 333
+    .word 14666
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 14999
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 15333
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 15999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 16333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 16666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 17333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 17666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 17999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 18666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 18999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 19333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 19999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 20333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 20666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 21333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 21666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 21999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 22666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 22999
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 23333
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 23999
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 24333
+
+    .byte 63, 0, 127
+    .space 1
+    .word 333
+    .word 24666
+
+    .byte 61, 0, 127
+    .space 1
+    .word 333
+    .word 25333
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 25666
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 25999
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 26666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 26999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 27333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 27999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 28333
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 28666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 29333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 29666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 29999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 30666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 30999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 31333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 31999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 32333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 32666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 33333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 33666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 33999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 34666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 34999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 35333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 35999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 36333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 36666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 37333
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 37666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 37999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 38666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 38999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 39333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 39999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 40333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 40666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 41333
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 41666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 41999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 42666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 42999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 43333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 43999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 44333
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 44666
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 45333
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 45666
+
+    .byte 63, 0, 127
+    .space 1
+    .word 333
+    .word 45999
+
+    .byte 61, 0, 127
+    .space 1
+    .word 333
+    .word 46666
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 46999
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 47333
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 47999
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 48333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 48666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 49333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 49666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 49999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 50666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 50999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 51333
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 51999
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 52333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 52666
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 53333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 53666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 53999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 54666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 54999
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 55333
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 55999
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 56333
+
+    .byte 63, 0, 127
+    .space 1
+    .word 333
+    .word 56666
+
+    .byte 61, 0, 127
+    .space 1
+    .word 333
+    .word 57333
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 57666
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 57999
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 58666
+
+    .byte 51, 0, 127
+    .space 1
+    .word 333
+    .word 58999
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 59333
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 59999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 60333
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 60666
+
+    .byte 49, 0, 127
+    .space 1
+    .word 333
+    .word 61333
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 61666
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 61999
+
+    .byte 42, 0, 127
+    .space 1
+    .word 333
+    .word 62666
+
+    .byte 44, 0, 127
+    .space 1
+    .word 333
+    .word 62999
+
+    .byte 47, 0, 127
+    .space 1
+    .word 333
+    .word 63333
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 63999
+
+    .byte 56, 0, 127
+    .space 1
+    .word 333
+    .word 64333
+
+    .byte 59, 0, 127
+    .space 1
+    .word 333
+    .word 64666
+
+    .byte 61, 0, 127
+    .space 1
+    .word 333
+    .word 65333
+
+    .byte 63, 0, 127
+    .space 1
+    .word 333
+    .word 65666
+
+    .byte 66, 0, 127
+    .space 1
+    .word 1166
+    .word 65999
+
+    .byte 63, 0, 127
+    .space 1
+    .word 499
+    .word 67499
+
+    .byte 61, 0, 127
+    .space 1
+    .word 499
+    .word 67999
+
+    .byte 59, 0, 127
+    .space 1
+    .word 499
+    .word 68499
+
+    .byte 54, 0, 127
+    .space 1
+    .word 333
+    .word 69333
+
+    .byte 61, 0, 127
+    .space 1
+    .word 499
+    .word 69999
+
+    .byte 59, 0, 127
+    .space 1
+    .word 499
+    .word 70666
+
+    .byte 46, 0, 16
+    .space 1
+    .word 499
+    .word 71333
+
+intro_tune_FIM:
+    .word 0 0 0

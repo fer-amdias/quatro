@@ -1,0 +1,3918 @@
+west__hurrian_song:
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 0
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 0
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 0
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 571
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 571
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 1142
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 1142
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 1142
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 1714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 1714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 1714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 2285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 2285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 2285
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 2857
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 2857
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 2857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 3428
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 3428
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 3428
+
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 5142
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 5142
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 5142
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 5714
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 5714
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 5714
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 6285
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 6285
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 6285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 6857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 6857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 6857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 7428
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 7428
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 7428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 7999
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 7999
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 7999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 8571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 8571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 8571
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 9142
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 9142
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 9142
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 9714
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 9714
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 9714
+
+    .byte 64, 46, 100
+    .space 1
+    .word 285
+    .word 11428
+
+    .byte 64, 73, 100
+    .space 1
+    .word 285
+    .word 11428
+
+    .byte 64, 107, 100
+    .space 1
+    .word 285
+    .word 11428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 11714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 11714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 11714
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 11999
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 11999
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 11999
+
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 12285
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 12285
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 12285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 12571
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 12571
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 12571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 12857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 12857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 12857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 13142
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 13142
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 13142
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 13428
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 13428
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 13428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 13714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 13714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 13714
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 13999
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 13999
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 13999
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 14285
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 14285
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 14285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 14571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 14571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 14571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 14857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 14857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 14857
+
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 15142
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 15142
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 15142
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 15428
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 15428
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 15428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 15714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 15714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 15714
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 15999
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 15999
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 15999
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 18285
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 18857
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 19428
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 19999
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 19999
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 19999
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 20571
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 21142
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 21714
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 22285
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 22285
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 22285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 22857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 22857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 22857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 23428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 23428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 23428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 23999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 23999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 23999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 24571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 24571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 24571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 25142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 25142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 25142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 25714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 25714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 25714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 26285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 26285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 26285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 26857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 26857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 26857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 27428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 27428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 27428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 27999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 27999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 27999
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 28571
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 28571
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 28571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 29142
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 29142
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 29142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 29714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 29714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 29714
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 30285
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 30285
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 30285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 30857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 30857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 30857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 31428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 31428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 31428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 31999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 31999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 31999
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 32571
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 32571
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 32571
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 33142
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 33142
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 33142
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 33714
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 33714
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 33714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 34285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 34285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 34285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 34857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 34857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 34857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 35428
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 35428
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 35428
+
+    .byte 55, 46, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 57, 46, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 59, 46, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 60, 46, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 55, 73, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 57, 73, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 59, 73, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 60, 73, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 55, 107, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 57, 107, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 59, 107, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 60, 107, 23
+    .space 1
+    .word 571
+    .word 35999
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 36571
+
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 37142
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 37142
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 37142
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 37714
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 37714
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 37714
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 38285
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 38285
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 38285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 38857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 38857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 38857
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 39428
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 39428
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 39428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 39999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 39999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 39999
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 40571
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 40571
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 40571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 41142
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 41142
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 41142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 41714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 41714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 41714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 42285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 42285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 42285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 42857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 42857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 42857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 43428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 43428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 43428
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 43999
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 43999
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 43999
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 44571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 45142
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 45142
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 45142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 45714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 45714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 45714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 46285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 46285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 46285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 46857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 46857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 46857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 47428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 47428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 47428
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 47999
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 47999
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 47999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 48571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 48571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 48571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 49142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 49142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 49142
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 49714
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 49714
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 49714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 50285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 50285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 50285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 50857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 50857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 50857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 51428
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 51428
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 51428
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 51999
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 51999
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 51999
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 52571
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 53142
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 53714
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 54285
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 54857
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 55428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 55999
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 56571
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 57142
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 57714
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 58285
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 58857
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 59428
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 61571
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 61571
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 61571
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 61714
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 62857
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 63999
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 64999
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 64999
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 64999
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 65142
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 65142
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 65142
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 66142
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 66142
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 66142
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 66285
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 67428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 68571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 69714
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 69714
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 69714
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 70714
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 70714
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 70714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 70857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 70857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 70857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 71999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 71999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 71999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 73142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 73142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 73142
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 74142
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 74142
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 74142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 74285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 74285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 74285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 75428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 75428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 75428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 76571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 76571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 76571
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 77571
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 77571
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 77571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 77714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 77714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 77714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 78857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 78857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 78857
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 79857
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 79857
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 79857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 79999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 79999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 79999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 81142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 81142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 81142
+
+    .byte 60, 46, 60
+    .space 1
+    .word 142
+    .word 82142
+
+    .byte 60, 73, 60
+    .space 1
+    .word 142
+    .word 82142
+
+    .byte 60, 107, 60
+    .space 1
+    .word 142
+    .word 82142
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 82285
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 82285
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 82285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 83428
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 83428
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 83428
+
+    .byte 59, 46, 60
+    .space 1
+    .word 142
+    .word 84428
+
+    .byte 59, 73, 60
+    .space 1
+    .word 142
+    .word 84428
+
+    .byte 59, 107, 60
+    .space 1
+    .word 142
+    .word 84428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 84571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 84571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 84571
+
+    .byte 53, 46, 60
+    .space 1
+    .word 142
+    .word 85571
+
+    .byte 53, 73, 60
+    .space 1
+    .word 142
+    .word 85571
+
+    .byte 53, 107, 60
+    .space 1
+    .word 142
+    .word 85571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 85714
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 85714
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 85714
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 86857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 86857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 86857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 87999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 87999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 87999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 89142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 89142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 89142
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 90142
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 90142
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 90142
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 90285
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 90285
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 90285
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 91428
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 91428
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 91428
+
+    .byte 60, 46, 60
+    .space 1
+    .word 142
+    .word 92428
+
+    .byte 60, 73, 60
+    .space 1
+    .word 142
+    .word 92428
+
+    .byte 60, 107, 60
+    .space 1
+    .word 142
+    .word 92428
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 92571
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 92571
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 92571
+
+    .byte 64, 46, 60
+    .space 1
+    .word 142
+    .word 93571
+
+    .byte 64, 73, 60
+    .space 1
+    .word 142
+    .word 93571
+
+    .byte 64, 107, 60
+    .space 1
+    .word 142
+    .word 93571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 93714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 93714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 93714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 94857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 94857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 94857
+
+    .byte 60, 46, 60
+    .space 1
+    .word 142
+    .word 95857
+
+    .byte 60, 73, 60
+    .space 1
+    .word 142
+    .word 95857
+
+    .byte 60, 107, 60
+    .space 1
+    .word 142
+    .word 95857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 95999
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 95999
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 95999
+
+    .byte 55, 46, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 57, 46, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 59, 46, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 60, 46, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 55, 73, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 57, 73, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 59, 73, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 60, 73, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 55, 107, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 57, 107, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 59, 107, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 60, 107, 23
+    .space 1
+    .word 571
+    .word 97142
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 98285
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 99285
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 99285
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 99285
+
+    .byte 59, 46, 100
+    .space 1
+    .word 571
+    .word 99428
+
+    .byte 59, 73, 100
+    .space 1
+    .word 571
+    .word 99428
+
+    .byte 59, 107, 100
+    .space 1
+    .word 571
+    .word 99428
+
+    .byte 60, 46, 60
+    .space 1
+    .word 142
+    .word 100428
+
+    .byte 60, 73, 60
+    .space 1
+    .word 142
+    .word 100428
+
+    .byte 60, 107, 60
+    .space 1
+    .word 142
+    .word 100428
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 100571
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 100571
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 100571
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 101714
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 101714
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 101714
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 102857
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 102857
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 102857
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 103999
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 103999
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 103999
+
+    .byte 59, 46, 60
+    .space 1
+    .word 142
+    .word 104999
+
+    .byte 59, 73, 60
+    .space 1
+    .word 142
+    .word 104999
+
+    .byte 59, 107, 60
+    .space 1
+    .word 142
+    .word 104999
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 105142
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 105142
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 105142
+
+    .byte 53, 46, 60
+    .space 1
+    .word 142
+    .word 106142
+
+    .byte 53, 73, 60
+    .space 1
+    .word 142
+    .word 106142
+
+    .byte 53, 107, 60
+    .space 1
+    .word 142
+    .word 106142
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 106285
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 106285
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 106285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 107428
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 107428
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 107428
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 108428
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 108428
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 108428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 108571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 108571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 108571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 109714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 109714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 109714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 110857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 110857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 110857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 111999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 111999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 111999
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 112999
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 112999
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 112999
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 113142
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 113142
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 113142
+
+    .byte 59, 46, 60
+    .space 1
+    .word 142
+    .word 114142
+
+    .byte 59, 73, 60
+    .space 1
+    .word 142
+    .word 114142
+
+    .byte 59, 107, 60
+    .space 1
+    .word 142
+    .word 114142
+
+    .byte 64, 46, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 52, 46, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 64, 73, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 52, 73, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 64, 107, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 52, 107, 100
+    .space 1
+    .word 571
+    .word 114285
+
+    .byte 53, 46, 60
+    .space 1
+    .word 142
+    .word 115285
+
+    .byte 53, 73, 60
+    .space 1
+    .word 142
+    .word 115285
+
+    .byte 53, 107, 60
+    .space 1
+    .word 142
+    .word 115285
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 115428
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 115428
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 115428
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 116428
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 116428
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 116428
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 116571
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 116571
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 116571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 117714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 117714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 117714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 118857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 118857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 118857
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 119999
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 119999
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 119999
+
+    .byte 53, 46, 60
+    .space 1
+    .word 142
+    .word 120999
+
+    .byte 53, 73, 60
+    .space 1
+    .word 142
+    .word 120999
+
+    .byte 53, 107, 60
+    .space 1
+    .word 142
+    .word 120999
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 121142
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 121142
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 121142
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 122142
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 122142
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 122142
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 122285
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 122285
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 122285
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 123428
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 123428
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 123428
+
+    .byte 53, 46, 60
+    .space 1
+    .word 142
+    .word 124428
+
+    .byte 53, 73, 60
+    .space 1
+    .word 142
+    .word 124428
+
+    .byte 53, 107, 60
+    .space 1
+    .word 142
+    .word 124428
+
+    .byte 57, 46, 100
+    .space 1
+    .word 571
+    .word 124571
+
+    .byte 57, 73, 100
+    .space 1
+    .word 571
+    .word 124571
+
+    .byte 57, 107, 100
+    .space 1
+    .word 571
+    .word 124571
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 125571
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 125571
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 125571
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 125714
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 125714
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 125714
+
+    .byte 55, 46, 100
+    .space 1
+    .word 571
+    .word 126857
+
+    .byte 55, 73, 100
+    .space 1
+    .word 571
+    .word 126857
+
+    .byte 55, 107, 100
+    .space 1
+    .word 571
+    .word 126857
+
+    .byte 62, 46, 60
+    .space 1
+    .word 142
+    .word 127857
+
+    .byte 62, 73, 60
+    .space 1
+    .word 142
+    .word 127857
+
+    .byte 62, 107, 60
+    .space 1
+    .word 142
+    .word 127857
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 127999
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 127999
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 127999
+
+    .byte 53, 46, 100
+    .space 1
+    .word 571
+    .word 129142
+
+    .byte 53, 73, 100
+    .space 1
+    .word 571
+    .word 129142
+
+    .byte 53, 107, 100
+    .space 1
+    .word 571
+    .word 129142
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 130142
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 130142
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 130142
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 130285
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 131428
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 132428
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 132428
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 132428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 132571
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 133714
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 134857
+
+    .byte 55, 46, 60
+    .space 1
+    .word 142
+    .word 135857
+
+    .byte 55, 73, 60
+    .space 1
+    .word 142
+    .word 135857
+
+    .byte 55, 107, 60
+    .space 1
+    .word 142
+    .word 135857
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 135999
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 136999
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 136999
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 136999
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 137142
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 138285
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 139428
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 140571
+
+    .byte 55, 46, 60
+    .space 1
+    .word 142
+    .word 141571
+
+    .byte 55, 73, 60
+    .space 1
+    .word 142
+    .word 141571
+
+    .byte 55, 107, 60
+    .space 1
+    .word 142
+    .word 141571
+
+    .byte 48, 46, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 60, 46, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 48, 73, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 60, 73, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 48, 107, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 60, 107, 100
+    .space 1
+    .word 571
+    .word 141714
+
+    .byte 57, 46, 60
+    .space 1
+    .word 142
+    .word 142714
+
+    .byte 57, 73, 60
+    .space 1
+    .word 142
+    .word 142714
+
+    .byte 57, 107, 60
+    .space 1
+    .word 142
+    .word 142714
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 142856
+
+    .byte 50, 46, 100
+    .space 1
+    .word 571
+    .word 143999
+
+    .byte 62, 46, 100
+    .space 1
+    .word 571
+    .word 143999
+
+    .byte 50, 73, 100
+    .space 1
+    .word 571
+    .word 143999
+
+    .byte 62, 73, 100
+    .space 1
+    .word 571
+    .word 143999
+
+    .byte 50, 107, 100
+    .space 1
+    .word 571
+    .word 143999
+
+    .byte 62, 107, 100
+    .space 1
+    .word 571
+    .word 143999
+
+west__hurrian_song_FIM:
+    .word 0 0 0
