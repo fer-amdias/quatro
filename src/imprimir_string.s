@@ -70,7 +70,7 @@ P_IS1_LOOP:		lb	a0, 0(s0)                 	# le em a0 o caracter a ser impresso
 			
 			j 	P_IS1_NaoPulaLinha		# por padrao, nao pula linha
 			
-P_IS1_PulaLinha:	    	addi    a2, a2, 8                 	# incrementa a linha
+P_IS1_PulaLinha:	    	addi    a2, a2, 10                 	# incrementa a linha (+2 de spacing)
 	    		mv    	a1, s1				# volta a coluna zero
 
 P_IS1_NaoPulaLinha:	addi    s0, s0, 1			# proximo caractere
