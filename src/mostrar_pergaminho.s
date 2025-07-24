@@ -85,7 +85,7 @@ P_MP1_CONT:		addi sp, sp, -4
 			
 			lw a0, (sp)
 			li a1, 40
-			li a2, 40
+			li a2, 30
 			li a3, 0x0000C700
 			jal PROC_IMPRIMIR_STRING
 			
