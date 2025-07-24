@@ -3,7 +3,7 @@ import os
 import sys
 
 # MIDICONVERTER
-# FORKED FROM https://github.com/Zen-o/Tradutor_MIDI-RISC-V
+# Inspired by https://github.com/Zen-o/Tradutor_MIDI-RISC-V
 #
 # This version creates a struct of notes to be used on FPGRARS.
 
