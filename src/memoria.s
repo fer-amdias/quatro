@@ -35,10 +35,13 @@
 .eqv BOMBAS_CONTAGEM_REGRESSIVA 5
 .eqv BOMBAS_MS_DE_TRANSICAO 8
 
+.eqv SAIDA	3
 .eqv POWERUP_1  5
 .eqv POWERUP_2  6
 .eqv ELEVADOR 	7
 .eqv PERGAMINHO 8
+
+.eqv MAX_VIDAS 4	# maximo de vidas possiveis
 
 .data
 junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
