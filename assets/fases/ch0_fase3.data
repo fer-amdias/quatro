@@ -1,0 +1,12 @@
+ch0_fase3: .word 9, 9
+.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 0, 0, 0, 2, 0, 0, 0, 1, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 
+1, 0, 0, 0, 0, 0, 0, 0, 1, 
+1, 4, 1, 4, 1, 4, 1, 4, 1, 
+1, 0, 0, 0, 3, 0, 0, 0, 1, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 
+1, 0, 0, 0, 10, 0, 0, 0, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 
+
+ch0_fase3.scroll: .asciz "Fases podem conter INIMIGOS.\nExploda-os para poder passar\nde fase. Cuidado: Se tocar\nneles, voce morrerah.\n\nE lembre-se que voce soh\npode colocar uma bomba \npor vez por enquanto. ;)\n\n\n\n\n\n\nPressione ENTER para fechar."

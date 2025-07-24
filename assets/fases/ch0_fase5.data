@@ -1,0 +1,12 @@
+ch0_fase5: .word 9, 9
+.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 0, 0, 0, 3, 0, 10, 0, 1, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 
+1, 0, 0, 0, 0, 0, 0, 0, 1, 
+1, 4, 1, 1, 1, 1, 1, 1, 1, 
+1, 0, 0, 0, 8, 0, 0, 0, 1, 
+1, 1, 1, 1, 1, 1, 1, 4, 1, 
+1, 0, 0, 0, 2, 0, 0, 0, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 
+
+ch0_fase5.scroll: .asciz "Isso eh um pergaminho. A \npartir de agora, esse serah o \nmeio por qual informacao serah\nmostrada. O pergaminho serah\ndestruido depois de lido.\n\nOutra coisa: a partir de\nagora, a saida ficarah\nescondida atras de paredes\nquebraveis. Consegue achar\nela?\n\n\n\n\nPressione ENTER para fechar."

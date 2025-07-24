@@ -1,0 +1,12 @@
+ch0_fase2: .word 9, 9
+.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 0, 0, 0, 0, 0, 0, 0, 1, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 
+1, 0, 0, 0, 2, 0, 0, 0, 1, 
+1, 4, 1, 4, 1, 4, 1, 4, 1, 
+1, 0, 0, 0, 3, 0, 0, 0, 1, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 
+1, 0, 0, 0, 0, 0, 0, 0, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 
+
+ch0_fase2.scroll: .asciz "Para colocar uma bomba,\naperte ENTER ou ESPACO.\nParedes quebraveis nao\nsobreviverao ah explosao.\n\nApos colocar a bomba, se\nafaste para nao acabar\nexplodindo junto.\n\n\n\n\n\n\nPressione ENTER para fechar."

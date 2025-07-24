@@ -1,0 +1,8 @@
+ch0_fase6: .word 5, 9
+.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+1, 0, 0, 0, 4, 8, 3, 4, 1, 
+1, 0, 1, 0, 1, 4, 1, 4, 1, 
+1, 0, 2, 0, 0, 0, 4, 4, 1, 
+1, 1, 1, 1, 1, 1, 1, 1, 1, 
+
+ch0_fase6.scroll: .asciz "Fases podem ter tamanhos\ndiferentes, mas elas nunca\nvao sair da tela.\n\nElas tambem podem ter limite\nde tempo. Termine a fase antes\ndele acabar ou perca uma vida.\n\nNao se preocupe: o tempo fica\npausado dentro de um \npergaminho.\n\n\n\nPressione ENTER para fechar."
