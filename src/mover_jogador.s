@@ -121,17 +121,20 @@ P_MJ1_CANTO_1:		mv a0, a4			# coloca o endereco do mapa em a0
 			beqz a0, P_MJ1_SEM_MOVIMENTO_0	# se nao for andavel, cancela o movimento
 			
 P_MJ1_CANTO_2:		add a1, a1, a6			# vai pro canto superior direito
+			addi a1, a1, -1			# compensa por comecarmos no primeiro pixel
 			
 			mv a0, a4			# coloca o endereco do mapa em a0
 			jal P_MJ1_CHECAR_SE_TILE_EH_ANDAVEL
 			beqz a0, P_MJ1_SEM_MOVIMENTO_0	# se nao for andavel, cancela o movimento
 			
 P_MJ1_CANTO_3:		add a2, a2, a7			# vai pro canto inferior direito
+			addi a2, a2, -1			# compensa por comecarmos no primeiro pixel
 			mv a0, a4
 			jal P_MJ1_CHECAR_SE_TILE_EH_ANDAVEL
 			beqz a0, P_MJ1_SEM_MOVIMENTO_0
 			
 P_MJ1_CANTO_4:		sub a1, a1, a6			# vai pro canto inferior esquerdo
+			addi a1, a1, 1			# compensa por comecarmos no ultimo pixel
 			mv a0, a4
 			jal P_MJ1_CHECAR_SE_TILE_EH_ANDAVEL
 			beqz a0, P_MJ1_SEM_MOVIMENTO_0
