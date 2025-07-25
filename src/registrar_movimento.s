@@ -70,9 +70,9 @@ PROC_REGISTRAR_MOVIMENTO:
 			
 			sb x0, CONTADOR_INIMIGOS, t0		# cheat para destruir inimigos
 			sw x0, INIMIGOS_QUANTIDADE, t0
-			 
-			
 			j P_RM1_SEM_MOVIMENTO_2
+			
+			 
 			
 P_RM1_W:		addi a2, a2, -2		# move para cima
 			li t2, 2
@@ -112,7 +112,9 @@ P_RM1_SPACEBAR:
 			addi sp, sp, 12
 			j P_RM1_MOVER
 			
-P_RM1_BACKSPACE:	fim
+P_RM1_BACKSPACE:	lw ra, (sp)
+					addi sp, sp, 4	
+					j MAIN
 
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			mv a4, a2
