@@ -77,8 +77,8 @@ P_IH1_INIMIGOS_RESTANTES:
 		
 P_IH1_VIDAS_RESTANTES:
 		la t0, VIDAS_RESTANTES
-		lbu t1, (t0)
-		la t0 HUD_VIDAS_RESTANTES
+		lb t1, (t0)
+		la t0, HUD_VIDAS_RESTANTES
 		addi t1, t1, 48			# transforma em caractere
 		sb t1, 7(t0)			# atualiza a string
 		
