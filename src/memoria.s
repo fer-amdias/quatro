@@ -38,7 +38,7 @@
 .eqv SAIDA	3
 .eqv POWERUP_1  5
 .eqv POWERUP_2  6
-.eqv ELEVADOR 	7
+.eqv ELEVADORR 	7
 .eqv PERGAMINHO 8
 
 .eqv MAX_VIDAS 4	# maximo de vidas possiveis
@@ -48,6 +48,7 @@ junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou 
 
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
+MODO_SAIDA_LIVRE:     .word 0
 
 SEGUNDOS_RESTANTE_Q10:	.word 102400		# quantos segundos ateh a fase acabar, com 10 casas binairias (/1024). Padrao: 100 segundos  
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)

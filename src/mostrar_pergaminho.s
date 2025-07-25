@@ -54,8 +54,10 @@ P_MP1_CHECAR_COOLDOWN:
 		  	beq t2, t0, P_MP1_DESTRUIR_PERGAMINHO
 		  	li t0, ' '
 		  	beq t2, t0, P_MP1_DESTRUIR_PERGAMINHO
-		  	
-		  	j P_MP1_CONT  	
+		  	li t0, 8		# backspace
+		  	bne t2, t0, P_MP1_CONT  # continua se nao for backspace
+		  	j ROTINA_MENU_PRINCIPAL
+		  	 	
 P_MP1_DESTRUIR_PERGAMINHO:  	
 			mv t0, a2
 			sobrescrever_tile_atual_rg(0, t0)		# coloca um tile normal no lugar do pergaminho
