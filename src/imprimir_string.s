@@ -1,6 +1,6 @@
 #################################################################
 # PROC_IMPRIMIR_SPRING				       	     	#
-# Imprime uma string na tela.					#
+# Imprime uma string no FRAME BUFFER.				#
 # 							     	#
 # ARGUMENTOS:						     	#
 #	A0 : endereco da string					#
