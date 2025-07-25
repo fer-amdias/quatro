@@ -65,6 +65,12 @@ PROC_REGISTRAR_MOVIMENTO:
 			beq t2, t0, P_RM1_SPACEBAR
 			li t0, 8	# backspace
 			beq t2, t0, P_RM1_BACKSPACE
+			li t0, '.'
+			bne t2, t0, P_RM1_SEM_MOVIMENTO_2
+			
+			sb x0, CONTADOR_INIMIGOS, t0		# cheat para destruir inimigos
+			sw x0, INIMIGOS_QUANTIDADE, t0
+			 
 			
 			j P_RM1_SEM_MOVIMENTO_2
 			
