@@ -235,10 +235,10 @@ MORTE_LOOP%fase :
 		j FASE%fase
 DERROTA%fase :
 		li a0, 0
-		j FIM
+		j FIM%fase
 VITORIA%fase :
 		li a0, 1
-FIM: 
+FIM%fase : 
 		lw ra, (sp)
 		addi sp, sp, 4
 .end_macro
@@ -255,20 +255,28 @@ ROTINA_CAPITULO_0:
 		#############
 		
 		jal C0_FASE1
+		beqz a0, C0_FIM
 		
 		jal C0_FASE2	
+		beqz a0, C0_FIM
 		
 		jal C0_FASE3
+		beqz a0, C0_FIM
 		
 		jal C0_FASE4
+		beqz a0, C0_FIM
 		
 		jal C0_FASE5
+		beqz a0, C0_FIM
 		
 		jal C0_FASE6
+		beqz a0, C0_FIM
 		
 		jal C0_FASE7
+		beqz a0, C0_FIM
 		
 		jal C0_FASE8
+		beqz a0, C0_FIM
 		
 		j C0_FIM
 		

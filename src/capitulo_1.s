@@ -12,11 +12,11 @@
 
 .text
 
-CAPITULO_0:
+CAPITULO_1:
 		# int capitulo, int fase, label mapa, int tempo_limite, 
 		# label musica, label sfx_powerup, lavel sfx_morte, label sfx_scroll, 
 		# label mapa.scroll, bool modo_saida_livre
-.macro FASE_C0 (%capitulo, %fase, %arquivo_mapa, %tempo_limite, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %modo_saida_livre)
+.macro FASE_C1 (%capitulo, %fase, %arquivo_mapa, %tempo_limite, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %modo_saida_livre)
 		addi sp, sp, -4
 		sw ra, (sp)
 FASE_C1%fase :		
@@ -217,11 +217,11 @@ MORTE_LOOP_C1%fase :
 		j FASE_C1%fase
 DERROTA_C1%fase :
 		li a0, 0
-		j FIM
+		j FIM_C1%fase
 		
 VITORIA_C1%fase :
 		li a0, 1
-FIM: 
+FIM_C1%fase : 
 		lw ra, (sp)
 		addi sp, sp, 4
 .end_macro
@@ -238,52 +238,49 @@ ROTINA_CAPITULO_1:
 		#############
 		
 		jal C1_FASE1
-		beqz a0, C0_FIM
+		beqz a0, C1_FIM
 		
 		jal C1_FASE2	
-		beqz a0, C0_FIM
+		beqz a0, C1_FIM
 		
 		jal C1_FASE3
-		beqz a0, C0_FIM
+		beqz a0, C1_FIM
 		
 		jal C1_FASE4
-		beqz a0, C0_FIM
+		beqz a0, C1_FIM
 		
 		jal C1_FASE5
-		beqz a0, C0_FIM
+		beqz a0, C1_FIM
 		
-		j C0_FIM
+		j C1_FIM
 		
 
 C1_FASE1:
 		# int capitulo, int fase, label mapa, int tempo_limite, 
 		# label musica, label sfx_powerup, lavel sfx_morte, label sfx_scroll, 
 		# label mapa.scroll,bool modo_saida_livre
-		FASE_C0 (1, 1, ch1_fase1, 70, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase1.scroll, 0)
+		FASE_C1 (1, 1, ch1_fase1, 70, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase1.scroll, 0)
 		ret
 		
-C1_FASE2:	FASE_C0 (1, 2, ch1_fase2, 80, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase2.scroll, 0)
+C1_FASE2:	FASE_C1 (1, 2, ch1_fase2, 80, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase2.scroll, 0)
 		ret
 		
-C1_FASE3:	FASE_C0 (1, 3, ch1_fase3, 100, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase3.scroll, 0)
+C1_FASE3:	FASE_C1 (1, 3, ch1_fase3, 100, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase3.scroll, 0)
 		ret
 		
 C1_FASE4:
-		FASE_C0 (1, 4, ch1_fase4, 80, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase4.scroll, 0)
+		FASE_C1 (1, 4, ch1_fase4, 80, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase4.scroll, 0)
 		ret
 
 C1_FASE5:
-		FASE_C0 (1, 5, ch1_fase5, -1, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase5.scroll, 0)
+		FASE_C1 (1, 5, ch1_fase5, -1, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase5.scroll, 0)
 		ret
 		
 		
-C0_FIM:		lw ra, (sp)
+C1_FIM:		lw ra, (sp)
 		addi sp, sp, 4
 		ret
-		
-C0_DERROTA:	lw ra, (sp)
-		addi sp, sp, 4
-		j ROTINA_MENU_PRINCIPAL
+	
 
 
 		
