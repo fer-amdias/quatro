@@ -59,6 +59,16 @@ PROC_REGISTRAR_MOVIMENTO:
 			beq t2, t0, P_RM1_S
 			li t0, 'd'
 			beq t2, t0, P_RM1_D
+			
+			li t0, 'W'
+			beq t2, t0, P_RM1_W
+			li t0, 'A'
+			beq t2, t0, P_RM1_A
+			li t0, 'S'
+			beq t2, t0, P_RM1_S
+			li t0, 'D'
+			beq t2, t0, P_RM1_D
+			
 			li t0, '\n'
 			beq t2, t0, P_RM1_ENTER
 			li t0, ' '
