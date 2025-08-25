@@ -5,4 +5,4 @@ Esse era um projeto de primeiro semestre do curso de Ciência da Computação da
 
 O jogo tem uma gameplay baseada no Bomberman original para NES.
 
-Para jogar o jogo, baixe o repositório e arraste o arquivo src/main.s para o FPGRARS v1.13 8 bit no Windows x86, ou [baixe o FPGRARS v1.13.1](https://github.com/LeoRiether/FPGRARS/releases/tag/v1.13.1), o coloque no diretório src, e finalmente o arraste/rode pela linha de comando o arquivo src/main.s. Lembre-se que versões do FPGRARS superiores a v1.13 irão levar à falha do programa.
+Para jogar o jogo, baixe a [release mais recente](https://github.com/fer-amdias/quatro/releases) de acordo com o sistema operacional. Depois, clique duas vezes (ou rode pelo terminal) no arquivo Quatro (no linux) ou Quatro.exe para iniciar o jogo. Passos adicionais podem ser necessários no Linux. Um arquivo README na instalação Linux delineia o que pode ser necessário fazer.
