@@ -1,5 +1,9 @@
+# ignora a instalação do RARS
 RARS
-bmp2oac3.exe
 
-# para ignorar versões buildadas usando build.c
+# ignora arquivos executaveis (como o conversor de imagens), ao menos que estejam em source (como o FPGRARS)
+*.exe
+!src/**
+
+# ignora versões buildadas usando build.c
 v* 
