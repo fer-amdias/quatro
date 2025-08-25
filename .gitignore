@@ -1,3 +1,5 @@
 RARS
 bmp2oac3.exe
-src/*.exe
+
+# para ignorar versões buildadas usando build.c
+v* 
