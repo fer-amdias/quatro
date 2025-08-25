@@ -119,7 +119,7 @@ void build(const char * versao){
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         printf("Uso: build.exe <versao>\n");
-        printf("Lembre-se de usar versionamento convencional (e.g. v0.1.2, v1.1.12, v0.2-alpha.1\n");
+        printf("Lembre-se de usar versionamento convencional (ex.: v0.1.2, v1.1.12, v0.2-alpha.1)\n");
         return 1;
     }
 
