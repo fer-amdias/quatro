@@ -43,12 +43,14 @@
 
 .eqv MAX_VIDAS 4	# maximo de vidas possiveis
 
+.eqv SEM_LIMITE_DE_TEMPO 999	# um contorno para poder usar numeros negativos em macros (o FPGRARS nao deixa) -- 
+
 .data
 junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
 
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
-MODO_SAIDA_LIVRE:     .word 0
+MODO_SAIDA_LIVRE:       .word 0
 
 SEGUNDOS_RESTANTE_Q10:	.word 102400		# quantos segundos ateh a fase acabar, com 10 casas binairias (/1024). Padrao: 100 segundos  
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
@@ -62,6 +64,9 @@ DIRECAO_JOGADOR: .byte 0
 			# 1 = PARA A DIREITA
 			# 2 = PARA CIMA
 			# 3 = PARA A ESQUERDA
+			
+ALTURA_JOGADOR: .word 0
+LARGURA_JOGADOR: .word 0
 
 
 

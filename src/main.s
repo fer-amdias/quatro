@@ -113,5 +113,6 @@ CAP1:
 .include "imprimir_inteiro.s"
 .include "imprimir_hud.s"
 .include "menu_principal.s"
+.include "fase.s"
 .include "capitulo_0.s"
 .include "capitulo_1.s"
