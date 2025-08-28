@@ -14,6 +14,7 @@
 
 .data
 
+# A track 1 eh comumente utilizada para tocar musica
 TRACK1:
 	TRACK1_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK1_TIMESTAMP:	.word 0 # quando o track comecou
@@ -21,13 +22,15 @@ TRACK1:
 	TRACK1_POINTER:		.word 0 # marca qual eh a proxima nota
 	TRACK1_LOOP:		.word 0	# marca se o track estah loopando
 	
+# A track 2 eh comumente utilizada para tocar efeitos sonoros
 TRACK2:
 	TRACK2_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK2_TIMESTAMP:	.word 0 # quando o track comecou
 	TRACK2_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
 	TRACK2_POINTER:		.word 0 # marca qual eh a proxima nota
 	TRACK2_LOOP:		.word 0	# marca se o track estah loopando
-	
+
+# A track 3 eh comumente utilizada para tocar miscelaneos que nao se encaixam nas outras categorias
 TRACK3:
 	TRACK3_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK3_TIMESTAMP:	.word 0 # quando o track comecou
