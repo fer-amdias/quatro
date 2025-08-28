@@ -1,8 +1,8 @@
 #################################################################
 # QUATRO	 					       	#
 # Um jogo feito como projeto de primeiro semestre para o 	#
-# componente Introdução a Sistemas Computacionais na 		#
-# Universidade de Brasília.					#
+# componente Introduï¿½ï¿½o a Sistemas Computacionais na 		#
+# Universidade de Brasï¿½lia.					#
 #								#
 # Escrito no primeiro semestre de 2025				#
 # Apresentado em 24/07/2025					#
@@ -75,9 +75,9 @@ MAIN:
 	sw a0, FRAME_BUFFER_FIM_PTR, t0
 
 IR_MENU:
-	jal ROTINA_MENU_PRINCIPAL
+	jal ROTINA_MENU_PRINCIPAL	# retorna a0: capitulo escolhido
 	li t0, 1
-	beq a0, t0, CAP1		# ir p
+	beq a0, t0, CAP1		# ir p capitulo 1 
 	
 	jal ROTINA_CAPITULO_0
 	beqz a0, IR_MENU
@@ -86,10 +86,7 @@ CAP1:
 	jal ROTINA_CAPITULO_1
 	beqz a0, IR_MENU
 	
-	fim
-
-
-
+	j IR_MENU			# fim
 
 
 ##############################################################
