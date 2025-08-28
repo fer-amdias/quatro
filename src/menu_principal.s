@@ -168,12 +168,6 @@ MP_LOOP_CONT:
 	li a0, 0
 	jal PROC_TOCAR_AUDIO	
 	j MP_LOOP
-	
-	
-MP_FIM:	lw ra, (sp)
-	addi sp, sp, 4
-	ret
-	
 
 MP_JOGAR:
 
