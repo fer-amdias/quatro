@@ -56,7 +56,7 @@ P_MP1_CHECAR_COOLDOWN:
 		  	beq t2, t0, P_MP1_DESTRUIR_PERGAMINHO
 		  	li t0, 8		# backspace
 		  	bne t2, t0, P_MP1_CONT  # continua se nao for backspace
-		  	j ROTINA_MENU_PRINCIPAL
+		  	j IR_MENU
 		  	 	
 P_MP1_DESTRUIR_PERGAMINHO:  	
 			mv t0, a2
