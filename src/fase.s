@@ -134,7 +134,7 @@ P_F1_FASE_INICIO:
 P_F1_TOCAR_MUSICA: 
 		## tocar musica	
 		li a0, 1			# modo (adicionar audio)
-		mv a1, $MUSICA_DE_FUNDO
+		mv a1, $MUSICA_DE_FUNDO		# a musica da fase
 		li a2, 1			# na track 1
 		li a3, 1			# no modo de loop
 		jal PROC_TOCAR_AUDIO   
@@ -174,8 +174,6 @@ P_F1_LOOP:
 		mv a0, $TEXTURA_DOS_INIMIGOS
 		jal PROC_INIMIGOS_MANAGER	
 		
-		lw a0, LARGURA_JOGADOR
-		lw a1, ALTURA_JOGADOR
 		jal PROC_CHECAR_COLISOES
 		# retorna a0 : se o jogador ainda estah vivo
 		# 	  a1 : qual tile o jogador estah
