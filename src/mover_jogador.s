@@ -193,6 +193,12 @@ P_MJ1_MOVER:
 P_MJ1_SEM_MOVIMENTO:	addi sp, sp, -4
 			li a0, 0
 			sw a0, (sp)
+			
+			# para a impressao, pega o X e Y antigos... pois nao houve movimento.
+			la t0, POSICAO_JOGADOR
+			lh a1, 0(t0)
+			lh a2, 2(t0)
+			
 P_MJ1_IMPRIMIR:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
 			# 	a0 = aE0 = endereco da textura (.data)
 			# 	a1 = aX  = pos X
