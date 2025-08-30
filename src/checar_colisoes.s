@@ -3,8 +3,7 @@
 # Checa colisoes com inimigos e powerups.			#
 # 							     	#
 # ARGUMENTOS:						     	#
-#	A0 : largura do jogador					#
-#	A1 : altura do jogador					#
+#	(sem argumentos)					#
 # RETORNOS:                                                  	#
 #       A0 : se o jogador continua vivo				#
 #	A1 : o tile em que o jogador atualmente estah		#
@@ -24,51 +23,11 @@
        # checa se o canto do jogador	#
        # estah em colisao		#
        ##################################
-       
-             
- # honestamente estou impressionado com a economia de registradores aqui
-.macro checar_colisao_canto(%cx, %cy, %ix, %iy, %out)
-	slt %out, %cx, %ix				# %out = x_canto < x_inimigo	
-	bnez %out, MCC_SEM_COLISAO 			# se %out != 0, nao hah chance de colisao aqui.
-
-	addi %out, %ix, TAMANHO_SPRITE			# %out = x_inimigo + TAMANHO_SPRITE
-	slt %out, %out, %cx				# %out = x_canto > (x_inimigo + TAMANHO_SPRITE)
-	
-	bnez %out, MCC_SEM_COLISAO	 		# se %out != 0, nao hah chance de colisao aqui.
-	
-	# se chegamos ateh aqui, os X do inimigo e do canto bateram. temos que checar o Y agora.
-
-	slt %out, %cy, %iy				# %out = y_canto < y_inimigo
-	
-	bnez %out, MCC_SEM_COLISAO 			# se %out != 0, nao hah chance de colisao aqui.
-	
-	addi %out, %iy, TAMANHO_SPRITE			# %out = y_inimigo + TAMANHO_SPRITE
-	slt %out, %out, %cy				# %out = y_canto > (y_inimigo + TAMANHO_SPRITE)
-	
-	bnez %out, MCC_SEM_COLISAO			 # se %out != 0, nao hah chance de colisao aqui.
-	
-	# se chegamos aqui, houve colisao
-	li %out, 1
-	j MCC_FIM
-	
-	MCC_SEM_COLISAO: # retornar 0
-	li %out, 0
-	
-	MCC_FIM:
-.end_macro
 
 .text
 PROC_CHECAR_COLISOES:
 			addi sp, sp, -4
 			sw ra, (sp)
-
-			
-			
-			# reorganiza os argumentos
-			# a1 = LARGURA_JOGADOR
-			# a2 = ALTURA_JOGADOR
-			mv a2, a1
-			mv a1, a0
 			
 			li a0, 1			# assume-se de partida que o jogador estah vivo (1)
 			
@@ -89,62 +48,72 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 			la t5, INIMIGOS_POSICAO		# carrega a posicao dos inimigos 
 			add t0, t0, t5			# pega inimigos.posicao[i] 
 			
+			# carrega a posicao do inimigo
 			# t5 = x_inimigo
 			# t6 = y_inimigo
 			lh t5, (t0)
 			lh t6, 2(t0)
 			
-			
-			# vamos checar em quais cantos do jogador houve colisao
-			# t1 = x do canto
-			# t2 = y do canto
-			# t5 = x do inimigo
-			# t6 = y do inimigo
-			# a1 = largura do jogador
-			# a2 = altura do jogador
-			
 			# carrega a posicao do jogador
+			# t1 = x do jogador
+			# t2 = y do jogador
 			la t0, POSICAO_JOGADOR
 			lh t1, (t0)
 			lh t2, 2(t0)
-
-P_CC1_CANTO_SUPERIOR_ESQUERDO:
-
-			checar_colisao_canto(t1, t2, t5, t6, t0)
-			beqz t0, P_CC1_CANTO_SUPERIOR_DIREITO
-			# se t0 for 1, houve colisao
-			li a0, 0			# marca que morreu
-			j P_CC1_break			# sai do loop
-
-P_CC1_CANTO_SUPERIOR_DIREITO:
 			
-			add t1, t1, a1			# vai pra direita
-			checar_colisao_canto(t1, t2, t5, t6, t0)
-			beqz t0, P_CC1_CANTO_INFERIOR_DIREITO
-			# se t0 for 1, houve colisao
-			li a0, 0			# marca que morreu
-			j P_CC1_break			# sai do loop
-
-P_CC1_CANTO_INFERIOR_DIREITO:
-
-			add t2, t2, a2			# vai pra baixo
-			checar_colisao_canto(t1, t2, t5, t6, t0)
-			beqz t0, P_CC1_CANTO_INFERIOR_ESQUERDO
-			# se t0 for 1, houve colisao
-			li a0, 0			# marca que morreu
-			j P_CC1_break			# sai do loop
-
-P_CC1_CANTO_INFERIOR_ESQUERDO:
-
-			sub t1, t1, a1			# vai pra esquerda
-			checar_colisao_canto(t1, t2, t5, t6, t0)
-			beqz t0, P_CC1_continue		# termina as checagens para esse inimigo
-			# se t0 for 1, houve colisao
-			li a0, 0			# marca que morreu
-			j P_CC1_break			# sai do loop
+			# carrega a altura e largura do jogador
+			lw a1, ALTURA_JOGADOR
+			lw a2, LARGURA_JOGADOR
+			
+			# vamos checar se a caixa de colisao do jogador e a caixa de colisao do inimigo estao se sobrepondo, utilizando AABB (como no pseudocodigo abaixo)
+			# if (jogador.x < inimigo.x + inimigo.largura &&
+			#     jogador.x + jogador.largura > inimigo.x &&
+			#     jogador.y < inimigo.y + inimigo.altura &&
+			#     jogador.y + jogador.altura > inimigo.y)
+			# {
+			#     HOUVE COLISAO
+			# }
+			# podemos ao contrario checar se qualquer uma das condicoes falhou. Ao falhar de qualquer, damos um continue;.
+			
+			# temos que guardar: 
+			.eqv jogador_x 		t1
+			.eqv jogador_y 		t2
+			.eqv inimigo_x 		t5
+			.eqv inimigo_y 		t6
+#			.eqv inimigo_largura 	TAMANHO_SPRITE	  (nao funciona no FPGRARS)
+#			.eqv inimigo_altura 	TAMANHO_SPRITE    (nao funciona no FPGRARS)  
+			.eqv jogador_largura 	a1
+			.eqv jogador_altura  	a2
+			
+			# if not (jogador.x < inimigo.x + inimigo.largura) NAO HOUVE COLSIAO
+			addi t0, inimigo_x, TAMANHO_SPRITE
+			slt t0, jogador_x, t0
+			beqz t0, P_CC1_continue
+			
+			# if not (jogador.x + jogador.largura > inimigo.x) NAO HOUVE COLISAO
+			add t0, jogador_x, jogador_largura
+			slt t0, inimigo_x, t0
+			beqz t0, P_CC1_continue
+			
+			# if not (jogador.y < inimigo.y + inimigo.altura) NAO HOUVE COLISAO
+			addi t0, inimigo_y, TAMANHO_SPRITE
+			slt t0, jogador_y, t0
+			beqz t0, P_CC1_continue
+			
+			# if not (jogador.y + jogador.altura > inimigo.y) NAO HOUVE COLISAO
+			add t0, jogador_y, jogador_altura
+			slt t0, inimigo_y, t0
+			beqz t0, P_CC1_continue
+			
+			# se chegamos aqui, entao nenhuma condicao falhou
+			# logo, houve colisao
+			
+			# marca que morreu e sai do loop
+			li a0, 0
+			j P_CC1_break
 
 P_CC1_continue:	
-P_CC1_LOOP_CONT:	addi t3, t3, 1			# i++
+			addi t3, t3, 1			# i++
 			blt t3, t4, P_CC1_LOOP_INIMIGOS	# if (i <= qtd_de_inimigos) break;
 			
 P_CC1_break:		##### fim do loop
