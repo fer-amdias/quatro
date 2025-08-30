@@ -7,3 +7,6 @@ RARS
 
 # ignora versões buildadas usando build.c
 v* 
+
+# ignora as anotacoes de algoritmo
+Algoritmos
