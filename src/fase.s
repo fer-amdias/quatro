@@ -8,7 +8,6 @@
 	# se hah pergaminho no inicio
 	li t0, %mostrar_pergaminho_no_inicio
 	sw t0, PERGAMINHO_NO_INICIO, t1
-	print_int_ln(t0)
 	
 	la a0, %arquivo_mapa
 	la a1, %musica_de_fundo
@@ -194,7 +193,6 @@ P_F1_LOOP:
 		bge a1, t0, P_F1_MORTE		# jogador esteve na explosao
 		
 		lw t0, PERGAMINHO_NO_INICIO
-		print_hex_ln(t0)
 		bnez t0, P_F1_MOSTRAR_TUTORIAL	# se pergaminho_no_inicio = 1, mostra o pergaminho
 		
 		li t0, SAIDA
