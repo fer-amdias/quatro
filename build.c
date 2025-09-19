@@ -108,7 +108,7 @@ void build(const char * versao){
     remove(redundantfile);
 
     // deleta os FPGRARS redundantes (windows)
-    snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-x86_64-unknown-linux-gnu--8-bit-displa", pasta);
+    snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-x86_64-unknown-linux-gnu--8-bit-display", pasta);
     remove(redundantfile);
     snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-x86_64-apple-darwin--8-bit-display", pasta);
     remove(redundantfile);
