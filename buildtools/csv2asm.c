@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.0.0 - 26 setembro 2025"
+#define VERSAO "1.1.0 - 26 setembro 2025"
 
 // TODO: pular leading spaces no comeco
 
@@ -52,7 +52,7 @@ str_block: .ascii "QUATRO\0Jogar\0Configuracoes\0Creditos\0Sair\0Idioma\0Volume\
 */
 
 void ler_entrada_csv(FILE *fd, char *buffer, size_t buflen);
-size_t calcula_offsets(FILE* fd, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]);
+size_t calcula_offsets(char * strblock, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]);
 void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]);
 int conta_linhas(FILE * fd);
 int conta_linguas(FILE * fd);
@@ -106,16 +106,22 @@ void ler_entrada_csv(FILE *fd, char *buffer, size_t buflen) {
     buffer[i] = '\0';
 }
 
-size_t calcula_offsets2(char * strblock, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]){
+size_t calcula_offsets(char * strblock, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]){
         unsigned int pos_strblock = 0;
         unsigned int contador_de_offset = 0;
         offsets[0][0] = 0;              // eh a primeira posicao
 
         for (int j = 0; j < nlinguas; j++){ 
                 for (int i = 0; i < nlinhas; i++){
-
                         if (i == 0 && j == 0) continue;
                         while(1){
+
+                                if (strblock[pos_strblock] == 0){
+                                        // fizemos besteira
+                                        // sai
+                                        offsets[i][j] = contador_de_offset;
+                                        return 0;
+                                }
 
                                 // nao devemos contar backspaces, pois elas servem pra escapar no codigo
                                 // ex.: '\n' eh um caractere soh.
@@ -125,8 +131,17 @@ size_t calcula_offsets2(char * strblock, int nlinhas, int nlinguas, unsigned int
                                         continue;
                                 }
 
-                                
-                                if (!(strblock[pos_strblock+1]) == '0') continue;
+                                if(strblock[pos_strblock+1] == '\\'){
+                                        // pula o contra-barra
+                                        pos_strblock+=2;
+                                        contador_de_offset++;
+                                        continue;
+                                }
+
+                                if (strblock[pos_strblock+1] != '0'){
+                                        pos_strblock++;
+                                        continue;
+                                };
 
                                 // se chegamos ateh aqui, entao encontramos um "\0"
 
@@ -141,67 +156,6 @@ size_t calcula_offsets2(char * strblock, int nlinhas, int nlinguas, unsigned int
         return contador_de_offset;      // o offset do ultimo elemento da matriz
 }
 
-size_t calcula_offsets(FILE* fd, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]){
-        int caractere_atual;
-        int linha_atual;
-        
-        char buffer[1000];
-        unsigned int lang_offset;
-        offsets[0][0] = 0;
-
-        // coloca os offsets por lingua
-        for (int i = 0; i < nlinguas; i++){
-                rewind(fd);
-                linha_atual = 0;
-
-                // TEMOS QUE PULAR A PRIMEIRA LINHA 
-
-                while(1){ if (fgetc(fd) == '\n') break; }
-
-                // calcula o offset da linha 1 como o tamanho da entrada na linha 0 (+ null terminator)
-                for(int j = 0; j <= i+1; j++){ // pega a entrada da coluna da lingua
-                        ler_entrada_csv(fd, buffer, sizeof(buffer));
-                        int delim = fgetc(fd);
-
-                        if (delim == '\n') ungetc('\n', fd); // se terminar com enter, bota ele de volta no lugar
-                        // eh necessario fazer isso para sabermos quando a linha acaba
-                }
-                offsets[1][i] = offsets[0][i] + strlen(buffer) + 1;
-
-                while(linha_atual < nlinhas){
-                        caractere_atual = fgetc(fd);
-                        if (caractere_atual == '\n'){
-                                linha_atual++;
-                                for(int j = 0; j <= i+1; j++){ // pega a entrada da coluna da lingua
-                                        ler_entrada_csv(fd, buffer, sizeof(buffer));
-                                        int delim = fgetc(fd);
-
-                                        if (delim == '\n') ungetc('\n', fd); // se terminar com enter, bota ele de volta no lugar
-                                        // eh necessario fazer isso para sabermos quando a linha acaba
-                                }
-
-                                // adiciona o tamanho da entrada ao offset da PROXIMA LINHA
-                                if (linha_atual == nlinhas){
-                                        // se estamos na ultima linha, adiciona o tamanho da entrada ao offset 
-                                        // da primeira linha da PROXIMA lingua 
-                                        if (i < nlinguas-1)
-                                                offsets[0][i+1] = offsets[linha_atual][i] + strlen(buffer);
-                                } else
-                                        offsets[linha_atual+1][i] = offsets[linha_atual][i] + strlen(buffer);
-
-                        } else if (caractere_atual == -1) {
-                                if (ferror(fd)) {
-                                        printf("Erro na leitura do arquivo.\n");
-                                        exit(1);
-                                }
-                                break;
-                        }
-                }
-        }
-
-        return linha_atual; // a ultima linha registrada
-}
-
 void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsigned int offsets[nlinhas][nlinguas]){
         rewind(entrada);
         int c;
@@ -211,13 +165,18 @@ void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsig
                 
                 // pega a tag (primeira coluna)
                 ler_entrada_csv(entrada, buffer, 1000);
+
+                // adiciona : no final da string
+                int buflen = strlen(buffer);
+                buffer[buflen] = ':' ;
+                buffer[buflen+1] = '\0';
                 
                 // depois pula uma linha (joga fora os caracteres ateh ler uma quebra de linha)
                 while ((c = fgetc(entrada)) != -1 && c != '\n');
                 
-                fprintf(saida, "%s: .word ", buffer);
+                fprintf(saida, "%-40s .word ", buffer);
                 for (int j = 0; j < nlinguas; j++){
-                      fprintf(saida, "%u, ", offsets[i][j]);  
+                      fprintf(saida, "%8u, ", offsets[i][j]);  
                 }
                 fputc('\n', saida);
         }
@@ -391,12 +350,11 @@ int main(int argc, char *argv[]){
         char linguas[MAX_LINGUAS][6];
         nlinhas = conta_linhas(entrada);
         nlinguas = conta_linguas(entrada);
-        unsigned int offsets[nlinhas][nlinguas];
 
         preenche_linguas(entrada, linguas);
-        // calcula_offsets(entrada, nlinhas, nlinguas, offsets);
         char * strblock = cria_strblock(entrada, nlinhas, nlinguas);
-        calcula_offsets2(strblock, nlinhas, nlinguas, offsets);
+
+        unsigned int offsets[nlinhas][nlinguas];        calcula_offsets(strblock, nlinhas, nlinguas, offsets);
 
         for (int i = 0; i < nlinguas; i++)
                 fprintf(saida, ".eqv %s %d\n", linguas[i], i);
