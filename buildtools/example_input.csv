@@ -1,0 +1,7 @@
+tags,PT-BR,EN-US,DE-DE,ELFNT
+lang_name,Portugues Brasileiro,English (US),Deutsch (DE),Elefante
+example,"Bom dia, senhor.","Good morning, sir.","Guten morgen, Herr.","Um elefante incomoda muita gente,"
+ex2,exemplo,example,Beispiel,"Dois elefantes\n- incomodam\n- incomodam\nmuito mais!"
+exit,sair,exit,beenden,"Tres elefantes incomodam muita gente,"
+teste,12345,67890,ABCDE,FGHIJ
+delim,fim_PT-BR,fim_EN-US,fim_DE-DE,fim_ELFNT
