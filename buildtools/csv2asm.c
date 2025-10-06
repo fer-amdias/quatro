@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.2.0 - 05 outubro 2025"
+#define VERSAO "1.3.0 - 06 outubro 2025"
 
 // TODO: pular leading spaces no comeco
 
@@ -171,9 +171,16 @@ void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsig
                 int buflen = strlen(buffer);
                 buffer[buflen] = ':' ;
                 buffer[buflen+1] = '\0';
+
+                //
+                int aspas = 0;
                 
                 // depois pula uma linha (joga fora os caracteres ateh ler uma quebra de linha)
-                while ((c = fgetc(entrada)) != -1 && c != '\n');
+                do{
+                        c = fgetc(entrada);
+                        if (c == '\"') aspas = !aspas;
+
+                }while(c != -1 && (c != '\n' || aspas));
                 
                 fprintf(saida, "%-40s .word ", buffer);
                 for (int j = 0; j < nlinguas; j++){
@@ -192,9 +199,14 @@ int conta_linhas(FILE * fd){
 
         linhas++; // se o arquivo existe, hah pelo menos uma linha
 
+        int aspas = 0;  // precisamos ignorar barra Ns dentro de aspas quando estivermos contando as linhas!
+
         do{
                 ch = fgetc(fd);
-                if(ch == '\n')
+                if (ch == '\"'){
+                        aspas = !aspas;  //inverte aspas
+                }
+                if(ch == '\n' && !aspas)
                         linhas++;
         }while(ch != -1);
 
@@ -256,6 +268,8 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
         int linha_atual, caractere_atual;
         size_t strblock_idx_atual = 0;
 
+        int aspas = 0;
+
         // coloca os offsets por lingua
         for (int i = 0; i < nlinguas; i++){
                 rewind(fd);
@@ -296,7 +310,11 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
 
                 while(linha_atual < nlinhas){
                         caractere_atual = fgetc(fd);
-                        if (caractere_atual == '\n'){
+
+                        if (caractere_atual == '\"')
+                                aspas = !aspas;
+
+                        if (caractere_atual == '\n' && !aspas){
                                 linha_atual++;
                                 for(int j = 0; j <= i+1; j++){ // pega a entrada da coluna da lingua
                                         ler_entrada_csv(fd, buffer, sizeof(buffer));
@@ -311,9 +329,19 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                                 int j;
                                 for (j = 0; buffer[j] != '\0'; j++){
                                         // escapa caracteres especiais
-                                        if (buffer[j] == '\"' || buffer[j] == '\''){
+                                        if (buffer[j] == '\"' || buffer[j] == '\'' || 
+                                        (buffer[j] == '\\' && buffer[j+1] != 'n')){
                                                 strblock[strblock_idx_atual] = '\\';
                                                 strblock_idx_atual++;
+                                        }
+
+                                        // transcreve corretamente quebras de linha
+                                        if (buffer[j] == '\n'){
+                                                strblock[strblock_idx_atual] = '\\';
+                                                strblock_idx_atual++;
+                                                strblock[strblock_idx_atual] == 'n';
+                                                strblock_idx_atual++;
+                                                continue;
                                         }
 
                                         strblock[strblock_idx_atual] = buffer[j];
