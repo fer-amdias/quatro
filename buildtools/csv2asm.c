@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.1.0 - 26 setembro 2025"
+#define VERSAO "1.2.0 - 05 outubro 2025"
 
 // TODO: pular leading spaces no comeco
 
@@ -47,7 +47,8 @@ settings_option_2:      48,   [en_offset]+43,   [de_offset]+52,   ...
 
 # en_offset e de_offset sao meta-variables. devem ser substituidas pelos seus valores em tempo de compilacao.
 
-str_block: .ascii "QUATRO\0Jogar\0Configuracoes\0Creditos\0Sair\0Idioma\0Volume\0[...]QUATRO\0Play\0Settings\0[etc]"
+str_block: .asciz "QUATRO" "Jogar" "Configuracoes" "Creditos" "Sair" "Idioma" "Volume" "[...]QUATRO" "Play" "Settings" "[etc]"
+# a logica de impressao foi alterada, pois o FPGRARS, por algum motivo, nao reconherece '\0'. Substitui o bloco continuo por null-terminated strings (asciz), resolvendo o problema.
 
 */
 
@@ -123,6 +124,13 @@ size_t calcula_offsets(char * strblock, int nlinhas, int nlinguas, unsigned int 
                                         return 0;
                                 }
 
+                                // se encontramos o final de uma null-terminated string:
+                                if (strblock[pos_strblock-1] != '\\' && strblock[pos_strblock] == '\"' && strblock[pos_strblock+1] == ' '){
+                                        pos_strblock+=3;
+                                        offsets[i][j] = ++contador_de_offset;
+                                        break;  // vai pro proximo offset
+                                }   
+
                                 // nao devemos contar backspaces, pois elas servem pra escapar no codigo
                                 // ex.: '\n' eh um caractere soh.
                                 if (strblock[pos_strblock] != '\\'){
@@ -141,14 +149,7 @@ size_t calcula_offsets(char * strblock, int nlinhas, int nlinguas, unsigned int 
                                 if (strblock[pos_strblock+1] != '0'){
                                         pos_strblock++;
                                         continue;
-                                };
-
-                                // se chegamos ateh aqui, entao encontramos um "\0"
-
-                                // pula o 0
-                                pos_strblock+=2;
-                                offsets[i][j] = ++contador_de_offset;
-                                break;  // vai pro proximo offset
+                                };                             
                         }
                 }
         }
@@ -285,10 +286,12 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                         strblock_idx_atual++;
                 }
 
-                // adiciona um \0 no final
-                strblock[strblock_idx_atual] = '\\';
+                // fecha a null-terminated string e começa a proxima
+                strblock[strblock_idx_atual] = '\"';
                 strblock_idx_atual++;
-                strblock[strblock_idx_atual] = '0';
+                strblock[strblock_idx_atual] = ' ';
+                strblock_idx_atual++;
+                strblock[strblock_idx_atual] = '\"';
                 strblock_idx_atual++;
 
                 while(linha_atual < nlinhas){
@@ -317,10 +320,12 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                                         strblock_idx_atual++;
                                 }
 
-                                // adiciona um \0 no final
-                                strblock[strblock_idx_atual] = '\\';
+                                // fecha a null-terminated string e começa a proxima
+                                strblock[strblock_idx_atual] = '\"';
                                 strblock_idx_atual++;
-                                strblock[strblock_idx_atual] = '0';
+                                strblock[strblock_idx_atual] = ' ';
+                                strblock_idx_atual++;
+                                strblock[strblock_idx_atual] = '\"';
                                 strblock_idx_atual++;
 
                         } else if (caractere_atual == -1) {
@@ -368,7 +373,7 @@ int main(int argc, char *argv[]){
         printa_offsets(entrada, saida, nlinhas, nlinguas, offsets);
         fprintf(saida, "\n");
 
-        fprintf(saida, "strblock: .ascii \"%s\" ", strblock);
+        fprintf(saida, "strblock: .asciz \"%s\" ", strblock);
         fprintf(saida, "\n\n");
         fprintf(saida, "# VERSAO DA BUILDTOOL CSV2ASM: %s\n", VERSAO);
 

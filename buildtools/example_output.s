@@ -18,6 +18,6 @@ exit:                                    .word       52,      119,      188,    
 teste:                                   .word       57,      124,      196,      350, 
 delim:                                   .word       63,      130,      202,      356, 
 
-strblock: .ascii "PT-BR\0Portugues Brasileiro\0Bom dia, senhor.\0exemplo\0sair\012345\0fim_PT-BR\0EN-US\0English (US)\0Good morning, sir.\0example\0exit\067890\0fim_EN-US\0DE-DE\0Deutsch (DE)\0Guten morgen, Herr.\0Beispiel\0beenden\0ABCDE\0fim_DE-DE\0ELFNT\0Elefante\0Um elefante incomoda muita gente,\0Dois elefantes\n- incomodam\n- incomodam\nmuito mais!\0Tres elefantes incomodam muita gente,\0FGHIJ\0fim_ELFNT\0" 
+strblock: .asciz "PT-BR" "Portugues Brasileiro" "Bom dia, senhor." "exemplo" "sair" "12345" "fim_PT-BR" "EN-US" "English (US)" "Good morning, sir." "example" "exit" "67890" "fim_EN-US" "DE-DE" "Deutsch (DE)" "Guten morgen, Herr." "Beispiel" "beenden" "ABCDE" "fim_DE-DE" "ELFNT" "Elefante" "Um elefante incomoda muita gente," "Dois elefantes\n- incomodam\n- incomodam\nmuito mais!" "Tres elefantes incomodam muita gente," "FGHIJ" "fim_ELFNT" "" 
 
-# VERSAO DA BUILDTOOL CSV2ASM: 1.0.1 - 26 setembro 2025
+# VERSAO DA BUILDTOOL CSV2ASM: 1.2.0 - 05 outubro 2025
