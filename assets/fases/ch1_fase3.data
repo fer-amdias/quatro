@@ -8,5 +8,3 @@ ch1_fase3: .word 9, 11
 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 
 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch1_fase3.scroll: .asciz "\nAmada, algo terrivel nos\nacometeu hoje. Inimigos de\nMarduk tentaram invadir nosso\ntemplo. Conseguimos nos\ndefender, gracas ahs statuas\nsentinelas que conseguimos\nmontar. Elas devem patrulhar\no tempo sozinhas agora.\n\nApesar disso, ainda estamos\nsitiados! Nao conseguimos sair!\nComo vou te mandar tabuas? \n\nPressione ENTER para fechar."

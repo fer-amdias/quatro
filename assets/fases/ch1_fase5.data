@@ -8,5 +8,3 @@ ch1_fase5: .word 9, 13
 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
 1, 4, 0, 0, 0, 0, 7, 0, 0, 0, 0, 4, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch1_fase5.scroll: .asciz "Voce encontrou o edito da\nimortalidade.\n\nInfelizmente, o jogo ainda\nnao estah completo, entao\nnao hah progressao a partir\ndaqui. Efetivamente, voce\ncompletou o jogo!\n\nMas nao se esqueca de checar\nhttps://github.com/fer-amdias/quatro\npara ver se ha alguma nova\natualizacao.\n\n\nPressione ENTER para fechar."

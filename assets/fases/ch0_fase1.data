@@ -8,5 +8,3 @@ ch0_fase1: .word 9, 9
 1, 0, 1, 0, 3, 0, 0, 0, 1, 
 1, 0, 0, 0, 0, 0, 0, 0, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch0_fase1.scroll: .asciz "Bem vindo ao tutorial!\nMOVA-SE utilizando WASD\n\nW - para cima\nA - para a esquerda\nS - para baixo\nD - para a direita\n\nVah ateh a textura de fim de\nfase para termina-la.\n\nPressione BACKSPACE para\nvoltar ao menu.\n\nPressione ENTER para fechar."

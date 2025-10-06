@@ -6,5 +6,3 @@ ch0_fase7: .word 7, 7
 1, 4, 4, 4, 4, 4, 1, 
 1, 2, 0, 0, 0, 0, 1, 
 1, 1, 1, 1, 1, 1, 1, 
-
-ch0_fase7.scroll: .asciz "Algumas fases terao blocos\nespeciais (como esse 'Z').\n\nEle tem funcoes e aparencias\ndiferentes dependendo do \ncapitulo, mas aqui ele nao \nfaz nada.\n\nPode o ignorar com seguranca.\n\n\n\n\n\nPressione ENTER para fechar."

@@ -8,5 +8,3 @@ ch1_fase2: .word 9, 11
 1, 0, 1, 0, 1, 8, 1, 0, 1, 0, 1, 
 1, 0, 0, 11, 0, 3, 0, 11, 0, 0, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch1_fase2.scroll: .asciz "\nAmada, estou aqui para te \ndizer que o templo estah\npronto.\n\nHamurabi jah estah conosco.\nEm breve vamos descobrir\ncomo o manter vivo por\ntoda a eternidade. \n\nMe manterei em contato por\nessas tabuas.\n\n\nPressione ENTER para fechar."

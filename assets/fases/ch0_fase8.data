@@ -8,5 +8,3 @@ ch0_fase8: .word 9, 13
 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
 1, 4, 0, 0, 0, 0, 7, 0, 0, 0, 0, 4, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch0_fase8.scroll: .asciz "As fases de final de capitulo\nvao ter um ELEVADOR (que nem\nesse 'E' ahi). Pegue-o para\npassar pro proximo capitulo\n\n(Isso irah encerrar o\ntutorial!).\n\n\n\n\n\n\n\nPressione ENTER para fechar."

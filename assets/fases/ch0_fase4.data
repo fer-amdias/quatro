@@ -8,5 +8,3 @@ ch0_fase4: .word 9, 9
 1, 0, 1, 0, 1, 0, 1, 0, 1, 
 1, 0, 0, 0, 2, 0, 0, 0, 1, 
 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-
-ch0_fase4.scroll: .asciz "Nessa fase existem dois \npowerups escondidos debaixo\nde paredes quebraveis.\nPegue-os, e os terah pelo\nresto do capitulo. \n\nUm deles aumenta\npra 4 o limite de bombas\nque voce pode botar, o\noutro aumenta a area de\nexplosao da bomba. \n\nPS: explosoes atravessam paredes\n\nPressione ENTER para fechar."
