@@ -1,11 +1,14 @@
 #################################################################
 # QUATRO	 					       	#
 # Um jogo feito como projeto de primeiro semestre para o 	#
-# componente Introdu��o a Sistemas Computacionais na 		#
-# Universidade de Bras�lia.					#
+# componente Introducao a Sistemas Computacionais na 		#
+# Universidade de Brasilia.					#
 #								#
-# Escrito no primeiro semestre de 2025				#
-# Apresentado em 24/07/2025					#
+# CH 1 e 2 escritos no primeiro semestre de 2025		#
+# e presentados em 24/07/2025.					#
+# 								#
+# O jogo é agora mantido como prática de assembly para a ISA	#
+# RV32IM.							#
 # 							     	#
 # v0.1								#
 #								#
@@ -17,7 +20,9 @@
 #					#
 # Nao rode esse programa usando o RARS.	#
 # Ele nem vai compilar. Utilize, em	#
-# vez disso, a versao 1.13.0 8 bit.	#	https://github.com/LeoRiether/FPGRARS/releases/tag/v1.13.0
+# vez disso, a versao 1.13.0 8 bit do	#	https://github.com/LeoRiether/FPGRARS/releases/tag/v1.13.0
+# emulador FPGRARS. ele jah vem 	#
+# incluido no programa.			#
 # 					#
 #########################################
 
@@ -25,6 +30,8 @@
 .include "memoria.s"
 .include "../assets/locale.s"
 
+# alguem (eu) podia fazer um codigo que desse autoinclude nos trem tudo
+# senao, tem que atualizar aqui manualmente a inclusao de qqr arquivo em assets
 .data
 .include "../assets/logoquatro.data"
 .include "../assets/texturas/ch0.data"
