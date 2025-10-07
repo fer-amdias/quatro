@@ -10,7 +10,7 @@
 # O jogo é agora mantido como prática de assembly para a ISA	#
 # RV32IM.							#
 # 							     	#
-# v0.1								#
+# v0.2.0							#
 #								#
 # Fernando de Almeida Mendes Dias				#
 #################################################################
