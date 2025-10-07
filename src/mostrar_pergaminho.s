@@ -56,6 +56,14 @@ P_MP1_CHECAR_COOLDOWN:
 		  	beq t2, t0, P_MP1_DESTRUIR_PERGAMINHO
 		  	li t0, 8		# backspace
 		  	bne t2, t0, P_MP1_CONT  # continua se nao for backspace
+
+			# guarda que o pergaminho NAO ESTAH MAIS NA TELA antes de ir pro menu :)
+			la t0, PERGAMINHO_NA_TELA
+			sb x0, (t0)
+
+			# despausa o jogo. muito importante tbm. senao o jogo congela eternamente.
+			la t0, JOGO_PAUSADO				
+			sb x0, (t0)					
 		  	j IR_MENU
 		  	 	
 P_MP1_DESTRUIR_PERGAMINHO:  	
