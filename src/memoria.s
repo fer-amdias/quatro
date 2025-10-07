@@ -48,8 +48,6 @@
 .eqv COR_TRANSPARENTE 199 
 
 .data
-junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
-
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 MODO_SAIDA_LIVRE:       .word 0
