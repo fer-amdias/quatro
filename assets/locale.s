@@ -1,0 +1,77 @@
+.eqv PT_BR 0
+.eqv EN_US 1
+
+
+.data
+
+qtd_de_linguas: .byte 2
+lingua_atual:   .byte PT_BR
+
+offset: 
+tags:                                    .word        0,     3782, 
+MENU_OPCAO1:                             .word        6,     3788, 
+MENU_OPCAO2:                             .word       15,     3796, 
+MENU_OPCAO3:                             .word       32,     3808, 
+MENU_OPCAO4:                             .word       44,     3819, 
+JOGAR_TITULO:                            .word       52,     3827, 
+JOGAR_OPCAO0:                            .word       74,     3843, 
+JOGAR_OPCAO1:                            .word      100,     3869, 
+JOGAR_OPCAO2:                            .word      123,     3894, 
+JOGAR_OPCAO3:                            .word      153,     3928, 
+JOGAR_OPCAO4:                            .word      183,     3962, 
+JOGAR_OPCAO5:                            .word      213,     3996, 
+CREDITOS_1:                              .word      223,     4006, 
+CREDITOS_2:                              .word      254,     4030, 
+CREDITOS_3:                              .word      269,     4046, 
+CREDITOS_FERNANDO:                       .word      296,     4065, 
+CREDITOS_AS11:                           .word      328,     4097, 
+CREDITOS_AS12:                           .word      353,     4117, 
+CREDITOS_AS13:                           .word      382,     4140, 
+CREDITOS_AS21:                           .word      389,     4167, 
+CREDITOS_AS22:                           .word      420,     4191, 
+CREDITOS_AS23:                           .word      445,     4215, 
+CREDITOS_AS31:                           .word      464,     4240, 
+CREDITOS_AS32:                           .word      494,     4266, 
+CREDITOS_AS33:                           .word      518,     4293, 
+CREDITOS_AS34:                           .word      543,     4318, 
+CREDITOS_FIM1:                           .word      554,     4335, 
+CREDITOS_FIM2:                           .word      568,     4348, 
+CREDITOS_FIM3:                           .word      584,     4367, 
+CREDITOS_FIM4:                           .word      596,     4379, 
+CREDITOS_FIM5:                           .word      612,     4396, 
+CREDITOS_FIM6:                           .word      657,     4442, 
+CREDITOS_FIM7:                           .word      690,     4473, 
+CREDITOS_FIM0:                           .word      712,     4509, 
+CREDITOS_FIM8:                           .word      730,     4526, 
+CREDITOS_FIM9:                           .word      769,     4548, 
+CREDITOS_FIM10:                          .word      803,     4581, 
+CREDITOS_FIM11:                          .word      824,     4605, 
+CREDITOS_FIM12:                          .word      838,     4620, 
+CREDITOS_FIM13:                          .word      879,     4656, 
+CREDITOS_VOLTAR:                         .word      891,     4668, 
+CONFIG_VOLTAR:                           .word      932,     4703, 
+CONFIG_IDIOMA:                           .word      973,     4738, 
+CONFIG_PT:                               .word      991,     4755, 
+CONFIG_EN:                               .word     1015,     4779, 
+CODIGO_N_IMPLEMENTADO:                   .word     1031,     4795, 
+HUD_FASE_ATUAL:                          .word     1049,     4812, 
+HUD_INIMIGOS_RESTANTES:                  .word     1062,     4825, 
+HUD_VIDAS_RESTANTES:                     .word     1075,     4838, 
+ch0_fase1.scroll:                        .word     1084,     4847, 
+ch0_fase2.scroll:                        .word     1294,     5016, 
+ch0_fase3.scroll:                        .word     1458,     5166, 
+ch0_fase4.scroll:                        .word     1640,     5351, 
+ch0_fase5.scroll:                        .word     1906,     5614, 
+ch0_fase6.scroll:                        .word     2163,     5861, 
+ch0_fase7.scroll:                        .word     2390,     6065, 
+ch0_fase8.scroll:                        .word     2569,     6245, 
+ch1_fase1.scroll:                        .word     2719,     6385, 
+ch1_fase2.scroll:                        .word     2742,     6400, 
+ch1_fase3.scroll:                        .word     2941,     6600, 
+ch1_fase4.scroll:                        .word     3251,     6914, 
+ch1_fase5.scroll:                        .word     3469,     7134, 
+SCROLL_ENTER:                            .word     3753,     7402, 
+
+strblock: .asciz "PT_BR" "1. JOGAR" "2. CONFIGURACOES" "3. CREDITOS" "4. SAIR" "Selecione o capitulo:" "0. Tutorial (recomendado)" "1. Capitulo 1 (inicio)" "2. Capitulo 2 (em construcao)" "3. Capitulo 3 (em construcao)" "4. Capitulo 4 (em construcao)" "9. voltar" "Desenvolvimento e Programacao:" "Arte e Design:" "Agradecimentos Especiais: " "Fernando De Almeida Mendes Dias" "- Joialoxi, pelas nossas" "deliberacoes que desatolaram" "o jogo" "- Minha mae, que pacientemente" "assistiu eu mostrar como" "tava a cada 2 dias" "- Felipe Fontela, pelo apoio," "pelas conversas e pelas" "ideias que deram caminho" "ao projeto" " <<< fim >>> " " pode ir embora" "..........." "nao vai embora?" "deve ter mais credito em algum lugar aqui..." "Inspiracao: Bomberman para o NES" "Feito como projeto de" "primeiro semestre" "do componente de Introducao a Sistemas" "Computacionais na Universidade de" "Brasilia. 24/07/2025" "agora pode ir" "...era so isso mesmo. nao tem mais nada." "<<< FIM >>>" "Pressione 4 pra voltar ao menu principal" "Pressione 0 pra voltar ao menu principal" "Escolha o idioma:" "1. Portugues Brasileiro" "2. English (US)" "Nao implementado." "CH C, FASE F" "INIMIGOS:  X" "VIDAS: X" "Bem vindo ao tutorial!\nMOVA-SE utilizando WASD\n\nW - para cima\nA - para a esquerda\nS - para baixo\nD - para a direita\n\nVah ateh a textura de fim de\nfase para termina-la.\n\nPressione BACKSPACE para\nvoltar ao menu." "Para colocar uma bomba,\naperte ENTER ou ESPACO.\nParedes quebraveis nao\nsobreviverao ah explosao.\n\nApos colocar a bomba, se\nafaste para nao acabar\nexplodindo junto." "Fases podem conter INIMIGOS.\nExploda-os para poder passar\nde fase. Cuidado: Se tocar\nneles, voce morrerah.\n\nE lembre-se que voce soh\npode colocar uma bomba \npor vez por enquanto. ;)" "Nessa fase existem dois \npowerups escondidos debaixo\nde paredes quebraveis.\nPegue-os, e os terah pelo\nresto do capitulo. \n\nUm deles aumenta\npra 4 o limite de bombas\nque voce pode botar, o\noutro aumenta a area de\nexplosao da bomba. \n\nPS: explosoes atravessam paredes" "Isso eh um pergaminho. A \npartir de agora, esse serah o \nmeio por qual informacao serah\nmostrada. O pergaminho serah\ndestruido depois de lido.\n\nOutra coisa: a partir de\nagora, a saida ficarah\nescondida atras de paredes\nquebraveis. Consegue achar\nela? (sim)" "Fases podem ter tamanhos\ndiferentes, mas elas nunca\nvao sair da tela.\n\nElas tambem podem ter limite\nde tempo. Termine a fase antes\ndele acabar ou perca uma vida.\n\nNao se preocupe: o tempo fica\npausado dentro de um \npergaminho." "Algumas fases terao blocos\nespeciais (como esse 'Z').\n\nEle tem funcoes e aparencias\ndiferentes dependendo do \ncapitulo, mas aqui ele nao \nfaz nada.\n\nPode o ignorar com seguranca." "As fases de final de capitulo\nvao ter um ELEVADOR (que nem\nesse 'E' ahi). Pegue-o para\npassar pro proximo capitulo\n\n(Isso irah encerrar o\ntutorial!)." "a vida eh uma tristeza" "Amada, estou aqui para te \ndizer que o templo estah\npronto.\n\nHamurabi jah estah conosco.\nEm breve vamos descobrir\ncomo o manter vivo por\ntoda a eternidade. \n\nMe manterei em contato por\nessas tabuas." "Amada, algo terrivel nos\nacometeu hoje. Inimigos de\nMarduk tentaram invadir nosso\ntemplo. Conseguimos nos\ndefender, gracas ahs estatuas\nsentinelas que conseguimos\nmontar. Elas devem patrulhar\no tempo sozinhas agora.\n\nApesar disso, ainda estamos\nsitiados! Nao conseguimos sair!\nComo vou te mandar essas\ntabuas?" "Amada,\n\nEstamos sem comida e agua.\nO Rei nao vai sobreviver por\nmuito mais tempo. \n\nTeremos que deixar os\nresultados das nossas\npesquisas aqui, inuteis.\nO que descobrimos nao eh\no suficiente.\n\nMe perdoe por te deixar." "Voce encontrou o edito da\nimortalidade.\n\nInfelizmente, o jogo ainda\nnao estah completo, entao\nnao hah progressao a partir\ndaqui. Efetivamente, voce\ncompletou o jogo!\n\nMas nao se esqueca de checar\n     https://github.com/\n     fer-amdias/quatro\npara ver se ha alguma nova\natualizacao." "Pressione ENTER para fechar." "EN_US" "1. PLAY" "2. SETTINGS" "3. CREDITS" "4. EXIT" "Select chapter:" "0. Tutorial (recommended)" "1. Chapter 1 (beginning)" "2. Chapter 2 (under construction)" "3. Chapter 3 (under construction)" "4. Chapter 4 (under construction)" "9. return" "Coding and Development:" "Art and Design:" "Special Thanks to:" "Fernando de Almeida Mendes Dias" "- Joialoxi, for our" "deliberations that got" "the project off the ground" "- My mom, who patiently" "watched me show her how" "this was, every two days" "- Felipe Fontela, for the" "support, talks and for the" "ideas that paved the way" "for this project" " <<< end >>>" " you may leave now" "..........." "ya aint leaving?" "there oughta be more credits sumwhere here..." "Inspiration: Bomberman for NES" "Created as a first semester project" "of the component" "Introducao a Sistemas" "Computacionais in the University" "of Brasilia. 2025/07/24" "now you can go" "...that was it. theres nothing left" "<<< END >>>" "Press 4 to return to the main menu" "Press 0 to return to the main menu" "Choose language:" "1. Portugues Brasileiro" "2. English (US)" "Not implemented." "CH C,  LVL F" "ENEMIES:   X" "LEFT:  X" "Welcome to the tutorial!\nMOVE using W A S D\n\nW - up\nA - left\nS - down\nD - right\n\nGo to the exit (saida)\nto go to the next level.\n\nPress BACKSPACE to return\nto the Menu." "To place a bomb, press\nENTER or SPACE.\nBreakable walls won't\nsurvive the explosion.\n\nAfter laying a bomb,\ndont stay close so you\ndont go out with it." "Levels may contain ENEMIES.\nExplode them to be able to\npass to the next level.\nBeware: if you touch them,\nyou die.\n\nAnd keep in mind that you may\nonly lay one bomb at a time\nfor now ;)" "In this level there are\ntwo powerups hidden below\nbreakable walls. Take them,\nand you'll have them for the\nrest of the chapter.\n\nOne of them increases to 4 the\nbomb laying limit, whilst \nthe other increases the\nexplosion area.\n\nP.S.: explosions go through \nwalls" "This is a scroll. From now\non, this will be the way\ninformation will be shown\nto you inside the levels.\nThe scroll will be destroyed\nonce read.\n\nAlso: From this moment forth,\nthe exit will be hidden beneath\nbreakable walls. Can you find\nit? (yes)" "Levels may have different\nsizes, but they'll never\ngo off-screen.\n\nThey may also have a time\nlimit. Complete the level\nbefore time runs out or lose\na life.\n\nDon't worry. Time is paused\nwhile in a scroll." "Some levels will have special\ncharacters (Like this 'Z')\n\nIt may have different functions\nand appearanes depending on\nthe chapter, but here its\nuseless.\n\nYou can safely ignore it." "The last level of a chapter\nwill have an ELEVATOR (like\nthis 'E' south). Take it \nto go to the next chapter.\n\n(This will end the tutorial!)" "life is misery" "Beloved, I am here to tell you\nthat the temple is ready.\n\nHammurabi is already here\nwith us. Soon we'll discover\nhow to keep him alive for\nall eternity.\n\nI'll keep in touch through\nthese clay tablets" "Beloved, something awful\nhas befallen us today.\nEnemies of Marduk have tried\nto invade our temple. We \nmanaged to defend, thank to\nthese sentinel statues we\nmanaged to assemble. They\nshould patrol the temple\nautonomously now.\n\nDespite this, we are still\nsieged! We cannot leave! how\nwill I send you these tablets?" "Beloved,\n\nWe have no food nor water.\nThe King will not survive for\nmuch longer.\n\nWe will have to leave the\nresults of our research here,\nuseless. What we have found is\nsimply not enough.\n\nForgive me for leaving so soon." "You have found the edict\nof immortality.\n\nUnfortunately, the game is\nnot yet ready, thus there\nis no progress beyond here.\nYou have effectively\ncompleted the game!\n\nBut don't forget to check\n    https://github.com\n    /fer-amdias/quatro\nto see if theres a new update." "Press ENTER to close." "" 
+
+# VERSAO DA BUILDTOOL CSV2ASM: 1.3.0 - 06 outubro 2025
