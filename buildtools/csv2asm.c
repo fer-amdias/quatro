@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.3.0 - 06 outubro 2025"
+#define VERSAO "1.3.1 - 06 outubro 2025"
 
 // TODO: pular leading spaces no comeco
 
@@ -288,7 +288,7 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                 int j;
                 for (j = 0; buffer[j] != '\0'; j++){
                         // escapa caracteres especiais
-                        if (buffer[j] == '\"' || buffer[j] == '\''){
+                        if (buffer[j] == '\"'){
                                 if (buffer[j+1] == buffer[j]){
                                         strblock[strblock_idx_atual] = '\\';
                                         strblock_idx_atual++;
@@ -329,7 +329,7 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                                 int j;
                                 for (j = 0; buffer[j] != '\0'; j++){
                                         // escapa caracteres especiais
-                                        if (buffer[j] == '\"' || buffer[j] == '\'' || 
+                                        if (buffer[j] == '\"' || 
                                         (buffer[j] == '\\' && buffer[j+1] != 'n')){
                                                 strblock[strblock_idx_atual] = '\\';
                                                 strblock_idx_atual++;
