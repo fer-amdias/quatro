@@ -196,13 +196,29 @@ MP_CONFIG:
 	li a1, 0
 	li a2, 20
 	li a3, 0x00FF
-	jal PROC_IMPRIMIR_STRING # "pressione 0 pra voltar"
+	mv a4, zero
+	jal PROC_IMPRIMIR_STRING # "pressione 4 pra voltar ao menu principal"
 	
-	la a0, CONFIG_N_IMPLEMENTADO
-	li a1, 50
+	la a0, CONFIG_IDIOMA
+	li a1, 100
 	li a2, 100
 	li a3, 0x00FF
-	jal PROC_IMPRIMIR_STRING # "pressione 0 pra voltar"
+	mv a4, zero
+	jal PROC_IMPRIMIR_STRING # "Escolha o idioma: "
+
+	la a0, CONFIG_PT
+	li a1, 100
+	li a2, 120
+	li a3, 0x00FF
+	mv a4, zero
+	jal PROC_IMPRIMIR_STRING # "1. Portugues"
+
+	la a0, CONFIG_EN
+	li a1, 100
+	li a2, 130
+	li a3, 0x00FF
+	mv a4, zero			
+	jal PROC_IMPRIMIR_STRING # "2. English"
 
 
 MP_CONFIG_LOOP:
