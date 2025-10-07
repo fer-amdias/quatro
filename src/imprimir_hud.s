@@ -12,9 +12,6 @@
 
 # Prefixo interno: P_IH1_
 .data
-HUD_FASE_ATUAL: .string "CH C, FASE F"
-HUD_INIMIGOS_RESTANTES: .string "INIMIGOS:  X"
-HUD_VIDAS_RESTANTES: .string "VIDAS: X"
 
 
 .text
@@ -28,6 +25,8 @@ PROC_IMPRIMIR_HUD:
 		
 P_IH1_FASE_ATUAL:
 		la t0, HUD_FASE_ATUAL
+		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
+
 		mv t1, a0		# pega o inteiro de capitulo
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 3(t0)		# substitui na string
@@ -39,6 +38,7 @@ P_IH1_FASE_ATUAL:
 		li a1, 8
 		li a2, 8		# imprime em (8, 8)
 		li a3, 0x0000C7FF
+		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_STRING
 		
 			
@@ -60,11 +60,14 @@ P_IH1_TEMPO_RESTANTE:
 		mv a0, t0		# inteiro
 		li a1, 152		# x 
 		li a2, 8		# y
-		lw a3, 4(sp)	
+		lw a3, 4(sp)
+		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_INTEIRO
 		
 P_IH1_INIMIGOS_RESTANTES:
 		la t0, HUD_INIMIGOS_RESTANTES
+		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
+
 		lb t1, CONTADOR_INIMIGOS# pega o numero de inimigos restantes
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 11(t0)		# substitui na string
@@ -73,12 +76,15 @@ P_IH1_INIMIGOS_RESTANTES:
 		li a1, 217
 		li a2, 8		# imprime em (217, 8)
 		lw a3, 4(sp)
+		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_STRING
 		
 P_IH1_VIDAS_RESTANTES:
-		la t0, VIDAS_RESTANTES
-		lb t1, (t0)
+		lb t1, VIDAS_RESTANTES
+
 		la t0, HUD_VIDAS_RESTANTES
+		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
+
 		addi t1, t1, 48			# transforma em caractere
 		sb t1, 7(t0)			# atualiza a string
 		
@@ -86,6 +92,7 @@ P_IH1_VIDAS_RESTANTES:
 		li a1, 8
 		li a2, 224		# imprime em (8, 8)
 		lw a3, 4(sp)
+		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_STRING
 		
 		

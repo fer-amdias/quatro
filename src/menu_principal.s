@@ -10,78 +10,8 @@
 
 .data
 
-MENU_OPCAO1:	.string "1. JOGAR"
-MENU_OPCAO2: 	.string "2. CONFIGURACOES"
-MENU_OPCAO3: 	.string "3. CREDITOS"
-MENU_OPCAO4:	.string "4. SAIR"
-
-JOGAR_TITULO:	.string "Selecione o capitulo:"
-JOGAR_OPCAO0:	.string "0. Tutorial (recomendado)"
-JOGAR_OPCAO1: 	.string "1. Capitulo 1 (inicio)"
-JOGAR_OPCAO2: 	.string "2. Capitulo 2 (em construcao)"
-JOGAR_OPCAO3: 	.string "3. Capitulo 3 (em construcao)"
-JOGAR_OPCAO4:	.string "4. Capitulo 4 (em construcao)"
-JOGAR_OPCAO5: 	.string "9. voltar"
-
+# utilizado pros creditos poderem rolar pra cima
 CREDITOS_TIMESTAMP: .word 0
-
-CREDITOS_1:	.string "Desenvolvimento e Programacao:"
-CREDITOS_FERNANDO: .string "Fernando de Almeida Mendes Dias"
-
-CREDITOS_2:	.string "Arte e Design:"
-
-CREDITOS_3: 	.string "Agradecimentos Especiais: "
-
-
-
-CREDITOS_AS21:	.string "- Minha mae, que pacientemente"
-CREDITOS_AS22:	.string "assistiu eu mostrar como"
-CREDITOS_AS23:  .string "tava a cada 2 dias"
-
-CREDITOS_AS31: 	.string "- Felipe Fontela, pelo apoio,"
-CREDITOS_AS32: 	.string "pelas conversas e pelas"
-CREDITOS_AS33: 	.string "ideias que deram caminho"
-CREDITOS_AS34: 	.string "ao projeto"
-
-CREDITOS_AS11:	.string "- Joialoxi, pelas nossas"
-CREDITOS_AS12:  .string "deliberacoes que desatolaram"
-CREDITOS_AS13:  .string "o jogo"
-
-CREDITOS_FIM1:	.string " <<< fim >>> "
-
-CREDITOS_FIM2:	.string " pode ir embora"
-
-CREDITOS_FIM3:	.string "..........."
-
-CREDITOS_FIM4:	.string "nao vai embora?"
-
-CREDITOS_FIM5:  .string "deve ter mais credito em algum lugar aqui..."
-
-CREDITOS_FIM6:  .string "Inspiracao: Bomberman para o NES"
-
-CREDITOS_FIM7:  .string "Feito como projeto de"
-
-CREDITOS_FIM0:  .string "primeiro semestre"
-
-CREDITOS_FIM8:  .string "do componente de Introducao a Sistemas"
-
-CREDITOS_FIM9:  .string "Computacionais na Universidade de"
-
-CREDITOS_FIM10: .string "Brasilia. 24/07/2025"
-
-CREDITOS_FIM11:	.string "agora pode ir"
-
-
-CREDITOS_FIM12:	.string "...era so isso mesmo. nao tem mais nada."
-
-CREDITOS_FIM13:	.string "<<< FIM >>>"
-
-CREDITOS_VOLTAR:.string "Pressione 4 pra voltar ao menu principal"
-
-CONFIG_N_IMPLEMENTADO: .string "Nao implementado."
-
-
-
 
 # PREFIXO INTERNO: MP_
 
@@ -123,24 +53,28 @@ MENU:	li a0, 0x00			# preto
 	li a1, 100
 	li a2, 134
 	li a3, 0x00FF
+	mv a4, zero			# imprime do arquivo de localisacao
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, MENU_OPCAO2
 	li a1, 100
 	li a2, 144
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, MENU_OPCAO3
 	li a1, 100
 	li a2, 154
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, MENU_OPCAO4
 	li a1, 100
 	li a2, 164
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	jal PROC_DESENHAR	
@@ -179,42 +113,49 @@ MP_JOGAR:
 	li a1, 70
 	li a2, 105
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 
 	la a0, JOGAR_OPCAO0
 	li a1, 50
 	li a2, 120
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, JOGAR_OPCAO1
 	li a1, 50
 	li a2, 130
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, JOGAR_OPCAO2
 	li a1, 50
 	li a2, 140
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, JOGAR_OPCAO3
 	li a1, 50
 	li a2, 150
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, JOGAR_OPCAO4
 	li a1, 50
 	li a2, 160
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 	la a0, JOGAR_OPCAO5
 	li a1, 50
 	li a2, 180
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 
 	jal PROC_DESENHAR	
@@ -251,7 +192,7 @@ MP_CONFIG:
 	li a1, 1
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 	
-	la a0, CREDITOS_VOLTAR
+	la a0, CONFIG_VOLTAR
 	li a1, 0
 	li a2, 20
 	li a3, 0x00FF
@@ -263,15 +204,39 @@ MP_CONFIG:
 	li a3, 0x00FF
 	jal PROC_IMPRIMIR_STRING # "pressione 0 pra voltar"
 
+
 MP_CONFIG_LOOP:
-	li t1,0xFF200000		# carrega o endere�o de controle do KDMMIO
+	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
 	andi t0,t0,0x0001		# mascara o bit menos significativo
    	beq t0,zero,MP_CONFIG_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
-  	lw t2,4(t1)  			# le o valor da tecla
-  	
-  	li t0, '4'
-  	beq t2, t0,  MENU		# se apertar 0 (voltar), leva de volta pro menu
+  	lw t2,4(t1)  			# le o valor da tecla 
+
+SWITCH0:
+	li t0 '0'
+        beq t2, t0, MENU
+SWITCH1:
+        li t0, '1'
+        bne t2, t0, SWITCH2
+        li t0, PT_BR
+        sb t0, lingua_atual, t1
+       
+	# precisamos atualizar o frame com as strings da lingua selecionada!
+	jal PROC_DESENHAR
+	li a0, 0
+	jal PROC_TOCAR_AUDIO
+	j MP_CONFIG 
+SWITCH2:
+        li t0, '2'
+        bne t2, t0, MP_CONFIG_LOOP_CONT
+        li t0, EN_US
+        sb t0, lingua_atual, t1
+
+	# precisamos atualizar o frame com as strings da lingua selecionada!
+	jal PROC_DESENHAR
+	li a0, 0
+	jal PROC_TOCAR_AUDIO
+	j MP_CONFIG 
   	
 MP_CONFIG_LOOP_CONT:
 	
@@ -304,6 +269,7 @@ CREDITOS_LOOP:
 	li a1, 0
 	li a2, 20
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING # "pressione 0 pra voltar"
 
 	lw t0, CREDITOS_TIMESTAMP
@@ -472,6 +438,7 @@ MP_SUBPROC_MOSTRAR_CREDITO:
 	mv a2, a1
 	li a1, 20
 	li a3, 0x00FF
+	mv a4, zero
 	jal PROC_IMPRIMIR_STRING
 	
 MP_SMC_FIM:

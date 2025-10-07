@@ -23,6 +23,7 @@
 
 
 .include "memoria.s"
+.include "../assets/locale.s"
 
 .data
 .include "../assets/logoquatro.data"

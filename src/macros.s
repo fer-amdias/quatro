@@ -194,3 +194,39 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	sobrescrever_tile_atual_rg(%valor, t0)
 .end_macro
 
+.macro selecionar_texto_rg(%reg, %temp_reg, %temp_reg2, %rg_id)
+        # pega o offset de acordo com o idioma atual
+        mv %temp_reg, %rg_id                       # pega o ID na tabela de offsets
+        lbu %temp_reg2, lingua_atual            # pega a lingua (COLUNA NA TABELA) atual
+        slli %temp_reg2, %temp_reg2, 2          # converte a lingua para multiplo de 4 (para podermos pular N words)
+        add %temp_reg, %temp_reg, %temp_reg2    # pulamos até a enésima word da linha (a correspondente a lingua atual)
+
+        # id = id1;   
+        # lingua = 2;
+        # lingua *= 4;
+        # id += lingua;
+
+        #                        pega esse
+        #                           VVV
+        # offsets:       l0   l1    l2      l3
+        # id1:   .word   0    595   20394   1023919
+        # id2:   ...
+
+        # carrega o bloco de strings
+        la %reg, strblock
+
+        # carrega o offset da tabela
+        lw %temp_reg, 0(%temp_reg)
+
+        # aplica o offset
+        add %reg, %reg, %temp_reg
+
+        #terminamos! %reg contem o endereço de str_block + offset.
+        # "return %reg"
+.end_macro
+
+.macro selecionar_texto(%reg, %temp_reg, %temp_reg2, %id)
+        la %temp_reg2, %id              # passa o registrador temporario como o registrador com o ID
+        selecionar_texto_rg(%reg, %temp_reg, %temp_reg2, %temp_reg2)
+.end_macro
+

@@ -7,6 +7,8 @@
 #	A1 : X							#
 #	A2 : Y							#
 #	A3 : cores (0x0000bbff)					#
+#	A4 : modo de impressao 					#
+#		(0 = da tabela de offset, 1 = da memoria)	#
 # RETORNOS:                                                  	#
 #       (nenhum)						#
 #################################################################
@@ -47,13 +49,21 @@ LabelTabChar:
 .text
 	
 
+PROC_IMPRIMIR_STRING:
 
-PROC_IMPRIMIR_STRING:	addi	sp, sp, -12			# aloca espaco
+			addi	sp, sp, -12			# aloca espaco
 	    		sw	ra, 0(sp)			# salva ra
 	    		sw	s0, 4(sp)			# salva s0
 	    		sw 	s1, 8(sp)			# pos x (para podermos indentar o texto corretamente)
-	    		mv	s0, a0              		# s0 = endereco do caractere na string
+			bnez a4, P_IS1_STRING_DA_MEMORIA
+
+			# STRING DA TABELA DE OFFSET:
+			selecionar_texto_rg(s0, t0, t1, a0)	# carrega a string a ser impressa
 	    		mv 	s1, a1
+			j P_IS1_LOOP	
+
+P_IS1_STRING_DA_MEMORIA:
+			mv s0, a0				# coloca o endereco da string em s0
 
 P_IS1_LOOP:		lb	a0, 0(s0)                 	# le em a0 o caracter a ser impresso
 	
@@ -90,13 +100,13 @@ P_IS1_LOOP_FIM:		lw      ra, 0(sp)    			# recupera ra
 #  a2 = y                                               #
 #  a3 = cores (0x0000bbff) 	b = fundo, f = frente	#
 #########################################################
-#   t0 = i                                             #
-#   t1 = j                                             #
-#   t2 = endereco do char na memoria                   #
-#   t3 = metade do char (2a e depois 1a)               #
-#   t4 = endereco para impressao                       #
-#   t5 = background color                              #
-#   t6 = foreground color                              #
+#   t0 = i                                              #
+#   t1 = j                                              #
+#   t2 = endereco do char na memoria                    #
+#   t3 = metade do char (2a e depois 1a)                #
+#   t4 = endereco para impressao                        #
+#   t5 = background color                               # 
+#   t6 = foreground color                               #
 #########################################################
 
 # Prefixo interno: SP_IC1_

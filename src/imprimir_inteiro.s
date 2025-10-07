@@ -53,7 +53,8 @@ P_II1_LOOP2:	lw 	t2, 0(sp)			# le digito da pilha
 		bne 	t1, zero, P_II1_LOOP2		# eh o ultimo?
 		sb 	zero, 0(t0)			# insere \NULL na string
 		
-		la 	a0, TempBuffer			# Endereco do buffer da srting
+		la 	a0, TempBuffer			# Endereco do buffer da string
+		li	a4, 1				# coloca o modo de impressao como <DA MEMORIA>
 		jal 	PROC_IMPRIMIR_STRING		# chama o imprimir string
 				
 		lw 	ra, 0(sp)			# recupera ra
