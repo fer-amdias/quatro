@@ -45,6 +45,8 @@
 
 .eqv SEM_LIMITE_DE_TEMPO 999	# um contorno para poder usar numeros negativos em macros (o FPGRARS nao deixa) -- 
 
+.eqv COR_TRANSPARENTE 199 
+
 .data
 junk: .space 8  # algo fica escrevendo aqui e eu nao sei oq eh. portanto, estou criando essa zona de lixo pra evitar que os dados sejam sobrescritos.
 

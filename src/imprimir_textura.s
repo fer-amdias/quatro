@@ -19,7 +19,7 @@
 
 .text
 
-# mano essa linha
+# mano esta linha
 # essa linha me fez perder tantas horas
 # pq eu tinha escrito 0xC0 (192) em vez de 199
 # ent os pixeis estavam sendo escritos errados e eu podia jurar pela minha vida que o bug tava em qualquer lugar menos aqui
@@ -29,7 +29,9 @@
 # era literalmente
 # soh um digito digitado errado
 # eu cheguei a derramar lagrima depois que eu percebi
-.eqv COR_TRANSPARENTE 199 
+
+# .eqv COR_TRANSPARENTE 199 
+# (eu movi essa linha pra memoria.s, mas ela ficava aqui antes)
 
 # prefixo interno: P_IT1_
 
