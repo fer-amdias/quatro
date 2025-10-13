@@ -302,9 +302,25 @@ P_IF1_PROXIMA_LINHA:		sub s6, s6, s2			# X -= C, voltando ele pra posicao inicia
 				addi s4, s4, TAMANHO_SPRITE	# CL += TAMANHO_SPRITE
 				mv s3, zero			# CC = 0
 				
-				# SE L = CL: FINALIZA A IMPRESSAO
-				beq s1, s4, P_IF1_FIM
-				j P_IF1_LOOP_1
+				# SE L < CL: CONTINUA A IMPRESSAO, NAO TERMINAMOS
+				bgt s1, s4, P_IF1_LOOP_1
+
+# agora garantir que as bombas serao resetadas por fase!
+P_IF1_RESETAR_BOMBAS:		
+				# t0 = ESB = endereco do struct de bombas
+				la t0, BOMBAS
+				
+				# o loop vai de i = 0 a i = 3
+				li t1, 0
+				li t2, 4
+
+P_IF1_LOOP_BOMBAS:
+				# desativa as bombas
+				sb x0, BOMBAS_EXISTE(t0)
+
+				addi t0, t0, STRUCT_BOMBAS_OFFSET 	# desloca o array em uma posicao
+				addi t1, t1, 1				# i++
+				blt t1, t2, P_IF1_LOOP_BOMBAS		# se i < 4, continuar
 
 P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				# sim, eu sei, eu nao devia ter usado registradores salvo, eu devia ter usado os temporarios, etc
