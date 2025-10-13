@@ -162,7 +162,7 @@ MP_JOGAR:
 
 MP_JOGAR_LOOP:
 
-	li t1,0xFF200000		# carrega o endere�o de controle do KDMMIO
+	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
 	andi t0,t0,0x0001		# mascara o bit menos significativo
    	beq t0,zero,MP_JOGAR_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
@@ -181,6 +181,8 @@ MP_JOGAR_LOOP:
 	
 	li t0, '9'
 	beq t2, t0, MENU
+	li t0, 8		# TAMBEM VOLTA PRA BACKSPACE!!!
+	beq t2, t0, MENU
 
 MP_JOGAR_LOOP_CONT:
 	li a0, 0
@@ -197,7 +199,7 @@ MP_CONFIG:
 	li a2, 20
 	li a3, 0x00FF
 	mv a4, zero
-	jal PROC_IMPRIMIR_STRING # "pressione 4 pra voltar ao menu principal"
+	jal PROC_IMPRIMIR_STRING # "pressione 9 pra voltar ao menu principal"
 	
 	la a0, CONFIG_IDIOMA
 	li a1, 100
@@ -228,8 +230,8 @@ MP_CONFIG_LOOP:
    	beq t0,zero,MP_CONFIG_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
   	lw t2,4(t1)  			# le o valor da tecla 
 
-SWITCH0:
-	li t0 '0'
+SWITCH9:
+	li t0 '9'
         beq t2, t0, MENU
 SWITCH1:
         li t0, '1'
@@ -244,7 +246,7 @@ SWITCH1:
 	j MP_CONFIG 
 SWITCH2:
         li t0, '2'
-        bne t2, t0, MP_CONFIG_LOOP_CONT
+        bne t2, t0, SWITCH_BACKSPACE
         li t0, EN_US
         sb t0, lingua_atual, t1
 
@@ -253,7 +255,12 @@ SWITCH2:
 	li a0, 0
 	jal PROC_TOCAR_AUDIO
 	j MP_CONFIG 
-  	
+SWITCH_BACKSPACE:
+	li t0, 8		# TAMBEM VOLTA PRA BACKSPACE!!!
+	bne t2, t0, SWITCH_FIM
+	j MENU
+SWITCH_FIM:  	
+
 MP_CONFIG_LOOP_CONT:
 	
 	jal PROC_DESENHAR
@@ -286,7 +293,7 @@ CREDITOS_LOOP:
 	li a2, 20
 	li a3, 0x00FF
 	mv a4, zero
-	jal PROC_IMPRIMIR_STRING # "pressione 0 pra voltar"
+	jal PROC_IMPRIMIR_STRING # "pressione 9 pra voltar"
 
 	lw t0, CREDITOS_TIMESTAMP
 	csrr t1, time
@@ -421,8 +428,10 @@ CREDITOS_LOOP:
    	beq t0,zero,CREDITOS_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
   	lw t2,4(t1)  			# le o valor da tecla
   	
-  	li t0, '4'
-  	beq t2, t0,  MENU		# se apertar 0 (voltar), leva de volta pro menu
+  	li t0, '9'
+  	beq t2, t0,  MENU		# se apertar 9 (voltar), leva de volta pro menu
+	li t0, 8
+  	beq t2, t0,  MENU		# se apertar backspace, leva de volta pro menu
   	
 CREDITOS_LOOP_CONT:
 	
