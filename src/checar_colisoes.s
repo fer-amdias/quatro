@@ -36,6 +36,8 @@ PROC_CHECAR_COLISOES:
 			
 P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 
+			bge t3, t4, P_CC1_break		# checa se devemos sair do loop
+
 			la t0, INIMIGOS_DIRECAO
 			add t0, t3, t0			# pega inimigos.direcao[i]
 			
@@ -114,7 +116,7 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 
 P_CC1_continue:	
 			addi t3, t3, 1			# i++
-			blt t3, t4, P_CC1_LOOP_INIMIGOS	# if (i <= qtd_de_inimigos) break;
+			j P_CC1_LOOP_INIMIGOS		# continua o loop;
 			
 P_CC1_break:		##### fim do loop
 			
