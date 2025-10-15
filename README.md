@@ -14,7 +14,7 @@ Caso isso não funcione, baixe a versão 8-bit do [FPGRARS v1.13.0](https://gith
 ---
 
 # Quatro (English)
-# An RV32IM architecture assembly game (still in development).
+### An RV32IM architecture assembly game (still in development).
 
 Explore the temple of immortality, explode enemies, and acquire (or not?) the key to eternal life.
 
