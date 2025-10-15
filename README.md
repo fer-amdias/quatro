@@ -22,6 +22,6 @@ This started as a first-semester Computer Science project in the University of B
 
 The gameplay is based on the original Bomberman for NES.
 
-To play the game, download the [latest release](https://github.com/fer-amdias/quatro/releases) according to your OS. Then, click twice (or run through the terminal) the executable named Quatro to start the game. Additional steps may be necessary on Linux. A README inside the Linux installation informs what might be necessary.
+To play the game, download the [latest release](https://github.com/fer-amdias/quatro/releases) according to your operating system. Then, click twice (or run through the terminal) the executable named Quatro to start the game. Additional steps may be necessary on Linux. A README inside the Linux installation informs what might be necessary.
 
 If this does not work, download the 8-bit version of [FPGRARS v1.13.0](https://github.com/LeoRiether/FPGRARS/releases/tag/v1.13.0) according to your operating system. Download as well the source code of this repository and decompress/extract it. Move the FPGRARS executive into the src folder, and run `[FPGRARS file name] main.s` in the terminal. On Windows, it's possible, too, to drag main.s to the FPGRARS executable to start the game up.
