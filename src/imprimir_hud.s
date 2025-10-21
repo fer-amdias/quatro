@@ -45,9 +45,8 @@ P_IH1_FASE_ATUAL:
 P_IH1_TEMPO_RESTANTE:
 		
 
-		lw t0, SEGUNDOS_RESTANTE_Q10
+		lw t0, SEGUNDOS_RESTANTES
 		blt t0, x0, P_IH1_INIMIGOS_RESTANTES	# nao imprime o tempo se ele for negativo
-		srai t0, t0, 10			# transforma de ponto fixo Q10 pra inteiro
 		
 		# PROC_IMPRIMIR_INTEIRO				       	     	
 		# Imprime um inteiro na tela.					

@@ -125,8 +125,12 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				sw   s11, 44(sp)
 				sw   ra,  48(sp)
 
-				slli t0, a2, 10
-				sw t0, SEGUNDOS_RESTANTE_Q10, t1
+				# guarda os argumentos soh como boa pratica mesmo!!!
+				mv s0, a0
+				mv s1, a1
+				setar_tempo(a2)	# seta o tempo limite como o argumento 2
+				mv a0, s0
+				mv a1, s1
 
 				# salva os argumentos de funcao
 				mv s0, a0			# endereco do mapa    				(Em)

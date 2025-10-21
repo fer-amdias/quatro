@@ -230,3 +230,13 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
         selecionar_texto_rg(%reg, %temp_reg, %temp_reg2, %temp_reg2)
 .end_macro
 
+.macro setar_tempo(%reg_tempo)
+	mv a0, x0
+	mv a1, %reg_tempo
+	jal PROC_TEMPO_MANAGER
+.end_macro
+
+.macro atualizar_tempo
+	li a0, 1
+	jal PROC_TEMPO_MANAGER
+.end_macro

@@ -124,3 +124,4 @@ CAP1:
 .include "fase.s"
 .include "capitulo_0.s"
 .include "capitulo_1.s"
+.include "tempo_manager.s"

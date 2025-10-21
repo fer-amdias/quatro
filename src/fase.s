@@ -280,10 +280,12 @@ P_F1_MOSTRAR_TUTORIAL:
 		
 P_F1_LOOP_CONT2:	
 
-		lw t0, SEGUNDOS_RESTANTE_Q10
+		lw t0, SEGUNDOS_RESTANTES
 		bltz $TEMPO_LIMITE, P_F1_LOOP_CONT3	# se nao houver limite de tempo, nao checa ele
 		
-		bltz t0, P_F1_MORTE		# se houver, mata o jogador se ele chegar a 0 segundos
+		bltz t0, P_F1_MORTE			# se houver, mata o jogador se ele chegar a 0 segundos
+
+		atualizar_tempo				# atualiza a contagem de tempo
 
 P_F1_LOOP_CONT3:
 		la a0, explosivos

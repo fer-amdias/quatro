@@ -52,7 +52,8 @@ JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 MODO_SAIDA_LIVRE:       .word 0
 
-SEGUNDOS_RESTANTE_Q10:	.word 102400		# quantos segundos ateh a fase acabar, com 10 casas binairias (/1024). Padrao: 100 segundos  
+SEGUNDOS_RESTANTES:	.word 100		# quantos segundos ateh a fase acabar. Padrao: 100 segundos  
+
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
 # caso esteje cacando onde que os segundos sao atualizados: inimigos manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
 
