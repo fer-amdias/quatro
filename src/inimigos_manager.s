@@ -26,8 +26,6 @@
 # retornos: 
 #	a0 = 1 ou 0
 
-# essa funcao tambem eh usada para manipular o tempo restante. eh imperativo inclui-la mesmo em fases sem inimigos.
-
 .data
 INIMIGOS_COOLDOWN_TIMESTAMP: .word 0
 
