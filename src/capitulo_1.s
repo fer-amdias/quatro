@@ -8,13 +8,9 @@
 #       (nenhum)                                             	#
 #################################################################
 
-.data
-
 .text
-
 CAPITULO_1:
 
-.text
 
 # PREFIXO_INTERNO: C1_
 ROTINA_CAPITULO_1:
