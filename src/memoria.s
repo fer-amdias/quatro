@@ -82,6 +82,8 @@ INIMIGOS_POSICAO: 	.half 0 	# alinhamento do vetor
 	          	.space 127	# cada inimigo vai ter uma posicao de half-word (x) e half-word (y).
 INIMIGOS_DIRECAO: 	.byte 0 	# alinhamento do vetor
 		  	.space 31	# cada inimigo vai ter uma direcao salvo em um byte.		
+INIMIGOS_TIMESTAMP:     .word 0  
+			.space 127      # cada inimigo vai ter uma timestamp de seu ultimo movimento.	
 
 CONTADOR_INIMIGOS: 	.byte 0		# quantidade de inimigos atualmente vivos							
 

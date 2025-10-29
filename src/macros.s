@@ -119,7 +119,9 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	li  t0, TAMANHO_SPRITE
 
 	sub t3, %x, t1                # t3 = X relativo ao mapa
+
 	rem t4, t3, t0                # t4 = X % TAMANHO_SPRITE
+
 	sub %x, %x, t4                # x -= resto
 
 	sub t3, %y, t2                # t3 = Y relativo ao mapa
@@ -256,4 +258,35 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 .macro atualizar_tempo
 	li a0, 1
 	jal PROC_TEMPO_MANAGER
+.end_macro
+
+.macro incrementar_direcao(%reg_direcao)
+	addi %reg_direcao, %reg_direcao, 1
+	li t1, 4
+	slt t0, %reg_direcao, t1
+	mul %reg_direcao, %reg_direcao, t0	# se a direcao for 4 ou maior, multiplica por 0 
+.end_macro
+
+.macro decrementar_direcao(%reg_direcao)
+	addi %reg_direcao, %reg_direcao, -1
+	li t1, 4
+	sltz t0, %reg_direcao
+	mul t0, t0, t1				
+	add %reg_direcao, %reg_direcao, t0					# se a direcao for -1 ou menor, adiciona 4
+.end_macro
+
+# alias para incrementar_direcao(%reg_direcao)
+.macro virar_90_graus_no_sentido_antihorario(%reg_direcao)
+	incrementar_direcao(%reg_direcao)
+.end_macro
+
+# alias para decrementar_direcao(%reg_direcao)
+.macro virar_90_graus_no_sentido_horario(%reg_direcao)
+	decrementar_direcao(%reg_direcao)
+.end_macro
+
+# seta %reg para 1 se os dois argumentos forem iguais, senao seta para 0
+.macro seq(%reg, %arg1, %arg2)
+	sub %reg, %arg1, %arg2		# pega arg1 - arg2
+	seqz %reg, %reg			# se arg1 - arg2 = 0, eles sao iguais.
 .end_macro
