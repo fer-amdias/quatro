@@ -18,6 +18,7 @@
 #								#
 #################################################################
 
+.include "./NPCs/definicoes_npcs.s"
 .include "macros.s"
 
 # tamanho de uma textura de mapa
