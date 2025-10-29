@@ -221,7 +221,7 @@ P_MJ1_IMPRIMIR:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
 			add a0, t0, a0			# aE0 += idx
 			
 			mv a7, x0			# seleciona o modo como imprimir na tela
-			addi a0, a0, 8			# pula os 8 bytes 
+			addi a0, a0, 8			# pula os 8 bits
 			# argumentos a1 e a2 jah estao posicionados :)
 			jal PROC_IMPRIMIR_TEXTURA		# imprime o jogador
 			
