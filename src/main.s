@@ -125,3 +125,5 @@ CAP1:
 .include "capitulo_0.s"
 .include "capitulo_1.s"
 .include "tempo_manager.s"
+.include "tile_andavel.s"
+.include "./NPCs/movimento_npc_1.s"
