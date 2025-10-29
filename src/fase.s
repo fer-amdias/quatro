@@ -63,6 +63,8 @@
 #	0(AA) : Endereco do audioefeito de pergaminho		#
 #	4(AA) : Endereco da textura de inimigos			#
 #	8(AA) : Endereco da textura do jogador			#
+#	12(AA): Textura do mapa da fase				#
+#	16(AA): Textura do pergaminho da fase			#
 # RETORNOS:                                                  	#
 #       A0: Se o jogador estah vivo ou nao			#
 #################################################################
@@ -70,7 +72,7 @@
 
 	# argumentos adicionais que nao couberam nos registradores de argumento
 	PERGAMINHO_NO_INICIO: .word 0
-	P_F1_ARGUMENTOS_ADICIONAIS: .word 5
+	P_F1_ARGUMENTOS_ADICIONAIS: .space 20
 	
 
 .text
