@@ -38,8 +38,8 @@ CREDITOS_FIM10,Brasilia. 24/07/2025,of Brasilia. 2025/07/24
 CREDITOS_FIM11,agora pode ir,now you can go
 CREDITOS_FIM12,...era so isso mesmo. nao tem mais nada.,...that was it. theres nothing left
 CREDITOS_FIM13,<<< FIM >>>,<<< END >>>
-CREDITOS_VOLTAR,Pressione 4 pra voltar ao menu principal,Press 4 to return to the main menu
-CONFIG_VOLTAR,Pressione 0 pra voltar ao menu principal,Press 0 to return to the main menu
+CREDITOS_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu
+CONFIG_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu
 CONFIG_IDIOMA,Escolha o idioma:,Choose language:
 CONFIG_PT,1. Portugues Brasileiro,1. Portugues Brasileiro
 CONFIG_EN,2. English (US),2. English (US)
@@ -159,7 +159,10 @@ dele acabar ou perca uma vida.
 
 Nao se preocupe: o tempo fica
 pausado dentro de um 
-pergaminho.","Levels may have different
+pergaminho.
+
+O tempo pode ser visto na
+parte superior da tela.","Levels may have different
 sizes, but they'll never
 go off-screen.
 
@@ -169,7 +172,10 @@ before time runs out or lose
 a life.
 
 Don't worry. Time is paused
-while in a scroll."
+while in a scroll.
+
+Time can be seen on the
+upper part of the screen."
 ch0_fase7.scroll,"Algumas fases terao blocos
 especiais (como esse 'Z').
 
