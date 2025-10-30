@@ -84,9 +84,12 @@ MAIN:
 
 IR_MENU:
 	jal ROTINA_MENU_PRINCIPAL	# retorna a0: capitulo escolhido
+	beqz a0, CAP0			# ir p capitulo 0
 	li t0, 1
 	beq a0, t0, CAP1		# ir p capitulo 1 
-	
+	j IR_MENU			# volta pro menu se o retorno for invalido
+
+CAP0:
 	jal ROTINA_CAPITULO_0
 	beqz a0, IR_MENU
 
