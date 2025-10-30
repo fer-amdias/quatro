@@ -69,18 +69,7 @@
 
 MAIN:
 
-	#### ALOCACAO DO FRAME_BUFFER ####
-	li a7, 9
-	li a0, 76800
-	ecall
-	
-	sw a0, FRAME_BUFFER_PTR, t0
-	
-	# adiciona 76800 em a0 usando t0 como temporario
-	li t0, 76800
-	add a0, a0, t0	
-	
-	sw a0, FRAME_BUFFER_FIM_PTR, t0
+
 
 IR_MENU:
 	jal ROTINA_MENU_PRINCIPAL	# retorna a0: capitulo escolhido

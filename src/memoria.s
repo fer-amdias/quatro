@@ -92,8 +92,8 @@ FASE_BUFFER: 	  	.byte 0
 FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
 FASE_BUFFER_LIN:  	.half 0		# quantas linhas tem no mapa no buffer
 
-FRAME_BUFFER_PTR: 	.word 0		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
-FRAME_BUFFER_FIM_PTR:	.word 0		# endereco final do buffer
+FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
+FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer
 
 TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
 			.space 192	# 16 * 12 sendo o tamanho maximo do buffer
