@@ -77,7 +77,6 @@ PROC_INIMIGOS_MANAGER:
 			lw s3, (s3)			# carrega a quantidade de inimigos em s3
 			
 			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
-			j P_IM1_LOOP_1
 			
 P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
 			beqz t2, P_IM1_PROSSEGUIR2		# se nao estiver pausado, prossiga
