@@ -278,27 +278,56 @@ Forgive me for leaving so soon."
 ch1_fase5.scroll,"Voce encontrou o edito da
 imortalidade.
 
-Infelizmente, o jogo ainda
-nao estah completo, entao
-nao hah progressao a partir
-daqui. Efetivamente, voce
-completou o jogo!
+","You have found the edict
+of immortality."
+ch2_fase0.scroll,"ANNO DCCCL
+AB URBE CONDITA
 
-Mas nao se esqueca de checar
-     https://github.com/
-     fer-amdias/quatro
-para ver se ha alguma nova
-atualizacao.","You have found the edict
-of immortality.
+Inicio o registro
+post-mortem do templo
+de exaltacao final.",TODO
+ch2_fase1.scroll,"Centenas de arquitetos
+se encontravam debaixo
+deste teto. Centenas de
+astrologos estavam a os
+comandar.
 
-Unfortunately, the game is
-not yet ready, thus there
-is no progress beyond here.
-You have effectively
-completed the game!
+Uma equipe especialmente
+capacitada para exaltar
+o Imperador.",TODO
+ch2_fase2.scroll,"Quem poderia culpa-los?
+Quem poderia puni-los?
+De quem seria a culpa?
 
-But don't forget to check
-    https://github.com
-    /fer-amdias/quatro
-to see if theres a new update."
+Os poucos que sobraram
+conseguiram a vida eterna,
+mas a que custo? Acaso
+alegrou-se ao menos um?
+
+Acaso nao encontraram
+todos a insanidade?
+",TODO
+ch2_fase3.scroll,"Os proprios legionarios,
+apesar de sua morte, 
+perseveram pela sede
+de vinganca.
+
+Quem poderia culpa-los?
+Quem poderia puni-los?
+Quem poderia os impedir
+de exterminar os 
+academicos?",TODO
+ch2_fase4.scroll,"Quem poderia prever 
+que o Imperador pereceria?
+Que a imortalidade fosse
+concedida aos astrologos
+que os cercavam, aos
+arquitetos que o bajulavam?
+
+Aqui jaz Publius Aelius
+Hadrianus. Oficialmente,
+foi enterrado em Roma apos
+um ataque cardiaco. Mas,
+em verdade, as estrelas
+o pulverisaram.",TODO
 SCROLL_ENTER,Pressione ENTER para fechar.,Press ENTER to close.
