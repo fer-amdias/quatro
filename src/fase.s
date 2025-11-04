@@ -297,7 +297,7 @@ P_F1_LOOP_CONT3:
 
 		mv a0, $CAPITULO
 		mv a1, $FASE
-		li a2, 0xC7FF
+		li a2, 0x00FF
 		jal PROC_IMPRIMIR_HUD
 
 		jal PROC_DESENHAR
