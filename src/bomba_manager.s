@@ -32,6 +32,23 @@ P_BM1_SUBPROC_EXPLODIR:
 			sw a3, 12(sp)
 			sw a4, 16(sp)
 			sw ra, 20(sp)
+
+			la t2, POSICOES_MAPA
+			lh t0, (t2)				# x do mapa
+			lh t1, 2(t2)				# y do mapa
+			
+			# se x ou y estiverem fora do mapa, nao explode.
+			blt a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
+			blt a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
+		
+			li t2, 320				# largura vga
+			sub t0, t2, t0				# x final do mapa = vga - x do mapa
+			li t2, 240				# altura vga
+			sub t1, t2, t1				# y final do mapa = vga - y do mapa
+			
+			# se x ou y estiverem fora do mapa, nao explode
+			bgt a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
+			bgt a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
 			
 			# toca o efeito sonoro de bomba
 			li a0, 37		
@@ -91,6 +108,8 @@ P_BM1_SUBPROC_EXPLODIR:
 			lw a4, 16(sp)
 			mv a1, a3
 			mv a2, a4
+
+			
 			
 			# dimensoes de um tile
 			li a3, TAMANHO_SPRITE
@@ -144,6 +163,23 @@ P_BM1_SUBPROC_RESTAURAR:
 			sw a3, 12(sp)
 			sw a4, 16(sp)
 			sw ra, 20(sp)
+
+			la t2, POSICOES_MAPA
+			lh t0, (t2)				# x do mapa
+			lh t1, 2(t2)				# y do mapa
+			
+			# se x ou y estiverem fora do mapa, nao restaura.
+			blt a3, t0, P_BM1_SUBPROC_RESTAURAR_FIM
+			blt a4, t1, P_BM1_SUBPROC_RESTAURAR_FIM
+		
+			li t2, 320				# largura vga
+			sub t0, t2, t0				# x final do mapa = vga - x do mapa
+			li t2, 240				# altura vga
+			sub t1, t2, t1				# y final do mapa = vga - y do mapa
+			
+			# se x ou y estiverem fora do mapa, nao restaura.
+			bgt a3, t0, P_BM1_SUBPROC_RESTAURAR_FIM
+			bgt a4, t1, P_BM1_SUBPROC_RESTAURAR_FIM
 			
 			# PROC_CALCULAR_TILE_ATUAL			           						     
 			# ARGUMENTOS:						     
