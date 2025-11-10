@@ -125,6 +125,8 @@ PROC_FASE:
 				lw $TEXTURA_DO_MAPA,		12(t0)
 				
 P_F1_FASE_INICIO:			
+				sb x0, NPC_2_FUGINDO, t0	
+
 				lw t1, TRACK1_INICIO_POINTER
 				bne t1, $MUSICA_DE_FUNDO, P_F1_TOCAR_MUSICA	# se a musica de fundo antiga eh diferente, toca a nova
 				
