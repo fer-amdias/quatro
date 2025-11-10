@@ -37,7 +37,7 @@ P_IH1_FASE_ATUAL:
 		la a0, HUD_FASE_ATUAL	# carrega a string
 		li a1, 8
 		li a2, 8		# imprime em (8, 8)
-		li a3, 0x0000C7FF
+		lw a3, 4(sp)
 		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_STRING
 		
