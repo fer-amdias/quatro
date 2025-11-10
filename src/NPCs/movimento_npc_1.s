@@ -82,7 +82,7 @@ PROC_MOVIMENTO_NPC_1:
                         # primeiramente, NAO podemos mover se a timestamp estah proibindo movimento.
                         # Isso depende de nossa velocidade.
 
-                        # O periodo em ms eh igual a 2000/VELOCIDADE
+                        # O periodo em ms eh igual a 3000/VELOCIDADE
 
                         lb t0, STRUCT_NPCS # carrega o primeiro atributo do primeiro NPC: velocidade
                         li t1, 3000         
