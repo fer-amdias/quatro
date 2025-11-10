@@ -7,15 +7,13 @@
 #       A1 = pos X do NPC                                       #
 #       A2 = pos Y do NPC                                       #
 #       A3 = endereco do timestamp de ultima atualizacao        #
+#       A4 = velocidade do NPC                                  #
 #								#
 # RETORNOS:                                                  	#
 #       A0 = direcao de movimento (-1, caso fique parado)	#
 #################################################################
 
 .data
-.word 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-NPC_1_TIMESTAMP: .word 0
-
 NPC_1_VETOR_DIRECAO: .space 4
 NPC_1_VETOR_DIRECAO_TAMANHO: .byte 0
 
@@ -83,10 +81,8 @@ PROC_MOVIMENTO_NPC_1:
                         # Isso depende de nossa velocidade.
 
                         # O periodo em ms eh igual a 3000/VELOCIDADE
-
-                        lb t0, STRUCT_NPCS # carrega o primeiro atributo do primeiro NPC: velocidade
                         li t1, 3000         
-                        div t0, t1, t0     # calcula o periodo em ms
+                        div t0, t1, a4     # calcula o periodo em ms
 
                         lw t2, (a3)
                         add t2, t2, t0     # pega a ultima timestamp de movimento MAIS o periodo
