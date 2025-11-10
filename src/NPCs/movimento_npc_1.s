@@ -116,7 +116,7 @@ PROC_MOVIMENTO_NPC_1:
                         # senao, andamos na direcao que estamos indo.
 
                         ### agora temos que checar se o tile atual eh andavel
-                        li a0, 0        # modo 1 (checar por direcao)
+                        li a0, 0        # modo 0 (checar por posicao)
                                         # a1 = pos X
                                         # a2 = pos Y
 			jal PROC_TILE_ANDAVEL
