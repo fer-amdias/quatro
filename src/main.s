@@ -83,6 +83,8 @@ IR_MENU:
 	beqz a0, CAP0			# ir p capitulo 0
 	li t0, 1
 	beq a0, t0, CAP1		# ir p capitulo 1 
+	li t0, 2
+	beq a0, t0, CAP2		# ir p capitulo 1 
 	j IR_MENU			# volta pro menu se o retorno for invalido
 
 CAP0:
@@ -91,6 +93,10 @@ CAP0:
 
 CAP1:	
 	jal ROTINA_CAPITULO_1
+	beqz a0, IR_MENU
+
+CAP2:
+	jal ROTINA_CAPITULO_2
 	beqz a0, IR_MENU
 	
 	j IR_MENU			# fim
