@@ -172,8 +172,8 @@ MP_JOGAR_LOOP:
 	beq t2, t0, MP_CAP0
   	li t0, '1'
 	beq t2, t0, MP_CAP1
-	#li t0, '2'
-	#beq t2, t0, MP_CAP2
+	li t0, '2'
+	beq t2, t0, MP_CAP2
 	#li t0, '3'
 	#beq t2, t0, MP_CAP3
 	#li t0, '4'
