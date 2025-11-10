@@ -149,6 +149,30 @@ P_IM1_MATAR_NPC:
 			lb t1, (t0)
 			addi t1, t1, -1
 			sb t1, (t0)
+
+
+			# agora temos que saber se o npc eh inimigo!
+			la t0, STRUCTS_NPCS
+			li t1, NPC_STRUCT_TAMANHO    # pega o tamanho de uma struct
+
+			add t2, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
+			lbu t2, (t2)			# carrega o valor desse npc
+			addi t2, t2, -10		# subtrai 10
+
+			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
+			# t3 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
+			mul t3, t1, t2 
+			add t0, t0, t3		# avanca pra struct certa
+			lbu t1, NPC_STRUCT_ATRIBUTO_INIMIGO(t0)
+
+			beqz t1, P_IM1_LOOP_1_PRINT  # se nao for, termina
+			# se for, decrementa o contador de inimigos
+
+			la t0, CONTADOR_INIMIGOS
+			lb t1, 0(t0)
+			addi t1, t1, -1
+			sb t1, (t0)
+
 			j P_IM1_LOOP_1_PRINT
 			
 

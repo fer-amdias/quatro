@@ -150,6 +150,7 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				
 				sw zero, NPCS_QUANTIDADE, t0
 				sb zero, CONTADOR_NPCS, t0
+				sb zero, CONTADOR_INIMIGOS, t0
 				
 				
 				
@@ -243,14 +244,36 @@ P_IF1_REGISTRAR_NPC:	# ficamos sem registradores para contar o n de npcs
 				
 				sb x0, (s11)			# zera a direcao em Vdi, para ser calculada quando eles forem posicionados
 
+				# agora temos que saber se eh inimigo
+				la t3, STRUCTS_NPCS
+				li t4, NPC_STRUCT_TAMANHO    # pega o tamanho de uma struct
+
+				addi t5, t0, -10	# pega o tipo do NPC -2
+
+				# t5 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
+				# t6 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
+				mul t6, t5, t4
+				add t3, t3, t6		# avanca pra struct certa
+				lbu t4, NPC_STRUCT_ATRIBUTO_INIMIGO(t3)	# pega se eh inimigo
+
+				beqz t4, P_IF1_REGISTRAR_NPC_CONT
+
+				# se EH inimigo, incrementa o contador de inimigos
+				la t4, CONTADOR_INIMIGOS
+				lb t5, 0(t4)
+				addi t5, t5, 1
+				sb t5, (t4)
+
+P_IF1_REGISTRAR_NPC_CONT:
+
 				li t3, 14
-				bne t0, t3, P_IF1_REGISTRAR_NPC_CONT
+				bne t0, t3, P_IF1_REGISTRAR_NPC_CONT2
 
 				# se eh um filosofo (tipo 14 / 5), devemos colocar a direcao pra direita.
 				li t3, 1
 				sb t3, (s11)			# coloca a direcao para a DIREITA em (Vdi)
 
-P_IF1_REGISTRAR_NPC_CONT:
+P_IF1_REGISTRAR_NPC_CONT2:
 				
 				addi s9, s9, 1			# avanca pro proximo byte no endereco do vetor
 				addi s10, s10, 4		# avanca uma word (duas half-words) no endereco do vetor de posicao

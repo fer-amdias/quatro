@@ -85,7 +85,9 @@ NPCS_DIRECAO:	 	.byte 0 	# alinhamento do vetor
 NPCS_TIMESTAMP:     	.word 0  
 			.space 127      # cada npc vai ter uma timestamp de seu ultimo movimento.	
 
-CONTADOR_NPCS: 	.byte 0		# quantidade de npcs atualmente vivos							
+CONTADOR_NPCS: 		.byte 0		# quantidade de npcs atualmente vivos							
+
+CONTADOR_INIMIGOS: 	.byte 0		# quantidade de inimigos atualmente vivos
 
 FASE_BUFFER: 	  	.byte 0 
 		  	.space 76799	# onde manteremos o background de cada nivel, quase como uma layer

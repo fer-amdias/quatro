@@ -233,8 +233,8 @@ P_F1_RECEBER_POWERUP_QTD_BOMBAS:
 		j P_F1_LOOP_CONT
 		
 P_F1_SAIDA_DA_FASE: 
-		lb t0, CONTADOR_NPCS
-		bnez t0, P_F1_LOOP_CONT	# se ainda houver npcs, nao deixa o jogador sair
+		lb t0, CONTADOR_INIMIGOS
+		bnez t0, P_F1_LOOP_CONT		# se ainda houver <<inimigos>>, nao deixa o jogador sair
 		j P_F1_VITORIA			# se nao houver, vence a fase
 
 P_F1_CHECAR_PERGAMINHO:	

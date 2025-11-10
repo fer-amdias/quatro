@@ -67,7 +67,7 @@ P_IH1_NPCS_RESTANTES:
 		la t0, HUD_INIMIGOS_RESTANTES
 		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
 
-		lb t1, CONTADOR_NPCS# pega o numero de npcs restantes
+		lb t1, CONTADOR_INIMIGOS# pega o numero de npcs restantes
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 11(t0)		# substitui na string
 		

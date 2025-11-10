@@ -80,6 +80,7 @@ PROC_REGISTRAR_MOVIMENTO:
 			
 			sb x0, CONTADOR_NPCS, t0		# cheat para destruir npcs
 			sw x0, NPCS_QUANTIDADE, t0
+			sb x0, CONTADOR_INIMIGOS, t0		# :)
 			j P_RM1_SEM_MOVIMENTO_2
 			
 			 
