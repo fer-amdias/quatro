@@ -13,17 +13,6 @@
 
 .data 
 
-       ###### MACRO_CHECAR_COLISAO ######
-       # cx = x do canto		#
-       # cy = y do canto		#
-       # ix = x do inimigo		#
-       # iy = y do inimigo		#
-       # out = se teve colisao		#
-       #				#
-       # checa se o canto do jogador	#
-       # estah em colisao		#
-       ##################################
-
 .text
 PROC_CHECAR_COLISOES:
 			addi sp, sp, -4
