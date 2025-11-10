@@ -154,14 +154,15 @@ P_IM1_MATAR_INIMIGO:
 
 P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento 
 
-			# PROC_MOVIMENTO_NPC_1  			       	     	
-			# Calcula a direcao de movimento do NPC 1.                      
+			# PROC_MOVIMENTO_NPC_X  			       	     	
+			# Calcula a direcao de movimento do NPC X                      
 			# 							     	
 			# ARGUMENTOS:						     	
 			#       A0 = direcao do NPC                                     
 			#       A1 = pos X do NPC                                       
 			#       A2 = pos Y do NPC                                       
-			#	A3 = timestamp do NPC			
+			#	A3 = timestamp do NPC	
+			#       A4 = velocidade do NPC		
 			# RETORNOS:                                                  	
 			#       A0 = direcao de movimento (-1, caso fique parado)
 
@@ -174,7 +175,57 @@ P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento
 			lh a2, 2(t1)			# carrega pos Y do inimigo como argumento
 
 			add a3, s6, t0			# a3 = idx + INIMIGOS_TIMESTAMP (carrega o endereco da timestamp do inimigo)
+
+
+
+
+			# agora temos que determinar: 1. a velocidade, e 2. qual proc chamar.
+			# isso pode ser acessado em definicoes_npcs.s (STRUCTS_NPCS)
+			la t0, STRUCTS_NPCS
+			li t1, NPC_STRUCT_TAMANHO    # pega o tamanho de uma struct
+
+			add t2, s7, s0			# idx = i + INIMIGOS (pulamos 1 byte por inimigo)
+			lbu t2, (t2)			# carrega o valor desse inimigo
+			addi t2, t2, -10		# subtrai 10
+
+			# t2 = tipo de inimigo (tipo 1 = 0, tipo 2 = 1, ...)
+			# t3 = tipo de inimigo * tamanho struct (pega quantas structs devemos avancar)
+			mul t3, t1, t2 
+			add t0, t0, t3		# avanca pra struct certa
+			lhu t1, NPC_STRUCT_ATRIBUTO_VELOCIDADE(t0)
+			lbu t2, NPC_STRUCT_ATRIBUTO_TIPO_DE_MOVIMENTO(t0)
+
+			# coloca o atributo de velocidade
+			mv a4, t1
+
+			# agora temos que determinar qual proc chamar, baseado no tipo de movimento.
+
+			li t0, 1
+			beq t0, t2, P_IM1_MOVIMENTO_1
+
+			li t0, 2
+			beq t0, t2, P_IM1_MOVIMENTO_2
+
+			li t0, 3
+			beq t0, t2, P_IM1_MOVIMENTO_3
+
+			j P_IM1_MOVIMENTO_DEFAULT
+
+P_IM1_MOVIMENTO_1:
 			jal PROC_MOVIMENTO_NPC_1
+			j P_IM1_MOVER_INIMIGO_CONT
+P_IM1_MOVIMENTO_2:
+			jal PROC_MOVIMENTO_NPC_2
+			j P_IM1_MOVER_INIMIGO_CONT
+P_IM1_MOVIMENTO_3:
+			jal PROC_MOVIMENTO_NPC_3
+			j P_IM1_MOVER_INIMIGO_CONT
+P_IM1_MOVIMENTO_DEFAULT:
+			jal PROC_MOVIMENTO_NPC_1
+			j P_IM1_MOVER_INIMIGO_CONT
+
+P_IM1_MOVER_INIMIGO_CONT:
+			
 
 			bltz a0, P_IM1_LOOP_1_PRINT	# se a direcao for -1, soh printa o inimigo mesmo
 
