@@ -13,6 +13,7 @@
 # Prefixo interno: P_MP1_
 # acho legal que ateh agora nenhum prefixo interno se coincidiu, tornando o numero no prefixo completamente inutil
 # se eu nao tivesse incluido, aposto que ele seria completamente necessario por algum motivo
+# edit (10 Novembro 2025): foi util por causa do tile andavel e o tocar audio
 
 .data
 
@@ -95,14 +96,14 @@ P_MP1_CONT:		addi sp, sp, -4
 			
 			lw a0, (sp)
 			li a1, 40
-			li a2, 30
+			li a2, 38
 			li a3, 0x0000C700
 			mv a4, zero		# imprime do arquivo de localisacao	
 			jal PROC_IMPRIMIR_STRING
 
 			la a0, SCROLL_ENTER
 			li a1, 40
-			li a2, 170
+			li a2, 178
 			li a3, 0xC700
 			mv a4, zero		# imprime do arquivo de localisacao
 			jal PROC_IMPRIMIR_STRING
