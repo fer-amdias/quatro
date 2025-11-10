@@ -117,7 +117,7 @@ CAP2:
 .include "desenhar.s"
 .include "colocar_bomba.s"
 .include "bomba_manager.s"
-.include "inimigos_manager.s"
+.include "npcs_manager.s"
 .include "manipular_tilemap.s" 
 .include "checar_colisoes.s" 
 .include "imprimir_string.s"

@@ -1,6 +1,6 @@
 #################################################################
 # PROC_CHECAR_COLISOES				       	     	#
-# Checa colisoes com inimigos e powerups.			#
+# Checa colisoes com npcs e powerups.				#
 # 							     	#
 # ARGUMENTOS:						     	#
 #	(sem argumentos)					#
@@ -21,27 +21,27 @@ PROC_CHECAR_COLISOES:
 			li a0, 1			# assume-se de partida que o jogador estah vivo (1)
 			
 			mv t3, zero			# i = 0
-			lw t4, INIMIGOS_QUANTIDADE	# i > qtd de inimigos
+			lw t4, NPCS_QUANTIDADE	# i > qtd de npcs
 			
-P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
+P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 
 			bge t3, t4, P_CC1_break		# checa se devemos sair do loop
 
-			la t0, INIMIGOS_DIRECAO
-			add t0, t3, t0			# pega inimigos.direcao[i]
+			la t0, NPCS_DIRECAO
+			add t0, t3, t0			# pega npcs.direcao[i]
 			
-			lbu t0, (t0)			# carrega a direcao do inimigo
+			lbu t0, (t0)			# carrega a direcao do npc
 			addi t0, t0, -4			# diminui 4
-			beqz t0, P_CC1_continue		# se inimigos.posicao[i] == 4: continue; (pula esse inimigo)
+			beqz t0, P_CC1_continue		# se npcs.posicao[i] == 4: continue; (pula esse npc)
 
-			# agora sabemos que o inimigo estah vivo
-			slli t0, t3, 2			# t0 = 4 * i 				( cada inimigo tem duas halfwords de posicao )
-			la t5, INIMIGOS_POSICAO		# carrega a posicao dos inimigos 
-			add t0, t0, t5			# pega inimigos.posicao[i] 
+			# agora sabemos que o npc estah vivo
+			slli t0, t3, 2			# t0 = 4 * i 				( cada npc tem duas halfwords de posicao )
+			la t5, NPCS_POSICAO		# carrega a posicao dos npcs 
+			add t0, t0, t5			# pega npcs.posicao[i] 
 			
-			# carrega a posicao do inimigo
-			# t5 = x_inimigo
-			# t6 = y_inimigo
+			# carrega a posicao do npc
+			# t5 = x_npc
+			# t6 = y_npc
 			lh t5, (t0)
 			lh t6, 2(t0)
 			
@@ -56,11 +56,11 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 			lw a1, ALTURA_JOGADOR
 			lw a2, LARGURA_JOGADOR
 			
-			# vamos checar se a caixa de colisao do jogador e a caixa de colisao do inimigo estao se sobrepondo, utilizando AABB (como no pseudocodigo abaixo)
-			# if (jogador.x < inimigo.x + inimigo.largura &&
-			#     jogador.x + jogador.largura > inimigo.x &&
-			#     jogador.y < inimigo.y + inimigo.altura &&
-			#     jogador.y + jogador.altura > inimigo.y)
+			# vamos checar se a caixa de colisao do jogador e a caixa de colisao do npc estao se sobrepondo, utilizando AABB (como no pseudocodigo abaixo)
+			# if (jogador.x < npc.x + npc.largura &&
+			#     jogador.x + jogador.largura > npc.x &&
+			#     jogador.y < npc.y + npc.altura &&
+			#     jogador.y + jogador.altura > npc.y)
 			# {
 			#     HOUVE COLISAO
 			# }
@@ -69,31 +69,31 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 			# temos que guardar: 
 			.eqv jogador_x 		t1
 			.eqv jogador_y 		t2
-			.eqv inimigo_x 		t5
-			.eqv inimigo_y 		t6
-#			.eqv inimigo_largura 	TAMANHO_SPRITE	  (nao funciona no FPGRARS)
-#			.eqv inimigo_altura 	TAMANHO_SPRITE    (nao funciona no FPGRARS)  
+			.eqv npc_x 		t5
+			.eqv npc_y 		t6
+#			.eqv npc_largura 	TAMANHO_SPRITE	  (nao funciona no FPGRARS)
+#			.eqv npc_altura 	TAMANHO_SPRITE    (nao funciona no FPGRARS)  
 			.eqv jogador_largura 	a1
 			.eqv jogador_altura  	a2
 			
-			# if not (jogador.x < inimigo.x + inimigo.largura) NAO HOUVE COLSIAO
-			addi t0, inimigo_x, TAMANHO_SPRITE
+			# if not (jogador.x < npc.x + npc.largura) NAO HOUVE COLSIAO
+			addi t0, npc_x, TAMANHO_SPRITE
 			slt t0, jogador_x, t0
 			beqz t0, P_CC1_continue
 			
-			# if not (jogador.x + jogador.largura > inimigo.x) NAO HOUVE COLISAO
+			# if not (jogador.x + jogador.largura > npc.x) NAO HOUVE COLISAO
 			add t0, jogador_x, jogador_largura
-			slt t0, inimigo_x, t0
+			slt t0, npc_x, t0
 			beqz t0, P_CC1_continue
 			
-			# if not (jogador.y < inimigo.y + inimigo.altura) NAO HOUVE COLISAO
-			addi t0, inimigo_y, TAMANHO_SPRITE
+			# if not (jogador.y < npc.y + npc.altura) NAO HOUVE COLISAO
+			addi t0, npc_y, TAMANHO_SPRITE
 			slt t0, jogador_y, t0
 			beqz t0, P_CC1_continue
 			
-			# if not (jogador.y + jogador.altura > inimigo.y) NAO HOUVE COLISAO
+			# if not (jogador.y + jogador.altura > npc.y) NAO HOUVE COLISAO
 			add t0, jogador_y, jogador_altura
-			slt t0, inimigo_y, t0
+			slt t0, npc_y, t0
 			beqz t0, P_CC1_continue
 			
 			# se chegamos aqui, entao nenhuma condicao falhou
@@ -105,7 +105,7 @@ P_CC1_LOOP_INIMIGOS:	##### for (int i = 0; i < qtd_de_inimigos; i++)
 
 P_CC1_continue:	
 			addi t3, t3, 1			# i++
-			j P_CC1_LOOP_INIMIGOS		# continua o loop;
+			j P_CC1_LOOP_NPCS		# continua o loop;
 			
 P_CC1_break:		##### fim do loop
 			

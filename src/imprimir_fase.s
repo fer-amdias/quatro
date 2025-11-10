@@ -10,7 +10,7 @@
 #	A2 : LIMITE DE SEGUNDOS DA FASE			     #
 #							     #
 # RETORNOS:                                                  #
-#       A0 : QUANTIDADE DE INIMIGOS REGISTRADOS              #
+#       A0 : QUANTIDADE DE NPCS REGISTRADOS              #
 ##############################################################
 
 # prefixo interno: P_IF1_
@@ -39,9 +39,9 @@
 
 # s8  = A   = area do sprite
 
-# s9  = Vi  = endereco do vetor de inimigos
-# s10 = Vpi = endereco do vetor de posicao dos inimigos
-# s11 = Vdi = endereco do vetor de direcao dos inimigos
+# s9  = Vi  = endereco do vetor de npcs
+# s10 = Vpi = endereco do vetor de posicao dos npcs
+# s11 = Vdi = endereco do vetor de direcao dos npcs
 
 
 P_IF1_SUBPROC_CRIAR_TILEMAP:
@@ -80,12 +80,12 @@ P_IF1_TILEMAP_LOOP:
     	beq t0, t5, P_IF1_TILEMAP_LOOP_COLOCAR_PAREDE # cobre a saida se o modo saida livre estiver desligado
    
 P_IF1_TILEMAP_LOOP_SAIDALIVRE: 	
-    	# se for um inimigo, bota um tile andavel no lugar
+    	# se for um npc, bota um tile andavel no lugar
     	li t3, 10
-    	bge t0, t3, P_IF1_TILEMAP_LOOP_IGNORAR_INIMIGO
+    	bge t0, t3, P_IF1_TILEMAP_LOOP_IGNORAR_NPC
     	j P_IF1_TILEMAP_LOOP_CONT
     	
-P_IF1_TILEMAP_LOOP_IGNORAR_INIMIGO:
+P_IF1_TILEMAP_LOOP_IGNORAR_NPC:
 	li t0, 0
 	j P_IF1_TILEMAP_LOOP_CONT
     
@@ -138,9 +138,9 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				addi s5, s5, 8			# pula pros bytes de informacao da textura
 				
 				# salva o endereco dos vetores 
-				la s9, INIMIGOS			# Vi  : Vetor de inimigos
-				la s10, INIMIGOS_POSICAO	# Vpi : Vetor posicao de inimigos
-				la s11, INIMIGOS_DIRECAO	# Vdi : Vetor direcao de inimigos
+				la s9, NPCS			# Vi  : Vetor de npcs
+				la s10, NPCS_POSICAO	# Vpi : Vetor posicao de npcs
+				la s11, NPCS_DIRECAO	# Vdi : Vetor direcao de npcs
 				
 				lw s1, (s0)			# carrega o n de linhas em s1 (L)
 				lw s2, 4(s0)			# carrega o n de colunas em s2 (C)
@@ -148,8 +148,8 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 				
 				jal P_IF1_SUBPROC_CRIAR_TILEMAP
 				
-				sw zero, INIMIGOS_QUANTIDADE, t0
-				sb zero, CONTADOR_INIMIGOS, t0
+				sw zero, NPCS_QUANTIDADE, t0
+				sb zero, CONTADOR_NPCS, t0
 				
 				
 				
@@ -195,9 +195,9 @@ PROC_IMPRIMIR_FASE:		# guarda os registradores na stack
 P_IF1_LOOP_1:			lbu t0, (s0)			# tI = informacao em Em
 				mul t6, t0, s8			# t6 = tI * AREA_SPRITE
 				
-				# se o numero do tile for 10 ou mais, temos que registrar o inimigo no vetor necessario
+				# se o numero do tile for 10 ou mais, temos que registrar o npc no vetor necessario
 				li t1, 10
-				bge t0, t1, P_IF1_REGISTRAR_INIMIGO
+				bge t0, t1, P_IF1_REGISTRAR_NPC
 				
 				# se o numero do tile for 2, essa eh a posicao de comeco do jogo! temos que posicionar o jogador
 				li t1, 2
@@ -227,44 +227,44 @@ P_IF1_ESCONDER_TILE:		li t0, 4
 				
 				
 
-# QUANDO ENCONTRARMOS UM TILE DE INIMIGO:		
-P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
+# QUANDO ENCONTRARMOS UM TILE DE NPC:		
+P_IF1_REGISTRAR_NPC:	# ficamos sem registradores para contar o n de npcs
 				# entao guardamos na memoria
 				
 				
 				# t1 = endereco do contador
-				# t2 = contador de inimigos
-				la t1, CONTADOR_INIMIGOS
+				# t2 = contador de npcs
+				la t1, CONTADOR_NPCS
 				lbu t2, (t1)
 				
-				sb t0, (s9)			# salva o inimigo no vetor de inimigos (Vi)
-				sh s6, (s10)			# salva a posicao X do inimigo no vetor de posicao (Vpi)
-				sh s7, 2(s10)			# salva a posicao Y do inimigo no vetor de posicao (Vpi)
+				sb t0, (s9)			# salva o npc no vetor de npcs (Vi)
+				sh s6, (s10)			# salva a posicao X do npc no vetor de posicao (Vpi)
+				sh s7, 2(s10)			# salva a posicao Y do npc no vetor de posicao (Vpi)
 				
 				sb x0, (s11)			# zera a direcao em Vdi, para ser calculada quando eles forem posicionados
 
 				li t3, 14
-				bne t0, t3, P_IF1_REGISTRAR_INIMIGO_CONT
+				bne t0, t3, P_IF1_REGISTRAR_NPC_CONT
 
 				# se eh um filosofo (tipo 14 / 5), devemos colocar a direcao pra direita.
 				li t3, 1
 				sb t3, (s11)			# coloca a direcao para a DIREITA em (Vdi)
 
-P_IF1_REGISTRAR_INIMIGO_CONT:
+P_IF1_REGISTRAR_NPC_CONT:
 				
 				addi s9, s9, 1			# avanca pro proximo byte no endereco do vetor
 				addi s10, s10, 4		# avanca uma word (duas half-words) no endereco do vetor de posicao
 				addi s11, s11, 1		# avanca um byte no endereco do vetor de direcao
-				addi t2, t2, 1			# adiciona um no contador de inimigos
+				addi t2, t2, 1			# adiciona um no contador de npcs
 				
 				# terminamos!
-				sb t2, (t1)			# atualiza o contador de inimigos
+				sb t2, (t1)			# atualiza o contador de npcs
 				
-				la t1, INIMIGOS_QUANTIDADE
-				sw t2, (t1)			# atualiza a quantidade de inimigos
+				la t1, NPCS_QUANTIDADE
+				sw t2, (t1)			# atualiza a quantidade de npcs
 				
 				li t6, 0			# seta tI*400 para 0
-								# isso vai fazer com que uma casa em branco seja colocada no tile sob os pes do inimigo
+								# isso vai fazer com que uma casa em branco seja colocada no tile sob os pes do npc
 								
 				j P_IF1_LOOP_CONT		# continua o loop
 				
@@ -353,8 +353,8 @@ P_IF1_FIM:			# traz os registradores salvos de volta da stack
 				lw   ra,  48(sp)
 				addi sp, sp, 52
 				
-				la t0, CONTADOR_INIMIGOS
-				lb a0, (t0)			# salva o valor de retorno (quantidade de inimigos contados)
+				la t0, CONTADOR_NPCS
+				lb a0, (t0)			# salva o valor de retorno (quantidade de npcs contados)
 				
 				# adiciona uma vida
 				la t0, VIDAS_RESTANTES

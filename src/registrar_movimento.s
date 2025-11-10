@@ -78,8 +78,8 @@ PROC_REGISTRAR_MOVIMENTO:
 			li t0, '.'
 			bne t2, t0, P_RM1_SEM_MOVIMENTO_2
 			
-			sb x0, CONTADOR_INIMIGOS, t0		# cheat para destruir inimigos
-			sw x0, INIMIGOS_QUANTIDADE, t0
+			sb x0, CONTADOR_NPCS, t0		# cheat para destruir npcs
+			sw x0, NPCS_QUANTIDADE, t0
 			j P_RM1_SEM_MOVIMENTO_2
 			
 			 

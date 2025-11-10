@@ -1,5 +1,5 @@
 #FASE         (1,       0,       ch0_fase1,      ch0,            MENOS_UM,              inimigos,              jogador,     internationale,          powerup,                  morte,           abertura_pergaminho,          ch0_fase1.scroll,      pergaminho,                    1,                       1)
-.macro FASE(%fase, %capitulo, %arquivo_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_inimigos, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre)
+.macro FASE(%fase, %capitulo, %arquivo_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_npcs, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre)
 	
 	# se a saida estah coberta por um bloco quebravel ou nao
 	li t0, %modo_saida_livre
@@ -22,7 +22,7 @@
 	
 	la t1, %audioefeito_de_pergaminho
 	sw t1, 0(t0)
-	la t1, %textura_dos_inimigos
+	la t1, %textura_dos_npcs
 	sw t1, 4(t0)
 	la t1, %textura_do_jogador
 	sw t1, 8(t0)
@@ -61,7 +61,7 @@
 #								#
 #	P_F1_ARGUMENTOS_ADICIONAIS - AA				#
 #	0(AA) : Endereco do audioefeito de pergaminho		#
-#	4(AA) : Endereco da textura de inimigos			#
+#	4(AA) : Endereco da textura de npcs			#
 #	8(AA) : Endereco da textura do jogador			#
 #	12(AA): Textura do mapa da fase				#
 #	16(AA): Textura do pergaminho da fase			#
@@ -86,7 +86,7 @@
 .eqv $AUDIOEFEITO_DE_POWERUP	s6
 .eqv $AUDIOEFEITO_DE_MORTE	s7
 .eqv $AUDIOEFEITO_DE_PERGAMINHO s8
-.eqv $TEXTURA_DOS_INIMIGOS	s9
+.eqv $TEXTURA_DOS_NPCS	s9
 .eqv $TEXTURA_DO_JOGADOR	s10
 .eqv $TEXTURA_DO_MAPA		s11
 .eqv TEXTURA_PERGAMINHO		16
@@ -120,7 +120,7 @@ PROC_FASE:
 				la t0, P_F1_ARGUMENTOS_ADICIONAIS
 				
 				lw $AUDIOEFEITO_DE_PERGAMINHO, 	0(t0)
-				lw $TEXTURA_DOS_INIMIGOS,       4(t0)
+				lw $TEXTURA_DOS_NPCS,       4(t0)
 				lw $TEXTURA_DO_JOGADOR,		8(t0)
 				lw $TEXTURA_DO_MAPA,		12(t0)
 				
@@ -174,8 +174,8 @@ P_F1_LOOP:
 		la a2, TILEMAP_BUFFER		# endereco do mapa (nesse caso o buffer mesmo)
 		jal PROC_REGISTRAR_MOVIMENTO
 		
-		mv a0, $TEXTURA_DOS_INIMIGOS
-		jal PROC_INIMIGOS_MANAGER	
+		mv a0, $TEXTURA_DOS_NPCS
+		jal PROC_NPCS_MANAGER	
 		
 		jal PROC_CHECAR_COLISOES
 		# retorna a0 : se o jogador ainda estah vivo
@@ -233,8 +233,8 @@ P_F1_RECEBER_POWERUP_QTD_BOMBAS:
 		j P_F1_LOOP_CONT
 		
 P_F1_SAIDA_DA_FASE: 
-		lb t0, CONTADOR_INIMIGOS
-		bnez t0, P_F1_LOOP_CONT	# se ainda houver inimigos, nao deixa o jogador sair
+		lb t0, CONTADOR_NPCS
+		bnez t0, P_F1_LOOP_CONT	# se ainda houver npcs, nao deixa o jogador sair
 		j P_F1_VITORIA			# se nao houver, vence a fase
 
 P_F1_CHECAR_PERGAMINHO:	

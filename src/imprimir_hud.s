@@ -46,7 +46,7 @@ P_IH1_TEMPO_RESTANTE:
 		
 
 		lw t0, SEGUNDOS_RESTANTES
-		blt t0, x0, P_IH1_INIMIGOS_RESTANTES	# nao imprime o tempo se ele for negativo
+		blt t0, x0, P_IH1_NPCS_RESTANTES	# nao imprime o tempo se ele for negativo
 		
 		# PROC_IMPRIMIR_INTEIRO				       	     	
 		# Imprime um inteiro na tela.					
@@ -63,11 +63,11 @@ P_IH1_TEMPO_RESTANTE:
 		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_INTEIRO
 		
-P_IH1_INIMIGOS_RESTANTES:
+P_IH1_NPCS_RESTANTES:
 		la t0, HUD_INIMIGOS_RESTANTES
 		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
 
-		lb t1, CONTADOR_INIMIGOS# pega o numero de inimigos restantes
+		lb t1, CONTADOR_NPCS# pega o numero de npcs restantes
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 11(t0)		# substitui na string
 		

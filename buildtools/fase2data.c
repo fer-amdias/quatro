@@ -39,8 +39,8 @@ void char2value(unsigned char * array, int tamanho){
             case 'Z':   // especial -- uso depende do capitulo
                 array[i] = 9;
                 break;
-            default:    // tipos de inimigo
-                array[i] -= 39; // a tabela ascii comeca com 49 = '1', 50 = '2', etc; entao os inimigos vao comecar a contar a partir do 10
+            default:    // tipos de npc
+                array[i] -= 39; // a tabela ascii comeca com 49 = '1', 50 = '2', etc; entao os npcs vao comecar a contar a partir do 10
         }
     }
 }

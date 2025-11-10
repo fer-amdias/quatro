@@ -56,7 +56,7 @@ MODO_SAIDA_LIVRE:       .word 0
 SEGUNDOS_RESTANTES:	.word 100		# quantos segundos ateh a fase acabar. Padrao: 100 segundos  
 
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
-# caso esteje cacando onde que os segundos sao atualizados: inimigos manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
+# caso esteje cacando onde que os segundos sao atualizados: npcs manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
 
 POSICOES_MAPA: .half 0, 0
 POSICAO_JOGADOR: .half 0, 0
@@ -73,19 +73,19 @@ LARGURA_JOGADOR: .word 0
 
 
 
-# era pra inimigos ser um vetor de structs mas eu soh fui ter essa ideia quando fiz as bombas serem vetores de structs, e ahi n dava mais tempo de refatorar o codigo
+# era pra npcs ser um vetor de structs mas eu soh fui ter essa ideia quando fiz as bombas serem vetores de structs, e ahi n dava mais tempo de refatorar o codigo
 
-INIMIGOS_QUANTIDADE: 	.word 0		# quantidade de inimigos inicialmente no mundo
-INIMIGOS:         	.byte 0 	# alihamento do vetor
-	          	.space 31 	# cada inimigo vai ser salvo em um byte, dando um total de 32 inimigos nesse vetor
-INIMIGOS_POSICAO: 	.half 0 	# alinhamento do vetor
-	          	.space 127	# cada inimigo vai ter uma posicao de half-word (x) e half-word (y).
-INIMIGOS_DIRECAO: 	.byte 0 	# alinhamento do vetor
-		  	.space 31	# cada inimigo vai ter uma direcao salvo em um byte.		
-INIMIGOS_TIMESTAMP:     .word 0  
-			.space 127      # cada inimigo vai ter uma timestamp de seu ultimo movimento.	
+NPCS_QUANTIDADE: 	.word 0		# quantidade de npcs inicialmente no mundo
+NPCS:         		.byte 0 	# alihamento do vetor
+	          	.space 31 	# cada npc vai ser salvo em um byte, dando um total de 32 npcs nesse vetor
+NPCS_POSICAO: 		.half 0 	# alinhamento do vetor
+	          	.space 127	# cada npc vai ter uma posicao de half-word (x) e half-word (y).
+NPCS_DIRECAO:	 	.byte 0 	# alinhamento do vetor
+		  	.space 31	# cada npc vai ter uma direcao salvo em um byte.		
+NPCS_TIMESTAMP:     	.word 0  
+			.space 127      # cada npc vai ter uma timestamp de seu ultimo movimento.	
 
-CONTADOR_INIMIGOS: 	.byte 0		# quantidade de inimigos atualmente vivos							
+CONTADOR_NPCS: 	.byte 0		# quantidade de npcs atualmente vivos							
 
 FASE_BUFFER: 	  	.byte 0 
 		  	.space 76799	# onde manteremos o background de cada nivel, quase como uma layer

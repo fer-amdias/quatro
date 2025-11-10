@@ -1,9 +1,9 @@
 #################################################################
-# PROC_INIMIGOS_MANAGER				       	     	#
-# Administra inimigos, seus movimentos, colisoes, e mortes      #
+# PROC_NPCS_MANAGER				       	     	#
+# Administra npcs, seus movimentos, colisoes, e mortes          #
 # 							     	#
 # ARGUMENTOS:						     	#
-# 	A0 = endereco do stripe de textura dos inimigos		#
+# 	A0 = endereco do stripe de textura dos npcs		#
 #								#
 # RETORNOS:                                                  	#
 #      (nenhum)							#
@@ -11,18 +11,18 @@
 
 # PREFIXO INTERNO: P_IM1_
 
-# INIMIGOS_QUANTIDADE: 	.word 0		# quantidade de inimigos no mundo
-# INIMIGOS:         	.byte 0 	# alihamento do vetor
-# 	          	.space 31 	# cada inimigo vai ser salvo em um byte, dando um total de 32 inimigos nesse vetor
-# INIMIGOS_POSICAO: 	.half 0 	# alinhamento do vetor
-# 	          	.space 127	# cada inimigo vai ter uma posicao de half-word (x) e half-word (y).
-# INIMIGOS_DIRECAO: 	.byte 0 	# alinhamento do vetor
-# 		  	.space 31	# cada inimigo vai ter uma direcao salvo em um byte.	
+# NPCS_QUANTIDADE: 	.word 0		# quantidade de npcs no mundo
+# NPCS:         	.byte 0 	# alihamento do vetor
+# 	          	.space 31 	# cada npc vai ser salvo em um byte, dando um total de 32 npcs nesse vetor
+# NPCS_POSICAO: 	.half 0 	# alinhamento do vetor
+# 	          	.space 127	# cada npc vai ter uma posicao de half-word (x) e half-word (y).
+# NPCS_DIRECAO: 	.byte 0 	# alinhamento do vetor
+# 		  	.space 31	# cada npc vai ter uma direcao salvo em um byte.	
 
 # argumentos: 
 #	a0 = direcao
-#	a1 = pos X do inimigo
-#	a2 = pos Y do inimigo
+#	a1 = pos X do npc
+#	a2 = pos Y do npc
 # retornos: 
 #	a0 = 1 ou 0
 
@@ -32,7 +32,7 @@
 
 .text
 
-PROC_INIMIGOS_MANAGER:	
+PROC_NPCS_MANAGER:	
 			addi sp, sp, -48
 			sw s0, (sp)
 			sw s1, 4(sp)
@@ -47,23 +47,23 @@ PROC_INIMIGOS_MANAGER:
 			sw s9, 40(sp)
 			sw s10, 44(sp)
 			
-			# s0 = vetor INIMIGOS
-			# s1 = vetor INIMIGOS_POSICAO
-			# s2 = vetor INIMIGOS_DIRECAO
-			# s3 = int   INIMIGOS_QUANTIDADE
-			# s4 = const TAMANHO_SPRITE -- dimensoes de um inimigo (sim, ele ocupa um tile todo)
+			# s0 = vetor NPCS
+			# s1 = vetor NPCS_POSICAO
+			# s2 = vetor NPCS_DIRECAO
+			# s3 = int   NPCS_QUANTIDADE
+			# s4 = const TAMANHO_SPRITE -- dimensoes de um npc (sim, ele ocupa um tile todo)
 			# s5 = endereco do strip de textura
-			# s6 = vetor INIMIGOS_TIMESTAMP
+			# s6 = vetor NPCS_TIMESTAMP
 			
-			la s0, INIMIGOS
-			la s1, INIMIGOS_POSICAO
-			la s2, INIMIGOS_DIRECAO
-			la s3, INIMIGOS_QUANTIDADE
+			la s0, NPCS
+			la s1, NPCS_POSICAO
+			la s2, NPCS_DIRECAO
+			la s3, NPCS_QUANTIDADE
 			li s4, TAMANHO_SPRITE
 			mv s5, a0
-			la s6, INIMIGOS_TIMESTAMP
+			la s6, NPCS_TIMESTAMP
 		
-			addi s5, s5, 8			# pula as words de dimensoes da strip de inimigo
+			addi s5, s5, 8			# pula as words de dimensoes da strip de npc
 			
 			
 			
@@ -71,43 +71,43 @@ PROC_INIMIGOS_MANAGER:
 			# s7 = i
 			# loop vai ateh o valor em s3
 			
-			# ou seja, faca para cada inimigo o que estah no loop
+			# ou seja, faca para cada npc o que estah no loop
 			
 			mv s7, zero
-			lw s3, (s3)			# carrega a quantidade de inimigos em s3
+			lw s3, (s3)			# carrega a quantidade de npcs em s3
 			
-			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
+			beqz s3, PROC_NPCS_MANAGER_FIM	# pula o loop se nao existe nenhum npc
 			
 P_IM1_PROSSEGUIR:	lbu t2, JOGO_PAUSADO
 			beqz t2, P_IM1_PROSSEGUIR2		# se nao estiver pausado, prossiga
 			
 			# caso contrario, marca como 'pausado'
 			li s10, 0
-			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
+			beqz s3, PROC_NPCS_MANAGER_FIM	# pula o loop se nao existe nenhum npc
 			j P_IM1_LOOP_1
 
 P_IM1_PROSSEGUIR2:	
 			li s10, 1				# marca como 'despausado'
 			
-			beqz s3, PROC_INIMIGOS_MANAGER_FIM	# pula o loop se nao existe nenhum inimigo
+			beqz s3, PROC_NPCS_MANAGER_FIM	# pula o loop se nao existe nenhum npc
 	
 			
 P_IM1_LOOP_1:		
 	
-			# se estiver fora do cooldown, soh imprime o inimigo mesmo
+			# se estiver fora do cooldown, soh imprime o npc mesmo
 			beqz s10, P_IM1_LOOP_1_PRINT
 
 			### primeiro determina se ele tah vivo. senao, nem move ele
-			add t1, s2, s7			# idx = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])
-			lbu t1, (t1)			# carrega direcao do inimigo
+			add t1, s2, s7			# idx = i + NPCS_DIRECAO   	(pula pra DIRECAO[i])
+			lbu t1, (t1)			# carrega direcao do npc
 			li t0, 4
 			beq t1, t0, P_IM1_LOOP_1_PRINT	# se for 4, ele estah morto, ent n move ele lol
 
 			# t1 = posicao[i]
 			slli t0, s7, 2			# idx = 4 * i     		(queremos pular 1 word para cada i)
-			add t1, s1, t0			# idx += INIMIGOS_POSICAO   	(pula pra POSICAO[i])
+			add t1, s1, t0			# idx += NPCS_POSICAO   	(pula pra POSICAO[i])
 			
-			#### agora vamos checar o tile no meio da hitbox. se o tile for 100, o inimigo acabou de esbarrar em uma explosao e deve morrer.
+			#### agora vamos checar o tile no meio da hitbox. se o tile for 100, o npc acabou de esbarrar em uma explosao e deve morrer.
 			
 			# PROC_CALCULAR_TILE_ATUAL			             
 			# Calcula o tile atual de uma coordenada X e Y e retorna a   
@@ -121,10 +121,10 @@ P_IM1_LOOP_1:
 			#       A0 : INFORMACAO DO TILE ATUAL (0-255)		     
 			
 			la a0, TILEMAP_BUFFER
-			lh a1, (t1)			# carrega pos X do inimigo como argumento
-			lh a2, 2(t1)			# carrega pos Y do inimigo como argumento
+			lh a1, (t1)			# carrega pos X do npc como argumento
+			lh a2, 2(t1)			# carrega pos Y do npc como argumento
 			
-			# temos que mover a checagem para o meio do inimigo
+			# temos que mover a checagem para o meio do npc
 			# calculemos um fator corretor
 			srli t0, s4, 1			# divide o TAMANHO_SPRITE por 2
 			
@@ -135,24 +135,24 @@ P_IM1_LOOP_1:
 			jal PROC_CALCULAR_TILE_ATUAL
 			
 			li t0, 100
-			bge a0, t0, P_IM1_MATAR_INIMIGO
-			j P_IM1_MOVER_INIMIGO
+			bge a0, t0, P_IM1_MATAR_NPC
+			j P_IM1_MOVER_NPC
 			
 			
-P_IM1_MATAR_INIMIGO:	
-			add t1, s2, s7			# idx = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])
+P_IM1_MATAR_NPC:	
+			add t1, s2, s7			# idx = i + NPCS_DIRECAO   	(pula pra DIRECAO[i])
 			li t0, 4
 			sb t0, (t1)			# salva a direcao como 4 (morreu)
 			
-			# marca que um inimigo morreu
-			la t0, CONTADOR_INIMIGOS
+			# marca que um npc morreu
+			la t0, CONTADOR_NPCS
 			lb t1, (t0)
 			addi t1, t1, -1
 			sb t1, (t0)
 			j P_IM1_LOOP_1_PRINT
 			
 
-P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento 
+P_IM1_MOVER_NPC:	# agora chamemos a funcao de movimento 
 
 			# PROC_MOVIMENTO_NPC_X  			       	     	
 			# Calcula a direcao de movimento do NPC X                      
@@ -166,15 +166,15 @@ P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento
 			# RETORNOS:                                                  	
 			#       A0 = direcao de movimento (-1, caso fique parado)
 
-			add t1, s2, s7			# idx = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])	
+			add t1, s2, s7			# idx = i + NPCS_DIRECAO   	(pula pra DIRECAO[i])	
 			lb a0, (t1)
 
 			slli t0, s7, 2			# idx = 4 * i     		(queremos pular 1 word para cada i)
-			add t1, s1, t0			# t1 = idx + INIMIGOS_POSICAO   (pula pra POSICAO[i])
-			lh a1, (t1)			# carrega pos X do inimigo como argumento
-			lh a2, 2(t1)			# carrega pos Y do inimigo como argumento
+			add t1, s1, t0			# t1 = idx + NPCS_POSICAO   (pula pra POSICAO[i])
+			lh a1, (t1)			# carrega pos X do npc como argumento
+			lh a2, 2(t1)			# carrega pos Y do npc como argumento
 
-			add a3, s6, t0			# a3 = idx + INIMIGOS_TIMESTAMP (carrega o endereco da timestamp do inimigo)
+			add a3, s6, t0			# a3 = idx + NPCS_TIMESTAMP (carrega o endereco da timestamp do npc)
 
 
 
@@ -184,12 +184,12 @@ P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento
 			la t0, STRUCTS_NPCS
 			li t1, NPC_STRUCT_TAMANHO    # pega o tamanho de uma struct
 
-			add t2, s7, s0			# idx = i + INIMIGOS (pulamos 1 byte por inimigo)
-			lbu t2, (t2)			# carrega o valor desse inimigo
+			add t2, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
+			lbu t2, (t2)			# carrega o valor desse npc
 			addi t2, t2, -10		# subtrai 10
 
-			# t2 = tipo de inimigo (tipo 1 = 0, tipo 2 = 1, ...)
-			# t3 = tipo de inimigo * tamanho struct (pega quantas structs devemos avancar)
+			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
+			# t3 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
 			mul t3, t1, t2 
 			add t0, t0, t3		# avanca pra struct certa
 			lhu t1, NPC_STRUCT_ATRIBUTO_VELOCIDADE(t0)
@@ -213,35 +213,35 @@ P_IM1_MOVER_INIMIGO:	# agora chamemos a funcao de movimento
 
 P_IM1_MOVIMENTO_1:
 			jal PROC_MOVIMENTO_NPC_1
-			j P_IM1_MOVER_INIMIGO_CONT
+			j P_IM1_MOVER_NPC_CONT
 P_IM1_MOVIMENTO_2:
 			jal PROC_MOVIMENTO_NPC_2
-			j P_IM1_MOVER_INIMIGO_CONT
+			j P_IM1_MOVER_NPC_CONT
 P_IM1_MOVIMENTO_3:
 			jal PROC_MOVIMENTO_NPC_3
-			j P_IM1_MOVER_INIMIGO_CONT
+			j P_IM1_MOVER_NPC_CONT
 P_IM1_MOVIMENTO_DEFAULT:
 			jal PROC_MOVIMENTO_NPC_1
-			j P_IM1_MOVER_INIMIGO_CONT
+			j P_IM1_MOVER_NPC_CONT
 
-P_IM1_MOVER_INIMIGO_CONT:
+P_IM1_MOVER_NPC_CONT:
 			
 
-			bltz a0, P_IM1_LOOP_1_PRINT	# se a direcao for -1, soh printa o inimigo mesmo
+			bltz a0, P_IM1_LOOP_1_PRINT	# se a direcao for -1, soh printa o npc mesmo
 
 			# senao, move
 
 # argumento: a0 - direcao
 P_IM1_PSEUDOPROC_MOVER:	
 # eh isso mesmo, pseudoproc			
-			# t1 = endereco da direcao do inimigo
-			add t1, s2, s7			# t1 = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])
+			# t1 = endereco da direcao do npc
+			add t1, s2, s7			# t1 = i + NPCS_DIRECAO   	(pula pra DIRECAO[i])
 
-			# t2 = endereco da posicao do inimigo
+			# t2 = endereco da posicao do npc
 			slli t0, s7, 2			# idx = 4 * i     		(queremos pular 1 word para cada i)
-			add t2, s1, t0			# t2 = idx + INIMIGOS_POSICAO   (pula pra POSICAO[i])
-			lh t3, (t2)			# carrega pos X do inimigo como argumento
-			lh t4, 2(t2)			# carrega pos Y do inimigo como argumento
+			add t2, s1, t0			# t2 = idx + NPCS_POSICAO   (pula pra POSICAO[i])
+			lh t3, (t2)			# carrega pos X do npc como argumento
+			lh t4, 2(t2)			# carrega pos Y do npc como argumento
 
 			beqz a0, P_IM1_MOVER_SUL
 			
@@ -303,39 +303,39 @@ P_IM1_LOOP_1_MOVER_FINAL:
 		
 			slli t0, s7, 2			# idx = 4 * i     		(queremos pular 1 word para cada i)
 			
-			add t0, s1, t0			# idx += INIMIGOS_POSICAO   	(pula pra POSICAO[i])
+			add t0, s1, t0			# idx += NPCS_POSICAO   	(pula pra POSICAO[i])
 			sh t3, (t0)			# guarda X
 			sh t4, 2(t0)			# guarda Y 
 		
-			### hora de printar o inimigo
+			### hora de printar o npc
 P_IM1_LOOP_1_PRINT:	
-			# temos que calcular qual vai ser a textura do inimigo
-			# vai ser inimigo-10 * AREA_SPRITE * 5  + AREA_SPRITE * direcao
-			# isso eh pq o inimigo comeca a contar do 10 e cada inimigo tem 5 quadradinhos na strip :3
+			# temos que calcular qual vai ser a textura do npc
+			# vai ser npc-10 * AREA_SPRITE * 5  + AREA_SPRITE * direcao
+			# isso eh pq o npc comeca a contar do 10 e cada npc tem 5 quadradinhos na strip :3
 			
 			
 			li t0, 5
 			li t2, AREA_SPRITE
 			mul t1, t2, t0			# t1 = 5 * AREA_SPRITE
 			
-			add t0, s7, s0			# idx = i + INIMIGOS (pulamos 1 byte por inimigo)
+			add t0, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
 			
-			lbu t0, (t0)			# carrega o valor desse inimigo
+			lbu t0, (t0)			# carrega o valor desse npc
 			addi t0, t0, -10		# subtrai 10
 			
-			mul t1, t1, t0			# idx = inimigo-10 * AREA_SPRITE * 5
+			mul t1, t1, t0			# idx = npc-10 * AREA_SPRITE * 5
 			
 			add a0, t1, s5			# ENDERECO DA TEXTURA A SER IMPRESSA: textura strip + idx
 			
-			add t1, s2, s7			# idx = i + INIMIGOS_DIRECAO   	(pula pra DIRECAO[i])
-			lbu t1, (t1)			# carrega o valor de direcao do inimigo
+			add t1, s2, s7			# idx = i + NPCS_DIRECAO   	(pula pra DIRECAO[i])
+			lbu t1, (t1)			# carrega o valor de direcao do npc
 			mul t1, t2, t1			# t1 = AREA_SPRITE * direcao
 			
 			add a0, t1, a0			# ENDERECO DA TEXTURA A SER IMPRESSA += t1
 			
 			### agora peguemos as posicoes x e y
 			slli t0, s7, 2			# idx = 4 * i     		(queremos pular 1 word para cada i)
-			add t0, s1, t0			# idx += INIMIGOS_POSICAO   	(pula pra POSICAO[i])
+			add t0, s1, t0			# idx += NPCS_POSICAO   	(pula pra POSICAO[i])
 			lhu a1, (t0)			# carrega a pos X
 			lhu a2, 2(t0)			# carrega a pos Y
 			
@@ -361,14 +361,14 @@ P_IM1_LOOP_1_PRINT:
 
 
 P_IM1_LOOP_1_CONT_1:	addi s7, s7, 1		# i++
-			blt s7, s3, P_IM1_LOOP_1# se i < qtd de inimigos, continuar
+			blt s7, s3, P_IM1_LOOP_1# se i < qtd de npcs, continuar
 			
 			
 # mds quanta linha hein
 # eh ah ia pra vc ahi
 # haja dedo pra digitar e cerebro pra debugar mds do ceu
 			
-PROC_INIMIGOS_MANAGER_FIM:
+PROC_NPCS_MANAGER_FIM:
 
 			lw s0, (sp)
 			lw s1, 4(sp)
