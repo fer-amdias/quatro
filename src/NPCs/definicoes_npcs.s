@@ -17,30 +17,33 @@
 .eqv NAO_EH_INIMIGO     0
 .eqv EH_INIMIGO         1
 
-.eqv NPC_STRUCT_TAMANHO 3       
+.eqv NPC_STRUCT_ATRIBUTO_VELOCIDADE 0
+.eqv NPC_STRUCT_ATRIBUTO_INIMIGO 2
+.eqv NPC_STRUCT_ATRIBUTO_TIPO_DE_MOVIMENTO 3
+.eqv NPC_STRUCT_TAMANHO 4
 
-STRUCT_NPCS:
+STRUCTS_NPCS:
         # NPC 1 - Seta vermelha
-        .byte 100               # VELOCIDADE
+        .half 100               # VELOCIDADE
         .byte EH_INIMIGO        # INIMIGO?
         .byte 1                 # TIPO DE MOVIMENTO (QUAL PROC CHAMAR)    
         
         # NPC 2 - Sentinelas Babilonicas
-        .byte 100               # VELOCIDADE
+        .half 100               # VELOCIDADE
         .byte EH_INIMIGO        # INIMIGO?
         .byte 1                 # TIPO DE MOVIMENTO  
 
         # NPC 3 - Ratos
-        .byte 160               # VELOCIDADE
+        .half 80                # VELOCIDADE
         .byte NAO_EH_INIMIGO    # INIMIGO?
         .byte 2                 # TIPO DE MOVIMENTO
 
         # NPC 4 - Legionarios Romanos
-        .byte 60                # VELOCIDADE
+        .half 60                # VELOCIDADE
         .byte EH_INIMIGO        # INIMIGO?
-        .byte 3                 # TIPO DE MOVIMENTO
+        .byte 1                 # TIPO DE MOVIMENTO
 
         # NPC 5 - Filosofos
-        .byte 80                # VELOCIDADE
+        .half 100               # VELOCIDADE
         .byte NAO_EH_INIMIGO    # INIMIGO?
-        .byte 4                 # TIPO DE MOVIMENTO
+        .byte 3                 # TIPO DE MOVIMENTO
