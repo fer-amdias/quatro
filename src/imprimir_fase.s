@@ -241,8 +241,16 @@ P_IF1_REGISTRAR_INIMIGO:	# ficamos sem registradores para contar o n de inimigos
 				sh s6, (s10)			# salva a posicao X do inimigo no vetor de posicao (Vpi)
 				sh s7, 2(s10)			# salva a posicao Y do inimigo no vetor de posicao (Vpi)
 				
-				li t3, 0
-				sb t3, (s11)			# zera a direcao em Vdi, para ser calculada quando eles forem posicionados
+				sb x0, (s11)			# zera a direcao em Vdi, para ser calculada quando eles forem posicionados
+
+				li t3, 14
+				bne t0, t3, P_IF1_REGISTRAR_INIMIGO_CONT
+
+				# se eh um filosofo (tipo 14 / 5), devemos colocar a direcao pra direita.
+				li t3, 1
+				sb t3, (s11)			# coloca a direcao para a DIREITA em (Vdi)
+
+P_IF1_REGISTRAR_INIMIGO_CONT:
 				
 				addi s9, s9, 1			# avanca pro proximo byte no endereco do vetor
 				addi s10, s10, 4		# avanca uma word (duas half-words) no endereco do vetor de posicao
