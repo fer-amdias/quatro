@@ -43,7 +43,19 @@
 # a5 = MODO = modo de impressao (0: tela, 1: buffer)
 
 
-PROC_IMPRIMIR_TEXTURA: 	bne a7, x0, P_IT1_MODO_1	# se n for o modo 0, carrega o buffer
+PROC_IMPRIMIR_TEXTURA: 	
+
+			# primeiro checamos que nao estamos out of bounds
+			bltz a1, P_IT1_FIM
+			bltz a2, P_IT1_FIM
+			add t0, a1, a4
+			add t1, a2, a3
+			li t2, 320
+			li t3, 240
+			bgt t0, t2, P_IT1_FIM
+			bgt t1, t3, P_IT1_FIM
+
+			bne a7, x0, P_IT1_MODO_1	# se n for o modo 0, carrega o buffer
 
 			la t3, FRAME_BUFFER_PTR
 			lw t3, (t3)
