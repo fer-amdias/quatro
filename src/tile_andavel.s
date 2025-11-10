@@ -4,7 +4,7 @@
 # 							     #
 # ARGUMENTOS:						     #
 #	A0 : MODO (0 = checar a posicao)                     #
-#                 (1 = tile na direcao A3 da posicao dada    #
+#                 (1 = tile na direcao A3 da posicao dada)   #
 #               A1 : pos X                                   #
 #               A2 : pos Y                                   #
 #               A3 : direcao (caso modo 1)                   #

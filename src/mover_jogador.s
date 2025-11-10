@@ -3,7 +3,7 @@
 # Move o jogador para uma coordenada escolhida.	            	#
 # 							     	#
 # ARGUMENTOS:						     	#
-#	A0 : MODO (0, 1, 2 OU 3)                        	#
+#	A0 : MODO (0, 1 OU 2)                        		#
 #	A1 : POSICAO X                                  	#
 #	A2 : POSICAO Y						#
 #	A3 : ENDERECO DE TEXTURA DO JOGADOR			#
