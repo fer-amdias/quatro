@@ -184,13 +184,13 @@ P_F1_LOOP:
 		# se o jogador nao estah vivo
 		beqz a0, P_F1_MORTE			# mata o jogador (claro)
 		
-		li t0, POWERUP_1
+		li t0, TILE_POWERUP_1
 		beq a1, t0, P_F1_RECEBER_POWERUP_TAMANHO_BOMBA
 		
-		li t0, POWERUP_2
+		li t0, TILE_POWERUP_2
 		beq a1, t0, P_F1_RECEBER_POWERUP_QTD_BOMBAS
 		
-		li t0, PERGAMINHO
+		li t0, TILE_PERGAMINHO
 		beq a1, t0, P_F1_CHECAR_PERGAMINHO
 		
 		li t0, 100
@@ -199,10 +199,10 @@ P_F1_LOOP:
 		lw t0, PERGAMINHO_NO_INICIO
 		bnez t0, P_F1_MOSTRAR_TUTORIAL	# se pergaminho_no_inicio = 1, mostra o pergaminho
 		
-		li t0, SAIDA
+		li t0, TILE_SAIDA
 		beq a1, t0, P_F1_SAIDA_DA_FASE
 		
-		li t0, ELEVADORR
+		li t0, TILE_ELEVADOR
 		beq a1, t0, P_F1_SAIDA_DA_FASE
 		
 		j P_F1_LOOP_CONT

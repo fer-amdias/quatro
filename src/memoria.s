@@ -36,11 +36,11 @@
 .eqv BOMBAS_CONTAGEM_REGRESSIVA 5
 .eqv BOMBAS_MS_DE_TRANSICAO 8
 
-.eqv SAIDA	3
-.eqv POWERUP_1  5
-.eqv POWERUP_2  6
-.eqv ELEVADORR 	7
-.eqv PERGAMINHO 8
+.eqv TILE_SAIDA	3
+.eqv TILE_POWERUP_1  5
+.eqv TILE_POWERUP_2  6
+.eqv TILE_ELEVADOR 	7
+.eqv TILE_PERGAMINHO 8
 
 .eqv MAX_VIDAS 4	# maximo de vidas possiveis
 
