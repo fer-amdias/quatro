@@ -8,7 +8,7 @@
 #	A1 : ENDERECO DE TEXTURA DO JOGADOR			#
 #	A2 : ENDERECO DO MAPA					#
 # RETORNOS:                                                  	#
-#       A0 : SE O JOGADOR DECIDIU SAIR DO JOGO (0 ou 1)
+#       A0 : SE O JOGADOR DECIDIU SAIR DO JOGO (0 ou 1)		#
 #################################################################
 
 .text
