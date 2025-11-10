@@ -23,7 +23,7 @@ NPC_1_VETOR_DIRECAO_TAMANHO: .byte 0
 
 # A0 = DIRECAO FRENTE
 # A1 = DIRECAO A SER CHECADA
-SUBPROC_P_MV1_CHECAR_DIRECAO: 
+SUBPROC_P_MN1_CHECAR_DIRECAO: 
                         addi sp, sp, -12
                         sw ra, (sp)
                         sw s0, 4(sp)
@@ -40,9 +40,9 @@ SUBPROC_P_MV1_CHECAR_DIRECAO:
                         mv a3, s0       # a3 = direcao a ser checada
 			jal PROC_TILE_ANDAVEL
 
-                        beqz a0, S1_P_MV1_RET
+                        beqz a0, S1_P_MN1_RET
 
-S1_P_MV1_GUARDA_DIRECAO:
+S1_P_MN1_GUARDA_DIRECAO:
                         la t1, NPC_1_VETOR_DIRECAO
                         lb t0, NPC_1_VETOR_DIRECAO_TAMANHO
                         add t1, t0, t1                 # avanca TAMANHO casas no vetor
@@ -51,15 +51,15 @@ S1_P_MV1_GUARDA_DIRECAO:
                         addi t0, t0, 1                 # incrementa em 1 o tamanho
                         sb t0, NPC_1_VETOR_DIRECAO_TAMANHO, t1
 
-                        beqz s3, S1_P_MV1_RET       # se a direcao que checamos nao for a frente, retorna
+                        beqz s3, S1_P_MN1_RET       # se a direcao que checamos nao for a frente, retorna
                         # senao, adiciona a frente de novo
                         # isso dah pra gente um PESO 2 para a direcao da frente, pois ela vai ser contabilizada duplamente!
 
                         # seta s3 como 0 (para que esse loop soh se repita uma vez!!) e guarda a direcao DE NOVO.
                         mv s3, zero
-                        j S1_P_MV1_GUARDA_DIRECAO
+                        j S1_P_MN1_GUARDA_DIRECAO
 
-S1_P_MV1_RET:
+S1_P_MN1_RET:
                         lw ra, (sp)
                         lw s0, 4(sp)
                         lw s3, 8(sp)
@@ -166,18 +166,18 @@ P_MN1_ESCOLHER_NOVA_DIRECAO:
 			# s0 = direcao NPC, [s1, s2] = pos NPC, [s3, s4] = pos jogador
                         mv a0, s0
                         mv a1, s0
-                        jal SUBPROC_P_MV1_CHECAR_DIRECAO        # checa a frente
+                        jal SUBPROC_P_MN1_CHECAR_DIRECAO        # checa a frente
                         
                         mv a0, s0
                         mv a1, s0
                         virar_90_graus_no_sentido_antihorario(a1)# checa a esquerda
 
-                        jal SUBPROC_P_MV1_CHECAR_DIRECAO        
+                        jal SUBPROC_P_MN1_CHECAR_DIRECAO        
 
                         mv a0, s0
                         mv a1, s0
                         virar_90_graus_no_sentido_horario(a1)
-                        jal SUBPROC_P_MV1_CHECAR_DIRECAO        # checa a direita
+                        jal SUBPROC_P_MN1_CHECAR_DIRECAO        # checa a direita
                         
                         # seta a seed aleatoria como o ciclo atual e o index como o time
 			csrr a1, cycle
