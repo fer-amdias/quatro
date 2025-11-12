@@ -125,7 +125,7 @@ P_RM1_SPACEBAR:
 			
 P_RM1_BACKSPACE:	lw ra, (sp)
 					addi sp, sp, 4	
-					j MAIN
+					j MENU 		# alguem ta vendo isso? acaso nao hah justica nessa terra?
 
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			mv a4, a2

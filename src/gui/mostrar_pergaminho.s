@@ -65,7 +65,7 @@ P_MP1_CHECAR_COOLDOWN:
 			# despausa o jogo. muito importante tbm. senao o jogo congela eternamente.
 			la t0, JOGO_PAUSADO				
 			sb x0, (t0)					
-		  	j IR_MENU
+		  	j MENU			# que monstruosidade. eu corrigiria isso se eu soubesse de uma maneira elegante de faze-lo.
 		  	 	
 P_MP1_DESTRUIR_PERGAMINHO:  	
 			mv t0, a2
