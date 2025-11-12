@@ -10,7 +10,7 @@
 
 .data
 
-# PREFIXO INTERNO: MP_
+# PREFIXO INTERNO: R_MP1_
 
 .text
 ROTINA_MENU_PRINCIPAL:
@@ -33,7 +33,8 @@ ROTINA_MENU_PRINCIPAL:
 	#	A7 : MODO DE IMPRESSAO 				     #
 	#			(0: FRAME_BUFFER, 1: FASE_BUFFER)    #
 	
-MENU:	li a0, 0x00			# preto
+R_MP1_MENU:	
+	li a0, 0x00			# preto
 	li a1, 1
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 	
@@ -75,44 +76,44 @@ MENU:	li a0, 0x00			# preto
 	
 	jal PROC_DESENHAR	
 	
-MP_LOOP:
+R_MP1_LOOP:
 
 	li t1,0xFF200000		# carrega o endere�o de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
 	andi t0,t0,0x0001		# mascara o bit menos significativo
-   	beq t0,zero,MP_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
+   	beq t0,zero,R_MP1_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
   	lw t2,4(t1)  			# le o valor da tecla 
   	
   	li t0, '1'
-	beq t2, t0, MP_JOGAR
+	beq t2, t0, R_MP1_JOGAR
 	li t0, '2'
-	beq t2, t0, MP_CONFIG
+	beq t2, t0, R_MP1_CONFIG
 	li t0, '3'
-	beq t2, t0, MP_CREDITOS
+	beq t2, t0, R_MP1_CREDITOS
 	li t0, '4'
-	bne t2, t0, MP_LOOP_CONT # se NAO for 4, continua
+	bne t2, t0, R_MP1_LOOP_CONT # se NAO for 4, continua
 
 	# se for, encerra o programa
 	fim
-MP_LOOP_CONT:
+R_MP1_LOOP_CONT:
 	li a0, 0
 	jal PROC_TOCAR_AUDIO	
-	j MP_LOOP
+	j R_MP1_LOOP
 
-MP_JOGAR:
+R_MP1_JOGAR:
 	jal ROTINA_MENU_JOGAR
-	bgez a0, MP_FIM	# se o retorno for positivo, um capitulo foi selecionado. retorna esse capitulo pra main.
-	j MENU
+	bgez a0, R_MP1_FIM	# se o retorno for positivo, um capitulo foi selecionado. retorna esse capitulo pra main.
+	j R_MP1_MENU
 	
-MP_CONFIG:
+R_MP1_CONFIG:
 	jal ROTINA_MENU_CONFIG
-	j MENU
+	j R_MP1_MENU
 
-MP_CREDITOS:
+R_MP1_CREDITOS:
 	jal ROTINA_MENU_CREDITOS
-	j MENU
+	j R_MP1_MENU
 
-MP_FIM:
+R_MP1_FIM:
 	lw ra, (sp)
 	addi sp, sp, 4
 	ret
