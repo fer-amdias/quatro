@@ -119,6 +119,8 @@ CAP2:
 .include "./gui/mostrar_pergaminho.s"
 .include "./menus/menu_principal.s"
 .include "./menus/menu_jogar.s"
+.include "./menus/menu_config.s"
+.include "./menus/menu_creditos.s"
 .include "./movimento_jogador/mover_jogador.s"
 .include "./movimento_jogador/registrar_movimento.s"
 .include "./NPCs/definicoes_npcs.s"
