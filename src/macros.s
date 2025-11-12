@@ -290,3 +290,13 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	sub %reg, %arg1, %arg2		# pega arg1 - arg2
 	seqz %reg, %reg			# se arg1 - arg2 = 0, eles sao iguais.
 .end_macro
+
+# imprime uma string arg[0] em x = arg[1] e y = arg[2] com cor arg[3]. se arg[4] = 0, trata arg[0] como chave em locale.s. senao, como endereco.
+.macro imprimir_string(%stringkey, %x, %y, %cor, %modo)
+	la a0, %stringkey
+	li a1, %x
+	li a2, %y
+	li a3, %cor
+	li a4, %modo
+	jal PROC_IMPRIMIR_STRING
+.end_macro

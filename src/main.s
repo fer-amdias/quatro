@@ -84,7 +84,7 @@ IR_MENU:
 	li t0, 1
 	beq a0, t0, CAP1		# ir p capitulo 1 
 	li t0, 2
-	beq a0, t0, CAP2		# ir p capitulo 1 
+	beq a0, t0, CAP2		# ir p capitulo 2
 	j IR_MENU			# volta pro menu se o retorno for invalido
 
 CAP0:
@@ -118,6 +118,7 @@ CAP2:
 .include "./gui/imprimir_hud.s"
 .include "./gui/mostrar_pergaminho.s"
 .include "./menus/menu_principal.s"
+.include "./menus/menu_jogar.s"
 .include "./movimento_jogador/mover_jogador.s"
 .include "./movimento_jogador/registrar_movimento.s"
 .include "./NPCs/definicoes_npcs.s"

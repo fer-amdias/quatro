@@ -5,7 +5,7 @@
 # ARGUMENTOS:						     	#
 #	(nenhum)						#
 # RETORNOS:                                                  	#
-#       (nenhum)                                             	#
+#       a0 = capitulo escolhido                                 #
 #################################################################
 
 .data
@@ -104,90 +104,9 @@ MP_LOOP_CONT:
 	j MP_LOOP
 
 MP_JOGAR:
-
-	li a0, 0x00			# preto
-	li a1, 1
-	jal PROC_PREENCHER_TELA		# preenche a tela de preto
-
-	la a0, JOGAR_TITULO
-	li a1, 70
-	li a2, 105
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-
-	la a0, JOGAR_OPCAO0
-	li a1, 50
-	li a2, 120
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, JOGAR_OPCAO1
-	li a1, 50
-	li a2, 130
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, JOGAR_OPCAO2
-	li a1, 50
-	li a2, 140
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, JOGAR_OPCAO3
-	li a1, 50
-	li a2, 150
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, JOGAR_OPCAO4
-	li a1, 50
-	li a2, 160
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, JOGAR_OPCAO5
-	li a1, 50
-	li a2, 180
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-
-	jal PROC_DESENHAR	
-
-MP_JOGAR_LOOP:
-
-	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
-	lw t0,0(t1)			# Le bit de Controle Teclado
-	andi t0,t0,0x0001		# mascara o bit menos significativo
-   	beq t0,zero,MP_JOGAR_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
-  	lw t2,4(t1)  			# le o valor da tecla 
-  	
-  	li t0, '0'
-	beq t2, t0, MP_CAP0
-  	li t0, '1'
-	beq t2, t0, MP_CAP1
-	li t0, '2'
-	beq t2, t0, MP_CAP2
-	#li t0, '3'
-	#beq t2, t0, MP_CAP3
-	#li t0, '4'
-	#beq t2, t0, MP_CAP4
-	
-	li t0, '9'
-	beq t2, t0, MENU
-	li t0, 8		# TAMBEM VOLTA PRA BACKSPACE!!!
-	beq t2, t0, MENU
-
-MP_JOGAR_LOOP_CONT:
-	li a0, 0
-	jal PROC_TOCAR_AUDIO	
-	j MP_JOGAR_LOOP
+	jal ROTINA_MENU_JOGAR
+	bgez a0, MP_FIM	# se o retorno for positivo, um capitulo foi selecionado. retorna esse capitulo pra main.
+	j MENU
 	
 MP_CONFIG:
 	li a0, 0x00			# preto
@@ -470,23 +389,6 @@ MP_SMC_FIM:
 	lw ra, (sp)
 	addi sp, sp, 4
 	ret
-
-
-MP_CAP0:
-	li a0, 0		# retorna tutorial
-	j MP_FIM
-MP_CAP1:
-	li a0, 1		# retorna cap1
-	j MP_FIM
-MP_CAP2:
-	li a0, 2		# retorna cap2
-	j MP_FIM
-MP_CAP3:
-	li a0, 3		# retorna cap3
-	j MP_FIM
-MP_CAP4:
-	li a0, 4		# retorna cap4
-	j MP_FIM
 
 MP_FIM:
 	lw ra, (sp)
