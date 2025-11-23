@@ -128,10 +128,18 @@ P_CC1_break:		##### fim do loop
 			la t0, POSICAO_JOGADOR
 			lh a1, (t0)
 			lh a2, 2(t0)
+			lw t0, ALTURA_JOGADOR
+			srli t0, t0, 1		# divide por 2
+			lw t1, LARGURA_JOGADOR
+			srli t1, t1, 1		# divide por 2	
+			addi t1, t1, -1		# fator corretivo
+			add a1, a1, t1		# centraliza
+			add a2, a2, t0		# centraliza
 			jal PROC_CALCULAR_TILE_ATUAL
 			
 			# prepara os argumentos de retorno
 			mv a1, a0			# coloca o tile atual em a1
+			
 			lw a0, (sp)			# recarrega se o jogador estah vivo ou nao em a0
 			addi sp, sp, 4
 		
