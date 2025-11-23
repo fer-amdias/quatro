@@ -117,7 +117,6 @@ P_RM1_SPACEBAR:
 			lhu a1, 2(t0) 		# pos y do jogador
 			lw t0, ALTURA_JOGADOR
 			srli t0, t0, 1		# divide por 2
-			addi t0, t0, -1		# fator corretivo
 			lw t1, LARGURA_JOGADOR
 			srli t1, t1, 1		# divide por 2	
 			addi t1, t1, -1		# fator corretivo
@@ -132,8 +131,8 @@ P_RM1_SPACEBAR:
 			j P_RM1_MOVER
 			
 P_RM1_BACKSPACE:	lw ra, (sp)
-					addi sp, sp, 4	
-					j MENU 		# alguem ta vendo isso? acaso nao hah justica nessa terra?
+			addi sp, sp, 4	
+			j MENU 		# alguem ta vendo isso? acaso nao hah justica nessa terra?
 
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			mv a4, a2
