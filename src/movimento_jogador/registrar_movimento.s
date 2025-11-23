@@ -115,6 +115,14 @@ P_RM1_SPACEBAR:
 			la t0, POSICAO_JOGADOR
 			lhu a0, (t0)		# pos X do jogador
 			lhu a1, 2(t0) 		# pos y do jogador
+			lw t0, ALTURA_JOGADOR
+			srli t0, t0, 1		# divide por 2
+			addi t0, t0, -1		# fator corretivo
+			lw t1, LARGURA_JOGADOR
+			srli t1, t1, 1		# divide por 2	
+			addi t1, t1, -1		# fator corretivo
+			add a0, a0, t1		# centraliza	
+			add a1, a1, t0		# centraliza
 			jal PROC_COLOCAR_BOMBA
 			
 			lw a0, (sp)
