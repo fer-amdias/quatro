@@ -1191,8 +1191,13 @@ seikilos_epitaph12:
 
     .byte 43, 80, 127
     .space 1
-    .word 500
+    .word 499
     .word 119500
+
+    .byte 1, 0, 0
+    .space 1
+    .word 1
+    .word 120000
 
 seikilos_epitaph12_FIM:
     .word 0 0 0
