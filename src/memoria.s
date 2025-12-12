@@ -59,7 +59,10 @@ VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 po
 # caso esteje cacando onde que os segundos sao atualizados: npcs manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
 
 POSICOES_MAPA: .half 0, 0
-POSICAO_JOGADOR: .half 0, 0
+
+POSICAO_JOGADOR: 
+JOGADOR_X: .half 0
+JOGADOR_Y: .half 0
 
 DIRECAO_JOGADOR: .byte 0
 			# 0 = PARA BAIXO
