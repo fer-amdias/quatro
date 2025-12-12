@@ -65,6 +65,8 @@
 .include "../assets/musicas/internationale.data"
 .include "../assets/musicas/intro_tune.data"
 .include "../assets/musicas/west__hurrian_song.data"
+.include "../assets/musicas/seikilos_epitaph12.data"
+.include "../assets/musicas/seikilos_epitaph.data"
 .include "../assets/audioefeitos/morte.data"
 .include "../assets/audioefeitos/morte_ch3.data"
 .include "../assets/audioefeitos/powerup.data"
