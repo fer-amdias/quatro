@@ -1,0 +1,193 @@
+seikilos_epitaph:
+    .byte 57, 107, 127
+    .space 1
+    .word 500
+    .word 2500
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 3000
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 4000
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 5500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 500
+    .word 6000
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 6500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 1500
+    .word 7000
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 8500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 500
+    .word 9500
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 10000
+
+    .byte 62, 107, 127
+    .space 1
+    .word 1500
+    .word 10500
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 11000
+
+    .byte 59, 107, 127
+    .space 1
+    .word 500
+    .word 11500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 1000
+    .word 12000
+
+    .byte 59, 107, 127
+    .space 1
+    .word 500
+    .word 13000
+
+    .byte 55, 107, 127
+    .space 1
+    .word 1000
+    .word 13500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 500
+    .word 14500
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 15000
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 15500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 1500
+    .word 16000
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 16500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 500
+    .word 17000
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 17500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 1000
+    .word 18000
+
+    .byte 59, 107, 127
+    .space 1
+    .word 500
+    .word 19000
+
+    .byte 55, 107, 127
+    .space 1
+    .word 1000
+    .word 19500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 500
+    .word 20500
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 21000
+
+    .byte 59, 107, 127
+    .space 1
+    .word 500
+    .word 21500
+
+    .byte 62, 107, 127
+    .space 1
+    .word 500
+    .word 22000
+
+    .byte 64, 107, 127
+    .space 1
+    .word 1000
+    .word 22500
+
+    .byte 61, 107, 127
+    .space 1
+    .word 500
+    .word 23000
+
+    .byte 57, 107, 127
+    .space 1
+    .word 1000
+    .word 23500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 500
+    .word 24500
+
+    .byte 54, 107, 127
+    .space 1
+    .word 500
+    .word 25000
+
+    .byte 52, 107, 127
+    .space 1
+    .word 500
+    .word 25500
+
+    .byte 57, 107, 127
+    .space 1
+    .word 500
+    .word 26000
+
+    .byte 1, 0, 0
+    .space 1
+    .word 60000
+    .word 26500
+
+seikilos_epitaph_FIM:
+    .word 0 0 0
