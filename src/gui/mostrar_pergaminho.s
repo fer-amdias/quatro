@@ -68,12 +68,57 @@ P_MP1_CHECAR_COOLDOWN:
 		  	j MENU			# que monstruosidade. eu corrigiria isso se eu soubesse de uma maneira elegante de faze-lo.
 		  	 	
 P_MP1_DESTRUIR_PERGAMINHO:  	
-			mv t0, a2
-			sobrescrever_tile_atual_rg(0, t0)		# coloca um tile normal no lugar do pergaminho
+			addi sp, sp, -4
+			sw a2, (sp)		# salva endereco do mapa
+
+
+			# ARGUMENTOS DE PROC_MANIPULAR_TILEMAP
+			li a0, 0		# coloca tile VAZIO (0)
+			lhu a1, JOGADOR_X	# onde o jogador estah (x)
+			lhu a2, JOGADOR_Y	# onde o jogador estah (y)
+			li a7, 0		# modo [sobr]escrever
+
+			# corrige a posicao para ser igual ah checagem em PROC_CHECAR_COLISOES
+			lw t0, ALTURA_JOGADOR	
+			srli t0, t0, 1		# divide por 2
+			lw t1, LARGURA_JOGADOR
+			srli t1, t1, 1		# divide por 2	
+			addi t1, t1, -1		# fator corretivo
+			add a1, a1, t1		# centraliza
+			add a2, a2, t0		# centraliza
+			jal PROC_MANIPULAR_TILEMAP
+
+			# ARGUMENTOS DE PROC_IMPRIMIR_TEXTURA (precisamos apagar o pergaminho)
+			la t0, POSICAO_JOGADOR		# posicao do jogador
+			lhu a1, (t0)			# x
+			lhu a2, 2(t0)			# y
+			li a3, TAMANHO_SPRITE		# dimensoes
+			li a4, TAMANHO_SPRITE		# dimensoes
+			li a7, 1			# modo imprimir na fase buffer
+
+			# correcao
+			lw t0, ALTURA_JOGADOR	
+			srli t0, t0, 1		# divide por 2
+			lw t1, LARGURA_JOGADOR
+			srli t1, t1, 1		# divide por 2	
+			addi t1, t1, -1		# fator corretivo
+			add a1, a1, t1		# centraliza
+			add a2, a2, t0		# centraliza
+			
+			lw a0, (sp)			# carrega a textura
+			addi a0, a0, 8			# pula words de informacao
+			
+			normalizar_posicao(a1, a2)
+			
+			jal PROC_IMPRIMIR_TEXTURA
+
+
 			la t0, PERGAMINHO_NA_TELA			
 			sb x0, (t0)					# marca que nao precisamos mais mostrar o pergaminho
 			la t0, JOGO_PAUSADO				
 			sb x0, (t0)					# despausa o jogo
+
+			addi sp, sp, 4				
 			
 			j P_MP1_FIM					# para de mostrar o pergaminho
 		  	
