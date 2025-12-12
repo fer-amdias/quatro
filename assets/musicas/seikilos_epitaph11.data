@@ -1,0 +1,1203 @@
+seikilos_epitaph11:
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 0
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 1000
+
+    .byte 57, 60, 127
+    .space 1
+    .word 500
+    .word 2500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 2500
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 3000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 3000
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 4000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 4000
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 5500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 5500
+
+    .byte 62, 60, 127
+    .space 1
+    .word 500
+    .word 6000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 6000
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 6500
+
+    .byte 62, 60, 127
+    .space 1
+    .word 1500
+    .word 7000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 7000
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 8500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 8500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 9000
+
+    .byte 62, 60, 127
+    .space 1
+    .word 500
+    .word 9500
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 10000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 10000
+
+    .byte 62, 60, 127
+    .space 1
+    .word 1500
+    .word 10500
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 11000
+
+    .byte 59, 60, 127
+    .space 1
+    .word 500
+    .word 11500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 11500
+
+    .byte 57, 60, 127
+    .space 1
+    .word 1000
+    .word 12000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 12000
+
+    .byte 59, 60, 127
+    .space 1
+    .word 500
+    .word 13000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 13000
+
+    .byte 55, 60, 127
+    .space 1
+    .word 1000
+    .word 13500
+
+    .byte 57, 60, 127
+    .space 1
+    .word 500
+    .word 14500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 14500
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 15000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 15000
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 15500
+
+    .byte 62, 60, 127
+    .space 1
+    .word 1500
+    .word 16000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 16000
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 16500
+
+    .byte 62, 60, 127
+    .space 1
+    .word 500
+    .word 17000
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 17500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 17500
+
+    .byte 57, 60, 127
+    .space 1
+    .word 1000
+    .word 18000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 18000
+
+    .byte 59, 60, 127
+    .space 1
+    .word 500
+    .word 19000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 19000
+
+    .byte 55, 60, 127
+    .space 1
+    .word 1000
+    .word 19500
+
+    .byte 57, 60, 127
+    .space 1
+    .word 500
+    .word 20500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 20500
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 21000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 21000
+
+    .byte 59, 60, 127
+    .space 1
+    .word 500
+    .word 21500
+
+    .byte 62, 60, 127
+    .space 1
+    .word 500
+    .word 22000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 22000
+
+    .byte 64, 60, 127
+    .space 1
+    .word 1000
+    .word 22500
+
+    .byte 61, 60, 127
+    .space 1
+    .word 500
+    .word 23000
+
+    .byte 57, 60, 127
+    .space 1
+    .word 1000
+    .word 23500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 23500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 24000
+
+    .byte 57, 60, 127
+    .space 1
+    .word 500
+    .word 24500
+
+    .byte 54, 60, 127
+    .space 1
+    .word 500
+    .word 25000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 25000
+
+    .byte 52, 60, 127
+    .space 1
+    .word 500
+    .word 25500
+
+    .byte 57, 60, 127
+    .space 1
+    .word 500
+    .word 26000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 26500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 27000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 28000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 29500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 30000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 31000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 32500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 32500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 33000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 33000
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 34000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 34000
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 35500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 35500
+
+    .byte 62, 71, 127
+    .space 1
+    .word 500
+    .word 36000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 36000
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 36500
+
+    .byte 62, 71, 127
+    .space 1
+    .word 1500
+    .word 37000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 37000
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 38500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 38500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 39000
+
+    .byte 62, 71, 127
+    .space 1
+    .word 500
+    .word 39500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 40000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 40000
+
+    .byte 62, 71, 127
+    .space 1
+    .word 1500
+    .word 40500
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 41000
+
+    .byte 59, 71, 127
+    .space 1
+    .word 500
+    .word 41500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 41500
+
+    .byte 57, 71, 127
+    .space 1
+    .word 1000
+    .word 42000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 42000
+
+    .byte 59, 71, 127
+    .space 1
+    .word 500
+    .word 43000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 43000
+
+    .byte 55, 71, 127
+    .space 1
+    .word 1000
+    .word 43500
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 44500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 44500
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 45000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 45000
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 45500
+
+    .byte 62, 71, 127
+    .space 1
+    .word 1500
+    .word 46000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 46000
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 46500
+
+    .byte 62, 71, 127
+    .space 1
+    .word 500
+    .word 47000
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 47500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 47500
+
+    .byte 57, 71, 127
+    .space 1
+    .word 1000
+    .word 48000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 48000
+
+    .byte 59, 71, 127
+    .space 1
+    .word 500
+    .word 49000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 49000
+
+    .byte 55, 71, 127
+    .space 1
+    .word 1000
+    .word 49500
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 50500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 50500
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 51000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 51000
+
+    .byte 59, 71, 127
+    .space 1
+    .word 500
+    .word 51500
+
+    .byte 62, 71, 127
+    .space 1
+    .word 500
+    .word 52000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 52000
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 52500
+
+    .byte 61, 71, 127
+    .space 1
+    .word 500
+    .word 53000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 1000
+    .word 53500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 53500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 54000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 54500
+
+    .byte 54, 71, 127
+    .space 1
+    .word 500
+    .word 55000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 55000
+
+    .byte 52, 71, 127
+    .space 1
+    .word 500
+    .word 55500
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 56000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 56500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 57000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 58000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 59500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 60000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 61000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 62500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 62500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 63000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 63000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 64000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 65500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 65500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 66000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 66000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 67000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 68500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 69000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 70000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 71500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 72000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 73000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 74500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 75000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 76000
+
+    .byte 57, 68, 127
+    .space 1
+    .word 500
+    .word 77500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 77500
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 78000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 78000
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 79000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 79000
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 80500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 80500
+
+    .byte 62, 68, 127
+    .space 1
+    .word 500
+    .word 81000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 81000
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 81500
+
+    .byte 62, 68, 127
+    .space 1
+    .word 1500
+    .word 82000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 82000
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 83500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 83500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 84000
+
+    .byte 62, 68, 127
+    .space 1
+    .word 500
+    .word 84500
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 85000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 85000
+
+    .byte 62, 68, 127
+    .space 1
+    .word 1500
+    .word 85500
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 86000
+
+    .byte 59, 68, 127
+    .space 1
+    .word 500
+    .word 86500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 86500
+
+    .byte 57, 68, 127
+    .space 1
+    .word 1000
+    .word 87000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 87000
+
+    .byte 59, 68, 127
+    .space 1
+    .word 500
+    .word 88000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 88000
+
+    .byte 55, 68, 127
+    .space 1
+    .word 1000
+    .word 88500
+
+    .byte 57, 68, 127
+    .space 1
+    .word 500
+    .word 89500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 89500
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 90000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 90000
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 90500
+
+    .byte 62, 68, 127
+    .space 1
+    .word 1500
+    .word 91000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 91000
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 91500
+
+    .byte 62, 68, 127
+    .space 1
+    .word 500
+    .word 92000
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 92500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 92500
+
+    .byte 57, 68, 127
+    .space 1
+    .word 1000
+    .word 93000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 93000
+
+    .byte 59, 68, 127
+    .space 1
+    .word 500
+    .word 94000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 94000
+
+    .byte 55, 68, 127
+    .space 1
+    .word 1000
+    .word 94500
+
+    .byte 57, 68, 127
+    .space 1
+    .word 500
+    .word 95500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 95500
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 96000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 96000
+
+    .byte 59, 68, 127
+    .space 1
+    .word 500
+    .word 96500
+
+    .byte 62, 68, 127
+    .space 1
+    .word 500
+    .word 97000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 97000
+
+    .byte 64, 68, 127
+    .space 1
+    .word 1000
+    .word 97500
+
+    .byte 61, 68, 127
+    .space 1
+    .word 500
+    .word 98000
+
+    .byte 57, 68, 127
+    .space 1
+    .word 1000
+    .word 98500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 98500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 99000
+
+    .byte 57, 68, 127
+    .space 1
+    .word 500
+    .word 99500
+
+    .byte 54, 68, 127
+    .space 1
+    .word 500
+    .word 100000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 100000
+
+    .byte 52, 68, 127
+    .space 1
+    .word 500
+    .word 100500
+
+    .byte 57, 68, 127
+    .space 1
+    .word 500
+    .word 101000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 101500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 102000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 103000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 104500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 105000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 106000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 107500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 107500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 108000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 108000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 109000
+
+    .byte 57, 71, 127
+    .space 1
+    .word 500
+    .word 110500
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 110500
+
+    .byte 64, 71, 127
+    .space 1
+    .word 1000
+    .word 111000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 111000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 112000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 113500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 114000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 115000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 116500
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 117000
+
+    .byte 69, 9, 127
+    .space 1
+    .word 500
+    .word 118000
+
+    .byte 67, 9, 127
+    .space 1
+    .word 500
+    .word 119500
+
+    .byte 1, 0, 0
+    .space 1
+    .word 0
+    .word 120000
+
+seikilos_epitaph11_FIM:
+    .word 0 0 0
