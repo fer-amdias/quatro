@@ -1,0 +1,23 @@
+morte_ch2:
+    .byte 52, 60, 127
+    .space 1
+    .word 500
+    .word 0
+
+    .byte 50, 60, 127
+    .space 1
+    .word 500
+    .word 500
+
+    .byte 47, 60, 127
+    .space 1
+    .word 500
+    .word 1000
+
+    .byte 45, 60, 127
+    .space 1
+    .word 1500
+    .word 1500
+
+morte_ch2_FIM:
+    .word 0 0 0
