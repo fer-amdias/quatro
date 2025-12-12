@@ -189,5 +189,10 @@ seikilos_epitaph:
     .word 60000
     .word 26500
 
+    .byte 1, 0, 0
+    .space 1
+    .word 100
+    .word 86500
+
 seikilos_epitaph_FIM:
     .word 0 0 0
