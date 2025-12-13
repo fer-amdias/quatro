@@ -1,10 +1,10 @@
 seikilos_epitaph13:
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 0
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 1000
@@ -14,7 +14,7 @@ seikilos_epitaph13:
     .word 500
     .word 2500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 2500
@@ -24,7 +24,7 @@ seikilos_epitaph13:
     .word 1000
     .word 3000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 3000
@@ -34,7 +34,7 @@ seikilos_epitaph13:
     .word 1000
     .word 4000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 4000
@@ -44,7 +44,7 @@ seikilos_epitaph13:
     .word 500
     .word 5500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 5500
@@ -54,7 +54,7 @@ seikilos_epitaph13:
     .word 500
     .word 6000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 6000
@@ -69,7 +69,7 @@ seikilos_epitaph13:
     .word 1500
     .word 7000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 7000
@@ -79,12 +79,12 @@ seikilos_epitaph13:
     .word 500
     .word 8500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 8500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 9000
@@ -99,7 +99,7 @@ seikilos_epitaph13:
     .word 500
     .word 10000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 10000
@@ -119,7 +119,7 @@ seikilos_epitaph13:
     .word 500
     .word 11500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 11500
@@ -129,7 +129,7 @@ seikilos_epitaph13:
     .word 1000
     .word 12000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 12000
@@ -139,7 +139,7 @@ seikilos_epitaph13:
     .word 500
     .word 13000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 13000
@@ -154,7 +154,7 @@ seikilos_epitaph13:
     .word 500
     .word 14500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 14500
@@ -164,7 +164,7 @@ seikilos_epitaph13:
     .word 500
     .word 15000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 15000
@@ -179,7 +179,7 @@ seikilos_epitaph13:
     .word 500
     .word 16000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 16000
@@ -199,7 +199,7 @@ seikilos_epitaph13:
     .word 500
     .word 17500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 17500
@@ -209,7 +209,7 @@ seikilos_epitaph13:
     .word 1000
     .word 18000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 18000
@@ -219,7 +219,7 @@ seikilos_epitaph13:
     .word 500
     .word 19000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 19000
@@ -234,7 +234,7 @@ seikilos_epitaph13:
     .word 500
     .word 20500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 20500
@@ -244,7 +244,7 @@ seikilos_epitaph13:
     .word 500
     .word 21000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 21000
@@ -259,7 +259,7 @@ seikilos_epitaph13:
     .word 500
     .word 22000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 22000
@@ -279,12 +279,12 @@ seikilos_epitaph13:
     .word 1000
     .word 23500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 23500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 24000
@@ -299,7 +299,7 @@ seikilos_epitaph13:
     .word 500
     .word 25000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 25000
@@ -314,32 +314,32 @@ seikilos_epitaph13:
     .word 1000
     .word 26000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 26500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 27000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 28000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 29500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 30000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 31000
@@ -349,7 +349,7 @@ seikilos_epitaph13:
     .word 500
     .word 32500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 32500
@@ -359,7 +359,7 @@ seikilos_epitaph13:
     .word 1000
     .word 33000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 33000
@@ -369,7 +369,7 @@ seikilos_epitaph13:
     .word 1000
     .word 34000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 34000
@@ -379,7 +379,7 @@ seikilos_epitaph13:
     .word 500
     .word 35500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 35500
@@ -389,7 +389,7 @@ seikilos_epitaph13:
     .word 500
     .word 36000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 36000
@@ -404,7 +404,7 @@ seikilos_epitaph13:
     .word 1500
     .word 37000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 37000
@@ -414,12 +414,12 @@ seikilos_epitaph13:
     .word 500
     .word 38500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 38500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 39000
@@ -434,7 +434,7 @@ seikilos_epitaph13:
     .word 500
     .word 40000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 40000
@@ -454,7 +454,7 @@ seikilos_epitaph13:
     .word 500
     .word 41500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 41500
@@ -464,7 +464,7 @@ seikilos_epitaph13:
     .word 1000
     .word 42000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 42000
@@ -474,7 +474,7 @@ seikilos_epitaph13:
     .word 500
     .word 43000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 43000
@@ -489,7 +489,7 @@ seikilos_epitaph13:
     .word 500
     .word 44500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 44500
@@ -499,7 +499,7 @@ seikilos_epitaph13:
     .word 500
     .word 45000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 45000
@@ -514,7 +514,7 @@ seikilos_epitaph13:
     .word 500
     .word 46000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 46000
@@ -534,7 +534,7 @@ seikilos_epitaph13:
     .word 500
     .word 47500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 47500
@@ -544,7 +544,7 @@ seikilos_epitaph13:
     .word 1000
     .word 48000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 48000
@@ -554,7 +554,7 @@ seikilos_epitaph13:
     .word 500
     .word 49000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 49000
@@ -569,7 +569,7 @@ seikilos_epitaph13:
     .word 500
     .word 50500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 50500
@@ -579,7 +579,7 @@ seikilos_epitaph13:
     .word 500
     .word 51000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 51000
@@ -594,7 +594,7 @@ seikilos_epitaph13:
     .word 500
     .word 52000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 52000
@@ -614,12 +614,12 @@ seikilos_epitaph13:
     .word 1000
     .word 53500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 53500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 54000
@@ -634,7 +634,7 @@ seikilos_epitaph13:
     .word 500
     .word 55000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 55000
@@ -649,32 +649,32 @@ seikilos_epitaph13:
     .word 500
     .word 56000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 56500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 57000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 58000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 59500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 60000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 61000
@@ -684,7 +684,7 @@ seikilos_epitaph13:
     .word 500
     .word 62500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 62500
@@ -694,12 +694,12 @@ seikilos_epitaph13:
     .word 1000
     .word 63000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 63000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 64000
@@ -709,7 +709,7 @@ seikilos_epitaph13:
     .word 500
     .word 65500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 65500
@@ -719,12 +719,12 @@ seikilos_epitaph13:
     .word 1000
     .word 66000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 66000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 67000
@@ -734,7 +734,7 @@ seikilos_epitaph13:
     .word 500
     .word 68500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 68500
@@ -744,42 +744,42 @@ seikilos_epitaph13:
     .word 1000
     .word 69000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 69000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 70000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 71500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 72000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 73000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 74500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 75000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 76000
@@ -789,7 +789,7 @@ seikilos_epitaph13:
     .word 500
     .word 77500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 77500
@@ -799,7 +799,7 @@ seikilos_epitaph13:
     .word 1000
     .word 78000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 78000
@@ -809,7 +809,7 @@ seikilos_epitaph13:
     .word 1000
     .word 79000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 79000
@@ -819,7 +819,7 @@ seikilos_epitaph13:
     .word 500
     .word 80500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 80500
@@ -829,7 +829,7 @@ seikilos_epitaph13:
     .word 500
     .word 81000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 81000
@@ -844,7 +844,7 @@ seikilos_epitaph13:
     .word 1500
     .word 82000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 82000
@@ -854,12 +854,12 @@ seikilos_epitaph13:
     .word 500
     .word 83500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 83500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 84000
@@ -874,7 +874,7 @@ seikilos_epitaph13:
     .word 500
     .word 85000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 85000
@@ -894,7 +894,7 @@ seikilos_epitaph13:
     .word 500
     .word 86500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 86500
@@ -904,7 +904,7 @@ seikilos_epitaph13:
     .word 1000
     .word 87000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 87000
@@ -914,7 +914,7 @@ seikilos_epitaph13:
     .word 500
     .word 88000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 88000
@@ -929,7 +929,7 @@ seikilos_epitaph13:
     .word 500
     .word 89500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 89500
@@ -939,7 +939,7 @@ seikilos_epitaph13:
     .word 500
     .word 90000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 90000
@@ -954,7 +954,7 @@ seikilos_epitaph13:
     .word 500
     .word 91000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 91000
@@ -974,7 +974,7 @@ seikilos_epitaph13:
     .word 500
     .word 92500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 92500
@@ -984,7 +984,7 @@ seikilos_epitaph13:
     .word 1000
     .word 93000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 93000
@@ -994,7 +994,7 @@ seikilos_epitaph13:
     .word 500
     .word 94000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 94000
@@ -1009,7 +1009,7 @@ seikilos_epitaph13:
     .word 500
     .word 95500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 95500
@@ -1019,7 +1019,7 @@ seikilos_epitaph13:
     .word 500
     .word 96000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 96000
@@ -1034,7 +1034,7 @@ seikilos_epitaph13:
     .word 500
     .word 97000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 97000
@@ -1054,12 +1054,12 @@ seikilos_epitaph13:
     .word 1000
     .word 98500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 98500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 99000
@@ -1074,7 +1074,7 @@ seikilos_epitaph13:
     .word 500
     .word 100000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 100000
@@ -1089,32 +1089,32 @@ seikilos_epitaph13:
     .word 500
     .word 101000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 101500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 102000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 103000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 104500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 105000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 106000
@@ -1124,7 +1124,7 @@ seikilos_epitaph13:
     .word 500
     .word 107500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 107500
@@ -1134,12 +1134,12 @@ seikilos_epitaph13:
     .word 1000
     .word 108000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 108000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 109000
@@ -1149,7 +1149,7 @@ seikilos_epitaph13:
     .word 500
     .word 110500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 110500
@@ -1159,12 +1159,12 @@ seikilos_epitaph13:
     .word 1000
     .word 111000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 111000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 112000
@@ -1174,7 +1174,7 @@ seikilos_epitaph13:
     .word 500
     .word 113500
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 113500
@@ -1184,32 +1184,32 @@ seikilos_epitaph13:
     .word 1000
     .word 114000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 114000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 115000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 116500
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 117000
 
-    .byte 45, 80, 88
+    .byte 43, 115, 127
     .space 1
     .word 500
     .word 118000
 
-    .byte 43, 80, 88
+    .byte 43, 116, 127
     .space 1
     .word 500
     .word 119500
