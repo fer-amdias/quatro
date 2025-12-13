@@ -217,8 +217,8 @@ P_F1_RECEBER_POWERUP_TAMANHO_BOMBA:
 
 		li t0, 1
 		sb t0, POWERUP_TAMANHO_BOMBA, t1
-		sobrescrever_tile_atual_rg(0, $TEXTURA_DO_MAPA)	# marca o tile onde tava o powerup como vazio
-		j P_F1_LOOP_CONT
+
+		j P_F1_LIMPAR_POWERUP
 		
 P_F1_RECEBER_POWERUP_QTD_BOMBAS:	
 		li a0, 1			# toca
@@ -229,7 +229,49 @@ P_F1_RECEBER_POWERUP_QTD_BOMBAS:
 
 		li t0, 1
 		sb t0, POWERUP_QTD_BOMBAS, t1
-		sobrescrever_tile_atual_rg(0, $TEXTURA_DO_MAPA)	# marca o tile como vazio
+
+P_F1_LIMPAR_POWERUP:
+		
+		# ARGUMENTOS DE PROC_MANIPULAR_TILEMAP
+		li a0, 0		# coloca tile VAZIO (0)
+		lhu a1, JOGADOR_X	# onde o jogador estah (x)
+		lhu a2, JOGADOR_Y	# onde o jogador estah (y)
+		li a7, 0		# modo [sobr]escrever
+
+		# corrige a posicao para ser igual ah checagem em PROC_CHECAR_COLISOES
+		lw t0, ALTURA_JOGADOR	
+		srli t0, t0, 1		# divide por 2
+		lw t1, LARGURA_JOGADOR
+		srli t1, t1, 1		# divide por 2	
+		addi t1, t1, -1		# fator corretivo
+		add a1, a1, t1		# centraliza
+		add a2, a2, t0		# centraliza
+
+		# guarda a posicao corrigida
+		addi sp, sp, -8
+		sw a1, (sp)
+		sw a2, 4(sp)
+		jal PROC_MANIPULAR_TILEMAP
+
+		# ARGUMENTOS DE PROC_IMPRIMIR_TEXTURA (precisamos apagar o tile)
+		lw a1, (sp)			# x
+		lw a2, 4(sp)			# y
+		li a3, TAMANHO_SPRITE		# dimensoes
+		li a4, TAMANHO_SPRITE		# dimensoes
+		li a7, 1			# modo imprimir na fase buffer
+		# correcao
+
+		addi sp, sp, 8 # joga fora o espaco reservado que nao vamos mais precisar
+		
+		mv a0, $TEXTURA_DO_MAPA		# carrega a textura
+		addi a0, a0, 8			# pula words de informacao
+		
+		normalizar_posicao(a1, a2)
+		
+		jal PROC_IMPRIMIR_TEXTURA
+
+		
+
 		j P_F1_LOOP_CONT
 		
 P_F1_SAIDA_DA_FASE: 
