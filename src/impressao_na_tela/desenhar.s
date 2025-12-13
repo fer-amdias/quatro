@@ -14,15 +14,26 @@ PROC_DESENHAR:		lw t1, FRAME_BUFFER_PTR		# carrega o endereco do frame buffer
 			lw t2, FRAME_BUFFER_FIM_PTR	# endereco final 
 			li t3, FRAME_0			# 0xFF000000 - endereco inicial
 	
-P_D1_LOOP: 		beq t1,t2,P_D1_FIM		# Se for o ulltimo endereco entao sai do loop
-			lw t0, (t1)			# le uam word no buffer
-			sw t0, (t3)			# escreve a word na memoria VGA
-			
-			# soma 4 aos enderecos (vai p/ proxima word)
-			addi t1, t1, 4			
-			addi t3, t3, 4
-			
-			j P_D1_LOOP			# volta a verificar
+			li t0, 0xFF200604	
+			lw t1, FRAME_BUFFER_PTR
+			li t2, FRAME_0
+			bne t1, t2, P_D1_TROCAR_P_FRAME_1
+
+P_D1_TROCAR_P_FRAME_0:
+			sw zero,0(t0)
+			li t0, FRAME_1
+			sw t0, FRAME_BUFFER_PTR, t1
+			li t0, FRAME_1_FIM
+			sw t0, FRAME_BUFFER_FIM_PTR, t1
+			ret
+P_D1_TROCAR_P_FRAME_1:
+			li t1, 1
+			sw t1,0(t0)
+			li t0, FRAME_0
+			sw t0, FRAME_BUFFER_PTR, t1
+			li t0, FRAME_0_FIM
+			sw t0, FRAME_BUFFER_FIM_PTR, t1
+			ret
 			
 P_D1_FIM: 		ret	# yippee
 	

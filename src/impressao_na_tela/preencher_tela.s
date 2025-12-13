@@ -4,21 +4,28 @@
 # 							     	#
 # ARGUMENTOS:						     	#
 #	A0 : COR DE PREENCHIMENTO                            	#
-#	A1 : FRAME (0 OU 1 (frame buffer))                   	#
+#	A1 : MODO : 0 = tela, 1 = buffer                   	#
 # RETORNOS:                                                  	#
 #       (nenhum)                                             	#
 #################################################################
 .text
 
-PROC_PREENCHER_TELA:	beqz a1, P_PT1_EH_FRAME_0	# se A1 == 0, vai pra P_PT1_EH_FRAME_0; senao, fica
+PROC_PREENCHER_TELA:	beqz a1, P_PT1_EH_TELA		# se A1 == 0, vai pra P_PT1_EH_TELA; senao, fica
 
 P_PT1_EH_FRAME_1:	lw t1, FRAME_BUFFER_PTR		# carrega o endereco do frame buffer
 			lw t2, FRAME_BUFFER_FIM_PTR	# endereco final 
 			j P_PT1_MAIN			# pula ppra main do procedimento
 			
-P_PT1_EH_FRAME_0:	li t1, 0xFF000000		# carrega o endereco do frame 0
-			li t2, 0xFF012C00		# endereco final 
+P_PT1_EH_TELA:		li t0, FRAME_0
+			lw t1, FRAME_BUFFER_PTR		# carrega o endereco do frame buffer
+			bgt t1, t0, P_PT1_PRINTA_FRAME_0
+			li t1, FRAME_1
+			li t2, FRAME_1_FIM
 			j P_PT1_MAIN			# pula pra main do procedimento
+
+P_PT1_PRINTA_FRAME_0:
+			li t1, FRAME_0
+			li t2, FRAME_0_FIM
 
 P_PT1_MAIN:		# a0 eh a cor de preenchimento
 			# ocupando o primeiro byte de a0
