@@ -55,6 +55,8 @@ JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 MODO_SAIDA_LIVRE:       .word 0
 
+ENTER_COOLDOWN: .word 0
+
 SEGUNDOS_RESTANTES:	.word 100		# quantos segundos ateh a fase acabar. Padrao: 100 segundos  
 
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)

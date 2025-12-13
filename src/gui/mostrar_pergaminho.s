@@ -15,10 +15,6 @@
 # se eu nao tivesse incluido, aposto que ele seria completamente necessario por algum motivo
 # edit (10 Novembro 2025): foi util por causa do tile andavel e o tocar audio
 
-.data
-
-ENTER_COOLDOWN: .word 0
-
 .text
 
 PROC_MOSTRAR_PERGAMINHO:
@@ -119,6 +115,10 @@ P_MP1_DESTRUIR_PERGAMINHO:
 			sb x0, (t0)					# despausa o jogo
 
 			addi sp, sp, 4				
+
+			csrr t0, time
+			addi t0, t0, 250		# adiciona 250ms
+			sw t0, ENTER_COOLDOWN, t1	# guarda o cooldown
 			
 			j P_MP1_FIM					# para de mostrar o pergaminho
 		  	
