@@ -41,9 +41,9 @@ P_BM1_SUBPROC_EXPLODIR:
 			blt a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
 			blt a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
 		
-			li t2, 320				# largura vga
+			li t2, LARGURA_VGA			
 			sub t0, t2, t0				# x final do mapa = vga - x do mapa
-			li t2, 240				# altura vga
+			li t2, ALTURA_VGA			# altura vga
 			sub t1, t2, t1				# y final do mapa = vga - y do mapa
 			
 			# se x ou y estiverem fora do mapa, nao explode
@@ -172,9 +172,9 @@ P_BM1_SUBPROC_RESTAURAR:
 			blt a3, t0, P_BM1_SUBPROC_RESTAURAR_FIM
 			blt a4, t1, P_BM1_SUBPROC_RESTAURAR_FIM
 		
-			li t2, 320				# largura vga
+			li t2, LARGURA_VGA			
 			sub t0, t2, t0				# x final do mapa = vga - x do mapa
-			li t2, 240				# altura vga
+			li t2, ALTURA_VGA
 			sub t1, t2, t1				# y final do mapa = vga - y do mapa
 			
 			# se x ou y estiverem fora do mapa, nao restaura.

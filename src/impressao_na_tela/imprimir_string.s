@@ -130,9 +130,9 @@ SUBPROC_IMPRIMIR_CARACTERE:
     
 SP_IC1_.NAOIMPRIMIVEL: li      a0, 32		# Imprime espaco
 
-SP_IC1_.IMPRIMIVEL:	li	tp, 320			# Num colunas 320
+SP_IC1_.IMPRIMIVEL:	li	tp, LARGURA_VGA			# Num colunas 320
 SP_IC1_.mul1:		mul     t4, tp, a2			# multiplica a2x320  t4 = coordenada y
-SP_IC1_.mul1d:	add     t4, t4, a1               	# t4 = 320*y + x
+SP_IC1_.mul1d:	add     t4, t4, a1               		# t4 = 320*y + x
 			addi    t4, t4, 7                 	# t4 = 320*y + (x+7)
 			lw      tp, FRAME_BUFFER_PTR          	# pointer de frame
 			add     t4, t4, tp               	# t4 = endereco de impressao do ultimo pixel da primeira linha do char

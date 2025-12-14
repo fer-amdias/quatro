@@ -132,8 +132,8 @@ P_MP1_CONT:		addi sp, sp, -4
 			# a textura ocupa a tela toda
 			li a1, 0		# X = 0
 			li a2, 0		# Y = 0
-			li a3, 240		# dimensoes = VGA
-			li a4, 320		# dimensoes = VGA
+			li a3, ALTURA_VGA	# dimensoes = VGA
+			li a4, LARGURA_VGA	# dimensoes = VGA
 			addi a0, a0, 8		# pula as words de informacao
 			li a7, 0		# imprimir no frame buffer
 			

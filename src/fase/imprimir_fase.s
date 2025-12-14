@@ -16,13 +16,6 @@
 # prefixo interno: P_IF1_
 .text
 
-
-
-# posicoes de centro de tela
-.eqv CENTRO_VGA_X 160
-.eqv CENTRO_VGA_Y 120
-
-
 # a0 = endereco do mapa
 # a1 = endereco da textura
 

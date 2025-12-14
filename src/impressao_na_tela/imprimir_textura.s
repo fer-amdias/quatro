@@ -50,8 +50,8 @@ PROC_IMPRIMIR_TEXTURA:
 			bltz a2, P_IT1_FIM
 			add t0, a1, a4
 			add t1, a2, a3
-			li t2, 320
-			li t3, 240
+			li t2, LARGURA_VGA
+			li t3, ALTURA_VGA
 			bgt t0, t2, P_IT1_FIM
 			bgt t1, t3, P_IT1_FIM
 
@@ -65,7 +65,7 @@ P_IT1_MODO_1:		la t3, FASE_BUFFER
 
 P_IT1_CONT:		
 
-			li t0, 320			# t0 = LVGA (largura VGA) // largura do buffer
+			li t0, LARGURA_VGA		# t0 = LVGA (largura VGA) // largura do buffer
 			mul t0, a2, t0			# t0 = pL = Y * LVGA
 			add t0, t0, a1			# t0 = pL + X
 			add t3, t3, t0			# BUFFER += pL + X, indo pra posicao em que queremos imprimir
@@ -83,11 +83,15 @@ P_IT1_CONT:
 			li t6, COR_TRANSPARENTE		# t6 = COR_TRANSPARENTE
 			j P_IT1_LOOP			# vai pro loop
 			
-P_IT1_PROXIMA_LINHA:    addi t4, t4, 1 			# CL++
-			mv t5, zero			# CC = 0
-			addi t1, a4, -320 		# t1 = -320+C -- lembre-se que a tela eh 240 por 320!
+P_IT1_PROXIMA_LINHA:    
+			li t5, LARGURA_VGA
+			sub t1, a4, t5 			# t1 = -320+C -- lembre-se que a tela eh 240 por 320!
 			neg t1, t1			# t1 = 320-C
+
 			add t3, t3, t1			# E += 320-C (t6)
+
+			addi t4, t4, 1 			# CL++
+			mv t5, zero			# CC = 0
 				
 			# SE CL == L: SAI DO LOOP
 			# podemos jogar isso aqui pois soh aqui CL eh incrementado
