@@ -53,8 +53,8 @@ PROC_COLOCAR_BOMBA:
 			
 			la t5, BOMBAS			# t5 = EB = endereco do array de struct de bombas
 			
-			lbu t0, POWERUP_QTD_BOMBAS
-			bnez t0, P_CB1_LOOP_1
+			lbu t6, POWERUP_QTD_BOMBAS
+			bnez t6, P_CB1_LOOP_1
 			
 			li t4, 1	# se o powerup de qtd de bombas nao tiver sido pego, so deixa o jogador usar um espaco de bomba
 	
@@ -62,9 +62,8 @@ PROC_COLOCAR_BOMBA:
 P_CB1_LOOP_1:		lbu t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			beqz t3, P_CB1_LOOP_1_CONT	# se !bomba.existe, pula a checagem dessa bomba
 			
-			lh t1, BOMBAS_POS_X(t5)		# t1 = bomba.posicao_x
-			lh t2, BOMBAS_POS_Y(t5)			# t2 = bomba.posicao_y
-			
+			lhu t1, BOMBAS_POS_X(t5)		# t1 = bomba.posicao_x
+			lhu t2, BOMBAS_POS_Y(t5)		# t2 = bomba.posicao_y
 			# se as posicoes forem diferentes, continua
 			bne t1, a0, P_CB1_LOOP_1_CONT
 			bne t2, a1, P_CB1_LOOP_1_CONT
@@ -72,6 +71,8 @@ P_CB1_LOOP_1:		lbu t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			j P_CB1_SEM_BOMBA
 			
 P_CB1_LOOP_1_CONT:	addi t5, t5, STRUCT_BOMBAS_OFFSET # desloca o array em uma posicao
+			addi t0, t0, 1
+			blt t0, t4, P_CB1_LOOP_1	  # continua o loop se !(i > 3) 
 			
 #### cacando uma posicao disponivel
 
@@ -91,11 +92,13 @@ P_CB1_LOOP_2:		lb t3, BOMBAS_EXISTE(t5)	# t3 = bomba.existe
 			
 			li t1, 3
 			sb t1, BOMBAS_CONTAGEM_REGRESSIVA(t5)	# salva a contagem regressiva como 3
-			
+
 			addi sp, sp, -12
 			sw a0, (sp)
 			sw a1, 4(sp)
 			sw a2, 8(sp)
+
+
 			
 			mv a2, a1			# pos y
 			mv a1, a0			# pos x
