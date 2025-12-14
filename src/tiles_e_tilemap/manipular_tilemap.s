@@ -35,9 +35,9 @@ PROC_MANIPULAR_TILEMAP:
 			blt a1, t0, P_MT1_SEM_TILE
 			blt a2, t1, P_MT1_SEM_TILE
 			
-			li t2, 320				# largura vga
+			li t2, LARGURA_VGA
 			sub t0, t2, t0				# x final do mapa = vga - x do mapa
-			li t2, 240				# altura vga
+			li t2, ALTURA_VGA
 			sub t1, t2, t1				# y final do mapa = vga - y do mapa
 			
 			# se x ou y estiverem fora do mapa
