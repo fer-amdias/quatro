@@ -1,5 +1,5 @@
-#FASE         (1,       0,       ch0_fase1,      ch0,            MENOS_UM,              inimigos,              jogador,     internationale,          powerup,                  morte,           abertura_pergaminho,          ch0_fase1.scroll,      pergaminho,                    1,                       1)
-.macro FASE(%fase, %capitulo, %arquivo_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_npcs, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre)
+#FASE         (1,       0,       ch0_fase1,      ch0,            MENOS_UM,              inimigos,              jogador,     internationale,          powerup,                  morte,           abertura_pergaminho,          ch0_fase1.scroll,      pergaminho,                    1,                       1,			 fundo_tutorial)
+.macro FASE(%fase, %capitulo, %arquivo_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_npcs, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre, %textura_de_fundo)
 	
 	# se a saida estah coberta por um bloco quebravel ou nao
 	li t0, %modo_saida_livre
@@ -30,7 +30,8 @@
 	sw t1, 12(t0)
 	la t1, %textura_do_pergaminho
 	sw t1, 16(t0)
-	
+	la t1, %textura_de_fundo
+	sw t1, 20(t0)
 
 	# se tempo limite < SEM_TEMPO_LIMITE, a2 = 1, senao a2 = 0
 	slti a2, a2, SEM_LIMITE_DE_TEMPO		 
@@ -72,7 +73,7 @@
 
 	# argumentos adicionais que nao couberam nos registradores de argumento
 	PERGAMINHO_NO_INICIO: .word 0
-	P_F1_ARGUMENTOS_ADICIONAIS: .space 20
+	P_F1_ARGUMENTOS_ADICIONAIS: .space 24
 	
 
 .text
@@ -86,10 +87,11 @@
 .eqv $AUDIOEFEITO_DE_POWERUP	s6
 .eqv $AUDIOEFEITO_DE_MORTE	s7
 .eqv $AUDIOEFEITO_DE_PERGAMINHO s8
-.eqv $TEXTURA_DOS_NPCS	s9
+.eqv $TEXTURA_DOS_NPCS		s9
 .eqv $TEXTURA_DO_JOGADOR	s10
 .eqv $TEXTURA_DO_MAPA		s11
 .eqv TEXTURA_PERGAMINHO		16
+.eqv TEXTURA_FUNDO		20
 
 
 PROC_FASE:
@@ -120,9 +122,9 @@ PROC_FASE:
 				la t0, P_F1_ARGUMENTOS_ADICIONAIS
 				
 				lw $AUDIOEFEITO_DE_PERGAMINHO, 	0(t0)
-				lw $TEXTURA_DOS_NPCS,       4(t0)
+				lw $TEXTURA_DOS_NPCS,       	4(t0)
 				lw $TEXTURA_DO_JOGADOR,		8(t0)
-				lw $TEXTURA_DO_MAPA,		12(t0)
+				lw $TEXTURA_DO_MAPA,		12(t0)	
 				
 P_F1_FASE_INICIO:			
 				sb x0, NPC_2_FUGINDO, t0	
@@ -163,9 +165,10 @@ P_F1_PULAR_MUSICA:
 		sw t2, LARGURA_JOGADOR, t0
 
 P_F1_LOOP:	
-		li a0, 0x00			# preto
-		li a1, 1
-		jal PROC_PREENCHER_TELA		# preenche a tela de preto
+		# imprime o padrao de fundo
+		la t0, P_F1_ARGUMENTOS_ADICIONAIS
+		lw a0, TEXTURA_FUNDO(t0)
+		jal PROC_IMPRIMIR_PADRAO_DE_FUNDO
 						
 		jal PROC_IMPRIMIR_BUFFER_DE_FASE
 		

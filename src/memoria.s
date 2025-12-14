@@ -21,6 +21,14 @@
 .include "./NPCs/definicoes_npcs.s"
 .include "macros.s"
 
+# dimensoes da tela
+.eqv LARGURA_VGA 320
+.eqv ALTURA_VGA 240
+
+# posicoes de centro de tela
+.eqv CENTRO_VGA_X 160
+.eqv CENTRO_VGA_Y 120
+
 # tamanho de uma textura de mapa
 .eqv TAMANHO_SPRITE 20
 .eqv AREA_SPRITE 400
@@ -51,6 +59,9 @@
 .eqv COR_TRANSPARENTE 199 
 
 .data
+
+NULL:			.word 0			# endereco nulo
+
 JOGO_PAUSADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 MODO_SAIDA_LIVRE:       .word 0
