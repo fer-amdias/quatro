@@ -53,6 +53,7 @@ void build(const char * versao){
         // tira o enter no final, se houver
         wsl_path[strcspn(wsl_path, "\n")] = 0;
 
+        printf("Buildando executavel linux...\n");
         // builda
         snprintf(cmd, sizeof(cmd), "wsl gcc -static -o run \"%s\" ", wsl_path);
         system(cmd);
