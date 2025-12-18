@@ -169,9 +169,6 @@ P_MN2_CONT:
 
                         beqz t0, P_MN2_VAI_PRA_FRENTE # se t0 == 0, nao estamos em uma posicao normalizada e devemos continuar indo pra frente.
 
-                        lb t0, NPC_2_FUGINDO
-                        bnez t0, P_MN2_CONTINUAR_FUGINDO
-
 P_MN2_CHECAR_SE_DEVEMOS_FUGIR:
 
                         la t0, POSICAO_JOGADOR
@@ -365,6 +362,11 @@ P_MN2_FUGIR_FIM:
                         addi sp, sp, 20
                         j P_MN2_FIM
 
+P_MN2_MOVIMENTO_NORMAL:
+
+                        lb t0, NPC_2_FUGINDO
+                        beqz t0, P_MN2_ESCOLHER_NOVA_DIRECAO
+
 P_MN2_CONTINUAR_FUGINDO:
                         lw t0, NPC_2_TIMESTAMP_FUGIR
                         csrr t1, time
@@ -373,7 +375,6 @@ P_MN2_CONTINUAR_FUGINDO:
                         sb x0, NPC_2_FUGINDO, t0        # senao, guarda que nao estamos fugindo mais
                         # e continua movimento normal
 
-P_MN2_MOVIMENTO_NORMAL:
 P_MN2_ESCOLHER_NOVA_DIRECAO:
 
 			# s0 = direcao NPC, [s1, s2] = pos NPC, [s3, s4] = pos jogador
