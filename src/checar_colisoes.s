@@ -34,6 +34,23 @@ P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 			addi t0, t0, -4			# diminui 4
 			beqz t0, P_CC1_continue		# se npcs.posicao[i] == 4: continue; (pula esse npc)
 
+			# agora temos que saber se o npc eh inimigo!
+			la t0, STRUCTS_NPCS
+			li t1, NPC_STRUCT_TAMANHO    # pega o tamanho de uma struct
+			la t2, NPCS
+
+			add t2, t3, t2			# idx = i + NPCS (pulamos 1 byte por npc)
+			lbu t2, (t2)			# carrega o valor desse npc
+			addi t2, t2, -10		# subtrai 10
+
+			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
+			# t1 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
+			mul t1, t1, t2 
+			add t0, t0, t1		# avanca pra struct certa
+			lbu t0, NPC_STRUCT_ATRIBUTO_INIMIGO(t0)
+
+			beqz t0, P_CC1_continue
+
 			# agora sabemos que o npc estah vivo
 			slli t0, t3, 2			# t0 = 4 * i 				( cada npc tem duas halfwords de posicao )
 			la t5, NPCS_POSICAO		# carrega a posicao dos npcs 
