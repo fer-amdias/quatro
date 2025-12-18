@@ -87,8 +87,8 @@ PROC_MOVIMENTO_NPC_2:
                         lb t0, NPC_2_FUGINDO
                         beqz t0, P_MN2_CONT
 
-                        slli t1, a4, 1   # t1 = a4*2
-                        add a4, a4, t1   # t1 = a4 + 2*a4  (300%*a4)
+                        slli t1, a4, 2   # t1 = a4*4
+                        add a4, a4, t1   # t1 = a4 + 4*a4  (300%*a4)
 
 P_MN2_CONT:
 
