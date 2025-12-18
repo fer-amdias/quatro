@@ -27,13 +27,13 @@ ROTINA_CAPITULO_2:
 		FASE(0, 2, ch2_fase0, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase0.scroll, pergaminho_ch2, 0, 1, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(1, 2, ch2_fase1, ch2, 200, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase1.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
+		FASE(1, 2, ch2_fase1, ch2, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase1.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
 		FASE(2, 2, ch2_fase2, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase2.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(3, 2, ch2_fase3, ch2, 200, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase3.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
+		FASE(3, 2, ch2_fase3, ch2, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase3.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
 		FASE(4, 2, ch2_fase4, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase4.scroll, pergaminho_ch2, 0, 1, fundo_ch2)

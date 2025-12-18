@@ -27,13 +27,13 @@ ROTINA_CAPITULO_1:
 		FASE(1, 1, ch1_fase1, ch1, 70, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase1.scroll, pergaminho_ch1, 0, 0, NULL)
 		beqz a0, C1_FIM
 		
-		FASE(2, 1, ch1_fase2, ch1, 80, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase2.scroll, pergaminho_ch1, 0, 0, NULL)
+		FASE(2, 1, ch1_fase2, ch1, 100, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase2.scroll, pergaminho_ch1, 0, 0, NULL)
 		beqz a0, C1_FIM
 		
-		FASE(3, 1, ch1_fase3, ch1, 100, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase3.scroll, pergaminho_ch1, 0, 0, NULL)
+		FASE(3, 1, ch1_fase3, ch1, 120, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase3.scroll, pergaminho_ch1, 0, 0, NULL)
 		beqz a0, C1_FIM
 		
-		FASE(4, 1, ch1_fase4, ch1, 80, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase4.scroll, pergaminho_ch1, 0, 0, NULL)
+		FASE(4, 1, ch1_fase4, ch1, 100, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase4.scroll, pergaminho_ch1, 0, 0, NULL)
 		beqz a0, C1_FIM
 		
 		FASE(5, 1, ch1_fase5, ch1, SEM_LIMITE_DE_TEMPO, inimigos, jogador, west__hurrian_song, powerup_ch3, morte_ch3, abertura_scroll_ch3, ch1_fase5.scroll, pergaminho_ch1, 0, 0, NULL)
