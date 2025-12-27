@@ -49,19 +49,7 @@ P_BM1_SUBPROC_EXPLODIR:
 			# se x ou y estiverem fora do mapa, nao explode
 			bgt a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
 			bgt a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
-			
-			# toca o efeito sonoro de bomba
-			li a0, 37		
-			li a1, 2000		# 1000 ms
-			li a2, 127		# instrumento de explosao
-			li a3, 127		# volume maximo
-			li a7, 31		# MidiOut
-			ecall
-			
-			lw a0, (sp)
-			lw a1, 4(sp)
-			
-			
+						
 			# PROC_CALCULAR_TILE_ATUAL			           						     
 			# ARGUMENTOS:						     
 			#	A0 : ENDERECO DO MAPA (.data)			     
@@ -362,6 +350,24 @@ P_BM1_LOOP_1:		csrr t2, time				# t2 = time
 			j P_BM1_LOOP_1_CONT
 			
 P_BM1_LOOP_1_EXPLODIR:  
+
+			# guarda nossos queridos argumentos
+			addi sp, sp, -16
+			sw a0, 0(sp)
+			sw a1, 4(sp)
+			sw a2, 8(sp)
+			sw a3, 12(sp)
+
+			# comeca o efeito de explosao
+			li a0, 0
+			jal PROC_EFEITO_EXPLOSAO
+
+			# recupera nossos queridos argumentos
+			lw a0, 0(sp)
+			lw a1, 4(sp)
+			lw a2, 8(sp)
+			lw a3, 12(sp)
+			addi sp, sp, 16
 
 			lhu a3, BOMBAS_POS_X(s0)		# carrega pos x
 			lhu a4, BOMBAS_POS_Y(s0)		# carrega pos y

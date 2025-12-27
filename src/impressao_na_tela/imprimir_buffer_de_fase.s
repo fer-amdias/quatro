@@ -25,7 +25,6 @@ PROC_IMPRIMIR_BUFFER_DE_FASE:	la t0, POSICOES_MAPA		# pega as posicoes do canto 
 				lhu t2, (t0)			# carrega a posicao X do canto superior esquerdo do mapa
 				lhu t3, 2(t0)			# carrega a posicao Y do canto superior esquero do mapa
 				
-				
 				lw t1, FRAME_BUFFER_PTR		# endereco do endereco do frame buffer, onde imprimimos tudo durante o draw cycle
 				
 				la t6, FASE_BUFFER		# t6 = endereco do buffer
@@ -35,6 +34,14 @@ PROC_IMPRIMIR_BUFFER_DE_FASE:	la t0, POSICOES_MAPA		# pega as posicoes do canto 
 				add t0, t0, t2			# t0 = pL + X
 				add t1, t1, t0			# IDX_FRAME_BUFFER = FRAME_BUFFER + pL + X, indo pra posicao em que queremos imprimir
 				add t6, t6, t0			# IDX_FASE_BUFFER = FASE_BUFFER + pL + X, indo pra posicao em que queremos imprimir
+
+				# adiciona o deslocamento de tela para explosoes ao IDX_FRAME_BUFFER
+				lb t4, FASE_DESLOCAMENTO_X
+				lb t5, FASE_DESLOCAMENTO_Y
+				add t1, t1, t4
+				li t4, LARGURA_VGA		# t4 = LVGA (largura VGA)
+				mul t5, t4, t5
+				add t1, t1, t5
 
 				mv t4, zero			# CL = 0
 				mv t5, zero			# CC = 0

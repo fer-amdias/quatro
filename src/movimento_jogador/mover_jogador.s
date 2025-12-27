@@ -223,6 +223,12 @@ P_MJ1_IMPRIMIR:		# para o procedimento PROC_IMPRIMIR_TEXTURA, sao argumentos:
 			mv a7, x0			# seleciona o modo como imprimir na tela
 			addi a0, a0, 8			# pula os 8 bits
 			# argumentos a1 e a2 jah estao posicionados :)
+
+			# conta com o deslocamento da fase
+			lb t0, FASE_DESLOCAMENTO_X
+			lb t1, FASE_DESLOCAMENTO_Y
+			add a1, a1, t0
+			add a2, a2, t1
 			jal PROC_IMPRIMIR_TEXTURA		# imprime o jogador
 			
 P_MJ1_FIM:		lw a0, (sp)			# carrega o valor de retorno (0 se sem movimento, 1 se com movimento)

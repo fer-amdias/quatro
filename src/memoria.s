@@ -137,3 +137,8 @@ POWERUP_QTD_BOMBAS:	.byte 0
 
 MORTE_TIMESTAMP:	.word 0 	# timestamp de quando o jogador morreu
 
+
+# Deslocamento da impressao de fase_buffer & NPCs, usado pra "tremer" a tela em explosoes
+# 
+FASE_DESLOCAMENTO_X:    .byte 0
+FASE_DESLOCAMENTO_Y:	.byte 0

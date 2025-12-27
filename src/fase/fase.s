@@ -39,6 +39,9 @@
 	addi t0, t0, 1			
 	mul t0, t0, a2		# multiplica a2 por tempo limite + 1
 	addi a2, t0, -1		# tempo_limite = a2 - 1 (tempo_limite se tempo limite < SEM_TEMPO_LIMITE, -1 caso contrario)
+
+        sb zero, FASE_DESLOCAMENTO_X, t0
+        sb zero, FASE_DESLOCAMENTO_Y, t0
 	
 	jal PROC_FASE
 	
@@ -165,6 +168,9 @@ P_F1_PULAR_MUSICA:
 		sw t2, LARGURA_JOGADOR, t0
 
 P_F1_LOOP:	
+
+		jal ROTINA_DEBUG
+
 		# imprime o padrao de fundo
 		la t0, P_F1_ARGUMENTOS_ADICIONAIS
 		lw a0, TEXTURA_FUNDO(t0)
@@ -179,6 +185,10 @@ P_F1_LOOP:
 		
 		mv a0, $TEXTURA_DOS_NPCS
 		jal PROC_NPCS_MANAGER	
+
+		# efeito de explosao, se houver
+		li a0, 1
+		jal PROC_EFEITO_EXPLOSAO
 		
 		jal PROC_CHECAR_COLISOES
 		# retorna a0 : se o jogador ainda estah vivo

@@ -366,6 +366,12 @@ P_IM1_LOOP_1_PRINT:
 			### salva as dimensoes como AREA_SPRITE x AREA_SPRITE (correto)
 			mv a3, s4
 			mv a4, s4
+
+			# printa os NPCs corretamente de acordo com o deslocamento da fase
+			lb t0, FASE_DESLOCAMENTO_X
+			lb t1, FASE_DESLOCAMENTO_Y
+			add a1, a1, t0
+			add a2, a2, t1
 			
 			### imprimir no frame_buffer
 			li a7, 0

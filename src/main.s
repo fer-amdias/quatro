@@ -140,5 +140,6 @@ CAP2:
 .include "checar_colisoes.s"
 .include "colocar_bomba.s"
 .include "debug.s"
+.include "efeito_explosao.s"
 .include "tempo_manager.s"
 .include "tocar_audio.s"
