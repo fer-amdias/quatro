@@ -23,7 +23,7 @@
 .eqv NPC_STRUCT_TAMANHO 4
 
 STRUCTS_NPCS:
-        # NPC 1 - Seta vermelha
+        # NPC 1 - Seta vermelha (tutorial)
         .half 100               # VELOCIDADE
         .byte EH_INIMIGO        # INIMIGO?
         .byte 1                 # TIPO DE MOVIMENTO (QUAL PROC CHAMAR)    
@@ -47,3 +47,8 @@ STRUCTS_NPCS:
         .half 100               # VELOCIDADE
         .byte NAO_EH_INIMIGO    # INIMIGO?
         .byte 3                 # TIPO DE MOVIMENTO
+
+        # NPC 6 - Seta verde (tutorial)
+        .half 75
+        .byte NAO_EH_INIMIGO
+        .byte 1
