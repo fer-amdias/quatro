@@ -125,7 +125,6 @@ CAP2:
 .include "./menus/menu_creditos.s"
 .include "./movimento_jogador/mover_jogador.s"
 .include "./movimento_jogador/registrar_movimento.s"
-.include "./NPCs/definicoes_npcs.s"
 .include "./NPCs/movimento_npc_1.s"
 .include "./NPCs/movimento_npc_2.s"
 .include "./NPCs/movimento_npc_3.s"
