@@ -164,8 +164,8 @@ P_F1_PULAR_MUSICA:
 		div t2, t2, t0
 		
 		# salva as dimensoes do jogador
-		sw t1, ALTURA_JOGADOR,  t0
-		sw t2, LARGURA_JOGADOR, t0
+		sw t1, LARGURA_JOGADOR,  t0
+		sw t2, ALTURA_JOGADOR, t0
 
 P_F1_LOOP:	
 
