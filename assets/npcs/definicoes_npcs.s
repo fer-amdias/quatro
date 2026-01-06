@@ -6,8 +6,7 @@
 #  como velocidade e se eh inimigo.                             #
 #								#
 #  COMO USO ESSE MODULO?					#
-#  Basta dar um .include "./definicoes_npcs.s" no inicio de     #
-#  memoria.s.	                                                #
+#  Basta dar um .include no inicio de memoria.s.	        #
 #								#
 #################################################################
 
