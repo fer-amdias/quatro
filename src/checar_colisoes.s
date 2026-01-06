@@ -27,12 +27,28 @@ P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 
 			bge t3, t4, P_CC1_break		# checa se devemos sair do loop
 
+			# temos que guardar: 
+			.eqv jogador_x 		t1
+			.eqv jogador_y 		t2
+			.eqv npc_x 		t5
+			.eqv npc_y 		t6
+			.eqv jogador_largura 	a1
+			.eqv jogador_altura  	a2
+			.eqv tipo_npc		a3
+			.eqv direcao_npc	a4
+
+			.eqv npc_hitbox_x1	a3
+			.eqv npc_hitbox_x2	a4
+			.eqv npc_hitbox_y1	a5
+			.eqv npc_hitbox_y2	a6
+
 			la t0, NPCS_DIRECAO
 			add t0, t3, t0			# pega npcs.direcao[i]
 			
-			lbu t0, (t0)			# carrega a direcao do npc
-			addi t0, t0, -4			# diminui 4
+			lbu direcao_npc, (t0)		# carrega a direcao do npc
+			addi t0, direcao_npc, -4	# pega npcs.posicao[i] - 4
 			beqz t0, P_CC1_continue		# se npcs.posicao[i] == 4: continue; (pula esse npc)
+
 
 			# agora temos que saber se o npc eh inimigo!
 			la t0, STRUCTS_NPCS
@@ -40,12 +56,12 @@ P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 			la t2, NPCS
 
 			add t2, t3, t2			# idx = i + NPCS (pulamos 1 byte por npc)
-			lbu t2, (t2)			# carrega o valor desse npc
-			addi t2, t2, -10		# subtrai 10
+			lbu tipo_npc, (t2)			# carrega o valor desse npc
+			addi tipo_npc, tipo_npc, -10		# subtrai 10
 
 			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
 			# t1 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
-			mul t1, t1, t2 
+			mul t1, t1, tipo_npc 
 			add t0, t0, t1		# avanca pra struct certa
 			lbu t0, NPC_STRUCT_ATRIBUTO_INIMIGO(t0)
 
@@ -59,59 +75,79 @@ P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 			# carrega a posicao do npc
 			# t5 = x_npc
 			# t6 = y_npc
-			lh t5, (t0)
-			lh t6, 2(t0)
+			lh npc_x, (t0)
+			lh npc_y, 2(t0)
 			
 			# carrega a posicao do jogador
 			# t1 = x do jogador
 			# t2 = y do jogador
 			la t0, POSICAO_JOGADOR
-			lh t1, (t0)
-			lh t2, 2(t0)
+			lh jogador_x, (t0)
+			lh jogador_y, 2(t0)
 			
 			# carrega a altura e largura do jogador
-			lw a1, ALTURA_JOGADOR
-			lw a2, LARGURA_JOGADOR
+			lw jogador_altura, ALTURA_JOGADOR
+			lw jogador_largura, LARGURA_JOGADOR
 			
 			# vamos checar se a caixa de colisao do jogador e a caixa de colisao do npc estao se sobrepondo, utilizando AABB (como no pseudocodigo abaixo)
-			# if (jogador.x < npc.x + npc.largura &&
-			#     jogador.x + jogador.largura > npc.x &&
-			#     jogador.y < npc.y + npc.altura &&
-			#     jogador.y + jogador.altura > npc.y)
+			# if (jogador.x <= npc.hitbox.x2 &&
+			#     jogador.x + jogador.largura => npc.hitbox.x1 &&
+			#     jogador.y <= npc.hitbox.y2 &&
+			#     jogador.y + jogador.altura => npc.hitbox.y1)
 			# {
 			#     HOUVE COLISAO
 			# }
 			# podemos ao contrario checar se qualquer uma das condicoes falhou. Ao falhar de qualquer, damos um continue;.
 			
-			# temos que guardar: 
-			.eqv jogador_x 		t1
-			.eqv jogador_y 		t2
-			.eqv npc_x 		t5
-			.eqv npc_y 		t6
-#			.eqv npc_largura 	TAMANHO_SPRITE	  (nao funciona no FPGRARS)
-#			.eqv npc_altura 	TAMANHO_SPRITE    (nao funciona no FPGRARS)  
-			.eqv jogador_largura 	a1
-			.eqv jogador_altura  	a2
+
+
+
+			# temos que recuperar:
+			# - o tipo de inimigo
+			# - a direcao que ele esta indo
+			# para podermos pegar as dimensoes corretas das hitboxes
+
+			li t0, STRUCT_HITBOX_TAMANHO
+			mul t0, t0, tipo_npc		# pega a struct referente ao npc
+
+			li a5, STRUCT_HITBOX_FRAME_TAMANHO	# pega o tamanho de um frame
+			mul a5, direcao_npc, a5			# pega o frame referente
+			add t0, t0, a5				# avanca ate o frame escolhido
+
+			la a6, STRUCT_HITBOX_NPCS
+			add t0, a6, t0			# vai ate a posicao que escolhemos
+
+			lb npc_hitbox_x1, (t0)		# x1
+			add npc_hitbox_x1, npc_hitbox_x1, npc_x # coordenada absoluta de x1
+			addi t0, t0, 1			# avanca pro proximo
+
+			lb npc_hitbox_y1, (t0)		# y1
+			add npc_hitbox_y1, npc_hitbox_y1, npc_y # coordenada absoluta de y1
+			addi t0, t0, 1			# avanca pro proximo
+
+			lb npc_hitbox_x2, (t0)		# x2
+			add npc_hitbox_x2, npc_hitbox_x2, npc_x # coordenada absoluta de x2
+			addi t0, t0, 1			# avanca pro proximo
+
+			lb npc_hitbox_y2, (t0)		# y2
+			add npc_hitbox_y2, npc_hitbox_y2, npc_y # coordenada absoluta de y2
+
+
+			# if not (jogador.x <= npc.hitbox.x2) NAO HOUVE COLSIAO
+			bgt jogador_x, npc_hitbox_x2, P_CC1_continue
 			
-			# if not (jogador.x < npc.x + npc.largura) NAO HOUVE COLSIAO
-			addi t0, npc_x, TAMANHO_SPRITE
-			slt t0, jogador_x, t0
-			beqz t0, P_CC1_continue
-			
-			# if not (jogador.x + jogador.largura > npc.x) NAO HOUVE COLISAO
+			# if not (jogador.x + jogador.largura => npc.hitbox.x1) NAO HOUVE COLISAO
 			add t0, jogador_x, jogador_largura
-			slt t0, npc_x, t0
-			beqz t0, P_CC1_continue
+			slt t0, t0, npc_hitbox_x1
+			bnez t0, P_CC1_continue
 			
-			# if not (jogador.y < npc.y + npc.altura) NAO HOUVE COLISAO
-			addi t0, npc_y, TAMANHO_SPRITE
-			slt t0, jogador_y, t0
-			beqz t0, P_CC1_continue
+			# if not (jogador.y <= npc.hitbox.y2) NAO HOUVE COLISAO
+			bgt jogador_y, npc_hitbox_y2, P_CC1_continue
 			
-			# if not (jogador.y + jogador.altura > npc.y) NAO HOUVE COLISAO
+			# if not (jogador.y + jogador.altura => npc.hitbox.y1) NAO HOUVE COLISAO
 			add t0, jogador_y, jogador_altura
-			slt t0, npc_y, t0
-			beqz t0, P_CC1_continue
+			slt t0, t0, npc_hitbox_y1
+			bnez t0, P_CC1_continue
 			
 			# se chegamos aqui, entao nenhuma condicao falhou
 			# logo, houve colisao

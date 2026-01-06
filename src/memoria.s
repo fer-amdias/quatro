@@ -18,7 +18,8 @@
 #								#
 #################################################################
 
-.include "./NPCs/definicoes_npcs.s"
+.include "../assets/npcs/definicoes_npcs.s"
+.include "../assets/npcs/hitboxes.s"
 .include "macros.s"
 
 # dimensoes da tela
