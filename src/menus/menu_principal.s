@@ -53,27 +53,6 @@ R_MP1_MENU:
 	imprimir_string(MENU_OPCAO3, 100, 154, 0x00FF, 0)
 	imprimir_string(MENU_OPCAO4, 100, 164, 0x00FF, 0)
 	
-	la a0, MENU_OPCAO2
-	li a1, 100
-	li a2, 144
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, MENU_OPCAO3
-	li a1, 100
-	li a2, 154
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
-	la a0, MENU_OPCAO4
-	li a1, 100
-	li a2, 164
-	li a3, 0x00FF
-	mv a4, zero
-	jal PROC_IMPRIMIR_STRING
-	
 	jal PROC_DESENHAR	
 	
 R_MP1_LOOP:
