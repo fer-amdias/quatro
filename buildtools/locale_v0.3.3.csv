@@ -1,52 +1,52 @@
-tags,PT_BR,EN_US
-MENU_OPCAO1,1. JOGAR,1. PLAY
-MENU_OPCAO2,2. CONFIGURACOES,2. SETTINGS
-MENU_OPCAO3,3. CREDITOS,3. CREDITS
-MENU_OPCAO4,4. SAIR,4. EXIT
-JOGAR_TITULO,Selecione o capitulo:,Select chapter:
-JOGAR_OPCAO0,0. Tutorial ,0. Tutorial 
-JOGAR_OPCAO1,1. Capitulo 1 (inicio),1. Chapter 1 (beginning)
-JOGAR_OPCAO2,2. Capitulo 2 ,2. Chapter 2 
-JOGAR_OPCAO3,3. Capitulo 3 (em construcao),3. Chapter 3 (under construction)
-JOGAR_OPCAO4,4. Capitulo 4 (em construcao),4. Chapter 4 (under construction)
-JOGAR_OPCAO5,9. voltar,9. return
-CREDITOS_1,Desenvolvimento e Programacao:,Coding and Development:
-CREDITOS_2,Arte e Design:,Art and Design:
-CREDITOS_3,Agradecimentos Especiais: ,Special Thanks to:
-CREDITOS_FERNANDO,Fernando A. M. Dias,Fernando A. M. Dias
-CREDITOS_AS11,"- Joialoxi, pelas nossas","- Joialoxi, for our"
-CREDITOS_AS12,deliberacoes que desatolaram,deliberations that got
-CREDITOS_AS13,o jogo,the project off the ground
-CREDITOS_AS21,"- Minha mae, que pacientemente","- My mom, who patiently"
-CREDITOS_AS22,assistiu eu mostrar como,watched me show her how
-CREDITOS_AS23,tava a cada 2 dias,"this was, every two days"
-CREDITOS_AS31,"- Felipe Fontela, pelo apoio,","- Felipe Fontela, for the"
-CREDITOS_AS32,pelas conversas e pelas,"support, talks and for the"
-CREDITOS_AS33,ideias que deram caminho,ideas that paved the way
-CREDITOS_AS34,ao projeto,for this project
-CREDITOS_FIM1, <<< fim >>> , <<< end >>>
-CREDITOS_FIM2, pode ir embora, you may leave now
-CREDITOS_FIM3,...........,...........
-CREDITOS_FIM4,nao vai embora?,youre not leaving?
-CREDITOS_FIM5,deve ter mais credito em algum lugar aqui...,there oughta be more credits sumwhere here...
-CREDITOS_FIM6,Inspiracao: Bomberman para o NES,Inspiration: Bomberman for NES
-CREDITOS_FIM7,Feito como projeto de,Created as a first semester project
-CREDITOS_FIM0,primeiro semestre,of the component
-CREDITOS_FIM8,do componente Introducao a Sistemas,Introducao a Sistemas
-CREDITOS_FIM9,Computacionais na Universidade de,Computacionais in the University
-CREDITOS_FIM10,Brasilia. 24/07/2025,of Brasilia. 2025/07/24
-CREDITOS_FIM11,agora pode ir,now you may go
-CREDITOS_FIM12,...era so isso mesmo. nao tem mais nada.,...that was really it. theres nothing left.
-CREDITOS_FIM13,<<< FIM >>>,<<< END >>>
-CREDITOS_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu
-CONFIG_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu
-CONFIG_IDIOMA,Escolha o idioma:,Choose language:
-CONFIG_PT,1. Portugues Brasileiro,1. Portugues Brasileiro
-CONFIG_EN,2. English (US),2. English (US)
-CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.
-HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F"
-HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X
-HUD_VIDAS_RESTANTES,VIDAS: X,LEFT:  X
+tags,PT_BR,EN_US,BOAT_
+MENU_OPCAO1,1. JOGAR,1. PLAY,1. HOIST THE MIZZEN!
+MENU_OPCAO2,2. CONFIGURACOES,2. SETTINGS,2. RIGGINS
+MENU_OPCAO3,3. CREDITOS,3. CREDITS,3. DRUNKEN RAMBLING
+MENU_OPCAO4,4. SAIR,4. EXIT,4. ABANDON SHIP
+JOGAR_TITULO,Selecione o capitulo:,Select chapter:,SELECT VOYAGE:
+JOGAR_OPCAO0,0. Tutorial ,0. Tutorial ,0. TUTORIAL
+JOGAR_OPCAO1,1. Capitulo 1 (inicio),1. Chapter 1 (beginning),1. BABYLON
+JOGAR_OPCAO2,2. Capitulo 2 ,2. Chapter 2 ,2. ROME
+JOGAR_OPCAO3,3. Capitulo 3 (em construcao),3. Chapter 3 (under construction),3. CHINA
+JOGAR_OPCAO4,4. Capitulo 4 (em construcao),4. Chapter 4 (under construction),"4. NO SPOILERS, SCALLYWAG!"
+JOGAR_OPCAO5,9. voltar,9. return,9. SCUTTLE
+CREDITOS_1,Desenvolvimento e Programacao:,Coding and Development:,FINANCIAL SUPPORT:
+CREDITOS_2,Arte e Design:,Art and Design:,RUM SUPPLIES:
+CREDITOS_3,Agradecimentos Especiais: ,Special Thanks to:,SPECIAL THANKS TO:
+CREDITOS_FERNANDO,Fernando A. M. Dias,Fernando A. M. Dias,Me captain
+CREDITOS_AS11,"- Joialoxi, pelas nossas","- Joialoxi, for our","- Me buckos, for"
+CREDITOS_AS12,deliberacoes que desatolaram,deliberations that got,all the chases and
+CREDITOS_AS13,o jogo,the project off the ground,plunder
+CREDITOS_AS21,"- Minha mae, que pacientemente","- My mom, who patiently","- The Spanish, for"
+CREDITOS_AS22,assistiu eu mostrar como,watched me show her how,all the loot! Yohoho!
+CREDITOS_AS23,tava a cada 2 dias,"this was, every two days",Aaaarrrrgggghhhh!
+CREDITOS_AS31,"- Felipe Fontela, pelo apoio,","- Felipe Fontela, for the",END OF LIST!
+CREDITOS_AS32,pelas conversas e pelas,"support, talks and for the", 
+CREDITOS_AS33,ideias que deram caminho,ideas that paved the way,AVAST YE!
+CREDITOS_AS34,ao projeto,for this project,SCURRY!
+CREDITOS_FIM1, <<< fim >>> , <<< end >>>, 
+CREDITOS_FIM2, pode ir embora, you may leave now, 
+CREDITOS_FIM3,...........,..........., 
+CREDITOS_FIM4,nao vai embora?,youre not leaving?, 
+CREDITOS_FIM5,deve ter mais credito em algum lugar aqui...,there oughta be more credits sumwhere here..., 
+CREDITOS_FIM6,Inspiracao: Bomberman para o NES,Inspiration: Bomberman for NES, 
+CREDITOS_FIM7,Feito como projeto de,Created as a first semester project, 
+CREDITOS_FIM0,primeiro semestre,of the component, 
+CREDITOS_FIM8,do componente Introducao a Sistemas,Introducao a Sistemas, 
+CREDITOS_FIM9,Computacionais na Universidade de,Computacionais in the University, 
+CREDITOS_FIM10,Brasilia. 24/07/2025,of Brasilia. 2025/07/24, 
+CREDITOS_FIM11,agora pode ir,now you may go, 
+CREDITOS_FIM12,...era so isso mesmo. nao tem mais nada.,...that was really it. theres nothing left., 
+CREDITOS_FIM13,<<< FIM >>>,<<< END >>>, 
+CREDITOS_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
+CONFIG_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
+CONFIG_IDIOMA,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO
+CONFIG_PT,1. Portugues Brasileiro,1. Portugues Brasileiro,1. Portugues Brasileiro
+CONFIG_EN,2. English (US),2. English (US),2. English (US)
+CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.,boat
+HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F","BT C,  SEA F"
+HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X,PIRATES:   X
+HUD_VIDAS_RESTANTES,VIDAS: X,LEFT:  X,SHIPS: X
 ch0_fase1.scroll,"Bem vindo ao tutorial!
 MOVA-SE utilizando WASD
 
@@ -71,7 +71,7 @@ Go to the exit (SAIDA)
 to go to the next level.
 
 Press BACKSPACE to return
-to the Menu."
+to the Menu.",boat
 ch0_fase2.scroll,"Para colocar uma bomba,
 aperte ENTER ou ESPACO.
 Paredes quebraveis nao
@@ -86,7 +86,7 @@ survive the explosion.
 
 After laying a bomb,
 dont stay close so you
-dont go out with it."
+dont go out with it.",boat
 ch0_fase3.scroll,"Fases podem conter INIMIGOS.
 Exploda-os para poder passar
 de fase. Cuidado: Se tocar
@@ -102,7 +102,7 @@ you die.
 
 And keep in mind that you may
 only lay one bomb at a time
-for now. ;)"
+for now. ;)",boat
 ch0_fase4.scroll,"Nessa fase existem dois 
 powerups escondidos debaixo
 de paredes quebraveis.
@@ -127,7 +127,7 @@ the other increases the
 explosion area.
 
 P.S.: explosions go through 
-walls"
+walls",boat
 ch0_fase5.scroll,"Isso eh um pergaminho. A 
 partir de agora, esse serah o 
 meio por qual informacao serah
@@ -148,7 +148,7 @@ once read.
 Also: From this moment forth,
 the exit will be hidden beneath
 breakable walls. Can you find
-it? (yes)"
+it? (yes)",boat
 ch0_fase6.scroll,"Fases podem ter tamanhos
 diferentes, mas elas nunca
 vao sair da tela.
@@ -175,7 +175,7 @@ Don't worry. Time is paused
 while in a scroll.
 
 Time can be seen on the
-upper part of the screen."
+upper part of the screen.",boat
 ch0_fase7.scroll,"Algumas fases terao NPCs
 que nao sao INIMIGOS. Eles
 nao precisam ser explodidos
@@ -193,7 +193,7 @@ to pass to the next level.
 They also don't cause your
 death on contact.
 
-You can safely ignore them."
+You can safely ignore them.",boat
 ch0_fase8.scroll,"As fases de final de capitulo
 vao ter um ELEVADOR (que nem
 esse 'E' ahi). Pegue-o para
@@ -205,8 +205,8 @@ will have an ELEVATOR (like
 this 'E' south). Take it 
 to go to the next chapter.
 
-(This will end the tutorial!)"
-ch1_fase1.scroll,a vida eh uma tristeza,life is misery
+(This will end the tutorial!)",boat
+ch1_fase1.scroll,a vida eh uma tristeza,life is misery,boat
 ch1_fase2.scroll,"Amada, estou aqui para te 
 dizer que o templo estah
 pronto.
@@ -226,7 +226,7 @@ how to keep him alive for
 all eternity.
 
 I'll keep in touch through
-these clay tablets"
+these clay tablets",boat
 ch1_fase3.scroll,"Amada, algo terrivel nos
 acometeu hoje. Inimigos de
 Marduk tentaram invadir nosso
@@ -251,7 +251,7 @@ autonomously now.
 
 Despite this, we are still
 sieged! We cannot leave! how
-will I send you these tablets?"
+will I send you these tablets?",boat
 ch1_fase4.scroll,"Amada,
 
 Estamos sem comida e agua.
@@ -275,10 +275,10 @@ results of our research here,
 useless. What we have found is
 simply not enough.
 
-Forgive me for leaving so soon."
+Forgive me for leaving so soon.",boat
 ch1_fase5.scroll,"* Voce encontrou o Edito 
 da Imortalidade.","* You have found the Edict
-of Immortality."
+of Immortality.",boat
 ch2_fase0.scroll,"ANNO MMCCCLV
 AB URBE CONDITA
 
@@ -293,7 +293,7 @@ AB URBE CONDITA
 world see you, and don't make
 yourself miserable; life is 
 short, and Time demands his 
-due."" -- Seikilos"
+due."" -- Seikilos",boat
 ch2_fase1.scroll,"Admito que prefiriria o
 fim que os astrologos
 levaram ao eterno
@@ -316,7 +316,7 @@ not. Anyone who received
 immortality at the cost
 of the Imperator would also
 go mad.
-"
+",boat
 ch2_fase2.scroll,"Passei alguns anos
 escutando os murmurios
 insanos dos arquitetos
@@ -338,7 +338,7 @@ to figure out how to save
 the Imperator.
 
 Please, spare them from
-death. They are not enemies."
+death. They are not enemies.",boat
 ch2_fase3.scroll,"Se alguem descobrisse
 o motivo da formacao
 ter dado errado de
@@ -356,7 +356,7 @@ understand?
 
 Maybe if it hadn't been
 so much time since then...
-Maybe..."
+Maybe...",boat
 ch2_fase4.scroll,"Descanse em paz,
 Imperador Adriano.
 
@@ -368,5 +368,20 @@ Imperator Hadrianus.
 * You have found the
 Emperor Hadrian
 Astrological
-Formation."
-SCROLL_ENTER,Pressione ENTER para fechar.,Press ENTER to close.
+Formation.",boat
+SCROLL_ENTER,Pressione ENTER para fechar.,Press ENTER to close.,PRESS ENTER TO SINK
+EDITOR_MENU_PRINCIPAL_OPCAO_1,1. EDITAR,1. EDIT,1. SAIL
+EDITOR_MENU_PRINCIPAL_OPCAO_2,2. CONFIGURACOES,2. SETTINGS,2. SHIP
+EDITOR_MENU_PRINCIPAL_OPCAO_3,3. CREDITOS,3. CREDITS,3. CREW
+EDITOR_MENU_PRINCIPAL_OPCAO_4,4. SAIR,4. EXIT,4. SINK
+EDITOR_MENU_EDITAR_OPCAO_1,1. NOVO,1. NEW,1. SWAG
+EDITOR_MENU_EDITAR_OPCAO_2,2. CARREGAR,2. LOAD,2. LOOT
+EDITOR_MENU_CARREGAR_PROMPT,Insira o nome do arquivo:,Enter file name:,ENTER SHIP NAME
+EDITOR_MENU_CARREGAR_NAO_ENCONTRADO,Arquivo nao encontrado!,File not found!,CHASE NOT FOUND
+EDITOR_MENU_CONFIG_OPCAO_1,1. IDIOMA,1. LANGUAGE,1. TONGUE
+EDITOR_MENU_CONFIG_OPCAO_2_MUTAR,2. MUTAR,2. MUTE,2. PIPE DOWN
+EDITOR_MENU_CONFIG_OPCAO_2_DESMUTAR,2. DESMUTAR,2. UNMUTE,2. SOUND THE HORN
+EDITOR_MENU_IDIOMA_PROMPT,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO:
+EDITOR_MENU_IDIOMA_PT,1. Portugues Brasileiro,1. Portugues Brasileiro,1. Portugues Brasileiro
+EDITOR_MENU_IDIOMA_EN,2. English (US),2. English (US),2. English (US)
+EDITOR_MENU_IDIOMA_BOAT,3. Barco,3. Boat,3. YER CURRENT ONE
