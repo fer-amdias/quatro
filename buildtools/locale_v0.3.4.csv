@@ -14,18 +14,18 @@ CREDITOS_1,Desenvolvimento e Programacao:,Coding and Development:,FINANCIAL SUPP
 CREDITOS_2,Arte e Design:,Art and Design:,RUM SUPPLIES:
 CREDITOS_3,Agradecimentos Especiais: ,Special Thanks to:,SPECIAL THANKS TO:
 CREDITOS_FERNANDO,Fernando A. M. Dias,Fernando A. M. Dias,Me captain
-CREDITOS_AS11,"- Joialoxi, pelas nossas","- Joialoxi, for our","- Me buckos, for"
-CREDITOS_AS12,deliberacoes que desatolaram,deliberations that got,all the chases and
-CREDITOS_AS13,o jogo,the project off the ground,plunder
+CREDITOS_AS11,"- Joialoxi, pelas nossas","- Joialoxi, for our",END OF LIST!
+CREDITOS_AS12,deliberacoes que desatolaram,deliberations that got, 
+CREDITOS_AS13,o jogo,the project off the ground, 
 CREDITOS_AS21,"- Minha mae, que pacientemente","- My mom, who patiently","- The Spanish, for"
 CREDITOS_AS22,assistiu eu mostrar como,watched me show her how,all the loot! Yohoho!
 CREDITOS_AS23,tava a cada 2 dias,"this was, every two days",Aaaarrrrgggghhhh!
-CREDITOS_AS31,"- Felipe Fontela, pelo apoio,","- Felipe Fontela, for the",END OF LIST!
-CREDITOS_AS32,pelas conversas e pelas,"support, talks and for the", 
-CREDITOS_AS33,ideias que deram caminho,ideas that paved the way,AVAST YE!
-CREDITOS_AS34,ao projeto,for this project,SCURRY!
-CREDITOS_FIM1, <<< fim >>> , <<< end >>>, 
-CREDITOS_FIM2, pode ir embora, you may leave now, 
+CREDITOS_AS31,"- Felipe Fontela, pelo apoio,","- Felipe Fontela, for the","- Me buckos, for"
+CREDITOS_AS32,pelas conversas e pelas,"support, talks and for the",all the chases and
+CREDITOS_AS33,ideias que deram caminho,ideas that paved the way,plunder
+CREDITOS_AS34,ao projeto,for this project, 
+CREDITOS_FIM1, <<< fim >>> , <<< end >>>,AVAST YE!
+CREDITOS_FIM2, pode ir embora, you may leave now,SCURRY!
 CREDITOS_FIM3,...........,..........., 
 CREDITOS_FIM4,nao vai embora?,youre not leaving?, 
 CREDITOS_FIM5,deve ter mais credito em algum lugar aqui...,there oughta be more credits sumwhere here..., 
@@ -44,8 +44,8 @@ CONFIG_IDIOMA,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO
 CONFIG_PT,1. Portugues Brasileiro,1. Portugues Brasileiro,1. Portugues Brasileiro
 CONFIG_EN,2. English (US),2. English (US),2. English (US)
 CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.,boat
-HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F","BT C,  SEA F"
-HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X,PIRATES:   X
+HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F","LG C,  SEA F"
+HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X,HOSTILES:  X
 HUD_VIDAS_RESTANTES,VIDAS: X,LEFT:  X,SHIPS: X
 ch0_fase1.scroll,"Bem vindo ao tutorial!
 MOVA-SE utilizando WASD
@@ -374,6 +374,7 @@ EDITOR_MENU_PRINCIPAL_OPCAO_1,1. EDITAR,1. EDIT,1. SAIL
 EDITOR_MENU_PRINCIPAL_OPCAO_2,2. CONFIGURACOES,2. SETTINGS,2. SHIP
 EDITOR_MENU_PRINCIPAL_OPCAO_3,3. CREDITOS,3. CREDITS,3. CREW
 EDITOR_MENU_PRINCIPAL_OPCAO_4,4. SAIR,4. EXIT,4. SINK
+EDITOR_MENU_EDITAR_TITULO,Escolha uma opcao:,Choose an option:,CHOOSE YER COURSE
 EDITOR_MENU_EDITAR_OPCAO_1,1. NOVO,1. NEW,1. SWAG
 EDITOR_MENU_EDITAR_OPCAO_2,2. CARREGAR,2. LOAD,2. LOOT
 EDITOR_MENU_CARREGAR_PROMPT,Insira o nome do arquivo:,Enter file name:,ENTER SHIP NAME
@@ -385,3 +386,4 @@ EDITOR_MENU_IDIOMA_PROMPT,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO:
 EDITOR_MENU_IDIOMA_PT,1. Portugues Brasileiro,1. Portugues Brasileiro,1. Portugues Brasileiro
 EDITOR_MENU_IDIOMA_EN,2. English (US),2. English (US),2. English (US)
 EDITOR_MENU_IDIOMA_BOAT,3. Barco,3. Boat,3. YER CURRENT ONE
+EDITOR_MENU_OPCAO_9,9. VOLTAR,9. RETURN,9. BACK
