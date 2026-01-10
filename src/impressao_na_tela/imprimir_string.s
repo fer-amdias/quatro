@@ -75,7 +75,8 @@ P_IS1_LOOP:		lb	a0, 0(s0)                 	# le em a0 o caracter a ser impresso
 	    		jal     SUBPROC_IMPRIMIR_CARACTERE 	# imprime char
 	    		
 			addi    a1, a1, 8                 	# incrementa a coluna
-			li 	t6, 313		
+			li 	t6, LARGURA_VGA
+			addi 	t6, t6, -7		
 			bge	a1, t6, P_IS1_PulaLinha		# se nao tiver lugar na linha
 			
 			j 	P_IS1_NaoPulaLinha		# por padrao, nao pula linha
@@ -161,7 +162,8 @@ SP_IC1_.endCharPixel1: addi    t1, t1, -1                	# j--
     			j       SP_IC1_.forChar1J		# vollta novo pixel
 
 SP_IC1_.endForChar1J: addi    t0, t0, -1 		# i--
-    			addi    t4, t4, 328           	# 2**12 + 8
+    			addi    t4, t4, LARGURA_VGA
+			addi    t4, t4, 8
     			j       SP_IC1_.forChar1I	# volta ao loop
 
 SP_IC1_.endForChar1I:	lw      t3, 4(t2)           	# carrega a segunda word do char
@@ -186,7 +188,8 @@ SP_IC1_.endCharPixel2:	addi    t1, t1, -1		# j--
     				j       SP_IC1_.forChar2J
 
 SP_IC1_.endForChar2J:	addi	t0, t0, -1 		# i--
-    			addi    t4, t4, 328		#
+    			addi    t4, t4, LARGURA_VGA
+			addi    t4, t4, 8
     			j       SP_IC1_.forChar2I	# volta ao loop
 
 SP_IC1_.endForChar2I:	
