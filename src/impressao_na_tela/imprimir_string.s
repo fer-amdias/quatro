@@ -55,11 +55,12 @@ PROC_IMPRIMIR_STRING:
 	    		sw	ra, 0(sp)			# salva ra
 	    		sw	s0, 4(sp)			# salva s0
 	    		sw 	s1, 8(sp)			# pos x (para podermos indentar o texto corretamente)
+			mv 	s1, a1				# salva a pos x
+
 			bnez a4, P_IS1_STRING_DA_MEMORIA
 
 			# STRING DA TABELA DE OFFSET:
 			selecionar_texto_rg(s0, t0, t1, a0)	# carrega a string a ser impressa
-	    		mv 	s1, a1
 			j P_IS1_LOOP	
 
 P_IS1_STRING_DA_MEMORIA:
@@ -95,7 +96,7 @@ P_IS1_LOOP_FIM:		lw      ra, 0(sp)    			# recupera ra
 
 
 #########################################################
-#  SUPROC_IMPRIMIR_CARACTERE                            #
+#  SUBPROC_IMPRIMIR_CARACTERE                            #
 #  a0 = char(ASCII)                                     #
 #  a1 = x                                               #
 #  a2 = y                                               #
