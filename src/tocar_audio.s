@@ -80,8 +80,6 @@ P_TA1_SWITCH3:
 P_TA1_SWITCH_FIM:
 
 P_TA1_TOCAR_SEQUENCIAL:
-	lb t0, MUTADO
-	bnez t0, P_TA1_FIM
 	jal P_TA1_TRACK1
 	jal P_TA1_TRACK2
 	jal P_TA1_TRACK3
@@ -114,6 +112,9 @@ P_TA1_TRACK1:
 		
 		lw t1, start_ms(t0)		
 		bgt t1, t2, P_TA1_TRACK1_FIM2	# se start_ms < ms_desde_timestamp: nao toca nada ainda, nao eh hora
+
+		lb t3, MUTADO
+		bnez t3, P_TA1_TRACK1_CONT
 		
 		lb a0, pitch(t0)
 		lw a1, duration(t0)
@@ -121,6 +122,8 @@ P_TA1_TRACK1:
 		lb a3, volume(t0)
 		li a7, 31
 		ecall
+
+P_TA1_TRACK1_CONT:
 		
 		addi t0, t0, tamanho_struct_nota
 		sw t0, TRACK1_POINTER, t1	# vai pra proxima nota no arquivo
