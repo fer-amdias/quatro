@@ -42,13 +42,9 @@ E_MC1_MENU_CONT:
         jal PROC_DESENHAR
 
 E_MC1_LOOP:
-        lb t0, MUTADO
-        bnez t0, E_MC1_LOOP_SEM_AUDIO
-
 	li a0, 0
         jal PROC_TOCAR_AUDIO	
-E_MC1_LOOP_SEM_AUDIO:
-	
+
 
 	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
