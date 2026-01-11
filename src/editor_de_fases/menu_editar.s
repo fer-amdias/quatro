@@ -44,7 +44,7 @@ E_ME1_LOOP_SEM_AUDIO:
   	lw t2,4(t1)  			# le o valor da tecla 
   	
   	li t0, '1'
-	#beq t2, t0, E_ME1_NOVO
+	beq t2, t0, E_ME1_MENU_NOVO
 	li t0, '2'
 	beq t2, t0, E_MP_MENU_CARREGAR
 	li t0, '9'
@@ -63,6 +63,16 @@ E_ME1_VOLTAR:
 E_MP_MENU_CARREGAR:
 	jal EDITOR_MENU_CARREGAR
 	j E_ME1_MENU
+
+E_ME1_MENU_NOVO:
+	jal EDITOR_NOVA_FASE
+	jal EDITOR_DE_FASES
+	li a0, 1
+	la a1, intro_tune
+	li a2, 1
+	li a3, 1
+	jal PROC_TOCAR_AUDIO
+	j E_ME1_VOLTAR
 
 
 
