@@ -169,7 +169,7 @@ P_F1_PULAR_MUSICA:
 
 P_F1_LOOP:	
 
-		jal ROTINA_DEBUG
+		#jal ROTINA_DEBUG
 
 		# imprime o padrao de fundo
 		la t0, P_F1_ARGUMENTOS_ADICIONAIS
