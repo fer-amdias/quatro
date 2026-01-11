@@ -46,7 +46,7 @@ E_ME1_LOOP_SEM_AUDIO:
   	li t0, '1'
 	beq t2, t0, E_ME1_MENU_NOVO
 	li t0, '2'
-	beq t2, t0, E_MP_MENU_CARREGAR
+	beq t2, t0, E_ME1_MENU_CARREGAR
 	li t0, '9'
 	beq t2, t0, E_ME1_VOLTAR
 	li t0, 8		# TAMBEM VOLTA PRA BACKSPACE!!!
@@ -60,7 +60,7 @@ E_ME1_VOLTAR:
 	addi sp, sp, 4
 	ret
 
-E_MP_MENU_CARREGAR:
+E_ME1_MENU_CARREGAR:
 	jal EDITOR_MENU_CARREGAR
 	j E_ME1_MENU
 
