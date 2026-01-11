@@ -91,7 +91,6 @@ E_ME_MUTAR_DESMUTAR_CONT:
         lb t0, MUTADO
         seqz t0, t0
         sb t0, MUTADO, t1
-        lb t0, MUTADO
         j E_MC1_MENU
         
 
