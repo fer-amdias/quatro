@@ -79,16 +79,6 @@ E_ME_MENU_IDIOMA:
 
 E_ME_MUTAR_DESMUTAR:
         lb t0, MUTADO
-        beqz t0, E_ME_MUTAR_DESMUTAR_CONT
-
-        li a0, 1
-	la a1, intro_tune
-	li a2, 1
-	li a3, 1
-	jal PROC_TOCAR_AUDIO
-E_ME_MUTAR_DESMUTAR_CONT:
-
-        lb t0, MUTADO
         seqz t0, t0
         sb t0, MUTADO, t1
         j E_MC1_MENU
