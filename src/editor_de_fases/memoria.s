@@ -6,20 +6,45 @@
 
 .data
 
+.include "../../assets/fases/definicoes_fases.s"
 .include "../../assets/locale.s" 
 .include "../../assets/logoquatro.data"
 .include "../../assets/musicas/intro_tune.data"
+.include "../../assets/texturas/inimigos.data"
+.include "../../assets/texturas/ch0.data"
 
 FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
 FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer
 
 
-# mantemos eles so pros procedimentos compilarem :P
-FASE_BUFFER: 	  	
-FASE_BUFFER_COL:  	
-FASE_BUFFER_LIN:  	.byte 0
-
+FASE_BUFFER: 	  	.byte 0 
+		  	.space 76799	# onde manteremos o nivel
+FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
+FASE_BUFFER_LIN:  	.half 0		# quantas linhas tem no mapa no buffer
 MUTADO: .byte 0 # boolean
+
+TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
+			.space 192	# 16 * 12 sendo o tamanho maximo do buffer
+                        # mesmo que o editor so suporte niveis ate 11 por 11 lol
+
+# uma fase padrao para quando criarmos um novo arquivo
+FASE_TEMPLATE: .word 5 5
+.byte 1, 1, 1, 1, 1,
+      1, 0, 0, 0, 1,
+      1, 2, 0, 3, 1,
+      1, 0, 0, 0, 1,
+      1, 1, 1, 1, 1,
+
+POSICOES_MAPA: .half 0, 0
+
+FASE_DESLOCAMENTO_X: 
+FASE_DESLOCAMENTO_Y: .byte 0
+
+ARQUIVO_STR_PATH: .asciz "../assets/fases"
+STR_NOME_ARQUIVO: .space 256     # buffer para o nome do arquivo
+
+TILE_SELECIONADO_COLUNA: .byte 0
+TILE_SELECIONADO_LINHA:  .byte 0
 
 .text
 
@@ -31,6 +56,10 @@ MUTADO: .byte 0 # boolean
 .eqv CENTRO_VGA_X 160
 .eqv CENTRO_VGA_Y 120
 
+# posicoes de centro do espaco de fase!
+.eqv CENTRO_FASE_X 120
+.eqv CENTRO_FASE_Y 120
+
 # enderecos do frame 0 e frame 1
 .eqv FRAME_0 0xFF000000
 .eqv FRAME_0_FIM 0xFF012C00
@@ -39,5 +68,10 @@ MUTADO: .byte 0 # boolean
 
 # magenta
 .eqv COR_TRANSPARENTE 199
+
+# tiles
+.eqv TAMANHO_SPRITE 20
+.eqv AREA_SPRITE 400 
+# (20*20)
 
 .include "../macros.s"
