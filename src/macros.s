@@ -301,6 +301,13 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	jal PROC_IMPRIMIR_STRING
 .end_macro
 
+.macro sleep(%seg)
+	.text
+	li a0, %seg
+	li a7, 32
+	ecall
+.end_macro
+
 .macro safe_sleep(%seg)
 	.text
 	addi sp, sp, -8
