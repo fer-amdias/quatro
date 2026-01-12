@@ -69,11 +69,15 @@ P_IR1_LOOP:		beq a0, t6, P_IR1_PULA_PIXEL	# SE ( I == COR_TRANSPARENTE ), ENTAO 
                         bgt t2, t5, P_IR1_PULA_PIXEL
 							# SENAO:
 			sb a0,	(t3)			# 	imprime o pixel
-P_IR1_PULA_PIXEL:	addi t3, t3, 1			# P++ 
-			addi t1, t1, 1			# CC++ 
+P_IR1_PULA_PIXEL:	
 
-			# SE X == X2, VAI PARA A PROXIMA LINHA
+			# SE X = X2, VAI PARA A PROXIMA LINHA
 			beq t1, a3, P_IR1_PROXIMA_LINHA
+
+			addi t1, t1, 1			# CC++ 
+			addi t3, t3, 1			# P++ 
+
+
 				
 			j P_IR1_LOOP			# continua o loop		
 						
