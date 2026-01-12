@@ -15,24 +15,6 @@
 #       (nenhum)                                             #
 ##############################################################
 
-
-
-.text
-
-# mano esta linha
-# essa linha me fez perder tantas horas
-# pq eu tinha escrito 0xC0 (192) em vez de 199
-# ent os pixeis estavam sendo escritos errados e eu podia jurar pela minha vida que o bug tava em qualquer lugar menos aqui
-# era literalmente um digito errado e eu passei tipo umas 5-6 horas tentando consertar isso
-# eu ate implementei um buffer adicional de frame pra vc ter ideia
-# mas nao precisava
-# era literalmente
-# soh um digito digitado errado
-# eu cheguei a derramar lagrima depois que eu percebi
-
-# .eqv COR_TRANSPARENTE 199 
-# (eu movi essa linha pra memoria.s, mas ela ficava aqui antes)
-
 # prefixo interno: P_IT1_
 
 # a0 = E0 = endereco da textura (.data)
@@ -110,9 +92,6 @@ P_IT1_PULA_PIXEL:	addi a0, a0, 1			# E++
 			beq a4, t5, P_IT1_PROXIMA_LINHA
 				
 			j P_IT1_LOOP			# continua o loop		
-						
-							
-								
-									
+											
 P_IT1_FIM:					
 			ret	
