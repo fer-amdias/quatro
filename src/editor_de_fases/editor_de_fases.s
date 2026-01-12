@@ -6,7 +6,7 @@ EDITOR_DE_FASES:
         addi sp, sp, -4
         sw ra, (sp)
 
-        la a0, ch0
+        lw a0, TEXTURA_DO_MAPA
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
 
 E_DF1_LOOP:
@@ -31,22 +31,47 @@ E_DF1_LOOP:
         li t0, 'D'
         beq t2, t0, E_DF1_D
 
+        li t0, 'w'
+        beq t2, t0, E_DF1_W
+        li t0, 'a'
+        beq t2, t0, E_DF1_A
+        li t0, 's'
+        beq t2, t0, E_DF1_S
+        li t0, 'd'
+        beq t2, t0, E_DF1_D
+        li t0, '\n'
+        beq t2, t0, E_DF1_ENTER
+
+        j E_DF1_DRAW_CYCLE
+
 E_DF1_W:
         li a0, 0
         li a1, -1
+        j E_DF1_MOVER_SELETOR
 E_DF1_A:
         li a0, -1
         li a1, 0
+        j E_DF1_MOVER_SELETOR
 E_DF1_S:
         li a0, 0
         li a1, 1
+        j E_DF1_MOVER_SELETOR
 E_DF1_D: 
         li a0, 1
         li a1, 0
+        j E_DF1_MOVER_SELETOR
 
-#       jal EDITOR_MOVER_SELETOR_DE_TILE
-
+E_DF1_ENTER:
+        #lw a0, TILE_SELECIONADO ...ou algo assim
+        li a0, 0                 # placeholder
+        jal EDITOR_ALTERAR_TILE_SELECIONADO
+        lw a0, TEXTURA_DO_MAPA
+        jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
         j E_DF1_DRAW_CYCLE
+
+E_DF1_MOVER_SELETOR:
+
+       jal EDITOR_MOVER_SELETOR_DE_TILE
 
 E_DF1_DRAW_CYCLE:
 
@@ -63,6 +88,17 @@ E_DF1_DRAW_CYCLE:
         jal PROC_IMPRIMIR_RETANGULO
         
         jal PROC_IMPRIMIR_BUFFER_DE_FASE
+
+        jal EDITOR_IMPRIMIR_SELETOR_DE_TILE
+
+        li a0, 0xFF
+        li a1, 10
+        li a2, 10
+        li a3, 230
+        li a4, 230
+        li a5, 1
+        li a7, 0
+        jal PROC_IMPRIMIR_OUTLINE
 
         jal EDITOR_IMPRIMIR_UI
 

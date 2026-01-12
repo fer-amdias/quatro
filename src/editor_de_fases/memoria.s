@@ -43,8 +43,10 @@ FASE_DESLOCAMENTO_Y: .byte 0
 ARQUIVO_STR_PATH: .asciz "../assets/fases"
 STR_NOME_ARQUIVO: .space 256     # buffer para o nome do arquivo
 
-TILE_SELECIONADO_COLUNA: .byte 0
-TILE_SELECIONADO_LINHA:  .byte 0
+SELETOR_DE_TILE_X: .byte 0
+SELETOR_DE_TILE_Y:  .byte 0
+
+TEXTURA_DO_MAPA: .word ch0
 
 .text
 
