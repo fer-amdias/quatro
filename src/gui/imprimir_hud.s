@@ -60,7 +60,6 @@ P_IH1_TEMPO_RESTANTE:
 		li a1, 152		# x 
 		li a2, 8		# y
 		lw a3, 4(sp)
-		mv a4, zero		# imprime do arquivo de localisacao	
 		jal PROC_IMPRIMIR_INTEIRO
 		
 P_IH1_NPCS_RESTANTES:
