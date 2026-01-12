@@ -9,6 +9,10 @@ EDITOR_DE_FASES:
         lw a0, TEXTURA_DO_MAPA
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
 
+        lw a0, TEXTURA_DO_MAPA
+        jal EDITOR_CRIAR_PALETA_DE_TILES
+        jal EDITOR_CRIAR_PALETA_DE_NPCS
+
 E_DF1_LOOP:
 
         li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
