@@ -46,6 +46,12 @@ STR_NOME_ARQUIVO: .space 256     # buffer para o nome do arquivo
 SELETOR_DE_TILE_X: .byte 0
 SELETOR_DE_TILE_Y:  .byte 0
 
+PALETA_DE_TILES_Y: .byte 0
+PALETA_DE_TILES_VALOR_MAXIMO: .byte 0
+
+PALETA_DE_NPCS_Y: .byte 0
+PALETA_DE_NPCS_VALOR_MAXIMO: .byte 0
+
 TEXTURA_DO_MAPA: .word ch0
 
 .text
