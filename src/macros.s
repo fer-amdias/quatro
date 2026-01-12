@@ -300,3 +300,18 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	li a4, %modo
 	jal PROC_IMPRIMIR_STRING
 .end_macro
+
+.macro safe_sleep(%seg)
+	.text
+	addi sp, sp, -8
+	sw a0, (sp)
+	sw a7, 4(sp)
+
+	li a0, %seg
+	li a7, 32
+	ecall
+
+	lw a0, (sp)
+	lw a7, 4(sp)
+	addi sp, sp, 8
+.end_macro
