@@ -37,6 +37,8 @@ ecall
 .include "./alterar_tile_selecionado.s"
 .include "./imprimir_ui.s"
 .include "./nova_fase.s"
+.include "./criar_paleta_de_npcs.s"
+.include "./criar_paleta_de_tiles.s"
 .include "../menus/menu_creditos.s"
 .include "../tocar_audio.s"
 .include "../impressao_na_tela/imprimir_textura.s"
