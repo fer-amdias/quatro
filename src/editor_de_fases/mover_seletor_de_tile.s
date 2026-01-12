@@ -8,8 +8,8 @@
 EDITOR_MOVER_SELETOR_DE_TILE:
 
         la t1, TILEMAP_BUFFER
-        lw t2, 4(t1)     # linhas
-        lw t1, (t1)      # colunas
+        lw t2, (t1)     # linhas
+        lw t1, 4(t1)      # colunas
 
 E_MS1_X:
         beqz a0, E_MS1_Y
