@@ -12,13 +12,17 @@ EDITOR_DE_FASES:
         lw a0, TEXTURA_DO_MAPA
         jal EDITOR_CRIAR_PALETA_DE_TILES
         jal EDITOR_CRIAR_PALETA_DE_NPCS
+        j E_DF1_DRAW_CYCLE
+
+E_DF1_IDLE:
+        sleep(10)                       # performance: enquanto nada acontece, nao faz nada lol
 
 E_DF1_LOOP:
 
         li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
 	andi t0,t0,0x0001		# mascara o bit menos significativo
-   	beq t0,zero,E_DF1_DRAW_CYCLE    # Se nao hah tecla pressionada entao nao checa tecla
+   	beq t0,zero,E_DF1_IDLE          # Se nao hah tecla pressionada entao nao faz NADA
   	lw t2,4(t1)  			# le o valor da tecla 
   	
 	li t0, '9'
