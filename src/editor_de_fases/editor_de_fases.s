@@ -52,6 +52,26 @@ E_DF1_LOOP:
         li t0, '\n'
         beq t2, t0, E_DF1_ENTER
 
+        li t0, 'I'
+        beq t2, t0, E_DF1_I
+        li t0, 'J'
+        beq t2, t0, E_DF1_J
+        li t0, 'K'
+        beq t2, t0, E_DF1_K
+        li t0, 'L'
+        beq t2, t0, E_DF1_L
+
+        li t0, 'i'
+        beq t2, t0, E_DF1_I
+        li t0, 'j'
+        beq t2, t0, E_DF1_J
+        li t0, 'k'
+        beq t2, t0, E_DF1_K
+        li t0, 'l'
+        beq t2, t0, E_DF1_L
+        li t0, '\n'
+        beq t2, t0, E_DF1_ENTER
+
         j E_DF1_DRAW_CYCLE
 
 E_DF1_W:
@@ -71,19 +91,41 @@ E_DF1_D:
         li a1, 0
         j E_DF1_MOVER_SELETOR
 
+E_DF1_I:
+        li a0, 0
+        li a1, -1
+        j E_DF1_MOVER_SELETOR_DE_PALETA
+E_DF1_J:
+        li a0, -1
+        li a1, 0
+        j E_DF1_MOVER_SELETOR_DE_PALETA
+E_DF1_K:
+        li a0, 0
+        li a1, 1
+        j E_DF1_MOVER_SELETOR_DE_PALETA
+E_DF1_L: 
+        li a0, 1
+        li a1, 0
+        j E_DF1_MOVER_SELETOR_DE_PALETA
+
 E_DF1_ENTER:
-        #lw a0, TILE_SELECIONADO ...ou algo assim
-        li a0, 0                 # placeholder
-        jal EDITOR_ALTERAR_TILE_SELECIONADO
+
+        jal EDITOR_VALOR_DO_SELETOR_DE_PALETA # retorna o valor em a0
+        jal EDITOR_ALTERAR_TILE_SELECIONADO   # recebe o valor retornado acima
+
         lw a0, TEXTURA_DO_MAPA
         la a1, inimigos
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
-        
         j E_DF1_DRAW_CYCLE
 
 E_DF1_MOVER_SELETOR:
 
-       jal EDITOR_MOVER_SELETOR_DE_TILE
+        jal EDITOR_MOVER_SELETOR_DE_TILE
+        j E_DF1_DRAW_CYCLE
+
+E_DF1_MOVER_SELETOR_DE_PALETA:
+
+        jal EDITOR_MOVER_SELETOR_DE_PALETA
 
 E_DF1_DRAW_CYCLE:
 
@@ -112,9 +154,15 @@ E_DF1_DRAW_CYCLE:
         li a7, 0
         jal PROC_IMPRIMIR_OUTLINE
 
+        lw a0, TEXTURA_DO_MAPA
+        la a1, inimigos
+        jal EDITOR_IMPRIMIR_PALETAS
+
+        jal EDITOR_IMPRIMIR_SELETOR_DE_PALETA
+
         jal EDITOR_IMPRIMIR_UI
 
-        jal PROC_DESENHAR
+        jal PROC_DESENHAR               # imprime tudo no ciclo
 
         j E_DF1_LOOP
 
