@@ -12,6 +12,8 @@
 .include "../../assets/musicas/intro_tune.data"
 .include "../../assets/texturas/inimigos.data"
 .include "../../assets/texturas/ch0.data"
+.include "../../assets/elementos_de_ui/seta_para_baixo.data"
+.include "../../assets/elementos_de_ui/seta_para_cima.data"
 
 FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
 FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer

@@ -142,9 +142,6 @@ E_DF1_DRAW_CYCLE:
         jal PROC_IMPRIMIR_RETANGULO
         
         jal PROC_IMPRIMIR_BUFFER_DE_FASE
-
-        jal EDITOR_IMPRIMIR_SELETOR_DE_TILE
-
         li a0, 0xFF
         li a1, 10
         li a2, 10
@@ -154,11 +151,6 @@ E_DF1_DRAW_CYCLE:
         li a7, 0
         jal PROC_IMPRIMIR_OUTLINE
 
-        lw a0, TEXTURA_DO_MAPA
-        la a1, inimigos
-        jal EDITOR_IMPRIMIR_PALETAS
-
-        jal EDITOR_IMPRIMIR_SELETOR_DE_PALETA
 
         jal EDITOR_IMPRIMIR_UI
 
