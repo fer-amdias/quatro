@@ -13,7 +13,7 @@ E_MC1_MENU:
 	li a1, 1
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 	
-	la a0, logoquatro
+	la a0, logoeditor
 	li a1, 59
 	li a2, 30
 	lw a3, 4(a0)

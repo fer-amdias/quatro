@@ -8,7 +8,7 @@
 
 .include "../../assets/fases/definicoes_fases.s"
 .include "../../assets/locale.s" 
-.include "../../assets/logoquatro.data"
+.include "../../assets/logoeditor.data"
 .include "../../assets/musicas/intro_tune.data"
 .include "../../assets/texturas/inimigos.data"
 .include "../../assets/texturas/ch0.data"
