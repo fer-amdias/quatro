@@ -118,7 +118,7 @@ E_MC2_ENTER:
 	li a7, 1024
 	ecall
 
-	bgtz a0, E_MC2_CARREGAR_FASE
+	bgez a0, E_MC2_CARREGAR_FASE
 	# se a0 < 0, entao nao foi possivel abrir a fase!
 
 	li t0, 1
