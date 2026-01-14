@@ -3,12 +3,13 @@
 #
 # ARGUMENTOS:
 # a0 = textura do mapa
+# a1 = textura dos NPCs
 
 .text
 
 EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
 
-        addi sp, sp, -36
+        addi sp, sp, -40
         sw ra, (sp)
         sw s0, 4(sp)    
         sw s1, 8(sp)
@@ -18,6 +19,7 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         sw s5, 24(sp)
         sw s6, 28(sp)
         sw s7, 32(sp)   
+        sw s8, 36(sp)
 
         # s0 = endereco do tilemap
         # s1 = altura do mapa em pixeis
@@ -27,6 +29,7 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         # s5 = contador de linhas
         # s6 = contador de colunas
         # s7 = endereco da textura do mapa
+        # s8 = endereco da textura dos NPCs
 
         la s0, TILEMAP_BUFFER           
         lw s1, (s0)			# carrega o n de linhas em s1 (L)
@@ -67,7 +70,7 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
 
         mv s7, a0                       # guarda a textura do mapa
 
-
+        mv s8, a1
 
 E_IF1_LOOP:
 
@@ -82,14 +85,50 @@ E_IF1_LOOP:
         mul t2, t2, t0                  # multiplica a altura de um tile pela altura da textura
         bge t2, t1, E_IF1_LOOP_SUBSTITUIR_TILE  # se o tile nao estiver presente na textura, substitui por 0 
 
-        j E_IF1_LOOP_CONT
+        j E_IF1_LOOP_IMPRIMIR_TILE
 
 E_IF1_LOOP_IMPRIMIR_NPC:
+
+        # PRIMEIRO IMPRIMIMOS UM TILE VAZIO!!!
+        addi a0, s7, 8			# pula as words de informacao, imprimindo no comeco da textura (tile 0)
+        mv a1, s4			# aX = X
+        mv a2, s3			# aY = Y
+        li a3, TAMANHO_SPRITE		# aL = L
+        li a4, TAMANHO_SPRITE		# aC = C
+        li a7, 1			# printa no buffer de fase
+        
+        jal PROC_IMPRIMIR_TEXTURA	
+
+        lb t0, (s0)                     # recarrega o tile, perdido no procedimento anterior
+        li t1, BYTE_NPC_0
+        sub t0, t0, t1                  # pega o NPC relativo ao NPC 0
+        
+        li t1, AREA_SPRITE
+        li t2, 5
+        mul t1, t1, t2                  # 5 tiles por NPC
+
+        mul t0, t0, t1                  # pega AREA_SPRITE * tile
+
+        # 	a0 = endereco da textura (.data)
+        # 	a1 = pos X
+        # 	a2 = pos Y
+        # 	a3 = n de linhas da textura
+        # 	a4 = n de colunas da textura
+        add a0, s8, t0			# aE0 = endereco_textura + (npc * area_tile) = pula pra textura associada com o npc
+        addi a0, a0, 8                  # pula as words de informacao
+        mv a1, s4			# aX = X
+        mv a2, s3			# aY = Y
+        li a3, TAMANHO_SPRITE		# aL = L
+        li a4, TAMANHO_SPRITE		# aC = C
+        li a7, 1			# printa no buffer de fase
+        jal PROC_IMPRIMIR_TEXTURA	
+
+        j E_IF1_LOOP_CONT
 
 E_IF1_LOOP_SUBSTITUIR_TILE:
         li t0, 0                        # substitui o tile pelo tile 0 (vazio, so chao mesmo)
 
-E_IF1_LOOP_CONT:
+E_IF1_LOOP_IMPRIMIR_TILE:
         li t1, AREA_SPRITE
         mul t0, t0, t1                  # pega AREA_SPRITE * tile
 
@@ -109,6 +148,8 @@ E_IF1_LOOP_CONT:
         jal PROC_IMPRIMIR_TEXTURA	
         
         # fim do procedimento
+
+E_IF1_LOOP_CONT:
         
         addi s0, s0, 1			# Endereco_tilemap++
         addi s6, s6, TAMANHO_SPRITE	# CC += TAMANHO_SPRITE
@@ -139,6 +180,7 @@ P_IF1_PROXIMA_LINHA:
         lw s4, 20(sp)
         lw s5, 24(sp)
         lw s6, 28(sp)
-        lw s7, 32(sp)   
-        addi sp, sp, 36
+        lw s7, 32(sp)  
+        lw s8, 36(sp) 
+        addi sp, sp, 40
 ret

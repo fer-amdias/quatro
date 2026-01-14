@@ -70,7 +70,9 @@ E_DF1_ENTER:
         li a0, 0                 # placeholder
         jal EDITOR_ALTERAR_TILE_SELECIONADO
         lw a0, TEXTURA_DO_MAPA
+        la a1, inimigos
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
+        
         j E_DF1_DRAW_CYCLE
 
 E_DF1_MOVER_SELETOR:
