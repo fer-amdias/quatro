@@ -8,8 +8,13 @@ sw ra, (sp)
 lb t0, SELETOR_DE_PALETA_X
 lb t1, SELETOR_DE_PALETA_Y
 
-li t2, 30               # distancia entre as paletas
-li t3, 22               # distancia entre os tiles
+# distancia entre as paletas
+li t2, DISTANCIA_ENTRE_PALETAS     
+addi t2, t2, TAMANHO_SPRITE       
+
+# distancia entre os tiles
+li t3, TAMANHO_SPRITE               
+addi t3, t3, 2
 
 mul t0, t2, t0          # X = 30X
 mul t1, t3, t1          # Y = 22Y
@@ -17,8 +22,8 @@ mul t1, t3, t1          # Y = 22Y
 li a0, 0xFF
 
 # coordenadas das paletas
-addi a1, t0, 255
-addi a2, t1, 66
+addi a1, t0, PALETAS_X
+addi a2, t1, PALETAS_Y
 
 addi a3, a1, TAMANHO_SPRITE
 addi a4, a2, TAMANHO_SPRITE

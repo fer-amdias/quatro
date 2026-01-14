@@ -85,4 +85,9 @@ TEXTURA_DO_MAPA: .word ch0
 .eqv AREA_SPRITE 400 
 # (20*20)
 
+# posicao das paletas de tiles e npcs
+.eqv PALETAS_X 251
+.eqv PALETAS_Y 70
+.eqv DISTANCIA_ENTRE_PALETAS 10
+
 .include "../macros.s"

@@ -33,8 +33,8 @@ sw s9, 40(sp)
 lb s1, PALETA_DE_TILES_Y
 lb s2, PALETA_DE_TILES_VALOR_MAXIMO
 
-li s3, 255                              # x
-li s4, 66                               # y
+li s3, PALETAS_X                         
+li s4, PALETAS_Y                         
 
 li s5, 6                                # imprime de 0 a 6
 
@@ -72,7 +72,11 @@ add t5, s6, s1
 bge t5, s2, E_IP1_BREAK
 bge s6, s5, E_IP1_BREAK
 addi s6, s6, 1
-addi s4, s4, 22
+
+# espacamento entre itens
+addi s4, s4, TAMANHO_SPRITE
+addi s4, s4, 2
+
 add s0, s0, s9 
 j E_IP1_WHILE_LOOP
 
@@ -87,8 +91,12 @@ lb s2, PALETA_DE_NPCS_VALOR_MAXIMO
 li t0, BYTE_NPC_0
 sub s2, s2, t0                          # coloca relativo ao NPC 0
 
-li s3, 285                              # x
-li s4, 66                               # y
+li s3, PALETAS_X                         
+li s4, PALETAS_Y      
+
+# espacamento entre paletas
+addi s3, s3, DISTANCIA_ENTRE_PALETAS            
+addi s3, s3, TAMANHO_SPRITE   
 
 li s6, 0                                # n
 
