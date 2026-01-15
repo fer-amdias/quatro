@@ -59,9 +59,16 @@
 
 .eqv COR_TRANSPARENTE 199 
 
+.eqv TAMANHO_MAX_TEXTURA_DE_MAPA 15000	# o maximo de bytes que uma textura de mapa pode ter
+
 .data
 
 NULL:			.word 0			# endereco nulo
+
+# texturas dos capitulos
+CAPITULO_0_TEXTURA: .string "../assets/texturas/ch0.bin"
+CAPITULO_1_TEXTURA: .string "../assets/texturas/ch1.bin"
+CAPITULO_2_TEXTURA: .string "../assets/texturas/ch2.bin"
 
 JOGO_PAUSADO: 		.byte 0
 MUTADO: 		.byte 0
@@ -141,6 +148,7 @@ MORTE_TIMESTAMP:	.word 0 	# timestamp de quando o jogador morreu
 
 
 # Deslocamento da impressao de fase_buffer & NPCs, usado pra "tremer" a tela em explosoes
-# 
 FASE_DESLOCAMENTO_X:    .byte 0
 FASE_DESLOCAMENTO_Y:	.byte 0
+
+TEXTURA_DO_MAPA_BUFFER:	.space TAMANHO_MAX_TEXTURA_DE_MAPA

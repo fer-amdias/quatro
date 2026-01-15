@@ -8,7 +8,6 @@
 #       (nenhum)                                             	#
 #################################################################
 
-.text
 CAPITULO_2:
 
 
@@ -22,21 +21,25 @@ ROTINA_CAPITULO_2:
 		
 		sh zero, POWERUP_TAMANHO_BOMBA, t0		# REESCREVE OS DOIS POWERUPS PARA 0
 		#############
+
+		la a0, CAPITULO_2_TEXTURA
+		la a1, TEXTURA_DO_MAPA_BUFFER
+		jal PROC_CARREGAR_TEXTURA
 		
 		#FASE(%fase, %capitulo, %arquivo_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_inimigos, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre, %textura_de_fundo)
-		FASE(0, 2, ch2_fase0, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase0.scroll, pergaminho_ch2, 0, 1, fundo_ch2)
+		FASE(0, 2, ch2_fase0, TEXTURA_DO_MAPA_BUFFER, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase0.scroll, pergaminho_ch2, 0, 1, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(1, 2, ch2_fase1, ch2, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase1.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
+		FASE(1, 2, ch2_fase1, TEXTURA_DO_MAPA_BUFFER, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase1.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(2, 2, ch2_fase2, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase2.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
+		FASE(2, 2, ch2_fase2, TEXTURA_DO_MAPA_BUFFER, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase2.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(3, 2, ch2_fase3, ch2, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase3.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
+		FASE(3, 2, ch2_fase3, TEXTURA_DO_MAPA_BUFFER, 150, inimigos, jogador, seikilos_epitaph13, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase3.scroll, pergaminho_ch2, 0, 0, fundo_ch2)
 		beqz a0, C2_FIM
 		
-		FASE(4, 2, ch2_fase4, ch2, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase4.scroll, pergaminho_ch2, 0, 1, fundo_ch2)
+		FASE(4, 2, ch2_fase4, TEXTURA_DO_MAPA_BUFFER, SEM_LIMITE_DE_TEMPO, inimigos, jogador, seikilos_epitaph, powerup_ch3, morte_ch2, abertura_scroll_ch3, ch2_fase4.scroll, pergaminho_ch2, 0, 1, fundo_ch2)
 		beqz a0, C2_FIM
 		
 		j C2_FIM
