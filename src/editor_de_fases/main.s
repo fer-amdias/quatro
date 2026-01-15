@@ -48,6 +48,7 @@ ecall
 .include "../tocar_audio.s"
 .include "../impressao_na_tela/imprimir_textura.s"
 .include "../impressao_na_tela/preencher_tela.s"
+.include "../impressao_na_tela/obscurecer_tela.s"
 .include "../impressao_na_tela/imprimir_inteiro.s"
 .include "../impressao_na_tela/imprimir_string.s"
 .include "../impressao_na_tela/imprimir_buffer_de_fase.s"
