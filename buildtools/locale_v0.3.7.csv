@@ -370,6 +370,8 @@ Emperor Hadrian
 Astrological
 Formation.",boat
 SCROLL_ENTER,Pressione ENTER para fechar.,Press ENTER to close.,PRESS ENTER TO SINK
+ERRO_FATAL_HEADER,Um erro fatal ocorreu.,A fatal exception has occurred.,THE SHIP JUST CRASHED
+ERRO_FATAL_TECLA,Aperte 4 para fechar o jogo.,Press 4 to close the game.,PRESS 4 TO MAROON GAME
 EDITOR_MENU_PRINCIPAL_OPCAO_1,1. EDITAR,1. EDIT,1. SAIL
 EDITOR_MENU_PRINCIPAL_OPCAO_2,2. CONFIGURACOES,2. SETTINGS,2. SHIP
 EDITOR_MENU_PRINCIPAL_OPCAO_3,3. CREDITOS,3. CREDITS,3. CREW
