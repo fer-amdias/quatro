@@ -18,7 +18,6 @@
 FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
 FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer
 
-
 FASE_BUFFER: 	  	.byte 0 
 		  	.space 76799	# onde manteremos o nivel
 FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
@@ -58,6 +57,8 @@ SELETOR_DE_PALETA_X: .byte 0
 SELETOR_DE_PALETA_Y: .byte 6
 
 TEXTURA_DO_MAPA: .word ch0
+
+TEXTURA_BUFFER: .space 30000    # para texturas a serem carregadas, se houver
 
 .text
 
