@@ -72,6 +72,9 @@ E_DF1_LOOP:
         li t0, '\n'
         beq t2, t0, E_DF1_ENTER
 
+        li t0, 27
+        beq t2, t0, E_DF1_ESC
+
         j E_DF1_DRAW_CYCLE
 
 E_DF1_W:
@@ -126,6 +129,10 @@ E_DF1_MOVER_SELETOR:
 E_DF1_MOVER_SELETOR_DE_PALETA:
 
         jal EDITOR_MOVER_SELETOR_DE_PALETA
+        j E_DF1_DRAW_CYCLE
+
+E_DF1_ESC:
+        jal EDITOR_MENU_EDITOR_DE_FASES
 
 E_DF1_DRAW_CYCLE:
 

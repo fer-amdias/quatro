@@ -1,0 +1,13 @@
+
+
+EDITOR_MENU_EDITOR_DE_FASES:
+
+
+
+E_ME2_LOOP:
+
+
+
+E_ME2_DRAW_CYCLE:
+
+ret
