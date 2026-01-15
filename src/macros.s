@@ -301,6 +301,16 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	jal PROC_IMPRIMIR_STRING
 .end_macro
 
+# imprime uma string arg[0] em x = arg[1] e y = arg[2] com cor arg[3]. se arg[4] = 0, trata arg[0] como chave em locale.s. senao, como endereco.
+.macro imprimir_string_reg(%stringkey, %x, %y, %cor, %modo)
+	la a0, %stringkey
+	mv a1, %x
+	mv a2, %y
+	li a3, %cor
+	li a4, %modo
+	jal PROC_IMPRIMIR_STRING
+.end_macro
+
 .macro sleep(%seg)
 	.text
 	li a0, %seg
