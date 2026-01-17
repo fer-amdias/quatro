@@ -64,7 +64,10 @@ P_CT1_LER_ARQUIVO:
         mv a2, t0               # quantidade
         li a7, 63               # LER
         ecall
-        bltz a0, P_CT1_FALHA    # se retornou erro, vai pra tela de erro
+
+        mv a1, a0               # guarda a quandidade de bytes lidos para ser retornado em a1
+        bltz a1, P_CT1_FALHA    # se retornou erro, vai pra tela de erro
+
 
         mv a0, s0
         li a7, 57       # fechar arquivo
