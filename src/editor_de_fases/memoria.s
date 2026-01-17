@@ -11,7 +11,6 @@
 .include "../../assets/logoeditor.data"
 .include "../../assets/musicas/intro_tune.data"
 .include "../../assets/texturas/inimigos.data"
-.include "../../assets/texturas/ch0.data"
 .include "../../assets/elementos_de_ui/seta_para_baixo.data"
 .include "../../assets/elementos_de_ui/seta_para_cima.data"
 
@@ -54,9 +53,9 @@ PALETA_DE_NPCS_Y: .byte 0
 PALETA_DE_NPCS_VALOR_MAXIMO: .byte 0
 
 SELETOR_DE_PALETA_X: .byte 0
-SELETOR_DE_PALETA_Y: .byte 6
+SELETOR_DE_PALETA_Y: .byte 0
 
-TEXTURA_DO_MAPA: .word ch0
+TEXTURA_DO_MAPA: .word TEXTURA_BUFFER
 
 TEXTURA_BUFFER: .space 30000    # para texturas a serem carregadas, se houver
 
