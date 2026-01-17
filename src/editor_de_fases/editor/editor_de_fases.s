@@ -6,7 +6,10 @@ EDITOR_DE_FASES:
         addi sp, sp, -4
         sw ra, (sp)
 
+E_DF1_RECARREGAR_EDITOR_DE_FASES:
+
         lw a0, TEXTURA_DO_MAPA
+        la a1, inimigos
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
 
         lw a0, TEXTURA_DO_MAPA
@@ -133,6 +136,8 @@ E_DF1_MOVER_SELETOR_DE_PALETA:
 
 E_DF1_ESC:
         jal EDITOR_MENU_EDITOR_DE_FASES
+        bnez a0, E_DF1_RET # se a flag de retorno nao for zero, retorna ao menu principal
+        j E_DF1_RECARREGAR_EDITOR_DE_FASES      # recalcula o editor
 
 E_DF1_DRAW_CYCLE:
 

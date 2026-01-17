@@ -44,6 +44,8 @@ ecall
 .include "./editor/imprimir_ui.s"
 .include "./editor/editor_de_fases.s"
 .include "./editor/menu_editor_de_fases.s"
+.include "./editor/menu_carregar_textura.s"
+.include "./editor/carregar_textura.s"
 .include "../menus/menu_creditos.s"
 .include "../tocar_audio.s"
 .include "../impressao_na_tela/imprimir_textura.s"

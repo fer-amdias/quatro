@@ -1,8 +1,13 @@
+# EDITOR_MENU_EDITOR_DE_FASES
+# Mostra o menu do editor de fases.
+#
+# RETORNO:
+#       a0 : flag de retorno.
+#       0 = SUCCESS. 1 = RETURN_TO_MAIN_MENU.
+
 
 .eqv MENU_EDITOR_DE_FASES_X 40
 .eqv MENU_EDITOR_DE_FASES_Y 54
-
-.eqv MENU_EDITOR_DE_FASES_UI_X 60
 
 EDITOR_MENU_EDITOR_DE_FASES:
         addi sp, sp, -12
@@ -12,8 +17,6 @@ EDITOR_MENU_EDITOR_DE_FASES:
 
 E_ME2_OBSCURECER_TELA:
 
-        # temos que copiar o frame atual para o frame buffer, depois escurecer o frame buffer, e colocar ele de novo no lugar
-        jal SHADER_OBSCURECER_TELA
         j E_ME2_DRAW_CYCLE
 
 E_ME2_IDLE:
@@ -26,11 +29,25 @@ E_ME2_LOOP:
   	lw t2,4(t1)  			# le o valor da tecla 
 
         li t0, 27       # ESC
-        beq t2, t0, E_ME2_RET
+        beq t2, t0, E_ME2_RETURN_TO_EDITOR
         li t0, 8        # BACKSPACE
-        beq t2, t0, E_ME2_RET
+        beq t2, t0, E_ME2_RETURN_TO_EDITOR
+        li t0, '1'
+        beq t2, t0, E_ME2_CARREGAR_TEXTURA
+        li t0, '2'
+        beq t2, t0, E_ME2_REDIMENSIONAR_MAPA
+        li t0, '3'
+        beq t2, t0, E_ME2_SALVAR
+        li t0, '4'
+        beq t2, t0, E_ME2_SALVAR_COMO
+        li t0, '9'
+        beq t2, t0, E_ME2_RETURN_TO_MAIN_MENU
+
+        j E_ME2_IDLE    # se nao for uma tecla valida, nao faz nada
 
 E_ME2_DRAW_CYCLE:
+
+        jal SHADER_OBSCURECER_TELA
 
         li a0, 0xA0
         li a1, MENU_EDITOR_DE_FASES_X
@@ -78,6 +95,30 @@ E_ME2_DRAW_CYCLE:
         jal PROC_DESENHAR
 
         j E_ME2_LOOP
+
+E_ME2_RETURN_TO_EDITOR:
+        mv a0, zero
+        j E_ME2_RET
+
+E_ME2_RETURN_TO_MAIN_MENU:
+        li a0, 1
+        j E_ME2_RET
+
+E_ME2_CARREGAR_TEXTURA:
+        jal EDITOR_MENU_CARREGAR_TEXTURA
+        j E_ME2_RETURN_TO_EDITOR
+
+E_ME2_REDIMENSIONAR_MAPA:
+
+        j E_ME2_DRAW_CYCLE
+
+E_ME2_SALVAR:
+
+        j E_ME2_DRAW_CYCLE
+
+E_ME2_SALVAR_COMO:
+
+        j E_ME2_DRAW_CYCLE
 
 E_ME2_RET:
         lw ra, (sp)
