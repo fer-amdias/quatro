@@ -6,10 +6,17 @@
 
 .include "./memoria.s"
 
+
+.data
+
+TEXTURA_INICIAL: "../assets/texturas/ch0.bin"
+
 .text
 
 MAIN:
 
+la a0, TEXTURA_INICIAL
+jal EDITOR_CARREGAR_TEXTURA
 jal EDITOR_MENU_PRINCIPAL
 
 # finaliza
