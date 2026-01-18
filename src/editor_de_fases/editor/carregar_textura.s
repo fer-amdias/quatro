@@ -36,8 +36,9 @@ E_CT1_CALCULAR_TAMANHO:
         blt a0, t0, E_CT1_FALHA # se nao conseguimos ler OITO BYTES, nao tem esperanca. 
 
         # pega as dimensoes da textura
-        lw t1, (s1)
-        lw t2, 4(s1)
+        la t0, TEXTURA_BUFFER
+        lw t1, (t0)
+        lw t2, 4(t0)
         
         mul t0, t1, t2          # pega o tamanho que a textura tem, em bytes
         
