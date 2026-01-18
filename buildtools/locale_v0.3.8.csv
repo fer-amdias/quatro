@@ -399,5 +399,17 @@ EDITOR_OPCOES_CARREGAR_TEXTURA,1. Carregar Textura,1. Load Texture,1. REDRESS CH
 EDITOR_OPCOES_REDIMENSIONAR_MAPA,2. Redimensionar Mapa,2. Resize Map,2. RESCALE CHART
 EDITOR_OPCOES_SALVAR,3. Salvar,3. Save,3. SAVE CHART
 EDITOR_OPCOES_SALVAR_COMO,4. Salvar como...,4. Save as...,4. SAVE CHART AS...
-EDITOR_OPCOES_VOLTAR,Esc - Voltar ao editor,Esc - Return to editor,Esc - BACK TO CHART
-EDITOR_OPCOES_RETORNAR,9 - Sair ao Menu Principal,9 - Exit to Main Menu,9 - SINK TO MAIN VESSEL
+EDITOR_OPCOES_VOLTAR,Esc. Voltar ao editor,Esc. Return to editor,Esc. BACK TO CHART
+EDITOR_OPCOES_RETORNAR,9. Sair ao Menu Principal,9. Exit to Main Menu,9. SINK TO MAIN VESSEL
+EDITOR_MENU_TITULO,Redimensione usando W A S D,Resize with W A S D,RESCALE WITH W A S D
+EDITOR_MENU_REDIMENSIONAR_CONTROLES,"W. Diminuir altura
+A. Diminuir largura
+S. Aumentar altura
+D. Aumentar largura","W. Decrease height
+A. Decrease width
+S. Increase height
+D. Increase width","W. SHORTEN NORTH
+A. SHORTEN WEST
+S. LENGHTEN SOUTH
+D. LENGHTEN EAST"
+EDITOR_MENU_CONFIRMAR,Enter. Confirmar,Enter. Confirm,Enter. RECHART
