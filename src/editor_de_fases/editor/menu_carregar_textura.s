@@ -16,8 +16,10 @@ MC3_NOME_ARQUIVO: .space 256     # buffer para o nome do arquivo
 .text
 
 EDITOR_MENU_CARREGAR_TEXTURA:
-        addi sp, sp, -4
+        addi sp, sp, -12
         sw ra, (sp)
+        sw s0, 4(sp)
+        sw s1, 8(sp)
 
         la t0, MC3_STR_PATH
 	li t1, '/'
@@ -159,5 +161,7 @@ E_MC3_DRAW_CYCLE_CONT:
 
 E_MC3_RET:
         lw ra, (sp)
-        addi sp, sp, 4
+        lw s0, 4(sp)
+        lw s1, 8(sp)
+        addi sp, sp, 12
         ret
