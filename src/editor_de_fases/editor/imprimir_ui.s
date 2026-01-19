@@ -16,11 +16,11 @@ EDITOR_IMPRIMIR_UI:
         beqz t0, E_IU1_IMPRIMIR_UNTITLED
 
 E_IU1_IMPRIMIR_STR_NOME_ARQUIVO:
-        imprimir_string(STR_NOME_ARQUIVO, 234, 20, 0xC7FF, 1)
+        imprimir_string(STR_NOME_ARQUIVO, 234, 10, 0xC7FF, 1)
         j E_IU1_CONT
 
 E_IU1_IMPRIMIR_UNTITLED:
-        imprimir_string(ARQUIVO_SEM_TITULO, 234, 20, 0xC7FF, 0)
+        imprimir_string(ARQUIVO_SEM_TITULO, 234, 10, 0xC7FF, 0)
 
 E_IU1_CONT:
 
