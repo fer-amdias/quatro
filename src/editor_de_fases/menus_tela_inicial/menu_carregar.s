@@ -42,9 +42,7 @@ E_MC2_MENU:
         imprimir_string(EDITOR_MENU_CARREGAR_PROMPT, 100, 134, 0xC7FF, 0)
         imprimir_string(MENU_CARREGAR_STR_TERMINAL, 10, 149, 0xC7FF, 1)
         imprimir_string(STR_NOME_ARQUIVO, 114, 149, 0xC7FF, 1)
-        imprimir_string(EDITOR_MENU_OPCAO_9, 100, 164, 0xC7FF, 0)
-	# TODO: use ESC instead of 9 in case user file contains the letter 9 lmao
-	# why didnt i foresee this problem earlier
+        imprimir_string(EDITOR_MENU_CARREGAR_OPCAO_ESC, 100, 164, 0xC7FF, 0)
 
 	lb t0, MENU_CARREGAR_ARQUIVO_NAO_ENCONTRADO
 	beqz t0, E_MC2_MENU_CONT
@@ -69,7 +67,7 @@ E_MC2_LOOP:
    	beq t0,zero,E_MC2_LOOP		# Se nao hah tecla pressionada entao nao checa tecla
   	lw t2,4(t1)  			# le o valor da tecla 
   	
-	li t0, '9'
+	li t0, 27	# ESC
 	beq t2, t0, E_MC2_VOLTAR
 	li t0, 8		
 	beq t2, t0, E_MC2_REMOVE_CARACTERE
