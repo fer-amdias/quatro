@@ -39,8 +39,15 @@ E_CT1_CALCULAR_TAMANHO:
         la t0, TEXTURA_BUFFER
         lw t1, (t0)
         lw t2, 4(t0)
+
+        # falha se dimensoes invalidas
+        bltz t1, E_CT1_FALHA
+        bltz t2, E_CT1_FALHA
         
         mul t0, t1, t2          # pega o tamanho que a textura tem, em bytes
+
+        # falha se overflow
+        bltz t0, E_CT1_FALHA
         
 
 E_CT1_LER_ARQUIVO:
@@ -52,6 +59,7 @@ E_CT1_LER_ARQUIVO:
         li a7, 63               # LER
         ecall
 
+E_CT1_RET:
         mv t0, a0               # guarda temporariamente a qtd de bytes lidos em t0
 
         mv a0, s0               # coloca
@@ -59,8 +67,6 @@ E_CT1_LER_ARQUIVO:
         ecall
 
         mv a0, t0               # retorna quantos bytes foram lidos
-
-E_CT1_RET:
 
         lw s0, (sp)
         addi sp, sp, 4
