@@ -19,6 +19,13 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	ecall
 .end_macro
 
+.macro print_reg(%registrador)
+	.text
+	li a7, 4
+	mv a0, %registrador
+	ecall
+.end_macro
+
 # ATENCAO: ISSO NAO FUNCIONA NO FPGRARS
 # soh no rars... por algum motivo.
 .macro print_literal(%str)
