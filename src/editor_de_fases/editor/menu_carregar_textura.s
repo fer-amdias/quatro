@@ -80,13 +80,11 @@ E_MC3_REMOVE_CARACTERE:
 	j E_MC3_DRAW_CYCLE
 
 E_MC3_ENTER:
-	la a0, MC3_STR_PATH
-	li a1, 0	# read-only
-	li a7, 1024
-	ecall
+        la a0, MC3_STR_PATH
+	jal EDITOR_CARREGAR_TEXTURA
 
-	bgez a0, E_MC3_CARREGAR_TEXTURA
-	# se a0 < 0, entao nao foi possivel abrir a fase!
+	bgtz a0, E_MC3_RET
+	# se a0 <= 0, entao nao foi possivel carregar a textura!
 
 	li t0, 1
 	sb t0, MC3_DATA_ARQUIVO_NAO_ENCONTRADO, t1
@@ -98,8 +96,7 @@ E_MC3_ENTER:
 	j E_MC3_DRAW_CYCLE
 
 E_MC3_CARREGAR_TEXTURA:
-        la a0, MC3_STR_PATH
-	jal EDITOR_CARREGAR_TEXTURA
+        
         j E_MC3_RET
 
 E_MC3_DRAW_CYCLE:
