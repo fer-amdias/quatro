@@ -53,13 +53,13 @@ E_ME1_LOOP:
         j E_ME1_LOOP
 
 E_ME1_VOLTAR:
-
 	lw ra, (sp)
 	addi sp, sp, 4
 	ret
 
 E_ME1_MENU_CARREGAR:
 	jal EDITOR_MENU_CARREGAR
+	bnez a0, E_ME1_VOLTAR	# volta se o status do menu de carregar for 1 (voltar ao menu anterior). senao, continua.
 	j E_ME1_MENU
 
 E_ME1_MENU_NOVO:
