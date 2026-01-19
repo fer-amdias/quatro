@@ -111,6 +111,15 @@ E_ME2_REDIMENSIONAR_MAPA:
         j E_ME2_RETURN_TO_EDITOR
 
 E_ME2_SALVAR:
+        lb t0, STR_NOME_ARQUIVO # pega o primeiro caractere do nome do arquivo
+        beqz t0, E_ME2_SALVAR_COMO # se for vazio, o arquivo nao possui nome
+
+        la a0, ARQUIVO_STR_PATH
+	jal EDITOR_SALVAR_FASE
+        # retorno: quantos bytes foram lidos, -1 se houve um erro
+        # passamos pro menu de fase salva
+        jal EDITOR_MENU_FASE_SALVA
+
         j E_ME2_DRAW_CYCLE
 E_ME2_SALVAR_COMO:
         jal EDITOR_MENU_SALVAR_FASE_COMO

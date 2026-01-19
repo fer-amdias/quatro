@@ -28,6 +28,12 @@ EDITOR_MENU_SALVAR_FASE_COMO:
 	# portanto, devemos destruir o \0 substituindo-o no codigo pelo que queremos no lugar, fazendo uma non-null-terminated
 	# string na pratica.
 
+        # coloca o nome do arquivo, se houver, no buffer
+        la a0, STR_NOME_ARQUIVO
+        la a1, SF1_NOME_ARQUIVO
+        mv a2, zero                     # copia ateh o final
+        jal PROC_COPIAR_STRING
+
         sb zero, SF1_DATA_NOME_INVALIDO, t0 # reseta o estado da flag
 
 E_SF1_OBSCURECER_TELA:
@@ -142,7 +148,7 @@ E_SF1_DRAW_CYCLE:
 
 E_SF1_ARQUIVO_NAO_ENCONTRADO:
         addi s1, s1, -10
-        imprimir_string_reg(EDITOR_MENU_CARREGAR_NAO_ENCONTRADO, s0, s1, 0xC737, 0)
+        imprimir_string_reg(EDITOR_MENU_SALVAR_NOME_INVALIDO, s0, s1, 0xC737, 0)
 
 E_SF1_DRAW_CYCLE_CONT:
 
@@ -150,49 +156,15 @@ E_SF1_DRAW_CYCLE_CONT:
 
         j E_SF1_LOOP
 
-
-E_SF1_SALVO_DRAW_CYCLE:
-        li a0, 0xA0
-        li a1, MENU_SALVAR_FASE_X
-        li a2, MENU_SALVAR_FASE_Y
-        li a3, LARGURA_VGA
-        sub a3, a3, a1
-        addi a3, a3, -1
-        li a4, ALTURA_VGA
-        sub a4, a4, a2
-        addi a4, a4, -1
-        li a7, 0
-        jal PROC_IMPRIMIR_RETANGULO
-
-        li a0, 0xFF
-        li a1, MENU_SALVAR_FASE_X
-        addi a1, a1, 5
-        li a2, MENU_SALVAR_FASE_Y
-        addi a2, a2, 5
-        li a3, LARGURA_VGA
-        sub a3, a3, a1
-        addi a3, a3, -1
-        li a4, ALTURA_VGA
-        sub a4, a4, a2
-        addi a4, a4, -1
-        li a5, 1
-        li a7, 0
-        jal PROC_IMPRIMIR_OUTLINE
-
-        # coordenadas em que imprimiremos as strings
-        li s0, MENU_SALVAR_FASE_X
-        li s1, MENU_SALVAR_FASE_Y
-        addi s0, s0, 9                 # x
-        addi s1, s1, 9                 # y
-
-        imprimir_string_reg(EDITOR_MENU_CARREGAR_PROMPT, s0, s1, 0xC7FF, 0)
-        addi s1, s1, 20
-
 E_SF1_SALVAR_FIM:
-        # salva o novo nome de arquivo
-        la a0, SF1_NOME_ARQUIVO
-        la a1, STR_NOME_ARQUIVO
+        # salva o novo path
+        la a0, SF1_STR_PATH
+        la a1, ARQUIVO_STR_PATH
+        mv a2, zero                     # ateh o final da string origem
         jal PROC_COPIAR_STRING
+
+        mv a0, zero             # status: sucesso
+        jal EDITOR_MENU_FASE_SALVA
 
 E_SF1_RET:
         lw ra, (sp)
