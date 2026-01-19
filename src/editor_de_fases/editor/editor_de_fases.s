@@ -30,8 +30,6 @@ E_DF1_LOOP:
    	beq t0,zero,E_DF1_IDLE          # Se nao hah tecla pressionada entao nao faz NADA
   	lw t2,4(t1)  			# le o valor da tecla 
   	
-	li t0, '9'
-	beq t2, t0, E_DF1_RET
         li t0, 8
 	beq t2, t0, E_DF1_RET
 
