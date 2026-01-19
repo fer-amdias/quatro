@@ -2,6 +2,10 @@
 
 # Rotina que mostra o menu de selecao de arquivo
 
+# RETORNO:
+# a0 - STATUS
+#    (0 = sucesso, 1 = voltar ao menu anterior)
+
 .data
 
 MENU_CARREGAR_STR_TERMINAL: .asciz "assets/fases/"
@@ -104,6 +108,15 @@ E_MC2_REMOVE_CARACTERE:
 
 
 E_MC2_VOLTAR:
+	mv a0, zero	# status: sucesso
+	sb zero, MENU_CARREGAR_STR_CARACTERES_DIGITADOS, t0
+	sb zero, STR_NOME_ARQUIVO, t0
+	lw ra, (sp)
+	addi sp, sp, 4
+	ret
+
+E_MC2_VOLTAR_MAIS_UMA_VEZ:
+	li a0, 1	# status: volte mais uma vez
 	sb zero, MENU_CARREGAR_STR_CARACTERES_DIGITADOS, t0
 	sb zero, STR_NOME_ARQUIVO, t0
 	lw ra, (sp)
@@ -130,10 +143,19 @@ E_MC2_ENTER:
 
 E_MC2_CARREGAR_FASE:
 
-	# jal EDITOR_CARREGAR_FASE
-
-	li a7, 10
+	# fecha o arquivo, agora que sabemos que ele existe
+	la a0, ARQUIVO_STR_PATH
+	li a7, 57
 	ecall
-	# finaliza, placeholder
+
+	jal EDITOR_CARREGAR_FASE
+
+	jal EDITOR_DE_FASES
+	li a0, 1
+	la a1, intro_tune
+	li a2, 1
+	li a3, 1
+	jal PROC_TOCAR_AUDIO
+	j E_MC2_VOLTAR_MAIS_UMA_VEZ
 
 
