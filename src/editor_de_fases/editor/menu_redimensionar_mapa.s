@@ -71,6 +71,9 @@ E_RM1_D:
 
 E_RM1_REDIMENSIONAR_MODELO:
         jal EDITOR_REDIMENSIONAR_MODELO # redimensiona para LARGURA+a0 e ALTURA+a1
+        # reseta os seletores para garantir que eles estao no mapa
+        sb zero, SELETOR_DE_TILE_X, t0
+        sb zero, SELETOR_DE_TILE_Y, t0
         j E_RM1_DRAW_CYCLE
 
 E_RM1_REDIMENSIONAR:

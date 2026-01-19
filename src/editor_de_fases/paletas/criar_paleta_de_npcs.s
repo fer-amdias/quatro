@@ -18,6 +18,10 @@ div t2, t2, t3
 addi t2, t2, BYTE_NPC_0 
 addi t2, t2, -1
 
+# reseta os seletores
+sb zero, SELETOR_DE_PALETA_X, t0
+sb zero, SELETOR_DE_PALETA_Y, t0
+
 sb t2, (t1)
 
 ret
