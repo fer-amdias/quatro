@@ -148,8 +148,8 @@ E_DF1_DRAW_CYCLE:
         li a0, 0x00
         li a1, 10
         li a2, 10
-        li a3, 230
-        li a4, 230
+        li a3, 229
+        li a4, 229
         li a7, 0
         jal PROC_IMPRIMIR_RETANGULO
         
@@ -157,8 +157,8 @@ E_DF1_DRAW_CYCLE:
         li a0, 0xFF
         li a1, 10
         li a2, 10
-        li a3, 230
-        li a4, 230
+        li a3, 229
+        li a4, 229
         li a5, 1
         li a7, 0
         jal PROC_IMPRIMIR_OUTLINE
