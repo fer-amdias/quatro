@@ -1,5 +1,5 @@
 ##############################################################
-# PROC_IMPRIMIR FASE 				       	     #
+# PROC_IMPRIMIR_FASE 				       	     #
 # Imprime um mapa, dado um endereco do mapa e da textura do  #
 # mapa. Tambem salva a posicao dele e cria um tilemap        #
 # modificavel na memoria.             			     #
