@@ -19,7 +19,10 @@ EDITOR_MENU_FASE_SALVA:
         sw s0, 4(sp)
         sw s1, 8(sp)
 
-        sb a0, STATUS, t0               # salva o status 
+        sltz a0, a0                     # pega a0 = a0 < 0 (se a0 foi falha)
+        seqz a0, a0                     # pega !a0 (se nao foi falha, ou seja, se foi sucesso)
+        sb a0, STATUS, t0               # salva o status  
+        # fazer essa operacao eh importante para evitar que numeros acima de 127 sejam interpretados como negativos
 
 E_FS1_OBSCURECER_TELA:
         jal SHADER_OBSCURECER_TELA
