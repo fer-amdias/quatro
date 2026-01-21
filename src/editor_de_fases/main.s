@@ -63,6 +63,7 @@ ecall
 .include "../menus/menu_creditos.s"
 .include "../tocar_audio.s"
 .include "../copiar_string.s"
+.include "../tamanho_string.s"
 .include "../impressao_na_tela/imprimir_textura.s"
 .include "../impressao_na_tela/preencher_tela.s"
 .include "../impressao_na_tela/obscurecer_tela.s"

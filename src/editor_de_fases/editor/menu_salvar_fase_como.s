@@ -34,6 +34,10 @@ EDITOR_MENU_SALVAR_FASE_COMO:
         mv a2, zero                     # copia ateh o final
         jal PROC_COPIAR_STRING
 
+        la a0, SF1_NOME_ARQUIVO
+        jal PROC_TAMANHO_STRING
+        sb a0, SF1_DATA_STR_CARACTERES_DIGITADOS, t0  # salva a quantidade de caracteres digitados como o tamanho da string
+
         sb zero, SF1_DATA_NOME_INVALIDO, t0 # reseta o estado da flag
 
 E_SF1_OBSCURECER_TELA:
