@@ -1,7 +1,7 @@
 # EDITOR_SALVAR_FASE				       	
 # Carrega uma textura de um binario para o buffer de fase
 # ARGUMENTOS:						     	
-#	A0 : string com o nome da textura                          
+#	A0 : string com o nome da fase                          
 # RETORNOS:                                                  
 #       A0 : quantidade de bytes lidos. -1 se houve uma falha.
 
