@@ -40,7 +40,7 @@ E_MP1_LOOP:
 	li a0, 0
         jal PROC_TOCAR_AUDIO	
 
-	sleep(4) # performance
+	sleep(10) # performance
 
 	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
