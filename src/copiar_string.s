@@ -23,8 +23,8 @@ P_CS_LOOP:
         j P_CS_LOOP
 P_CS_LOOP_ATE_O_FINAL_DA_ORIGEM:
         lb t0, (a0)
-        beqz t0, P_CS1_RET
         sb t0, (a1)
+        beqz t0, P_CS1_RET
         addi a0, a0, 1
         addi a1, a1, 1
         j P_CS_LOOP_ATE_O_FINAL_DA_ORIGEM
