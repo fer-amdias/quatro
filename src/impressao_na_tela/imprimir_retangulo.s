@@ -63,6 +63,7 @@ P_IR1_PROXIMA_LINHA:
 P_IR1_LOOP:		beq a0, t6, P_IR1_PULA_PIXEL	# SE ( I == COR_TRANSPARENTE ), ENTAO PULA O PIXEL
 
                         # se X < 0 ou Y < 0 ou X => Lm ou Y => Am
+			# TODO: OTIMIZAR PARA QUE RETANGULO SEJA REDIMENSIONADO NO COMECO EM VEZ DE PULAR PIXEL POR PIXEL
                         bltz t1, P_IR1_PULA_PIXEL        
                         bltz t2, P_IR1_PULA_PIXEL
                         bgt t1, t4, P_IR1_PULA_PIXEL
