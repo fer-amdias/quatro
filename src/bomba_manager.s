@@ -265,16 +265,12 @@ P_BM1_SUBPROC_RESTAURAR_FIM:
 
 PROC_BOMBA_MANAGER:	
 
-
-
-
-
 			addi sp, sp, -16
 			sw ra, (sp)
 			sw s0, 4(sp)
 			sw s1, 8(sp)
 			sw s2, 12(sp)
-			
+
 			# nao administra as bombas se o jogo estiver pausado
 			lb t0, JOGO_PAUSADO
 			bnez t0, P_BM1_FIM
