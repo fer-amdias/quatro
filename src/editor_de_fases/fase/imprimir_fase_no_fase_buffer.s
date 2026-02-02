@@ -55,11 +55,11 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         
         srli s4, s2, 1     		# X = C/2
         neg s4, s4			# X = -C/2
-        addi s4, s4, CENTRO_FASE_X       # X = CENTRO_VGA_X - C/2  	   
+        addi s4, s4, CENTRO_FASE_X       # X = CENTRO_FASE_X - C/2  	   
 
         srli s3, s1, 1     		# Y = L/2
         neg s3, s3			# Y = -L/2
-        addi s3, s3, CENTRO_FASE_Y       # Y = CENTRO_VGA_Y - L/2
+        addi s3, s3, CENTRO_FASE_Y       # Y = CENTRO_FASE_Y - L/2
         
         la t0, POSICOES_MAPA		# carrega o endereco de posicao do mapa
         sh s4, (t0)			# salva a posicao X do canto superior esquerdo do mapa
