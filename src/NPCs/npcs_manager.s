@@ -157,7 +157,6 @@ P_IM1_MATAR_NPC:
 
 			add t2, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
 			lbu t2, (t2)			# carrega o valor desse npc
-			addi t2, t2, -10		# subtrai 10
 
 			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
 			# t3 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
@@ -210,7 +209,6 @@ P_IM1_MOVER_NPC:	# agora chamemos a funcao de movimento
 
 			add t2, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
 			lbu t2, (t2)			# carrega o valor desse npc
-			addi t2, t2, -10		# subtrai 10
 
 			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
 			# t3 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
@@ -334,7 +332,7 @@ P_IM1_LOOP_1_MOVER_FINAL:
 			### hora de printar o npc
 P_IM1_LOOP_1_PRINT:	
 			# temos que calcular qual vai ser a textura do npc
-			# vai ser npc-10 * AREA_SPRITE * 5  + AREA_SPRITE * direcao
+			# vai ser npc * AREA_SPRITE * 5  + AREA_SPRITE * direcao
 			# isso eh pq o npc comeca a contar do 10 e cada npc tem 5 quadradinhos na strip :3
 			
 			
@@ -345,9 +343,8 @@ P_IM1_LOOP_1_PRINT:
 			add t0, s7, s0			# idx = i + NPCS (pulamos 1 byte por npc)
 			
 			lbu t0, (t0)			# carrega o valor desse npc
-			addi t0, t0, -10		# subtrai 10
 			
-			mul t1, t1, t0			# idx = npc-10 * AREA_SPRITE * 5
+			mul t1, t1, t0			# idx = npc * AREA_SPRITE * 5
 			
 			add a0, t1, s5			# ENDERECO DA TEXTURA A SER IMPRESSA: textura strip + idx
 			

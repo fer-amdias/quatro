@@ -57,7 +57,6 @@ P_CC1_LOOP_NPCS:	##### for (int i = 0; i < qtd_de_npcs; i++)
 
 			add t2, t3, t2			# idx = i + NPCS (pulamos 1 byte por npc)
 			lbu tipo_npc, (t2)			# carrega o valor desse npc
-			addi tipo_npc, tipo_npc, -10		# subtrai 10
 
 			# t2 = tipo de npc (tipo 1 = 0, tipo 2 = 1, ...)
 			# t1 = tipo de npc * tamanho struct (pega quantas structs devemos avancar)
