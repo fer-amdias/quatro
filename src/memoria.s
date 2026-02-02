@@ -61,6 +61,8 @@
 
 .eqv TAMANHO_MAX_TEXTURA_DE_MAPA 15000	# o maximo de bytes que uma textura de mapa pode ter
 
+.eqv TAMANHO_MAX_TILEMAP 192		# o armazenamento maximo de tiles em um tilemap (L * H) sem contar os 2 bytes iniciais
+
 .data
 
 NULL:			.word 0			# endereco nulo
