@@ -10,6 +10,17 @@
 
 CAPITULO_2:
 
+.data
+
+ch2_fase0: .string "../assets/fases/ch2_fase0.lvl"
+ch2_fase1: .string "../assets/fases/ch2_fase1.lvl"
+ch2_fase2: .string "../assets/fases/ch2_fase2.lvl"
+ch2_fase3: .string "../assets/fases/ch2_fase3.lvl"
+ch2_fase4: .string "../assets/fases/ch2_fase4.lvl"
+CAPITULO_2_TEXTURA: .string "../assets/texturas/ch2.bin"
+
+.text
+
 
 # PREFIXO_INTERNO: C2_
 ROTINA_CAPITULO_2:

@@ -10,6 +10,16 @@
 
 CAPITULO_1:
 
+.data
+
+ch1_fase1: .string "../assets/fases/ch1_fase1.lvl"
+ch1_fase2: .string "../assets/fases/ch1_fase2.lvl"
+ch1_fase3: .string "../assets/fases/ch1_fase3.lvl"
+ch1_fase4: .string "../assets/fases/ch1_fase4.lvl"
+ch1_fase5: .string "../assets/fases/ch1_fase5.lvl"
+CAPITULO_1_TEXTURA: .string "../assets/texturas/ch1.bin"
+
+.text
 
 # PREFIXO_INTERNO: C1_
 ROTINA_CAPITULO_1:

@@ -68,11 +68,6 @@
 
 NULL:			.word 0			# endereco nulo
 
-# texturas dos capitulos
-CAPITULO_0_TEXTURA: .string "../assets/texturas/ch0.bin"
-CAPITULO_1_TEXTURA: .string "../assets/texturas/ch1.bin"
-CAPITULO_2_TEXTURA: .string "../assets/texturas/ch2.bin"
-
 JOGO_PAUSADO: 		.byte 0
 MUTADO: 		.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente

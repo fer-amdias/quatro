@@ -15,6 +15,18 @@ CAPITULO_0:
 		# bool mostrar_scroll_no_inicio, bool modo_saida_livre,
 		# label textura_de_fundo
 
+.data
+
+ch0_fase1: .string "../assets/fases/ch0_fase1.lvl"
+ch0_fase2: .string "../assets/fases/ch0_fase2.lvl"
+ch0_fase3: .string "../assets/fases/ch0_fase3.lvl"
+ch0_fase4: .string "../assets/fases/ch0_fase4.lvl"
+ch0_fase5: .string "../assets/fases/ch0_fase5.lvl"
+ch0_fase6: .string "../assets/fases/ch0_fase6.lvl"
+ch0_fase7: .string "../assets/fases/ch0_fase7.lvl"
+ch0_fase8: .string "../assets/fases/ch0_fase8.lvl"
+CAPITULO_0_TEXTURA: .string "../assets/texturas/ch0.bin"
+
 .text
 
 # PREFIXO_INTERNO: C0_
