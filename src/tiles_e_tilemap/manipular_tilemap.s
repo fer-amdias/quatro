@@ -66,7 +66,7 @@ P_MT1_CONT:
 			div a1, a1, t2				# N_coluna = pos_X / TAMANHO_SPRITE
 			div a2, a2, t2				# N_linha = pos_Y / TAMANHO_SPRITE
 			
-			lw t1, 4(t0)				# carrega numero de colunas
+			lw t1, (t0)				# carrega numero de colunas
 			addi t0, t0, 8				# pula bytes de informacao
 			
 			mul t1, a2, t1				# t1 = idx = N_linha * n de colunas

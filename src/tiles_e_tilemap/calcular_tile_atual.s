@@ -4,13 +4,13 @@
 # informacao, linha, coluna, x e y.			     #
 # 							     #
 # ARGUMENTOS:						     #
-#	A0 : ENDERECO DO MAPA (.data)			     #
+# 	A0 : END. DO BUFFER A CHECAR (.E.G TILEMAP/MAPA_OG.)
 # 	A1 : POSICAO X                                       #
 #       A2 : POSICAO Y                                       #
 # RETORNOS:                                                  #
 #       A0 : INFORMACAO DO TILE ATUAL (0-255)		     #
-#	A1 : COLUNA EM QUE O TILE ESTAH LOCALIZADO NO .data  #
-#	A2 : LINHA EM QUE O TILE ESTAH LOCALIZADO NO .data   #
+#	A1 : COLUNA EM QUE O TILE ESTAH LOCALIZADO NO BUFFER #
+#	A2 : LINHA EM QUE O TILE ESTAH LOCALIZADO NO BUFFER  #
 #	A3 : POSICAO X DO TILE				     #
 #	A4 : POSICAO Y DO TILE				     #
 ##############################################################
@@ -18,7 +18,6 @@
 .text
 
 PROC_CALCULAR_TILE_ATUAL:
-
 			# temos que calcular que valor esse X e Y dah e em que tile ele estah. 
 			la t0, POSICOES_MAPA		# carregamos a posicao do mapa em t0. aqui teremos X em (t0) e Y em 2(t0).
 			lhu t1, 0(t0)			# POSICAO_MAPA_X
@@ -36,7 +35,7 @@ PROC_CALCULAR_TILE_ATUAL:
 			div t1, t1, t0			# X /= tamanho_sprite
 			div t2, t2, t0			# Y /= tamanho_sprite
 	
-			lw t0, 4(a0)			# t0 = N_COL : Numero de Colunas (segundo valor no endereco do mapa)
+			lw t0, (a0)			# t0 = N_COL : Numero de Colunas (primeiro valor no endereco do mapa)
 	
 			# t0 = idx
 			mul t0, t2, t0			# idx = Y * N_COL
