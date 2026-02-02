@@ -33,7 +33,7 @@ E_CT1_CALCULAR_TAMANHO:
         # a0 contem a quantidade de bytes lidos
 
         li t0, 8
-        blt a0, t0, E_CT1_FALHA # se nao conseguimos ler OITO BYTES, nao tem esperanca. 
+        blt a0, t0, E_CT1_FALHA # se nao conseguimos ler OITO BITS, nao tem esperanca. 
 
         # pega as dimensoes da textura
         la t0, TILEMAP_BUFFER
