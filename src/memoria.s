@@ -18,6 +18,7 @@
 #								#
 #################################################################
 
+.include "../assets/fases/definicoes_fases.s"
 .include "../assets/npcs/definicoes_npcs.s"
 .include "../assets/npcs/hitboxes.s"
 .include "macros.s"
