@@ -88,7 +88,10 @@ CAP2:
 # ANTES do nosso codigo que queremos executar                #
 ##############################################################
 .include "./fase/fase.s"
-.include "./fase/imprimir_fase.s"
+.include "./fase/carregar_fase.s"
+.include "./fase/criar_fase_na_memoria.s"
+.include "./fase/imprimir_tilemap_no_fase_buffer.s"
+.include "./fase/inicializar_posicao_do_mapa.s"
 .include "./impressao_na_tela/desenhar.s"
 .include "./impressao_na_tela/imprimir_buffer_de_fase.s"
 .include "./impressao_na_tela/imprimir_inteiro.s"
@@ -108,6 +111,7 @@ CAP2:
 .include "./NPCs/movimento_npc_2.s"
 .include "./NPCs/movimento_npc_3.s"
 .include "./NPCs/npcs_manager.s"
+.include "./NPCs/registrar_npc.s"
 .include "./tiles_e_tilemap/calcular_tile_atual.s"
 .include "./tiles_e_tilemap/manipular_tilemap.s"
 .include "./tiles_e_tilemap/tile_andavel.s"
