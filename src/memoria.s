@@ -125,7 +125,10 @@ FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudanc
 FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer
 
 TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
-			.space 192	# 16 * 12 sendo o tamanho maximo do buffer
+			.space TAMANHO_MAX_TILEMAP
+
+MAPA_ORIGINAL_BUFFER:	.word 0 0	# buffer onde vamos guardar a versao original do mapa
+			.space TAMANHO_MAX_TILEMAP
 			
 			# struct BOMBAS {
 BOMBAS:			.half 0   	# short int POSICAO_X;			(0 a 240)
