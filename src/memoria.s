@@ -32,7 +32,7 @@
 .eqv CENTRO_VGA_Y 120
 
 # tamanho de uma textura de mapa
-.eqv TAMANHO_SPRITE 20
+.eqv TAMANHO_SPRITE 20	# mantenha divisivel por 4, por gentileza
 .eqv AREA_SPRITE 400
 .eqv FRAME_0 0xFF000000
 .eqv FRAME_0_FIM 0xFF012C00
