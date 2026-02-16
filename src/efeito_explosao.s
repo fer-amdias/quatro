@@ -27,8 +27,12 @@ PROC_EFEITO_EXPLOSAO:
         lw t1, EFEITO_EXPLOSAO_TIMESTAMP
         sub t0, t0, t1
 
+        # desativa o efeito se o tempo de explosao tiver acabado ou se as configuracoes nao permitirem ele
+        lb t1, EFEITO_EXPLOSAO
+        beqz t1, P_EE1_DESATIVAR_EFEITO
         li t1, TEMPO_EFEITO_BOMBA
         bge t0, t1, P_EE1_DESATIVAR_EFEITO
+
 
 P_EE1_CONTINUAR_EFEITO:
         # l =

@@ -21,10 +21,10 @@ R_MC1_CONFIG:
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 
         #imprimir_string(%stringkey, %x, %y, %cor, %modo)  
-        imprimir_string(CONFIG_VOLTAR, 0, 20, 0x00FF, 0)    # "pressione 9 pra voltar ao menu principal"
-        imprimir_string(CONFIG_IDIOMA, 100, 100, 0x00FF, 0) # "Escolha o idioma: "
-        imprimir_string(CONFIG_PT, 100, 120, 0x00FF, 0)     # "1. Portugues"
-        imprimir_string(CONFIG_EN, 100, 130, 0x00FF, 0)     # "2. English"
+        imprimir_string(CONFIG_OPCAO_IDIOMA, 80, 134, 0x00FF, 0) # "1. Alterar idioma"
+        imprimir_string(CONFIG_OPCAO_AUDIO, 80, 144, 0x00FF, 0)     # "2. Configuracoes de audio"
+        imprimir_string(CONFIG_OPCAO_ADICIONAIS, 80, 154, 0x00FF, 0)     # "3. Outras configuracoes"
+        imprimir_string(MENU_OPCAO9, 80, 164, 0x00FF, 0)     # "9. Voltar"
 
 	jal PROC_DESENHAR
 
@@ -37,26 +37,29 @@ R_MC1_CONFIG_LOOP:
    	beq t0,zero,R_MC1_CONFIG_LOOP_CONT	# Se nao hah tecla pressionada entao nao checa tecla
   	lw t2,4(t1)  			# le o valor da tecla 
 
-SWITCH9:
+R_MC1_SWITCH9:
 	li t0 '9'
         beq t2, t0, R_MC1_FIM
-SWITCH1:
+R_MC1_SWITCH1:
         li t0, '1'
-        bne t2, t0, SWITCH2
-        li t0, PT_BR
-        sb t0, lingua_atual, t1
-	j R_MC1_CONFIG # (atualiza a pagina)
-SWITCH2:
+        bne t2, t0, R_MC1_SWITCH2
+        jal ROTINA_MENU_IDIOMA
+	j R_MC1_CONFIG 
+R_MC1_SWITCH2:
         li t0, '2'
-        bne t2, t0, SWITCH_BACKSPACE
-        li t0, EN_US
-        sb t0, lingua_atual, t1
-	j R_MC1_CONFIG # (atualiza a pagina)
-SWITCH_BACKSPACE:
+        bne t2, t0, R_MC1_SWITCH3
+        jal ROTINA_MENU_AUDIO
+	j R_MC1_CONFIG 
+R_MC1_SWITCH3:
+        li t0, '3'
+        bne t2, t0, R_MC1_SWITCH_BACKSPACE
+        jal ROTINA_MENU_CONFIG_ADICIONAIS
+	j R_MC1_CONFIG 
+R_MC1_SWITCH_BACKSPACE:
 	li t0, 8		# TAMBEM VOLTA PRA BACKSPACE!!!
-	bne t2, t0, SWITCH_FIM
+	bne t2, t0, R_MC1_SWITCH_FIM
 	j R_MC1_FIM
-SWITCH_FIM:  	
+R_MC1_SWITCH_FIM:  	
 
 R_MC1_CONFIG_LOOP_CONT:
 	li a0, 0
