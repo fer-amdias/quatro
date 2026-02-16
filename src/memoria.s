@@ -70,6 +70,7 @@ NULL:			.word 0			# endereco nulo
 
 JOGO_PAUSADO: 		.byte 0
 MUTADO: 		.byte 0
+EXPLOSOES_MUTADAS:	.byte 0
 PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
 MODO_SAIDA_LIVRE:       .word 0
 

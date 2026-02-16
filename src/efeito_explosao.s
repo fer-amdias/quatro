@@ -93,6 +93,9 @@ P_EE1_COMECAR_EFEITO:
         csrr t0, time
         sw t0, EFEITO_EXPLOSAO_TIMESTAMP, t1
 
+        lb t0, EXPLOSOES_MUTADAS
+        bnez t0, P_EE1_RET
+
         # toca o efeito sonoro de bomba
 	li a0, 37		
         li a1, 2000		# 2000 ms
@@ -100,4 +103,6 @@ P_EE1_COMECAR_EFEITO:
         li a3, 127		# volume maximo
         li a7, 31		# MidiOut
         ecall
+
+P_EE1_RET:
         ret
