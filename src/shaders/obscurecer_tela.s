@@ -25,7 +25,6 @@ S_OT1_MAIN:
         mv t0, zero                     # marcador = 0
         mv t3, t1                       # usaremos o t3 como pointer de endereco a ser incrementado
         mv t4, zero                     # X = 0
-        mv t5, zero                     # X = 0
         li t6, LARGURA_VGA
 
 # t0 = marcador de obscurecimento de pixel. falso se o proximo pixel deve ser pulado, verdadeiro se nao.
