@@ -87,10 +87,14 @@ CAP2:
 # Colocar no topo vai fazer os procedimentos serem chamados  #
 # ANTES do nosso codigo que queremos executar                #
 ##############################################################
+
+# FASE
 .include "./fase/fase.s"
 .include "./fase/carregar_fase.s"
 .include "./fase/criar_fase_na_memoria.s"
 .include "./fase/inicializar_posicao_do_mapa.s"
+
+# IMPRESSAO NA TELA
 .include "./impressao_na_tela/desenhar.s"
 .include "./impressao_na_tela/imprimir_buffer_de_fase.s"
 .include "./impressao_na_tela/imprimir_inteiro.s"
@@ -98,8 +102,12 @@ CAP2:
 .include "./impressao_na_tela/imprimir_string.s"
 .include "./impressao_na_tela/imprimir_textura.s"
 .include "./impressao_na_tela/preencher_tela.s"
+
+# GUI
 .include "./gui/imprimir_hud.s"
 .include "./gui/mostrar_pergaminho.s"
+
+# MENUS
 .include "./menus/menu_principal.s"
 .include "./menus/menu_jogar.s"
 .include "./menus/menu_config.s"
@@ -107,20 +115,33 @@ CAP2:
 .include "./menus/menu_audio.s"
 .include "./menus/menu_idioma.s"
 .include "./menus/menu_config_adicionais.s"
+
+# MOVIMENTO DO JOGADOR
 .include "./movimento_jogador/mover_jogador.s"
 .include "./movimento_jogador/registrar_movimento.s"
+
+# NPCS
 .include "./NPCs/movimento_npc_1.s"
 .include "./NPCs/movimento_npc_2.s"
 .include "./NPCs/movimento_npc_3.s"
 .include "./NPCs/npcs_manager.s"
 .include "./NPCs/registrar_npc.s"
+
+# TILEMAP
 .include "./tiles_e_tilemap/calcular_tile_atual.s"
 .include "./tiles_e_tilemap/manipular_tilemap.s"
 .include "./tiles_e_tilemap/tile_andavel.s"
 .include "./tiles_e_tilemap/imprimir_tilemap_no_fase_buffer.s"
+
+# CAPITULOS
 .include "./capitulos/capitulo_0.s"
 .include "./capitulos/capitulo_1.s"
 .include "./capitulos/capitulo_2.s"
+
+# SHADERS
+.include "./shaders/grayscale.s"
+
+# OUTROS
 .include "bomba_manager.s"
 .include "checar_colisoes.s"
 .include "colocar_bomba.s"
