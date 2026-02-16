@@ -3,6 +3,7 @@ MENU_OPCAO1,1. JOGAR,1. PLAY,1. HOIST THE MIZZEN!
 MENU_OPCAO2,2. CONFIGURACOES,2. SETTINGS,2. RIGGINS
 MENU_OPCAO3,3. CREDITOS,3. CREDITS,3. DRUNKEN RAMBLING
 MENU_OPCAO4,4. SAIR,4. EXIT,4. ABANDON SHIP
+MENU_OPCAO9,9. Voltar,9. Return,9. BACK
 JOGAR_TITULO,Selecione o capitulo:,Select chapter:,SELECT VOYAGE:
 JOGAR_OPCAO0,0. Tutorial ,0. Tutorial ,0. TUTORIAL
 JOGAR_OPCAO1,1. Capitulo 1 (inicio),1. Chapter 1 (beginning),1. BABYLON
@@ -40,9 +41,22 @@ CREDITOS_FIM12,...era so isso mesmo. nao tem mais nada.,...that was really it. t
 CREDITOS_FIM13,<<< FIM >>>,<<< END >>>, 
 CREDITOS_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
 CONFIG_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
-CONFIG_IDIOMA,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO
-CONFIG_PT,1. Portugues Brasileiro,1. Portugues Brasileiro,1. Portugues Brasileiro
-CONFIG_EN,2. English (US),2. English (US),2. English (US)
+CONFIG_OPCAO_IDIOMA,1. Alterar idioma,1. Switch Language,1. PICK 'NOTHER LINGO
+CONFIG_OPCAO_AUDIO,2. Configuracoes de audio,2. Audio settings,2. LOUDNESS OPTIONS
+CONFIG_OPCAO_ADICIONAIS,3. Outras configuracoes,3. Other settings,3. OTHER STUFF
+IDIOMA_PROMPT,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO
+IDIOMA_PT,1. Portugues (BR),1. Portugues (BR),1. Portugues (BR)
+IDIOMA_EN,2. English (US),2. English (US),2. English (US)
+AUDIO_MUTAR_MUSICA,1. Mutar musica,1. Mute music,1. FIRE MUSICIAN
+AUDIO_DESMUTAR_MUSICA,1. Desmutar musica,1. Unmute music,1. HIRE MUSICIAN
+AUDIO_MUTAR_EXPLOSOES,2. Mutar explosoes,2. Mute explosions,2. MUFFLE CANNONS
+AUDIO_DESMUTAR_EXPLOSOES,2. Desmutar explosoes,2. Unmute explosions,2. UNMUFFLE CANNONS
+ADICIONAIS_ATIVAR_GRAYSCALE,1. Ativar grayscale,1. Enable grayscale,1. ENABLE BLACK & WHITE
+ADICIONAIS_DESATIVAR_GRAYSCALE,1. Desativar grayscale,1. Disable grayscale,1. DISABLE BLACK & WHITE
+ADICIONAIS_ATIVAR_EFEITO_DE_EXPLOSAO,2. Ativar efeito de explosao,2. Enable explosion effect,2. ENABLE CANNON SHAKE
+ADICIONAIS_DESATIVAR_EFEITO_DE_EXPLOSAO,2. Desativar efeito de explosao,2. Disable explosion effect,2. DISABLE CANNON SHAKE
+ADICIONAIS_ATIVAR_MODO_DEBUG,3. Ativar modo debug,3. Enable debug mode,3. ENABLE CAPTAIN LOGBOOK
+ADICIONAIS_DESATIVAR_MODO_DEBUG,3. Desativar modo debug,3. Disable debug mode,3. DISABLE CAPTAIN LOGBOOK
 CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.,boat
 HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F","LG C,  SEA F"
 HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X,HOSTILES:  X
@@ -413,6 +427,6 @@ A. SHORTEN WEST
 S. LENGHTEN SOUTH
 D. LENGHTEN EAST"
 EDITOR_MENU_CONFIRMAR,Enter. Confirmar,Enter. Confirm,Enter. RECHART
-EDITOR_MENU_SALVAR_NOME_INVALIDO,Nome de arquivo invalido!,Invalid file name!,BLIMEY! THAT NAME IS INVALID!
+EDITOR_MENU_SALVAR_NOME_INVALIDO,Nome de arquivo invalido!,Invalid file name!,SAILOR! THAT NAME IS INVALID!
 EDITOR_ARQUIVO_SALVO,Fase salva com sucesso.,Level saved successfully.,CHART SAVED SUCCESSFULLY!!!
 EDITOR_ERRO_SALVAR,Ocorreu um erro ao salvar.,An error occured while saving.,FAILED TO SAVE CHART.
