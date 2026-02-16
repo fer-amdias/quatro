@@ -22,16 +22,18 @@ R_MA1_AUDIO:
 
         #imprimir_string(%stringkey, %x, %y, %cor, %modo) 
 
+        imprimir_string(AUDIO_TITULO, 70, 124, 0x00FF, 0) # "Configuracoes de audio"
+
 R_MA1_TEXTO_MUSICA:
         lb t0, MUTADO
         bnez t0, R_MA1_TEXTO_DESMUTAR_MUSICA
 
 R_MA1_TEXTO_MUTAR_MUSICA:
-        imprimir_string(AUDIO_MUTAR_MUSICA, 80, 134, 0x00FF, 0) # "1. Mutar musica"
+        imprimir_string(AUDIO_MUTAR_MUSICA, 70, 134, 0x00FF, 0) # "1. Mutar musica"
         j R_MA1_TEXTO_EXPLOSOES
 
 R_MA1_TEXTO_DESMUTAR_MUSICA:
-        imprimir_string(AUDIO_DESMUTAR_MUSICA, 80, 134, 0x00FF, 0) # "1. Desmutar musica"
+        imprimir_string(AUDIO_DESMUTAR_MUSICA, 70, 134, 0x00FF, 0) # "1. Desmutar musica"
 
 
 R_MA1_TEXTO_EXPLOSOES:
@@ -39,15 +41,15 @@ R_MA1_TEXTO_EXPLOSOES:
         bnez t0, R_MA1_TEXTO_DESMUTAR_EXPLOSOES
 
 R_MA1_TEXTO_MUTAR_EXPLOSOES:
-        imprimir_string(AUDIO_MUTAR_EXPLOSOES, 80, 144, 0x00FF, 0) # "2. Mutar explosoes"
+        imprimir_string(AUDIO_MUTAR_EXPLOSOES, 70, 144, 0x00FF, 0) # "2. Mutar explosoes"
         j R_MA1_TEXTO_OPCAO_9
 
 R_MA1_TEXTO_DESMUTAR_EXPLOSOES:
-        imprimir_string(AUDIO_DESMUTAR_EXPLOSOES, 80, 144, 0x00FF, 0) # "2. Mutar explosoes"
+        imprimir_string(AUDIO_DESMUTAR_EXPLOSOES, 70, 144, 0x00FF, 0) # "2. Mutar explosoes"
 
 
 R_MA1_TEXTO_OPCAO_9:
-        imprimir_string(MENU_OPCAO9, 80, 154, 0x00FF, 0) # "9. Voltar"
+        imprimir_string(MENU_OPCAO9, 70, 154, 0x00FF, 0) # "9. Voltar"
 
 
 	jal PROC_DESENHAR

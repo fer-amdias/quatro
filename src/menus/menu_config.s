@@ -21,10 +21,10 @@ R_MC1_CONFIG:
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 
         #imprimir_string(%stringkey, %x, %y, %cor, %modo)  
-        imprimir_string(CONFIG_OPCAO_IDIOMA, 80, 134, 0x00FF, 0) # "1. Alterar idioma"
-        imprimir_string(CONFIG_OPCAO_AUDIO, 80, 144, 0x00FF, 0)     # "2. Configuracoes de audio"
-        imprimir_string(CONFIG_OPCAO_ADICIONAIS, 80, 154, 0x00FF, 0)     # "3. Outras configuracoes"
-        imprimir_string(MENU_OPCAO9, 80, 164, 0x00FF, 0)     # "9. Voltar"
+        imprimir_string(CONFIG_OPCAO_IDIOMA, 70, 134, 0x00FF, 0) # "1. Alterar idioma"
+        imprimir_string(CONFIG_OPCAO_AUDIO, 70, 144, 0x00FF, 0)     # "2. Configuracoes de audio"
+        imprimir_string(CONFIG_OPCAO_ADICIONAIS, 70, 154, 0x00FF, 0)     # "3. Outras configuracoes"
+        imprimir_string(MENU_OPCAO9, 70, 164, 0x00FF, 0)     # "9. Voltar"
 
 	jal PROC_DESENHAR
 

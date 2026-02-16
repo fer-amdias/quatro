@@ -21,10 +21,10 @@ R_MI1_IDIOMA:
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 
         #imprimir_string(%stringkey, %x, %y, %cor, %modo)  
-        imprimir_string(IDIOMA_PROMPT, 80, 124, 0x00FF, 0) # "Escolha o idioma:"
-        imprimir_string(IDIOMA_PT, 80, 134, 0x00FF, 0)     # "1. Portugues (BR)"
-        imprimir_string(IDIOMA_EN, 80, 144, 0x00FF, 0)     # "2. English (US)"
-        imprimir_string(MENU_OPCAO9, 80, 154, 0x00FF, 0)     # "9. Voltar"
+        imprimir_string(IDIOMA_PROMPT, 70, 124, 0x00FF, 0) # "Escolha o idioma:"
+        imprimir_string(IDIOMA_PT, 70, 134, 0x00FF, 0)     # "1. Portugues (BR)"
+        imprimir_string(IDIOMA_EN, 70, 144, 0x00FF, 0)     # "2. English (US)"
+        imprimir_string(MENU_OPCAO9, 70, 154, 0x00FF, 0)     # "9. Voltar"
 
 	jal PROC_DESENHAR
 

@@ -25,17 +25,19 @@ R_CA1_CONFIG_ADICIONAIS:
         #imprimir_string(%stringkey, %x, %y, %cor, %modo) 
 
 R_CA1_DRAW:
+                imprimir_string(ADICIONAIS_TITULO, 70, 124, 0x00FF, 0) # "Outras configuracoes"
+
         # imprime ativar/desativar grayscale
         R_CA1_TEXTO_GRAYSCALE:
                 lb t0, GRAYSCALE
                 bnez t0, R_CA1_TEXTO_DESATIVAR_GRAYSCALE
 
         R_CA1_TEXTO_ATIVAR_GRAYSCALE:
-                imprimir_string(ADICIONAIS_ATIVAR_GRAYSCALE, 80, 134, 0x00FF, 0) # "1. Ativar grayscale"
+                imprimir_string(ADICIONAIS_ATIVAR_GRAYSCALE, 70, 134, 0x00FF, 0) # "1. Ativar grayscale"
                 j R_CA1_TEXTO_EFEITO_DE_EXPLOSAO
 
         R_CA1_TEXTO_DESATIVAR_GRAYSCALE:
-                imprimir_string(ADICIONAIS_DESATIVAR_GRAYSCALE, 80, 134, 0x00FF, 0) # "1. Destivar grayscale"
+                imprimir_string(ADICIONAIS_DESATIVAR_GRAYSCALE, 70, 134, 0x00FF, 0) # "1. Destivar grayscale"
 
         # imprime ativar/desativar efeito de explosao
         R_CA1_TEXTO_EFEITO_DE_EXPLOSAO:
@@ -43,11 +45,11 @@ R_CA1_DRAW:
                 bnez t0, R_CA1_TEXTO_DESATIVAR_EFEITO_DE_EXPLOSAO
 
         R_CA1_TEXTO_ATIVAR_EFEITO_DE_EXPLOSAO:
-                imprimir_string(ADICIONAIS_ATIVAR_EFEITO_DE_EXPLOSAO, 80, 144, 0x00FF, 0) # "2. Ativar efeito de explosao"
+                imprimir_string(ADICIONAIS_ATIVAR_EFEITO_DE_EXPLOSAO, 70, 144, 0x00FF, 0) # "2. Ativar efeito de explosao"
                 j R_CA1_TEXTO_MODO_DEBUG
 
         R_CA1_TEXTO_DESATIVAR_EFEITO_DE_EXPLOSAO:
-                imprimir_string(ADICIONAIS_DESATIVAR_EFEITO_DE_EXPLOSAO, 80, 144, 0x00FF, 0) # "2. Desativar efeito de explosao"
+                imprimir_string(ADICIONAIS_DESATIVAR_EFEITO_DE_EXPLOSAO, 70, 144, 0x00FF, 0) # "2. Desativar efeito de explosao"
 
         # imprime ativar/desativar modo debug
         R_CA1_TEXTO_MODO_DEBUG:
@@ -55,15 +57,15 @@ R_CA1_DRAW:
                 bnez t0, R_CA1_TEXTO_DESATIVAR_MODO_DEBUG
 
         R_CA1_TEXTO_ATIVAR_MODO_DEBUG:
-                imprimir_string(ADICIONAIS_ATIVAR_MODO_DEBUG, 80, 154, 0x00FF, 0) # "3. Ativar modo debug"
+                imprimir_string(ADICIONAIS_ATIVAR_MODO_DEBUG, 70, 154, 0x00FF, 0) # "3. Ativar modo debug"
                 j R_CA1_TEXTO_OPCAO_9
 
         R_CA1_TEXTO_DESATIVAR_MODO_DEBUG:
-                imprimir_string(ADICIONAIS_DESATIVAR_MODO_DEBUG, 80, 154, 0x00FF, 0) # "3. Desativar modo debug"
+                imprimir_string(ADICIONAIS_DESATIVAR_MODO_DEBUG, 70, 154, 0x00FF, 0) # "3. Desativar modo debug"
 
 
         R_CA1_TEXTO_OPCAO_9:
-                imprimir_string(MENU_OPCAO9, 80, 164, 0x00FF, 0) # "9. Voltar"
+                imprimir_string(MENU_OPCAO9, 70, 164, 0x00FF, 0) # "9. Voltar"
 
 
 	jal PROC_DESENHAR
