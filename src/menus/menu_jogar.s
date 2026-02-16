@@ -32,6 +32,7 @@ R_MJ1_JOGAR:
 	jal PROC_DESENHAR	
 
 R_MJ1_JOGAR_LOOP:
+        sleep(10)                       # performance
 
 	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado

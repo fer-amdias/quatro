@@ -29,6 +29,8 @@ R_MC1_CONFIG:
 	jal PROC_DESENHAR
 
 R_MC1_CONFIG_LOOP:
+        sleep(10)                       # performance
+
 	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado
 	andi t0,t0,0x0001		# mascara o bit menos significativo

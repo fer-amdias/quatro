@@ -56,6 +56,7 @@ R_MP1_MENU:
 	jal PROC_DESENHAR	
 	
 R_MP1_LOOP:
+        sleep(10)                       # performance
 
 	li t1,0xFF200000		# carrega o endere�o de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado

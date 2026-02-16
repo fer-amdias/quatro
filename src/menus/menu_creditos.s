@@ -32,6 +32,7 @@ ROTINA_MENU_CREDITOS:
 	sw t0, CREDITOS_TIMESTAMP, t1
 	
 R_MC2_LOOP:
+        sleep(10)                       # performance
 
 	li a0, 0x00			# preto
 	li a1, 1
