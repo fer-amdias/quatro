@@ -20,7 +20,8 @@ PROC_IMPRIMIR_RETANGULO:
 	lw t3, (t3)
 	j P_IR1_CONT			# pula o codigo de modo 1
 	
-P_IR1_MODO_1:		la t3, FASE_BUFFER
+P_IR1_MODO_1:		
+	la t3, FASE_BUFFER
 
 P_IR1_CONT:		
 
