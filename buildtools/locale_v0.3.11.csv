@@ -47,10 +47,12 @@ CONFIG_OPCAO_ADICIONAIS,3. Outras configuracoes,3. Other settings,3. OTHER STUFF
 IDIOMA_PROMPT,Escolha o idioma:,Choose language:,CHOOSE CREW LINGO
 IDIOMA_PT,1. Portugues (BR),1. Portugues (BR),1. Portugues (BR)
 IDIOMA_EN,2. English (US),2. English (US),2. English (US)
+AUDIO_TITULO,Configuracoes de audio,Audio settings,LOUDNESS OPTIONS
 AUDIO_MUTAR_MUSICA,1. Mutar musica,1. Mute music,1. FIRE MUSICIAN
 AUDIO_DESMUTAR_MUSICA,1. Desmutar musica,1. Unmute music,1. HIRE MUSICIAN
 AUDIO_MUTAR_EXPLOSOES,2. Mutar explosoes,2. Mute explosions,2. MUFFLE CANNONS
 AUDIO_DESMUTAR_EXPLOSOES,2. Desmutar explosoes,2. Unmute explosions,2. UNMUFFLE CANNONS
+ADICIONAIS_TITULO,Outras configuracoes,Other settings,OTHER STUFF
 ADICIONAIS_ATIVAR_GRAYSCALE,1. Ativar grayscale,1. Enable grayscale,1. ENABLE BLACK & WHITE
 ADICIONAIS_DESATIVAR_GRAYSCALE,1. Desativar grayscale,1. Disable grayscale,1. DISABLE BLACK & WHITE
 ADICIONAIS_ATIVAR_EFEITO_DE_EXPLOSAO,2. Ativar efeito de explosao,2. Enable explosion effect,2. ENABLE CANNON SHAKE
