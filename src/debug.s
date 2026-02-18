@@ -31,6 +31,9 @@ ROTINA_DEBUG:
 
         sub t0, t0, t1  # periodo = ms entre o frame atual e o frame passado
 
+        seqz t3, t0
+        add t0, t3, t0 # adiciona 1 se o frame atual e passado ocorreram no mesmo ms
+
         li t1, 1000     # 1 segundo = 1000 ms
         div t2, t1, t0  # F/S = 1000 * 1/periodo = 1000/periodo
 

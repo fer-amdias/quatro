@@ -94,14 +94,19 @@ CAP2:
 .include "./fase/criar_fase_na_memoria.s"
 .include "./fase/inicializar_posicao_do_mapa.s"
 
-# IMPRESSAO NA TELA
-.include "./impressao_na_tela/desenhar.s"
-.include "./impressao_na_tela/imprimir_buffer_de_fase.s"
-.include "./impressao_na_tela/imprimir_inteiro.s"
-.include "./impressao_na_tela/imprimir_padrao_de_fundo.s"
-.include "./impressao_na_tela/imprimir_string.s"
-.include "./impressao_na_tela/imprimir_textura.s"
-.include "./impressao_na_tela/preencher_tela.s"
+# RENDERIZACAO
+.include "./renderizacao/desenhar.s"
+.include "./renderizacao/imprimir_buffer_de_fase.s"
+.include "./renderizacao/imprimir_inteiro.s"
+.include "./renderizacao/imprimir_padrao_de_fundo.s"
+.include "./renderizacao/imprimir_string.s"
+.include "./renderizacao/imprimir_textura.s"
+.include "./renderizacao/preencher_tela.s"
+.include "./renderizacao/efeito_explosao.s"
+.include "./renderizacao/carregar_textura.s"
+
+# SHADERS
+.include "./shaders/grayscale.s"
 
 # GUI
 .include "./gui/imprimir_hud.s"
@@ -120,12 +125,15 @@ CAP2:
 .include "./movimento_jogador/mover_jogador.s"
 .include "./movimento_jogador/registrar_movimento.s"
 
-# NPCS
-.include "./NPCs/movimento_npc_1.s"
-.include "./NPCs/movimento_npc_2.s"
-.include "./NPCs/movimento_npc_3.s"
-.include "./NPCs/npcs_manager.s"
-.include "./NPCs/registrar_npc.s"
+# NPCS & ENTIDADES
+.include "./NPCs_e_entidades/movimento_npc_1.s"
+.include "./NPCs_e_entidades/movimento_npc_2.s"
+.include "./NPCs_e_entidades/movimento_npc_3.s"
+.include "./NPCs_e_entidades/npcs_manager.s"
+.include "./NPCs_e_entidades/registrar_npc.s"
+.include "./NPCs_e_entidades/bomba_manager.s"
+.include "./NPCs_e_entidades/checar_colisoes.s"
+.include "./NPCs_e_entidades/colocar_bomba.s"
 
 # TILEMAP
 .include "./tiles_e_tilemap/calcular_tile_atual.s"
@@ -138,16 +146,10 @@ CAP2:
 .include "./capitulos/capitulo_1.s"
 .include "./capitulos/capitulo_2.s"
 
-# SHADERS
-.include "./shaders/grayscale.s"
+# AUDIO
+.include "./audio/tocar_audio.s"
 
 # OUTROS
-.include "bomba_manager.s"
-.include "checar_colisoes.s"
-.include "colocar_bomba.s"
 .include "debug.s"
-.include "efeito_explosao.s"
 .include "tempo_manager.s"
-.include "tocar_audio.s"
-.include "carregar_textura.s"
 .include "erro_fatal.s"
