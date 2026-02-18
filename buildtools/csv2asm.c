@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.3.1 - 06 outubro 2025"
+#define VERSAO "1.4.0 - 18 fevereiro 2026"
 
 // TODO: pular leading spaces no comeco
 
@@ -22,14 +22,15 @@ settings_option_2,      Volume,                 Volume,                 Lautstae
 // VIRA
 
 /*
-.eqv PT 0
-.eqv EN 1
-.eqv DE 2
+.eqv tags 0
+.eqv PT   1
+.eqv EN   2
+.eqv DE   3
 ...
 
 .data
 
-qtd_de_linguas: .byte 3
+qtd_de_linguas: .byte 4
 lingua_atual:   .byte PT
 
 offset:
@@ -225,8 +226,9 @@ int conta_linguas(FILE * fd){
         fgets(buffer, 1000, fd);
 
         char * token = strtok(buffer, ",");            //"tags"
+        if (token == NULL) return 0;
 
-        int linguas = 0;
+        int linguas = 1;                               //tags
         while(1){
                 token = strtok(NULL, ",");
                 if (token == NULL) break;
@@ -241,8 +243,6 @@ int preenche_linguas(FILE * fd, char linguas[MAX_LINGUAS][6]){
         rewind(fd);
 
         char buffer[1001];
-        ler_entrada_csv(fd, buffer, sizeof(buffer));    // descarta "tags"
-        fgetc(fd);                                        // descarta o delimitante
 
         int idx = 0;
         while(1){
@@ -262,7 +262,7 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
         fseek(fd, 0, SEEK_END);
         size_t size_entrada = ftell(fd) + 1;
 
-        char * strblock = calloc(size_entrada, 1);
+        char * strblock = malloc(2*size_entrada); //2x para contar com caracteres especiais
 
         char buffer[1000];
         int linha_atual, caractere_atual;
@@ -275,8 +275,10 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                 rewind(fd);
                 linha_atual = 0;
 
-                // pega a primeira entrada da coluna da lingua (sem considerar a primeira coluna, que sao as tags)
-                for(int j = 0; j <= i+1; j++){ // pega a entrada da coluna da lingua
+                int j;
+
+                // pega a primeira entrada da coluna da lingua
+                for(j = 0; j <= i; j++){ // pega a entrada da coluna da lingua
                         ler_entrada_csv(fd, buffer, sizeof(buffer));
                         int delim = fgetc(fd);
 
@@ -285,7 +287,6 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                 }
                         
                 // copia 1 por 1 a entrada no buffer para strblock
-                int j;
                 for (j = 0; buffer[j] != '\0'; j++){
                         // escapa caracteres especiais
                         if (buffer[j] == '\"'){
@@ -316,17 +317,18 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
 
                         if (caractere_atual == '\n' && !aspas){
                                 linha_atual++;
-                                for(int j = 0; j <= i+1; j++){ // pega a entrada da coluna da lingua
+                                for(j = 0; j <= i; j++){ // pega a entrada da coluna da lingua
                                         ler_entrada_csv(fd, buffer, sizeof(buffer));
                                         int delim = fgetc(fd);
 
                                         if (delim == '\n') ungetc('\n', fd); // se terminar com enter, bota ele de volta no lugar
                                         // eh necessario fazer isso para sabermos quando a linha acaba
                                 }
+
+                                printf("%d, %d: %s\n", i, linha_atual, buffer);
                                         
                                 // enquanto o ultimo caractere escrito nao for \0,
                                 // copia 1 por 1 a entrada no buffer para strblock
-                                int j;
                                 for (j = 0; buffer[j] != '\0'; j++){
                                         // escapa caracteres especiais
                                         if (buffer[j] == '\"' || 
@@ -366,6 +368,7 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                 }
         }
 
+        printf("%s", strblock);
         return strblock;
         
 }
@@ -387,14 +390,15 @@ int main(int argc, char *argv[]){
         preenche_linguas(entrada, linguas);
         char * strblock = cria_strblock(entrada, nlinhas, nlinguas);
 
-        unsigned int offsets[nlinhas][nlinguas];        calcula_offsets(strblock, nlinhas, nlinguas, offsets);
+        unsigned int offsets[nlinhas][nlinguas];  
+        calcula_offsets(strblock, nlinhas, nlinguas, offsets);
 
         for (int i = 0; i < nlinguas; i++)
                 fprintf(saida, ".eqv %s %d\n", linguas[i], i);
         
         fprintf(saida, "\n\n.data\n\n");
         fprintf(saida, "qtd_de_linguas: .byte %d\n", nlinguas);
-        fprintf(saida, "lingua_atual:   .byte %s\n", linguas[0]);
+        fprintf(saida, "lingua_atual:   .byte %s\n", linguas[1]);
         fprintf(saida, "\n");
 
         fprintf(saida, "offset: \n");
@@ -404,6 +408,8 @@ int main(int argc, char *argv[]){
         fprintf(saida, "strblock: .asciz \"%s\" ", strblock);
         fprintf(saida, "\n\n");
         fprintf(saida, "# VERSAO DA BUILDTOOL CSV2ASM: %s\n", VERSAO);
+
+        fflush(saida);
 
         free(strblock);
         fclose(entrada); 
