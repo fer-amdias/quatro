@@ -94,6 +94,9 @@ CAP2:
 .include "./fase/criar_fase_na_memoria.s"
 .include "./fase/inicializar_posicao_do_mapa.s"
 
+# ARQUIVOS
+.include "./arquivos/carregar_textura.s"
+
 # RENDERIZACAO
 .include "./renderizacao/desenhar.s"
 .include "./renderizacao/imprimir_buffer_de_fase.s"
