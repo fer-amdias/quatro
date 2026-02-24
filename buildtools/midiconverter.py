@@ -1,6 +1,7 @@
 import mido
 import os
 import sys
+import struct
 
 # MIDICONVERTER
 # Inspired by https://github.com/Zen-o/Tradutor_MIDI-RISC-V
@@ -20,57 +21,64 @@ if not input_path.endswith(".mid"):
     raise Exception("ERROR: The given file isn't a .mid")
 
 mid = mido.MidiFile(input_path)
-filename = os.path.splitext(os.path.basename(sys.argv[1]))[0] + ".data"
+
+filename = os.path.splitext(os.path.basename(sys.argv[1]))[0]
+filename = filename.replace(" ", "_").replace("-", "_")
+
+datafilename = filename + ".data"
+binfilename = filename + ".bin"
 
 notes = []
-tempo = 500000  # default tempo (120 BPM)
+active_notes = {}
 abs_time = 0
-channel_to_instrument = {}
+programs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # program for each channel
 
-for i, track in enumerate(mid.tracks):
-    abs_time = 0
-    for msg in track:
-        abs_time += msg.time
-        if msg.type == 'set_tempo':
-            tempo = msg.tempo
-        elif msg.type == 'program_change':
-            channel_to_instrument[msg.channel] = msg.program
-        elif msg.type == 'note_on' and msg.velocity > 0 and not msg.is_meta:
-            pitch = msg.note
-            instrument = channel_to_instrument.get(msg.channel, 0)
-            start_ms = int(mido.tick2second(abs_time, mid.ticks_per_beat, tempo) * 1000)
-            duration = 0
-            volume = msg.velocity
+for msg in mid:
+    abs_time += msg.time
+    if msg.type == 'program_change':
+        programs[msg.channel] = msg.program # keep track of the current instrument
+        continue
+    if msg.type == 'note_on' and msg.velocity > 0:
+        active_notes[(msg.note, msg.channel)] = [msg.velocity, abs_time, programs[msg.channel]] 
+        continue
+    if msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity == 0):
+        note = active_notes.pop((msg.note, msg.channel), None)
 
-            # Try to find matching note_off for duration
-            rel_time = 0
-            for search_msg in track[track.index(msg)+1:]:
-                rel_time += search_msg.time
-                if (not msg.is_meta and (msg.type == 'note_on' or msg.type == 'note_off')) and \
-                    search_msg.note == pitch:
-                    duration = int(mido.tick2second(rel_time, mid.ticks_per_beat, tempo) * 1000)
-                    break
+        # skip invalid notes
+        if note is None:
+            continue
 
-            # Make sure only matched notes get played
-            if (duration):
-                notes.append((pitch, instrument, volume, duration, start_ms))
+        pitch = msg.note
+        instrument = note[2]
+        volume = note[0]
+        start_time = round(note[1]*1000)    # convert to ms
+        end_time = round(abs_time*1000)     # convert to ms
+        duration = end_time - start_time
+        notes.append((pitch, instrument, volume, duration, start_time))
 
-# Sort notes by start time
-notes.sort(key=lambda x: x[4])
-
-# Replace spaces with underlines for safety
-filename = filename.replace(" ", "_")
+notes.sort(key=lambda note: note[4]) # sorts by start time
 
 # Write  to .data
-with open(filename, "w") as f:
-    f.write(f"{filename.removesuffix(".data")}:\n")
+with open(datafilename, "w") as df: 
+    df.write(f"{filename}:\n")
     for n in notes:
-        f.write(f"    .byte {n[0]}, {n[1]}, {n[2]}\n")     
-        f.write( "    .space 1\n")    # So alignment is kept in the struct
-        f.write(f"    .word {n[3]}\n")
-        f.write(f"    .word {n[4]}\n\n")
+        df.write(f"    .byte {n[0]}, {n[1]}, {n[2]}\n")     
+        df.write( "    .space 1\n")    # So alignment is kept in the struct
+        df.write(f"    .word {n[3]}\n")
+        df.write(f"    .word {n[4]}\n\n")
 
-    f.write(f"{filename.removesuffix(".data")}_FIM:\n")
-    f.write(f"    .word 0 0 0")
+    df.write(f"{filename}_FIM:\n")
+    df.write(f"    .word 0 0 0")
 
-print("Done! Converted to", filename)
+with open(binfilename, "wb") as bf:
+    for n in notes:
+        bf.write(struct.pack(
+            "<BBBBII",
+            n[0], n[1], n[2],
+            0,
+            n[3],
+            n[4]
+        ))
+    bf.write(struct.pack("III", 0, 0, 0))
+
+print("Done! Converted to", datafilename, "and", binfilename)
