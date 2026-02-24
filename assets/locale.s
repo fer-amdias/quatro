@@ -7,7 +7,7 @@
 .data
 
 qtd_de_linguas: .byte 4
-lingua_atual:   .byte TAGS
+lingua_atual:   .byte PT_BR
 
 offset: 
 tags:                                    .word        0,     2310,     7713,    12971, 
