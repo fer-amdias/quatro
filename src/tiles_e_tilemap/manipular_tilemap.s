@@ -15,13 +15,6 @@
 
 # prefixo interno: P_MT1_
 
-# mds haja arquivo
-# ai o vei vai lah e bota 1000 include na main
-# vai dar tanta linha no arquivo final que o rars vai infartar
-# quem tentar rodar sem o fpgrars vai ter uma surpresa divertida
-# (na vdd o que vai dar errado eh o frame rate de <1fps)
-# (principalmente se nao der tempo de otimizar essa bagunca)
-
 PROC_MANIPULAR_TILEMAP:
 
 			# sanity check
