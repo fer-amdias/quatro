@@ -59,7 +59,7 @@ ADICIONAIS_ATIVAR_EFEITO_DE_EXPLOSAO,2. Ativar efeito de explosao,2. Enable expl
 ADICIONAIS_DESATIVAR_EFEITO_DE_EXPLOSAO,2. Desativar efeito de explosao,2. Disable explosion effect,2. DISABLE CANNON SHAKE
 ADICIONAIS_ATIVAR_MODO_DEBUG,3. Ativar modo debug,3. Enable debug mode,3. ENABLE CAPTAIN LOGBOOK
 ADICIONAIS_DESATIVAR_MODO_DEBUG,3. Desativar modo debug,3. Disable debug mode,3. DISABLE CAPTAIN LOGBOOK
-CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.,boat
+CODIGO_N_IMPLEMENTADO,Nao implementado.,Not implemented.,not implemented
 HUD_FASE_ATUAL,"CH C, FASE F","CH C,  LVL F","LG C,  SEA F"
 HUD_INIMIGOS_RESTANTES,INIMIGOS:  X,ENEMIES:   X,HOSTILES:  X
 HUD_VIDAS_RESTANTES,VIDAS: X,LEFT:  X,SHIPS: X
@@ -354,7 +354,7 @@ to figure out how to save
 the Imperator.
 
 Please, spare them from
-death. They are not enemies.",boat
+death. They are not enemies.",i have scurvy
 ch2_fase3.scroll,"Se alguem descobrisse
 o motivo da formacao
 ter dado errado de
@@ -411,7 +411,7 @@ EDITOR_UI_ESC,Esc -,Esc -,ESC -
 EDITOR_UI_OPTIONS,Opcoes,Options,RIGGINGS
 EDITOR_UI_TILES,Tiles,Tiles,TILES
 EDITOR_UI_NPCS,NPCs,NPCs,BUCKOS
-EDITOR_OPCOES_CARREGAR_TEXTURA,1. Carregar Textura,1. Load Texture,1. REDRESS CHART
+EDITOR_OPCOES_EDITAR_METADADOS,1. Editar Metadados,1. Edit Metadata,1. CHART RIGGINGS
 EDITOR_OPCOES_REDIMENSIONAR_MAPA,2. Redimensionar Mapa,2. Resize Map,2. RESCALE CHART
 EDITOR_OPCOES_SALVAR,3. Salvar,3. Save,3. SAVE CHART
 EDITOR_OPCOES_SALVAR_COMO,4. Salvar como...,4. Save as...,4. SAVE CHART AS...
@@ -432,3 +432,30 @@ EDITOR_MENU_CONFIRMAR,Enter. Confirmar,Enter. Confirm,Enter. RECHART
 EDITOR_MENU_SALVAR_NOME_INVALIDO,Nome de arquivo invalido!,Invalid file name!,SAILOR! THAT NAME IS INVALID!
 EDITOR_ARQUIVO_SALVO,Fase salva com sucesso.,Level saved successfully.,CHART SAVED SUCCESSFULLY!!!
 EDITOR_ERRO_SALVAR,Ocorreu um erro ao salvar.,An error occured while saving.,FAILED TO SAVE CHART.
+EDITOR_MENU_METADATA,Configuracoes de Metadados,Metadata Settings,CHART RIGGINGS
+EDITOR_MENU_METADATA_TEXTURAS,1. Textura,1. Texture,1. DRESSING
+EDITOR_MENU_METADATA_AUDIOS,2. Audio,2. Audio,2. SOUND
+EDITOR_MENU_METADATA_TEXTO,3. Texto,3. Text,3. WRITIN'
+EDITOR_MENU_METADATA_TEMPO,4. Limite de tempo,4. Time Limit,4. TIMER
+EDITOR_MENU_METADATA_MARCADORES,5. Marcadores,5. Markers,5. MARKS
+EDITOR_MENU_TEXTURAS,Configuracoes de Textura,Texture Settings,DRESSING RIGGINGS
+EDITOR_MENU_TEXTURA_MAPA,1. Textura do Mapa,1. Map Texture,1. CHART DRESSING
+EDITOR_MENU_TEXTURA_NPCS,2. Textura dos NPCs,2. NPC Texture,2. CREW DRESSING
+EDITOR_MENU_TEXTURA_JOGADOR,3. Textura do Jogador,3. Player Texture,3. CAPTAIN DRESSING
+EDITOR_MENU_TEXTURA_DE_FUNDO,4. Textura de Fundo,4. Background Texture,4. BACKGROUND DRESSING
+EDITOR_MENU_AUDIO,Configuracoes de Audio,Audio Settings,SOUND RIGGINGS
+EDITOR_MENU_AUDIO_SOUNDTRACK,1. Musica de Fundo,1. Soundtrack,1. SOUNDTRACK
+EDITOR_MENU_AUDIO_POWERUP,2. Audio Powerup,2. Powerup Sound,2. POWERUP SOUND
+EDITOR_MENU_AUDIO_MORTE,3. Audio de Morte,3. Death Sound,3. DEATH SOUND
+EDITOR_MENU_AUDIO_PERGAMINHO,4. Audio de Pergaminho,4. Scroll Sound,4. SCROLL SOUND
+EDITOR_MENU_TEXTO_PROMPT,Escolha a chave de locale.s:,Choose locale.s key:,WRITE LOCALE KEY:
+EDITOR_MENU_CHAVE_NAO_ENCONTRADA,Chave nao encontrada!,Key not found!,KEY NOT FOUND!!!
+EDITOR_MENU_LIMITE_DE_TEMPO_PROMPT,Insira um limite de tempo numerico:,Insert numerical time limit:,INSERT TIMER COUNT:
+EDITOR_MENU_LIMITE_DE_TEMPO_AVISO,(Insira 0 para remover o limite),(Insert 0 to remove the limit),(WRITE 0 TO DESTROY TIMER)
+EDITOR_MENU_LIMITE_INVALIDO,Limite invalido!,Invalid limit,THAT NUMBER WONT WORK!
+EDITOR_MENU_VOLTAR,9. Voltar,9. Back,9. BACK
+EDITOR_MENU_MARCADORES,Configuracoes de Marcadores,Markers Settings,MARKS RIGGINGS
+EDITOR_MENU_PERGAMINHO_INICIO_ENABLE,1. Habilitar pergaminho no inicio,1. Enable scroll at start,1. SHOW SCROLL AT START
+EDITOR_MENU_PERGAMINHO_INICIO_DISABLE,1. Desabilitar pergaminho no inicio,1. Disable scroll at start,1. DO NOT SHOW SCROLL AT START
+EDITOR_MENU_SAIDA_LIVRE_ENABLE,2. Habilitar saida liberada,2. Enable free exit,2. REVEAL EXIT AT START
+EDITOR_MENU_SAIDA_LIVRE_DISABLE,2. Desabilitar saida liberada,2. Disable free exit,2. DO NOT REVEAL EXIT AT START
