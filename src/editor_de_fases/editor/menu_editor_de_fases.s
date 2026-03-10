@@ -124,7 +124,6 @@ E_ME2_SALVAR:
 E_ME2_SALVAR_COMO:
         jal EDITOR_MENU_SALVAR_FASE_COMO
         j E_ME2_RETURN_TO_EDITOR
-        j E_ME2_DRAW_CYCLE
 
 E_ME2_RET:
         lw ra, (sp)
