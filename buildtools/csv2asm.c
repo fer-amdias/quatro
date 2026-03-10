@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.4.0 - 18 fevereiro 2026"
+#define VERSAO "1.4.1 - 10 marco 2026"
 
 // TODO: pular leading spaces no comeco
 
@@ -324,8 +324,6 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                                         if (delim == '\n') ungetc('\n', fd); // se terminar com enter, bota ele de volta no lugar
                                         // eh necessario fazer isso para sabermos quando a linha acaba
                                 }
-
-                                printf("%d, %d: %s\n", i, linha_atual, buffer);
                                         
                                 // enquanto o ultimo caractere escrito nao for \0,
                                 // copia 1 por 1 a entrada no buffer para strblock
@@ -367,8 +365,7 @@ char * cria_strblock(FILE * fd, int nlinhas, int nlinguas){
                         }
                 }
         }
-
-        printf("%s", strblock);
+        strblock[strblock_idx_atual] = '\0';
         return strblock;
         
 }
