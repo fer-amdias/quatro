@@ -1,14 +1,16 @@
 # EDITOR_CARREGAR_TEXTURA				       	
 # Carrega uma textura de um binario para o buffer de fase
 # ARGUMENTOS:						     	
-#	A0 : string com o nome da textura                          
+#	A0 : string com o nome da textura    
+#       A1 : buffer para colocar textura                      
 # RETORNOS:                                                  
 #       A0 : quantidade de bytes lidos. -1 se houve uma falha.
 
 EDITOR_CARREGAR_TEXTURA:
 
-        addi sp, sp, -4
+        addi sp, sp, -8
         sw s0, (sp) # file descriptor
+        sw s1, 4(sp) # buffer destino
 
 E_CT1_ABRIR_ARQUIVO:
 	# a0 carregado
@@ -53,7 +55,7 @@ E_CT1_CALCULAR_TAMANHO:
 E_CT1_LER_ARQUIVO:
         # agora lemos tudo de uma vez
         mv a0, s0               # file descriptor
-        la a1, TEXTURA_BUFFER
+        mv a1, s1               # buffer de textura
         addi a1, a1, 8          # pula os bytes que jah lemos
         mv a2, t0               # quantidade
         li a7, 63               # LER
@@ -69,7 +71,8 @@ E_CT1_RET:
         mv a0, t0               # retorna quantos bytes foram lidos
 
         lw s0, (sp)
-        addi sp, sp, 4
+        lw s1, 4(sp)
+        addi sp, sp, 8
         ret
 
 E_CT1_FALHA:
