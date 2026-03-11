@@ -390,7 +390,7 @@ int main(int argc, char *argv[]){
         unsigned int offsets[nlinhas][nlinguas];  
         calcula_offsets(strblock, nlinhas, nlinguas, offsets);
 
-        for (int i = 0; i < nlinguas; i++)
+        for (int i = 1; i < nlinguas; i++)
                 fprintf(saida, ".eqv %s %d\n", linguas[i], i);
         
         fprintf(saida, "\n\n.data\n\n");
