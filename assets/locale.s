@@ -1,8 +1,6 @@
-.eqv tags 0
 .eqv PT_BR 1
 .eqv EN_US 2
 .eqv BOAT_ 3
-
 
 .data
 
