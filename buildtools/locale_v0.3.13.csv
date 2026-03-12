@@ -396,7 +396,7 @@ EDITOR_MENU_ESCOLHA,Escolha uma opcao:,Choose an option:,CHOOSE YER COURSE
 EDITOR_MENU_EDITAR_OPCAO_1,1. NOVO,1. NEW,1. SWAG
 EDITOR_MENU_EDITAR_OPCAO_2,2. CARREGAR,2. LOAD,2. LOOT
 EDITOR_MENU_CARREGAR_PROMPT,Insira o nome do arquivo:,Enter file name:,ENTER CHART NAME
-EDITOR_MENU_CARREGAR_NAO_ENCONTRADO,Arquivo nao encontrado!,File not found!,CHART NOT FOUND
+EDITOR_MENU_CARREGAR_NAO_ENCONTRADO,Arquivo nao encontrado ou invalido!,File invalid or not found!,CHART NOT FOUND OR INVALID
 EDITOR_MENU_CARREGAR_OPCAO_ESC,Esc. VOLTAR,Esc. RETURN,ESC. BACK
 EDITOR_MENU_CONFIG_OPCAO_1,1. IDIOMA,1. LANGUAGE,1. TONGUE
 EDITOR_MENU_CONFIG_OPCAO_2_MUTAR,2. MUTAR,2. MUTE,2. PIPE DOWN
@@ -415,7 +415,8 @@ EDITOR_OPCOES_EDITAR_METADADOS,1. Editar Metadados,1. Edit Metadata,1. CHART RIG
 EDITOR_OPCOES_REDIMENSIONAR_MAPA,2. Redimensionar Mapa,2. Resize Map,2. RESCALE CHART
 EDITOR_OPCOES_SALVAR,3. Salvar,3. Save,3. SAVE CHART
 EDITOR_OPCOES_SALVAR_COMO,4. Salvar como...,4. Save as...,4. SAVE CHART AS...
-EDITOR_OPCOES_VOLTAR,Esc. Voltar ao editor,Esc. Return to editor,Esc. BACK TO CHART
+EDITOR_OPCOES_VOLTAR,Esc. Voltar,Esc. Return,Esc. BACK
+EDITOR_OPCOES_VOLTAR_AO_EDITOR,Esc. Voltar ao editor,Esc. Return to editor,Esc. BACK TO CHART
 EDITOR_OPCOES_RETORNAR,9. Sair ao Menu Principal,9. Exit to Main Menu,9. SINK TO MAIN VESSEL
 EDITOR_MENU_TITULO,Redimensione usando W A S D,Resize with W A S D,RESCALE WITH W A S D
 EDITOR_MENU_REDIMENSIONAR_CONTROLES,"W. Diminuir altura
@@ -453,7 +454,6 @@ EDITOR_MENU_CHAVE_NAO_ENCONTRADA,Chave nao encontrada!,Key not found!,KEY NOT FO
 EDITOR_MENU_LIMITE_DE_TEMPO_PROMPT,Insira um limite de tempo numerico:,Insert numerical time limit:,INSERT TIMER COUNT:
 EDITOR_MENU_LIMITE_DE_TEMPO_AVISO,(Insira 0 para remover o limite),(Insert 0 to remove the limit),(WRITE 0 TO DESTROY TIMER)
 EDITOR_MENU_LIMITE_INVALIDO,Limite invalido!,Invalid limit,THAT NUMBER WONT WORK!
-EDITOR_MENU_VOLTAR,9. Voltar,9. Back,9. BACK
 EDITOR_MENU_MARCADORES,Configuracoes de Marcadores,Markers Settings,MARKS RIGGINGS
 EDITOR_MENU_PERGAMINHO_INICIO_ENABLE,1. Habilitar pergaminho no inicio,1. Enable scroll at start,1. SHOW SCROLL AT START
 EDITOR_MENU_PERGAMINHO_INICIO_DISABLE,1. Desabilitar pergaminho no inicio,1. Disable scroll at start,1. DO NOT SHOW SCROLL AT START
