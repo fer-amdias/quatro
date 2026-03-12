@@ -5,12 +5,14 @@
 # ARGUMENTOS:						     	#
 #	A0 : MODO (0 = continuar tocando, 1 = tocar nova)	#
 #	caso a0 = 1:						#
-#		A1 = endereco onde estah o audio		#
+#		A1 = nome do arquivo 
 #		A2 = track para sobrescrever (1, 2 ou 3)	#
 #		A3 = modo de loop (0, 1)			#
 # RETORNOS:                                                  	#
 #       (nenhum)                                             	#
 #################################################################
+
+.eqv TAMANHO_MAX_ARQ_DE_MUSICA 8192	# 8KB
 
 .data
 
@@ -21,6 +23,7 @@ TRACK1:
 	TRACK1_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
 	TRACK1_POINTER:		.word 0 # marca qual eh a proxima nota
 	TRACK1_LOOP:		.word 0	# marca se o track estah loopando
+	TRACK1_BUFFER:		.space TAMANHO_MAX_ARQ_DE_MUSICA
 	
 # A track 2 eh comumente utilizada para tocar efeitos sonoros
 TRACK2:
@@ -29,6 +32,7 @@ TRACK2:
 	TRACK2_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
 	TRACK2_POINTER:		.word 0 # marca qual eh a proxima nota
 	TRACK2_LOOP:		.word 0	# marca se o track estah loopando
+	TRACK2_BUFFER:		.space TAMANHO_MAX_ARQ_DE_MUSICA
 
 # A track 3 eh comumente utilizada para tocar miscelaneos que nao se encaixam nas outras categorias
 TRACK3:
@@ -37,6 +41,7 @@ TRACK3:
 	TRACK3_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
 	TRACK3_POINTER:		.word 0 # marca qual eh a proxima nota
 	TRACK3_LOOP:		.word 0	# marca se o track estah loopando
+	TRACK3_BUFFER:		.space TAMANHO_MAX_ARQ_DE_MUSICA
 	
 #	Notas (struct){
 #		byte pitch
@@ -88,6 +93,16 @@ P_TA1_TOCAR_SEQUENCIAL:
 
 
 P_TA1_INICIAR_TRACK1: 		
+		addi sp, sp, -4
+		sw ra, (sp)
+
+		mv a0, a1
+		la a1, TRACK1_BUFFER
+		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
+		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+		blez a0, P_TA1_INICIAR_TRACK1_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+
 		sw a1, TRACK1_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK1_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
@@ -95,6 +110,10 @@ P_TA1_INICIAR_TRACK1:
       		csrr t0, time
       		sw t0, TRACK1_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK1_LOOP, t1		# salva se o loop estah ligado ou nao
+
+P_TA1_INICIAR_TRACK1_RET:
+		lw ra, (sp)
+		addi sp, sp, 4
       		ret			
        		
 P_TA1_TRACK1: 
@@ -153,7 +172,17 @@ P_TA1_TRACK1_FIM2:
        		
        		
        		
-P_TA1_INICIAR_TRACK2: 		
+P_TA1_INICIAR_TRACK2: 
+		addi sp, sp, -4
+		sw ra, (sp)
+
+		mv a0, a1
+		la a1, TRACK2_BUFFER
+		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
+		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+		blez a0, P_TA1_INICIAR_TRACK2_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+
 		sw a1, TRACK2_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK2_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
@@ -161,6 +190,9 @@ P_TA1_INICIAR_TRACK2:
       		csrr t0, time
       		sw t0, TRACK2_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK2_LOOP, t1		# salva se o loop estah ligado ou nao
+P_TA1_INICIAR_TRACK2_RET:
+		lw ra, (sp)
+		addi sp, sp, 4
       		ret
        		
 P_TA1_TRACK2: 
@@ -217,7 +249,17 @@ P_TA1_TRACK2_FIM2:
        		
        		
        		
-P_TA1_INICIAR_TRACK3: 		
+P_TA1_INICIAR_TRACK3: 	
+		addi sp, sp, -4
+		sw ra, (sp)
+
+		mv a0, a1
+		la a1, TRACK1_BUFFER
+		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
+		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+		blez a0, P_TA1_INICIAR_TRACK3_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+
 		sw a1, TRACK3_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK3_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
@@ -225,6 +267,10 @@ P_TA1_INICIAR_TRACK3:
       		csrr t0, time
       		sw t0, TRACK3_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK3_LOOP, t1		# salva se o loop estah ligado ou nao
+
+P_TA1_INICIAR_TRACK3_RET:
+		lw ra, (sp)
+		addi sp, sp, 4
       		ret
        		
 P_TA1_TRACK3: 
