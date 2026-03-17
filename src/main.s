@@ -96,6 +96,7 @@ CAP2:
 
 # ARQUIVOS
 .include "./arquivos/carregar_textura.s"
+.include "./arquivos/carregar_arquivo_em_buffer.s"
 
 # RENDERIZACAO
 .include "./renderizacao/desenhar.s"
