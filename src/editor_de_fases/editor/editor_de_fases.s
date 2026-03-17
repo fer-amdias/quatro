@@ -139,15 +139,38 @@ E_DF1_ESC:
 
 E_DF1_DRAW_CYCLE:
 
-        li a0, 0xA0 #ciano
-        li a1, 1
-        jal PROC_PREENCHER_TELA        
+        lw a0, TEXTURA_FUNDO
+        jal PROC_IMPRIMIR_PADRAO_DE_FUNDO
 
-        li a0, 0x00
-        li a1, 10
-        li a2, 10
-        li a3, 229
-        li a4, 229
+        li a0, 0xA0
+        li a1, 0
+        li a2, 0
+        li a3, 8
+        li a4, 239
+        li a7, 0
+        jal PROC_IMPRIMIR_RETANGULO
+
+        li a0, 0xA0
+        li a1, 0
+        li a2, 0
+        li a3, 319
+        li a4, 8
+        li a7, 0
+        jal PROC_IMPRIMIR_RETANGULO
+
+        li a0, 0xA0
+        li a1, 231
+        li a2, 9
+        li a3, 319
+        li a4, 239
+        li a7, 0
+        jal PROC_IMPRIMIR_RETANGULO
+
+        li a0, 0xA0
+        li a1, 9
+        li a2, 231
+        li a3, 319
+        li a4, 239
         li a7, 0
         jal PROC_IMPRIMIR_RETANGULO
         
