@@ -102,6 +102,7 @@ ecall
 .include "../renderizacao/imprimir_buffer_de_fase.s"
 .include "../renderizacao/imprimir_retangulo.s"
 .include "../renderizacao/imprimir_outline.s"
+.include "../renderizacao/imprimir_padrao_de_fundo.s"
 .include "../renderizacao/desenhar.s"
 
 # SHADERS
