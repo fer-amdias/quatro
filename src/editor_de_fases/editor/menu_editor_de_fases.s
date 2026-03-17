@@ -34,7 +34,7 @@ E_ME2_LOOP:
         li t0, 8        # BACKSPACE
         beq t2, t0, E_ME2_RETURN_TO_EDITOR
         li t0, '1'
-        beq t2, t0, E_ME2_CARREGAR_TEXTURA
+        beq t2, t0, E_ME2_EDITAR_METADADOS
         li t0, '2'
         beq t2, t0, E_ME2_REDIMENSIONAR_MAPA
         li t0, '3'
@@ -80,7 +80,7 @@ E_ME2_DRAW_CYCLE:
 
         imprimir_string_reg(EDITOR_UI_OPTIONS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_OPCOES_CARREGAR_TEXTURA, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(EDITOR_OPCOES_EDITAR_METADADOS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
         imprimir_string_reg(EDITOR_OPCOES_REDIMENSIONAR_MAPA, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
@@ -90,7 +90,7 @@ E_ME2_DRAW_CYCLE:
         addi s1, s1, 15
         imprimir_string_reg(EDITOR_OPCOES_RETORNAR, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(EDITOR_OPCOES_VOLTAR_AO_EDITOR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 
@@ -104,9 +104,9 @@ E_ME2_RETURN_TO_MAIN_MENU:
         li a0, 1
         j E_ME2_RET
 
-E_ME2_CARREGAR_TEXTURA:
-        jal EDITOR_MENU_CARREGAR_TEXTURA
-        j E_ME2_RETURN_TO_EDITOR
+E_ME2_EDITAR_METADADOS:
+        jal EDITOR_MENU_CONFIG_DE_METADATA
+        j E_ME2_DRAW_CYCLE
 
 E_ME2_REDIMENSIONAR_MAPA:
         jal EDITOR_MENU_REDIMENSIONAR_MAPA
@@ -125,7 +125,7 @@ E_ME2_SALVAR:
         j E_ME2_DRAW_CYCLE
 E_ME2_SALVAR_COMO:
         jal EDITOR_MENU_SALVAR_FASE_COMO
-        j E_ME2_RETURN_TO_EDITOR
+        j E_ME2_DRAW_CYCLE
 
 E_ME2_RET:
         lw ra, (sp)

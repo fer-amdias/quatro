@@ -61,12 +61,23 @@ ecall
 # EDITOR EM SI
 .include "./editor/imprimir_ui.s"
 .include "./editor/editor_de_fases.s"
+.include "./editor/carregar_textura.s"
+
+# MENUS DO EDITOR
 .include "./editor/menu_editor_de_fases.s"
 .include "./editor/menu_carregar_textura.s"
 .include "./editor/menu_redimensionar_mapa.s"
 .include "./editor/menu_salvar_fase_como.s"
 .include "./editor/menu_fase_salva.s"
-.include "./editor/carregar_textura.s"
+.include "./editor/menus_metadata/menu_config_de_metadata.s"
+.include "./editor/menus_metadata/menu_config_de_texturas.s"
+.include "./editor/menus_metadata/menu_config_de_audio.s"
+.include "./editor/menus_metadata/menu_config_de_texto.s"
+.include "./editor/menus_metadata/menu_config_de_tempo.s"
+.include "./editor/menus_metadata/menu_config_de_marcadores.s"
+.include "./editor/menus_metadata/menu_carregar_padrao_de_fundo.s"
+.include "./editor/menus_metadata/criar_menu_carregar_textura.s"
+.include "./editor/menus_metadata/criar_menu_carregar_audio.s"
 
 # REDIMENSIONAMENTO
 .include "./modelo_de_redimensionamento/imprimir_modelo.s"
@@ -77,8 +88,14 @@ ecall
 .include "../audio/tocar_audio.s"
 
 # STRINGS
+.include "../strings/comparar_strings.s"
 .include "../strings/copiar_string.s"
+.include "../strings/inteiro_para_string.s"
+.include "../strings/string_para_inteiro.s"
 .include "../strings/tamanho_string.s"
+
+# LOCALIZACAO
+.include "../localizacao/obter_traducao.s" 
 
 # RENDERIZACAO
 .include "../renderizacao/imprimir_textura.s"
