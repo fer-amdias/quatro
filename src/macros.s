@@ -318,6 +318,12 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	jal PROC_IMPRIMIR_STRING
 .end_macro
 
+.macro copiar_string(%origem, %destino)
+	la a0, %origem
+	la a1, %destino
+	jal PROC_COPIAR_STRING
+.end_macro
+
 .macro sleep(%seg)
 	.text
 	li a0, %seg
