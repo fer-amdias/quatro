@@ -101,7 +101,7 @@ P_TA1_INICIAR_TRACK1:
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
-		blez a0, P_TA1_INICIAR_TRACK1_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+		blez a0, P_TA1_INICIAR_TRACK1_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
 		sw a1, TRACK1_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK1_POINTER, t1	# salva o audio como o ponteiro atual tbm
@@ -110,6 +110,11 @@ P_TA1_INICIAR_TRACK1:
       		csrr t0, time
       		sw t0, TRACK1_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK1_LOOP, t1		# salva se o loop estah ligado ou nao
+
+		j P_TA1_INICIAR_TRACK1_RET
+
+P_TA1_INICIAR_TRACK1_ERR:
+		sw zero, TRACK1_ATIVO, t1		# desativa a track
 
 P_TA1_INICIAR_TRACK1_RET:
 		lw ra, (sp)
@@ -181,7 +186,7 @@ P_TA1_INICIAR_TRACK2:
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
-		blez a0, P_TA1_INICIAR_TRACK2_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+		blez a0, P_TA1_INICIAR_TRACK2_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
 		sw a1, TRACK2_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK2_POINTER, t1	# salva o audio como o ponteiro atual tbm
@@ -190,6 +195,12 @@ P_TA1_INICIAR_TRACK2:
       		csrr t0, time
       		sw t0, TRACK2_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK2_LOOP, t1		# salva se o loop estah ligado ou nao
+
+		j P_TA1_INICIAR_TRACK2_RET
+
+P_TA1_INICIAR_TRACK2_ERR:
+		sw zero, TRACK2_ATIVO, t1		# desativa a track
+
 P_TA1_INICIAR_TRACK2_RET:
 		lw ra, (sp)
 		addi sp, sp, 4
@@ -258,7 +269,7 @@ P_TA1_INICIAR_TRACK3:
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
-		blez a0, P_TA1_INICIAR_TRACK3_RET# NAO marca como ativo se o tamanho for 0 ou menos (no caso, -1 indica erro)
+		blez a0, P_TA1_INICIAR_TRACK3_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
 		sw a1, TRACK3_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
 		sw a1, TRACK3_POINTER, t1	# salva o audio como o ponteiro atual tbm
@@ -267,6 +278,11 @@ P_TA1_INICIAR_TRACK3:
       		csrr t0, time
       		sw t0, TRACK3_TIMESTAMP, t1	# salva o momento em que a track comecou
       		sw a3, TRACK3_LOOP, t1		# salva se o loop estah ligado ou nao
+
+		j P_TA1_INICIAR_TRACK3_RET
+
+P_TA1_INICIAR_TRACK3_ERR:
+		sw zero, TRACK3_ATIVO, t1		# desativa a track
 
 P_TA1_INICIAR_TRACK3_RET:
 		lw ra, (sp)
