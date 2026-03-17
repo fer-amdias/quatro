@@ -9,13 +9,13 @@ EDITOR_DE_FASES:
 E_DF1_RECARREGAR_EDITOR_DE_FASES:
 
         lw a0, TEXTURA_DO_MAPA
-        la a1, inimigos
+        lw a1, TEXTURA_DOS_NPCS
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
 
         lw a0, TEXTURA_DO_MAPA
         jal EDITOR_CRIAR_PALETA_DE_TILES
 
-        la a0, inimigos
+        lw a0, TEXTURA_DOS_NPCS
         jal EDITOR_CRIAR_PALETA_DE_NPCS
         j E_DF1_DRAW_CYCLE
 
@@ -118,7 +118,7 @@ E_DF1_ENTER:
         jal EDITOR_ALTERAR_TILE_SELECIONADO   # recebe o valor retornado acima
 
         lw a0, TEXTURA_DO_MAPA
-        la a1, inimigos
+        lw a1, TEXTURA_DOS_NPCS
         jal EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER
         j E_DF1_DRAW_CYCLE
 
