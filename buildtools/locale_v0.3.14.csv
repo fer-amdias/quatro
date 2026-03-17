@@ -444,6 +444,7 @@ EDITOR_MENU_TEXTURA_MAPA,1. Textura do Mapa,1. Map Texture,1. CHART DRESSING
 EDITOR_MENU_TEXTURA_NPCS,2. Textura dos NPCs,2. NPC Texture,2. CREW DRESSING
 EDITOR_MENU_TEXTURA_JOGADOR,3. Textura do Jogador,3. Player Texture,3. CAPTAIN DRESSING
 EDITOR_MENU_TEXTURA_DE_FUNDO,4. Textura de Fundo,4. Background Texture,4. BACKGROUND DRESSING
+EDITOR_MENU_FUNDO_DICA,(Deixe vazio para remover a textura),(Leave empty to remove texture),(LEAVE EMPTY TO REMOVE DRESSING)
 EDITOR_MENU_AUDIO,Configuracoes de Audio,Audio Settings,SOUND RIGGINGS
 EDITOR_MENU_AUDIO_SOUNDTRACK,1. Musica de Fundo,1. Soundtrack,1. SOUNDTRACK
 EDITOR_MENU_AUDIO_POWERUP,2. Audio Powerup,2. Powerup Sound,2. POWERUP SOUND
@@ -453,7 +454,6 @@ EDITOR_MENU_TEXTO_PROMPT,Escolha a chave de locale.s:,Choose locale.s key:,WRITE
 EDITOR_MENU_CHAVE_NAO_ENCONTRADA,Chave nao encontrada!,Key not found!,KEY NOT FOUND!!!
 EDITOR_MENU_LIMITE_DE_TEMPO_PROMPT,Insira um limite de tempo numerico:,Insert numerical time limit:,INSERT TIMER COUNT:
 EDITOR_MENU_LIMITE_DE_TEMPO_AVISO,(Insira 0 para remover o limite),(Insert 0 to remove the limit),(WRITE 0 TO DESTROY TIMER)
-EDITOR_MENU_LIMITE_INVALIDO,Limite invalido!,Invalid limit,THAT NUMBER WONT WORK!
 EDITOR_MENU_MARCADORES,Configuracoes de Marcadores,Markers Settings,MARKS RIGGINGS
 EDITOR_MENU_PERGAMINHO_INICIO_ENABLE,1. Habilitar pergaminho no inicio,1. Enable scroll at start,1. SHOW SCROLL AT START
 EDITOR_MENU_PERGAMINHO_INICIO_DISABLE,1. Desabilitar pergaminho no inicio,1. Disable scroll at start,1. DO NOT SHOW SCROLL AT START
