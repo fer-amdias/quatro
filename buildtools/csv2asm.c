@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.4.2 - 15 marco 2026"
+#define VERSAO "1.4.3 - 16 marco 2026"
 
 // TODO: pular leading spaces no comeco
 
@@ -190,7 +190,7 @@ void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsig
                 fputc('\n', saida);
         }
 
-        fprintf(saida, "%-40s .word ", "FIM_LOCALE:");
+        fprintf(saida, "%-40s .word ", "offset_fim:");
         for (int j = 0; j < nlinguas; j++){
                       fprintf(saida, "%8u, ", 0);  
         }
