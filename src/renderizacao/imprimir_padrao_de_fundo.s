@@ -28,6 +28,11 @@ PROC_IMPRIMIR_PADRAO_DE_FUNDO:
 
                 lw s0, (a0)     # largura    
                 lw s1, 4(a0)    # altura
+
+                # preenche tela se as dimensoes forem invalidas
+                blez s0, P_IP1_PREENCHER_TELA
+                blez s1, P_IP1_PREENCHER_TELA
+
                 addi a0, a0, 8
 
                 li s2, 0        # X
