@@ -6,10 +6,11 @@
 
 .data
 
+NULL: .word 0
+
 .include "../../assets/fases/definicoes_fases.s"
 .include "../../assets/locale.s" 
 .include "../../assets/logoeditor.data"
-.include "../../assets/musicas/intro_tune.data"
 .include "../../assets/texturas/inimigos.data"
 .include "../../assets/elementos_de_ui/seta_para_baixo.data"
 .include "../../assets/elementos_de_ui/seta_para_cima.data"
@@ -22,10 +23,6 @@ FASE_BUFFER: 	  	.byte 0
 FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
 FASE_BUFFER_LIN:  	.half 0		# quantas linhas tem no mapa no buffer
 MUTADO: .byte 0 # boolean
-
-TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
-			.space 192	# 16 * 12 sendo o tamanho maximo do buffer
-                        # mesmo que o editor so suporte niveis ate 11 por 11 lol
 
 # uma fase padrao para quando criarmos um novo arquivo
 FASE_TEMPLATE: .word 5 5
@@ -59,8 +56,43 @@ MODELO_DE_REDIMENSIONAMENTO_LARGURA: .byte 5
 MODELO_DE_REDIMENSIONAMENTO_ALTURA:  .byte 5
 
 TEXTURA_DO_MAPA: .word TEXTURA_BUFFER
+TEXTURA_DOS_NPCS: .word TEXTURA_NPCS_BUFFER
+TEXTURA_FUNDO: .word TEXTURA_FUNDO_BUFFER
 
-TEXTURA_BUFFER: .space 30000    # para texturas a serem carregadas, se houver
+TEXTURA_BUFFER: .space 30000    # para a textura a ser carregada, se houver
+
+TEXTURA_NPCS_BUFFER: .space 60000   # para a textura de NPCs a ser carregada, se houver
+
+TEXTURA_FUNDO_BUFFER: .space 10000  # para a textura de fundo a ser carregada, se houver
+
+
+
+# Metadata da fase
+
+.eqv TAMANHO_STRING_METADATA            128     
+
+FASE_ARQUIVO_HEADER:                    .byte '4', 'L', 'V', 'L'# marcador de header de arquivo
+FASE_ARQUIVO_VERSAO:                    .byte 1, 0, 0, 0        # versao 1.0.0.0
+
+FASE_METADATA:
+FASE_TEXTURA_DE_FUNDO:                  .space TAMANHO_STRING_METADATA
+FASE_TEXTURA:                           .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_NPCS:                      .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_JOGADOR:                   .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_PERGAMINHO:                .space TAMANHO_STRING_METADATA
+FASE_AUDIO_SOUNDTRACK:                  .space TAMANHO_STRING_METADATA
+FASE_AUDIO_POWERUP:                     .space TAMANHO_STRING_METADATA
+FASE_AUDIO_MORTE:                       .space TAMANHO_STRING_METADATA
+FASE_AUDIO_PERGAMINHO:                  .space TAMANHO_STRING_METADATA
+FASE_TEXTO_PERGAMINHO:                  .space TAMANHO_STRING_METADATA
+FASE_LIMITE_DE_TEMPO:                   .space 4
+FASE_PERGAMINHO_NO_INICIO:              .space 4
+FASE_SAIDA_LIVRE:                       .space 4
+TAMANHO_STRUCT_TILE:                    .word 1       
+
+TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
+			.space 1024
+
 
 .text
 

@@ -23,14 +23,38 @@ E_SF2_ABRIR_ARQUIVO:
 
         # s0 = descritor de arquivo
 
-        # a quantidade de bytes a serem escritos eh o tamanho do tilemap (L * C) + metadata (8 bytes)
+E_SF2_ESCREVER_HEADER:
+
+        mv a0, s0                       # file descriptor
+        la a1, FASE_ARQUIVO_HEADER      # buffer de onde vamos escrever
+        li a2, 8                        # 8 bytes de header
+        li a7, 64               # ESCREVER
+        ecall
+
+E_SF2_ESCREVER_METADATA:
+
+        # para calcular o tamanho da metadata:
+        li t0, TAMANHO_STRING_METADATA
+        li t1, 10               # os 10 nomes de arquivos
+        mul t0, t0, t1          
+        
+        addi t0, t0, 16         # os 4 marcadores
+
+        mv a0, s0               # file descriptor
+        la a1, FASE_METADATA    # buffer de onde vamos escrever
+        mv a2, t0               # quantidade
+        li a7, 64               # ESCREVER
+        ecall
+
+E_SF2_ESCREVER_TILEMAP:
+
+        # a quantidade de bytes a serem escritos eh o tamanho do tilemap (L * C) + Largura e Comprimento (8 bytes)
         la t0, TILEMAP_BUFFER
         lw t1, (t0)
         lw t2, 4(t0)
         mul t0, t1, t2
         addi t0, t0, 8
 
-E_SF2_ESCREVER:
         # agora escrevemos
         mv a0, s0               # file descriptor
         la a1, TILEMAP_BUFFER
