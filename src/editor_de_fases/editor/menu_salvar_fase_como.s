@@ -2,7 +2,7 @@
 # Mostra o menu de salvamento.
 
 .eqv MENU_SALVAR_FASE_X 0
-.eqv MENU_SALVAR_FASE_Y 74
+.eqv MENU_SALVAR_FASE_Y 69
 
 .data
 
@@ -40,8 +40,6 @@ EDITOR_MENU_SALVAR_FASE_COMO:
 
         sb zero, SF1_DATA_NOME_INVALIDO, t0 # reseta o estado da flag
 
-E_SF1_OBSCURECER_TELA:
-        jal SHADER_OBSCURECER_TELA
         j E_SF1_DRAW_CYCLE
 
 E_SF1_IDLE:
@@ -149,6 +147,8 @@ E_SF1_DRAW_CYCLE:
         imprimir_string_reg(SF1_NOME_ARQUIVO, s0, s1, 0xC7FF, 1)
         addi s0, s0, -104
         addi s1, s1, 46
+        imprimir_string_reg(EDITOR_MENU_CONFIRMAR, s0, s1,0xC7FF, 0)
+        addi s1, s1, 10
         imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         lb t0, SF1_DATA_NOME_INVALIDO
