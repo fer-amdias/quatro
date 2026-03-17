@@ -15,8 +15,6 @@ EDITOR_MENU_EDITOR_DE_FASES:
         sw s0, 4(sp)
         sw s1, 8(sp)
 
-E_ME2_OBSCURECER_TELA:
-        jal SHADER_OBSCURECER_TELA
         j E_ME2_DRAW_CYCLE
 
 E_ME2_IDLE:
@@ -49,6 +47,7 @@ E_ME2_LOOP:
         j E_ME2_IDLE    # se nao for uma tecla valida, nao faz nada
 
 E_ME2_DRAW_CYCLE:
+        jal SHADER_OBSCURECER_TELA
 
         li a0, 0xA0
         li a1, MENU_EDITOR_DE_FASES_X

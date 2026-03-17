@@ -24,8 +24,6 @@ EDITOR_MENU_FASE_SALVA:
         sb a0, STATUS, t0               # salva o status  
         # fazer essa operacao eh importante para evitar que numeros acima de 127 sejam interpretados como negativos
 
-E_FS1_OBSCURECER_TELA:
-        jal SHADER_OBSCURECER_TELA
         j E_FS1_DRAW_CYCLE
 
 E_FS1_IDLE:
@@ -43,6 +41,8 @@ E_FS1_LOOP:
         j E_FS1_RET
 
 E_FS1_DRAW_CYCLE:
+        jal SHADER_OBSCURECER_TELA
+
         li a0, 0xA0
         li a1, MENU_FASE_SALVA_X
         li a2, MENU_FASE_SALVA_Y

@@ -107,6 +107,7 @@ E_SF1_ENTER:
 	j E_SF1_DRAW_CYCLE
 
 E_SF1_DRAW_CYCLE:
+        jal SHADER_OBSCURECER_TELA
 
         li a0, 0xA0
         li a1, MENU_SALVAR_FASE_X

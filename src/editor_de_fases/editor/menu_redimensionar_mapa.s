@@ -13,8 +13,6 @@ EDITOR_MENU_REDIMENSIONAR_MAPA:
         sw s0, 4(sp)
         sw s1, 8(sp)
 
-E_RM1_OBSCURECER_TELA:
-        jal SHADER_OBSCURECER_TELA
         j E_RM1_DRAW_CYCLE
 
 E_RM1_IDLE:
@@ -86,6 +84,7 @@ E_RM1_REDIMENSIONAR:
         j E_RM1_RET
 
 E_RM1_DRAW_CYCLE:
+        jal SHADER_OBSCURECER_TELA
 
         li a0, 0xA0
         li a1, MENU_REDIMENSIONAR_MAPA_X

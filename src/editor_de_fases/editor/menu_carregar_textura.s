@@ -103,6 +103,7 @@ E_MC3_CARREGAR_TEXTURA:
         j E_MC3_RET
 
 E_MC3_DRAW_CYCLE:
+        jal SHADER_OBSCURECER_TELA
 
         li a0, 0xA0
         li a1, MENU_CARREGAR_TEXTURA_X
