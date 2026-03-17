@@ -2,7 +2,7 @@
 # Cria a paleta de tiles disponiveis com base na textura fornecida.
 #
 # ARGUMENTOS:
-# a0 - textura de inimigos
+# a0 - textura de NPCS
 
 EDITOR_CRIAR_PALETA_DE_NPCS:
 
