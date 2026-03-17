@@ -88,7 +88,7 @@ E_CP1_REMOVE_CARACTERE:
 	j E_CP1_DRAW_CYCLE
 
 E_CP1_ENTER:
-        lw t0, CP1_DATA_STR_CARACTERES_DIGITADOS
+        lb t0, CP1_DATA_STR_CARACTERES_DIGITADOS
         beqz t0, E_CP1_REMOVER_TEXTURA  # se nao houver nenhum caractere digitado, remove a textura
 
         la a0, CP1_STR_PATH             # a0 - string para carregar
