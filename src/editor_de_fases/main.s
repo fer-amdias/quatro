@@ -15,8 +15,6 @@ INTRO_TUNE: "../assets/musicas/intro_tune.bin"
 
 MAIN:
 
-la a0, TEXTURA_INICIAL
-jal EDITOR_CARREGAR_TEXTURA
 jal EDITOR_MENU_PRINCIPAL
 
 # finaliza
