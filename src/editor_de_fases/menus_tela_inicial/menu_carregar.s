@@ -152,7 +152,7 @@ E_MC2_CARREGAR_FASE:
 
 	jal EDITOR_DE_FASES
 	li a0, 1
-	la a1, intro_tune
+	la a1, INTRO_TUNE
 	li a2, 1
 	li a3, 1
 	jal PROC_TOCAR_AUDIO

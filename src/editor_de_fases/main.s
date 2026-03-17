@@ -9,7 +9,7 @@
 
 .data
 
-TEXTURA_INICIAL: "../assets/texturas/ch0.bin"
+INTRO_TUNE: "../assets/musicas/intro_tune.bin"
 
 .text
 
@@ -92,3 +92,6 @@ ecall
 
 # SHADERS
 .include "../shaders/obscurecer_tela.s"
+
+# ARQUIVOS
+.include "../arquivos/carregar_arquivo_em_buffer.s"

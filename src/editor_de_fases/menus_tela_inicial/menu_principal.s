@@ -8,7 +8,7 @@ EDITOR_MENU_PRINCIPAL:
 	sw ra, (sp)
 
 	li a0, 1
-	la a1, intro_tune
+	la a1, INTRO_TUNE
 	li a2, 1
 	li a3, 1
 	jal PROC_TOCAR_AUDIO
