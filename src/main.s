@@ -107,7 +107,6 @@ CAP2:
 .include "./renderizacao/imprimir_textura.s"
 .include "./renderizacao/preencher_tela.s"
 .include "./renderizacao/efeito_explosao.s"
-.include "./renderizacao/carregar_textura.s"
 
 # SHADERS
 .include "./shaders/grayscale.s"
