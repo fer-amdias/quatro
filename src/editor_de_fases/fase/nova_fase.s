@@ -23,41 +23,21 @@ EDITOR_NOVA_FASE:
 
         # CARREGA OS DADOS PADRAO
         copiar_string(TEXTURA_INICIAL, FASE_TEXTURA)
-        la a0, TEXTURA_INICIAL
-        la a1, TEXTURA_BUFFER
-        jal EDITOR_CARREGAR_TEXTURA
-
         copiar_string(TEXTURA_NPCS_INICIAL, FASE_TEXTURA_NPCS)
-        la a0, TEXTURA_NPCS_INICIAL
-        la a1, TEXTURA_NPCS_BUFFER
-        jal EDITOR_CARREGAR_TEXTURA
-
         copiar_string(TEXTURA_JOGADOR_INICIAL, FASE_TEXTURA_JOGADOR)
-
         copiar_string(TEXTURA_FUNDO_INICIAL, FASE_TEXTURA_DE_FUNDO)
-        la a0, TEXTURA_FUNDO_INICIAL
-        la a1, TEXTURA_FUNDO_BUFFER
-        jal EDITOR_CARREGAR_TEXTURA
-
         copiar_string(TEXTURA_PERGAMINHO_INICIAL, FASE_TEXTURA_PERGAMINHO)
-
         copiar_string(AUDIO_SOUNDTRACK_INICIAL, FASE_AUDIO_SOUNDTRACK)
-        li a0, 1                        # modo 1: tocar novo audio
-        la a1, AUDIO_SOUNDTRACK_INICIAL # soundtrack inicial
-        li a2, 1                        # track 1, de musica
-        li a3, 1                        # COM loop
-        jal PROC_TOCAR_AUDIO
-
         copiar_string(AUDIO_POWERUP_INICIAL, FASE_AUDIO_POWERUP)
-
         copiar_string(AUDIO_MORTE_INICIAL, FASE_AUDIO_MORTE)
-
         copiar_string(AUDIO_PERGAMINHO_INICIAL, FASE_AUDIO_PERGAMINHO)
         sw zero, FASE_LIMITE_DE_TEMPO, t0
         sw zero, FASE_PERGAMINHO_NO_INICIO, t0
         sw zero, FASE_SAIDA_LIVRE, t0
         li t0, 1
         sw t0, TAMANHO_STRUCT_TILE, t1
+
+        jal EDITOR_CARREGAR_METADADOS
 
         mv t0, zero     # t0 sera o nosso contador de bytes alocados
 
