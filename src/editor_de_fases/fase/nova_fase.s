@@ -53,6 +53,11 @@ EDITOR_NOVA_FASE:
         copiar_string(AUDIO_MORTE_INICIAL, FASE_AUDIO_MORTE)
 
         copiar_string(AUDIO_PERGAMINHO_INICIAL, FASE_AUDIO_PERGAMINHO)
+        sw zero, FASE_LIMITE_DE_TEMPO, t0
+        sw zero, FASE_PERGAMINHO_NO_INICIO, t0
+        sw zero, FASE_SAIDA_LIVRE, t0
+        li t0, 1
+        sw t0, TAMANHO_STRUCT_TILE, t1
 
         mv t0, zero     # t0 sera o nosso contador de bytes alocados
 
