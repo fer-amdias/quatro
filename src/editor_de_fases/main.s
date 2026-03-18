@@ -38,7 +38,10 @@ ecall
 .include "../menus/menu_creditos.s"
 
 # FASES
-.include "./fase/carregar_fase.s"
+.include "./fase/carregar_fase/carregar_fase.s"
+.include "./fase/carregar_fase/carregar_fase_v0.s"
+.include "./fase/carregar_fase/carregar_fase_v1_0.s"
+.include "./fase/carregar_metadados.s"
 .include "./fase/imprimir_fase_no_fase_buffer.s"
 .include "./fase/nova_fase.s"
 .include "./fase/salvar_fase.s"
