@@ -48,11 +48,15 @@ E_SF2_ESCREVER_METADATA:
 
 E_SF2_ESCREVER_TILEMAP:
 
-        # a quantidade de bytes a serem escritos eh o tamanho do tilemap (L * C) + Largura e Comprimento (8 bytes)
+        # a quantidade de tiles a serem escritos eh o tamanho do tilemap (L * C)
         la t0, TILEMAP_BUFFER
         lw t1, (t0)
         lw t2, 4(t0)
         mul t0, t1, t2
+
+        # a qtd de bytes eh tiles*sizeof(tile) + largura e comprimento (8 bytes)
+        lw t1, TAMANHO_STRUCT_TILE
+        mul t0, t0, t1
         addi t0, t0, 8
 
         # agora escrevemos
