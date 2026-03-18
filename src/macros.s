@@ -321,6 +321,7 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 .macro copiar_string(%origem, %destino)
 	la a0, %origem
 	la a1, %destino
+	mv a2, zero		# ate o final
 	jal PROC_COPIAR_STRING
 .end_macro
 
