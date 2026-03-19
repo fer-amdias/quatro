@@ -183,14 +183,14 @@ void printa_offsets(FILE* entrada, FILE* saida, int nlinhas, int nlinguas, unsig
 
                 }while(c != -1 && (c != '\n' || aspas));
                 
-                fprintf(saida, "%-40s .word ", buffer);
+                fprintf(saida, "%-64s .word ", buffer);
                 for (int j = 0; j < nlinguas; j++){
                       fprintf(saida, "%8u, ", offsets[i][j]);  
                 }
                 fputc('\n', saida);
         }
 
-        fprintf(saida, "%-40s .word ", "offset_fim:");
+        fprintf(saida, "%-64s .word ", "offset_fim:");
         for (int j = 0; j < nlinguas; j++){
                       fprintf(saida, "%8u, ", 0);  
         }
