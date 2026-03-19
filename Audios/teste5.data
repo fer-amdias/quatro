@@ -1,0 +1,663 @@
+teste5:
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 0
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 0
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 1000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 1250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 1500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 1750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 1875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 2000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 2500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 2875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 3000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 3500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 3875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 4000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 4250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 4500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 4750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 4875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 5000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 5250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 5500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 5750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 5875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 6000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 6500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 6875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 7000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 7500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 7875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 8000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 8250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 8500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 8750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 8875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 9000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9250
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 9250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 9500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9750
+
+    .byte 41, 82, 127
+    .space 1
+    .word 125
+    .word 9750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 9875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 10000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 10500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 10875
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 11000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11000
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11125
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11250
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11375
+
+    .byte 35, 82, 127
+    .space 1
+    .word 125
+    .word 11500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11500
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11625
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11750
+
+    .byte 38, 82, 127
+    .space 1
+    .word 125
+    .word 11875
+
+teste5_FIM:
+    .word 0 0 0

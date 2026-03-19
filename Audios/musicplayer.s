@@ -8,7 +8,7 @@
 .data
 
 # switch this for the path of the file you wish to play
-.include "example.data"
+.include "pergaminho_ch1.data"
 
 TRACK_TIMESTAMP:	.word 0 # start timestamp
 TRACK_POINTER:		.word 0 # points to the next note
@@ -16,7 +16,7 @@ TRACK_POINTER:		.word 0 # points to the next note
 .text
 
 # switch "example" for the name of the file you wish to play
-.eqv file example
+.eqv file pergaminho_ch1
 
 .eqv pitch 0
 .eqv instrument 1
@@ -67,7 +67,6 @@ PLAY:
 		
 		j PLAY				# keeps checking
 FINISH:
-       		# j START			uncomment to loop
        		
        		# we need to wait until the last notes play
        		
@@ -75,7 +74,13 @@ FINISH:
        		addi t0, t0, -4			# goes back to the last played note
        		
        		lw a0, duration(t0)		# sleep until the last note plays
-		li a7, 32      # sleep for 300 ms
+		li a7, 32      
+		ecall
+
+       		#j START			uncomment to loop
+
+		li a0, 1000			# sleep for an additional 1s just to make sure
+		li a7, 32	
 		ecall
        	
        		li a7, 10
