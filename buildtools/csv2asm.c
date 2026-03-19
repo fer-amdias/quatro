@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LINGUAS 30
-#define VERSAO "1.4.3 - 16 marco 2026"
+#define VERSAO "1.4.4 - 19 marco 2026"
 
 // TODO: pular leading spaces no comeco
 
