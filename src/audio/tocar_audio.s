@@ -12,7 +12,7 @@
 #       (nenhum)                                             	#
 #################################################################
 
-.eqv TAMANHO_MAX_ARQ_DE_MUSICA 8192	# 8KB
+.eqv TAMANHO_MAX_ARQ_DE_MUSICA 65536	# 64KiB
 
 .data
 
