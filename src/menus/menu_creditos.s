@@ -38,7 +38,7 @@ R_MC2_LOOP:
 	li a1, 1
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 
-	la a0, CREDITOS_VOLTAR
+	la a0, locale_CREDITOS_VOLTAR
 	li a1, 0
 	li a2, 20
 	li a3, 0x00FF
@@ -54,35 +54,35 @@ R_MC2_LOOP:
         mv s1, x0                               # s1 = delta_T (vai ser usaad na macro de mostrar_creditos)
 	
         # mostrar_creditos(%key, %delta_t)
-        mostrar_creditos(CREDITOS_1, 20)       
-        mostrar_creditos(CREDITOS_FERNANDO, 10)
-        mostrar_creditos(CREDITOS_2, 30)       
-        mostrar_creditos(CREDITOS_FERNANDO, 10)
-        mostrar_creditos(CREDITOS_3, 30)      
-        mostrar_creditos(CREDITOS_AS21, 20)   
-	mostrar_creditos(CREDITOS_AS22, 10)   
-        mostrar_creditos(CREDITOS_AS23, 10)   
-        mostrar_creditos(CREDITOS_AS31, 10)   
-        mostrar_creditos(CREDITOS_AS32, 10)   
-        mostrar_creditos(CREDITOS_AS33, 10)   
-        mostrar_creditos(CREDITOS_AS34, 10)   
-        mostrar_creditos(CREDITOS_AS11, 10)   
-        mostrar_creditos(CREDITOS_AS12, 10)   
-        mostrar_creditos(CREDITOS_AS13, 10)   
-        mostrar_creditos(CREDITOS_FIM1, 60)   
-        mostrar_creditos(CREDITOS_FIM2, 30)   
-        mostrar_creditos(CREDITOS_FIM3, 100)   
-        mostrar_creditos(CREDITOS_FIM4, 200)   
-        mostrar_creditos(CREDITOS_FIM5, 200)   
-        mostrar_creditos(CREDITOS_FIM6, 100)   
-        mostrar_creditos(CREDITOS_FIM7, 30)   
-        mostrar_creditos(CREDITOS_FIM0, 10)   
-        mostrar_creditos(CREDITOS_FIM8, 10)   
-        mostrar_creditos(CREDITOS_FIM9, 10)   
-        mostrar_creditos(CREDITOS_FIM10, 10)  
-        mostrar_creditos(CREDITOS_FIM11, 80) 
-        mostrar_creditos(CREDITOS_FIM12, 80) 
-        mostrar_creditos(CREDITOS_FIM13, 70) 
+        mostrar_creditos(locale_CREDITOS_1, 20)       
+        mostrar_creditos(locale_CREDITOS_FERNANDO, 10)
+        mostrar_creditos(locale_CREDITOS_2, 30)       
+        mostrar_creditos(locale_CREDITOS_FERNANDO, 10)
+        mostrar_creditos(locale_CREDITOS_3, 30)      
+        mostrar_creditos(locale_CREDITOS_AS21, 20)   
+	mostrar_creditos(locale_CREDITOS_AS22, 10)   
+        mostrar_creditos(locale_CREDITOS_AS23, 10)   
+        mostrar_creditos(locale_CREDITOS_AS31, 10)   
+        mostrar_creditos(locale_CREDITOS_AS32, 10)   
+        mostrar_creditos(locale_CREDITOS_AS33, 10)   
+        mostrar_creditos(locale_CREDITOS_AS34, 10)   
+        mostrar_creditos(locale_CREDITOS_AS11, 10)   
+        mostrar_creditos(locale_CREDITOS_AS12, 10)   
+        mostrar_creditos(locale_CREDITOS_AS13, 10)   
+        mostrar_creditos(locale_CREDITOS_FIM1, 60)   
+        mostrar_creditos(locale_CREDITOS_FIM2, 30)   
+        mostrar_creditos(locale_CREDITOS_FIM3, 100)   
+        mostrar_creditos(locale_CREDITOS_FIM4, 200)   
+        mostrar_creditos(locale_CREDITOS_FIM5, 200)   
+        mostrar_creditos(locale_CREDITOS_FIM6, 100)   
+        mostrar_creditos(locale_CREDITOS_FIM7, 30)   
+        mostrar_creditos(locale_CREDITOS_FIM0, 10)   
+        mostrar_creditos(locale_CREDITOS_FIM8, 10)   
+        mostrar_creditos(locale_CREDITOS_FIM9, 10)   
+        mostrar_creditos(locale_CREDITOS_FIM10, 10)  
+        mostrar_creditos(locale_CREDITOS_FIM11, 80) 
+        mostrar_creditos(locale_CREDITOS_FIM12, 80) 
+        mostrar_creditos(locale_CREDITOS_FIM13, 70) 
 	
 	li t1,0xFF200000		# carrega o endereco de controle do KDMMIO
 	lw t0,0(t1)			# Le bit de Controle Teclado

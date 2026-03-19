@@ -21,13 +21,13 @@ R_MJ1_JOGAR:
 	jal PROC_PREENCHER_TELA		# preenche a tela de preto
 
         #imprimir_string(%stringkey, %x, %y, %cor, %modo)
-        imprimir_string(JOGAR_TITULO, 70, 105, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO0, 50, 120, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO1, 50, 130, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO2, 50, 140, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO3, 50, 150, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO4, 50, 160, 0x00FF, 0)
-        imprimir_string(JOGAR_OPCAO5, 50, 180, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_TITULO, 70, 105, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO0, 50, 120, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO1, 50, 130, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO2, 50, 140, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO3, 50, 150, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO4, 50, 160, 0x00FF, 0)
+        imprimir_string(locale_JOGAR_OPCAO5, 50, 180, 0x00FF, 0)
 
 	jal PROC_DESENHAR	
 

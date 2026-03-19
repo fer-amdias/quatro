@@ -28,10 +28,10 @@ E_MP1_MENU:
 	li a7, 0
 	jal PROC_IMPRIMIR_TEXTURA
 
-	imprimir_string(EDITOR_MENU_PRINCIPAL_OPCAO_1, 100, 134, 0xC7FF, 0)
-	imprimir_string(EDITOR_MENU_PRINCIPAL_OPCAO_2, 100, 144, 0xC7FF, 0)
-	imprimir_string(EDITOR_MENU_PRINCIPAL_OPCAO_3, 100, 154, 0xC7FF, 0)
-	imprimir_string(EDITOR_MENU_PRINCIPAL_OPCAO_4, 100, 164, 0xC7FF, 0)
+	imprimir_string(locale_EDITOR_MENU_PRINCIPAL_OPCAO_1, 100, 134, 0xC7FF, 0)
+	imprimir_string(locale_EDITOR_MENU_PRINCIPAL_OPCAO_2, 100, 144, 0xC7FF, 0)
+	imprimir_string(locale_EDITOR_MENU_PRINCIPAL_OPCAO_3, 100, 154, 0xC7FF, 0)
+	imprimir_string(locale_EDITOR_MENU_PRINCIPAL_OPCAO_4, 100, 164, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

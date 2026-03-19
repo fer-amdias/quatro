@@ -81,12 +81,12 @@ E_FS1_DRAW_CYCLE:
 
 E_FS1_SALVAR_BEM_SUCEDIDO:
 
-        imprimir_string_reg(EDITOR_ARQUIVO_SALVO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_ARQUIVO_SALVO, s0, s1, 0xC7FF, 0)
         j E_FS1_DRAW_CYCLE_CONT
 
 E_FS1_SALVAR_FALHO:
 
-        imprimir_string_reg(EDITOR_ERRO_SALVAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_ERRO_SALVAR, s0, s1, 0xC7FF, 0)
 
 E_FS1_DRAW_CYCLE_CONT:
 

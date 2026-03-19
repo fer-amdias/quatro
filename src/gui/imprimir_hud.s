@@ -24,7 +24,7 @@ PROC_IMPRIMIR_HUD:
 		
 		
 P_IH1_FASE_ATUAL:
-		la t0, HUD_FASE_ATUAL
+		la t0, locale_HUD_FASE_ATUAL
 		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
 
 		mv t1, a0		# pega o inteiro de capitulo
@@ -34,7 +34,7 @@ P_IH1_FASE_ATUAL:
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 11(t0)		# substitui na string
 		
-		la a0, HUD_FASE_ATUAL	# carrega a string
+		la a0, locale_HUD_FASE_ATUAL	# carrega a string
 		li a1, 8
 		li a2, 8		# imprime em (8, 8)
 		lw a3, 4(sp)
@@ -63,14 +63,14 @@ P_IH1_TEMPO_RESTANTE:
 		jal PROC_IMPRIMIR_INTEIRO
 		
 P_IH1_NPCS_RESTANTES:
-		la t0, HUD_INIMIGOS_RESTANTES
+		la t0, locale_HUD_INIMIGOS_RESTANTES
 		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
 
 		lb t1, CONTADOR_INIMIGOS# pega o numero de npcs restantes
 		addi t1, t1, 48		# converte para caractere
 		sb t1, 11(t0)		# substitui na string
 		
-		la a0, HUD_INIMIGOS_RESTANTES	# carrega a string
+		la a0, locale_HUD_INIMIGOS_RESTANTES	# carrega a string
 		li a1, 217
 		li a2, 8		# imprime em (217, 8)
 		lw a3, 4(sp)
@@ -80,13 +80,13 @@ P_IH1_NPCS_RESTANTES:
 P_IH1_VIDAS_RESTANTES:
 		lb t1, VIDAS_RESTANTES
 
-		la t0, HUD_VIDAS_RESTANTES
+		la t0, locale_HUD_VIDAS_RESTANTES
 		selecionar_texto_rg(t0, t2, t3, t0)  # carrega a string
 
 		addi t1, t1, 48			# transforma em caractere
 		sb t1, 7(t0)			# atualiza a string
 		
-		la a0, HUD_VIDAS_RESTANTES	# carrega a string
+		la a0, locale_HUD_VIDAS_RESTANTES	# carrega a string
 		li a1, 8
 		li a2, 224		# imprime em (8, 8)
 		lw a3, 4(sp)

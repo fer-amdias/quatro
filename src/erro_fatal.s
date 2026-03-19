@@ -19,7 +19,7 @@ ROTINA_ERRO_FATAL:
 	li a1, 1
 	jal PROC_PREENCHER_TELA		# preenche a tela de azul
 
-        imprimir_string(ERRO_FATAL_HEADER, 20, 20, 0xC7FF, 0)
+        imprimir_string(locale_ERRO_FATAL_HEADER, 20, 20, 0xC7FF, 0)
 
         mv a0, s0
 	li a1, 20
@@ -28,7 +28,7 @@ ROTINA_ERRO_FATAL:
 	li a4, 1        # direto da memoria
 	jal PROC_IMPRIMIR_STRING
 
-        imprimir_string(ERRO_FATAL_TECLA, 20, 100, 0xC7FF, 0)
+        imprimir_string(locale_ERRO_FATAL_TECLA, 20, 100, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

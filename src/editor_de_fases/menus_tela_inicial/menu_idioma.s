@@ -22,11 +22,11 @@ E_MI1_MENU:
 	li a7, 0
 	jal PROC_IMPRIMIR_TEXTURA
 
-        imprimir_string(EDITOR_MENU_IDIOMA_PROMPT, 100, 134, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_IDIOMA_PT, 100, 149, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_IDIOMA_EN, 100, 159, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_IDIOMA_BOAT, 100, 169, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_OPCAO_9, 100, 179, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_IDIOMA_PROMPT, 100, 134, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_IDIOMA_PT, 100, 149, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_IDIOMA_EN, 100, 159, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_IDIOMA_BOAT, 100, 169, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_OPCAO_9, 100, 179, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

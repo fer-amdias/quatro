@@ -22,22 +22,22 @@ E_MC1_MENU:
 	li a7, 0
 	jal PROC_IMPRIMIR_TEXTURA
 
-        imprimir_string(EDITOR_MENU_ESCOLHA, 100, 134, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_ESCOLHA, 100, 134, 0xC7FF, 0)
 
-        imprimir_string(EDITOR_MENU_CONFIG_OPCAO_1, 100, 149, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_CONFIG_OPCAO_1, 100, 149, 0xC7FF, 0)
 
         lb t0, MUTADO
         bnez t0, E_MC1_PRINT_DESMUTAR
 
 
 E_MC1_PRINT_MUTAR:
-        imprimir_string(EDITOR_MENU_CONFIG_OPCAO_2_MUTAR, 100, 159, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_CONFIG_OPCAO_2_MUTAR, 100, 159, 0xC7FF, 0)
         j E_MC1_MENU_CONT
 E_MC1_PRINT_DESMUTAR:
-        imprimir_string(EDITOR_MENU_CONFIG_OPCAO_2_DESMUTAR, 100, 159, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_CONFIG_OPCAO_2_DESMUTAR, 100, 159, 0xC7FF, 0)
 E_MC1_MENU_CONT:
 
-        imprimir_string(EDITOR_MENU_OPCAO_9, 100, 169, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_OPCAO_9, 100, 169, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

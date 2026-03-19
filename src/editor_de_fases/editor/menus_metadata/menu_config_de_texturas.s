@@ -72,17 +72,17 @@ E_MT1_DRAW_CYCLE:
         addi s0, s0, 10                 # x
         addi s1, s1, 10                 # y
 
-        imprimir_string_reg(EDITOR_MENU_TEXTURAS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TEXTURAS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_MENU_TEXTURA_MAPA, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TEXTURA_MAPA, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_TEXTURA_NPCS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TEXTURA_NPCS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_TEXTURA_JOGADOR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TEXTURA_JOGADOR, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_TEXTURA_DE_FUNDO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TEXTURA_DE_FUNDO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

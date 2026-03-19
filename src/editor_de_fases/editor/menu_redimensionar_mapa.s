@@ -116,13 +116,13 @@ E_RM1_DRAW_CYCLE:
         addi s1, s1, 10                 # y
         jal EDITOR_IMPRIMIR_MODELO
 
-        imprimir_string_reg(EDITOR_MENU_TITULO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_TITULO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 10
-        imprimir_string_reg(EDITOR_MENU_REDIMENSIONAR_CONTROLES, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_REDIMENSIONAR_CONTROLES, s0, s1, 0xC7FF, 0)
         addi s1, s1, 140
-        imprimir_string_reg(EDITOR_MENU_CONFIRMAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_CONFIRMAR, s0, s1, 0xC7FF, 0)
         addi s1, s1, 10      
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR_AO_EDITOR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR_AO_EDITOR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

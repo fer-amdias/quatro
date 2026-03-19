@@ -74,19 +74,19 @@ E_MM1_DRAW_CYCLE:
         addi s0, s0, 10                 # x
         addi s1, s1, 10                 # y
 
-        imprimir_string_reg(EDITOR_MENU_METADATA, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_MENU_METADATA_TEXTURAS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA_TEXTURAS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_METADATA_AUDIOS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA_AUDIOS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_METADATA_TEXTO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA_TEXTO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_METADATA_TEMPO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA_TEMPO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_METADATA_MARCADORES, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_METADATA_MARCADORES, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

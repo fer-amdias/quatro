@@ -78,19 +78,19 @@ E_ME2_DRAW_CYCLE:
         addi s0, s0, 10                 # x
         addi s1, s1, 10                 # y
 
-        imprimir_string_reg(EDITOR_UI_OPTIONS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_UI_OPTIONS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_OPCOES_EDITAR_METADADOS, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_EDITAR_METADADOS, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_REDIMENSIONAR_MAPA, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_REDIMENSIONAR_MAPA, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_SALVAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_SALVAR, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_SALVAR_COMO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_SALVAR_COMO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_RETORNAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_RETORNAR, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR_AO_EDITOR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR_AO_EDITOR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

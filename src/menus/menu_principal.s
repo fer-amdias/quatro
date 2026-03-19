@@ -48,10 +48,10 @@ R_MP1_MENU:
 	jal PROC_IMPRIMIR_TEXTURA
 
 	#imprimir_string(%stringkey, %x, %y, %cor, %modo)
-	imprimir_string(MENU_OPCAO1, 100, 134, 0x00FF, 0)
-	imprimir_string(MENU_OPCAO2, 100, 144, 0x00FF, 0)
-	imprimir_string(MENU_OPCAO3, 100, 154, 0x00FF, 0)
-	imprimir_string(MENU_OPCAO4, 100, 164, 0x00FF, 0)
+	imprimir_string(locale_MENU_OPCAO1, 100, 134, 0x00FF, 0)
+	imprimir_string(locale_MENU_OPCAO2, 100, 144, 0x00FF, 0)
+	imprimir_string(locale_MENU_OPCAO3, 100, 154, 0x00FF, 0)
+	imprimir_string(locale_MENU_OPCAO4, 100, 164, 0x00FF, 0)
 	
 	jal PROC_DESENHAR	
 	

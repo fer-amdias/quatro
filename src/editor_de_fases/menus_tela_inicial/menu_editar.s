@@ -22,10 +22,10 @@ E_ME1_MENU:
 	li a7, 0
 	jal PROC_IMPRIMIR_TEXTURA
 
-        imprimir_string(EDITOR_MENU_ESCOLHA, 100, 134, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_EDITAR_OPCAO_1, 100, 149, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_EDITAR_OPCAO_2, 100, 159, 0xC7FF, 0)
-        imprimir_string(EDITOR_MENU_OPCAO_9, 100, 169, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_ESCOLHA, 100, 134, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_EDITAR_OPCAO_1, 100, 149, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_EDITAR_OPCAO_2, 100, 159, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_OPCAO_9, 100, 169, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

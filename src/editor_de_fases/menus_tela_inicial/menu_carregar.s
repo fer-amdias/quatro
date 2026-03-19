@@ -43,17 +43,17 @@ E_MC2_MENU:
 	li a7, 0
 	jal PROC_IMPRIMIR_TEXTURA
 
-        imprimir_string(EDITOR_MENU_CARREGAR_PROMPT, 100, 134, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_CARREGAR_PROMPT, 100, 134, 0xC7FF, 0)
         imprimir_string(MENU_CARREGAR_STR_TERMINAL, 10, 149, 0xC7FF, 1)
         imprimir_string(STR_NOME_ARQUIVO, 114, 149, 0xC7FF, 1)
-        imprimir_string(EDITOR_MENU_CARREGAR_OPCAO_ESC, 100, 164, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_MENU_CARREGAR_OPCAO_ESC, 100, 164, 0xC7FF, 0)
 
 	lb t0, MENU_CARREGAR_ARQUIVO_NAO_ENCONTRADO
 	beqz t0, E_MC2_MENU_CONT
 
 	# se o arquivo nao foi encontrado
 
-	imprimir_string(EDITOR_MENU_CARREGAR_NAO_ENCONTRADO, 100, 189, 0xC737, 0)
+	imprimir_string(locale_EDITOR_MENU_CARREGAR_NAO_ENCONTRADO, 100, 189, 0xC737, 0)
 	
 E_MC2_MENU_CONT:
 	jal PROC_DESENHAR

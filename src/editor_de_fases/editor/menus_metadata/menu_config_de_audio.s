@@ -72,17 +72,17 @@ E_MA1_DRAW_CYCLE:
         addi s0, s0, 10                 # x
         addi s1, s1, 10                 # y
 
-        imprimir_string_reg(EDITOR_MENU_AUDIO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_AUDIO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_MENU_AUDIO_SOUNDTRACK, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_AUDIO_SOUNDTRACK, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_AUDIO_POWERUP, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_AUDIO_POWERUP, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_AUDIO_MORTE, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_AUDIO_MORTE, s0, s1, 0xC7FF, 0)
         addi s1, s1, 15
-        imprimir_string_reg(EDITOR_MENU_AUDIO_PERGAMINHO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_AUDIO_PERGAMINHO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

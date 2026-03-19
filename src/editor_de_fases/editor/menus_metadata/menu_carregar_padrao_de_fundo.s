@@ -143,25 +143,25 @@ E_CP1_DRAW_CYCLE:
         addi s0, s0, 9                 # x
         addi s1, s1, 9                 # y
 
-        imprimir_string_reg(EDITOR_MENU_CARREGAR_PROMPT, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_CARREGAR_PROMPT, s0, s1, 0xC7FF, 0)
         addi s1, s1, 10
-        imprimir_string_reg(EDITOR_MENU_FUNDO_DICA, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_FUNDO_DICA, s0, s1, 0xC7FF, 0)
         addi s1, s1, 20
         imprimir_string_reg(CP1_DATA_STR_TERMINAL, s0, s1, 0xC7FF, 1)
         addi s0, s0, 32
         imprimir_string_reg(CP1_STR_PATH, s0, s1, 0xC7FF, 1)
         addi s0, s0, -32
         addi s1, s1, 46
-        imprimir_string_reg(EDITOR_MENU_CONFIRMAR, s0, s1,0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_CONFIRMAR, s0, s1,0xC7FF, 0)
         addi s1, s1, 10
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         lb t0, CP1_DATA_ARQUIVO_NAO_ENCONTRADO
         beqz t0, E_CP1_DRAW_CYCLE_CONT
 
 E_CP1_ARQUIVO_NAO_ENCONTRADO:
         addi s1, s1, -20
-        imprimir_string_reg(EDITOR_MENU_CARREGAR_NAO_ENCONTRADO, s0, s1, 0xC737, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_CARREGAR_NAO_ENCONTRADO, s0, s1, 0xC737, 0)
 
 E_CP1_DRAW_CYCLE_CONT:
         jal PROC_DESENHAR

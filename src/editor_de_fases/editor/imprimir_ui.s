@@ -20,12 +20,12 @@ E_IU1_IMPRIMIR_STR_NOME_ARQUIVO:
         j E_IU1_CONT
 
 E_IU1_IMPRIMIR_UNTITLED:
-        imprimir_string(ARQUIVO_SEM_TITULO, 234, 10, 0xC7FF, 0)
+        imprimir_string(locale_ARQUIVO_SEM_TITULO, 234, 10, 0xC7FF, 0)
 
 E_IU1_CONT:
 
-        imprimir_string(EDITOR_UI_ESC, 234, 45, 0xC7FF, 0)
-        imprimir_string(EDITOR_UI_OPTIONS, 234, 55, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_UI_ESC, 234, 45, 0xC7FF, 0)
+        imprimir_string(locale_EDITOR_UI_OPTIONS, 234, 55, 0xC7FF, 0)
 
 E_IU1_IMPRIMIR_DIMENSOES:
         lw a0, TILEMAP_BUFFER

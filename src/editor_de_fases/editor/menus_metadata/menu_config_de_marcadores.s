@@ -69,35 +69,35 @@ E_MM2_DRAW_CYCLE:
         addi s0, s0, 10                 # x
         addi s1, s1, 10                 # y
 
-        imprimir_string_reg(EDITOR_MENU_MARCADORES, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_MARCADORES, s0, s1, 0xC7FF, 0)
         addi s1, s1, 30
 
         # imprime HABILITAR/DESABILITAR PERGAMINHO NO INICIO conforme marcador
         lw t0, FASE_PERGAMINHO_NO_INICIO
         beqz t0, E_MM2_DRAW_PERGAMINHO_HABILITAR
-        imprimir_string_reg(EDITOR_MENU_PERGAMINHO_INICIO_DISABLE, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_PERGAMINHO_INICIO_DISABLE, s0, s1, 0xC7FF, 0)
 
         j E_MM2_DRAW_CYCLE_CONT
         
 
 E_MM2_DRAW_PERGAMINHO_HABILITAR:
-        imprimir_string_reg(EDITOR_MENU_PERGAMINHO_INICIO_ENABLE, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_PERGAMINHO_INICIO_ENABLE, s0, s1, 0xC7FF, 0)
 
 E_MM2_DRAW_CYCLE_CONT:
         addi s1, s1, 15
 
         lw t0, FASE_SAIDA_LIVRE
         beqz t0, E_MM2_DRAW_SAIDA_LIVRE_HABILITAR
-        imprimir_string_reg(EDITOR_MENU_SAIDA_LIVRE_DISABLE, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_SAIDA_LIVRE_DISABLE, s0, s1, 0xC7FF, 0)
 
         j E_MM2_DRAW_CYCLE_CONT2
 
 E_MM2_DRAW_SAIDA_LIVRE_HABILITAR:
-        imprimir_string_reg(EDITOR_MENU_SAIDA_LIVRE_ENABLE, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_SAIDA_LIVRE_ENABLE, s0, s1, 0xC7FF, 0)
 
 E_MM2_DRAW_CYCLE_CONT2:
         addi s1, s1, 30
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
 

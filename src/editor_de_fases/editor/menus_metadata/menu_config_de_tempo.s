@@ -126,18 +126,18 @@ E_MT3_DRAW_CYCLE:
         addi s0, s0, 9                 # x
         addi s1, s1, 9                 # y
 
-        imprimir_string_reg(EDITOR_MENU_LIMITE_DE_TEMPO_PROMPT, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_LIMITE_DE_TEMPO_PROMPT, s0, s1, 0xC7FF, 0)
         addi s1, s1, 10
-        imprimir_string_reg(EDITOR_MENU_LIMITE_DE_TEMPO_AVISO, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_LIMITE_DE_TEMPO_AVISO, s0, s1, 0xC7FF, 0)
         addi s1, s1, 20
         imprimir_string_reg(MT3_DATA_STR_TERMINAL, s0, s1, 0xC7FF, 1)
         addi s0, s0, 88
         imprimir_string_reg(MT3_TEMPO, s0, s1, 0xC7FF, 1)
         addi s0, s0, -88
         addi s1, s1, 20
-        imprimir_string_reg(EDITOR_MENU_CONFIRMAR, s0, s1,0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_MENU_CONFIRMAR, s0, s1,0xC7FF, 0)
         addi s1, s1, 10
-        imprimir_string_reg(EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
+        imprimir_string_reg(locale_EDITOR_OPCOES_VOLTAR, s0, s1, 0xC7FF, 0)
 
         jal PROC_DESENHAR
         j E_MT3_LOOP
