@@ -42,17 +42,6 @@
 .include "../assets/texturas/explosivos.data"
 .include "../assets/texturas/placeholder.data"
 .include "../assets/texturas/jogador.data"
-.include "../assets/musicas/internationale.data"
-.include "../assets/musicas/west__hurrian_song.data"
-.include "../assets/musicas/seikilos_epitaph13.data"
-.include "../assets/musicas/seikilos_epitaph.data"
-.include "../assets/audioefeitos/morte.data"
-.include "../assets/audioefeitos/morte_ch2.data"
-.include "../assets/audioefeitos/morte_ch3.data"
-.include "../assets/audioefeitos/powerup.data"
-.include "../assets/audioefeitos/powerup_ch3.data"
-.include "../assets/audioefeitos/abertura_pergaminho.data"
-.include "../assets/audioefeitos/abertura_scroll_ch3.data"
 
 # musica
 intro_tune: .asciz "../assets/musicas/intro_tune.bin"
