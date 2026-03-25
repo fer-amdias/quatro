@@ -18,6 +18,7 @@
 
 # A track 1 eh comumente utilizada para tocar musica
 TRACK1:
+	TRACK1_ARQUIVO:		.space TAMANHO_STRING_METADATA	# arquivo tocando atualmente
 	TRACK1_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK1_TIMESTAMP:	.word 0 # quando o track comecou
 	TRACK1_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
@@ -27,6 +28,7 @@ TRACK1:
 	
 # A track 2 eh comumente utilizada para tocar efeitos sonoros
 TRACK2:
+	TRACK2_ARQUIVO:		.space TAMANHO_STRING_METADATA	# arquivo tocando atualmente
 	TRACK2_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK2_TIMESTAMP:	.word 0 # quando o track comecou
 	TRACK2_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
@@ -36,6 +38,7 @@ TRACK2:
 
 # A track 3 eh comumente utilizada para tocar miscelaneos que nao se encaixam nas outras categorias
 TRACK3:
+	TRACK3_ARQUIVO:		.space TAMANHO_STRING_METADATA	# arquivo tocando atualmente
 	TRACK3_ATIVO: 		.word 0	# se estah tocando ou nao
 	TRACK3_TIMESTAMP:	.word 0 # quando o track comecou
 	TRACK3_INICIO_POINTER:	.word 0 # pointer pra primeira nota (em caso de loop)
@@ -66,7 +69,6 @@ PROC_TOCAR_AUDIO:
 		addi sp, sp, -4
 		sw ra, (sp)
 		beqz, a0, P_TA1_TOCAR_SEQUENCIAL	# apena toca as tracks se o modo for 0
-		
 		# senao, inicializa a track escolhida
 P_TA1_SWITCH1:
 		li t0, 1
@@ -93,18 +95,25 @@ P_TA1_TOCAR_SEQUENCIAL:
 
 
 P_TA1_INICIAR_TRACK1: 		
-		addi sp, sp, -4
+		addi sp, sp, -8
 		sw ra, (sp)
+		sw s0, 4(sp)
 
-		mv a0, a1
+		mv s0, a1			# guarda o argumento fornecido (nome do arquivo)
+
+		mv a0, s0
 		la a1, TRACK1_BUFFER
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
 		blez a0, P_TA1_INICIAR_TRACK1_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
-		sw a1, TRACK1_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
-		sw a1, TRACK1_POINTER, t1	# salva o audio como o ponteiro atual tbm
+		la t0, TRACK1_ARQUIVO
+		copiar_n_string_reg(s0, t0, TAMANHO_STRING_METADATA)
+
+		la t0, TRACK1_BUFFER
+		sw t0, TRACK1_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
+		sw t0, TRACK1_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
       		sw t0, TRACK1_ATIVO, t1		# ativa a track
       		csrr t0, time
@@ -118,7 +127,8 @@ P_TA1_INICIAR_TRACK1_ERR:
 
 P_TA1_INICIAR_TRACK1_RET:
 		lw ra, (sp)
-		addi sp, sp, 4
+		lw s0, 4(sp)
+		addi sp, sp, 8
       		ret			
        		
 P_TA1_TRACK1: 
@@ -178,18 +188,25 @@ P_TA1_TRACK1_FIM2:
        		
        		
 P_TA1_INICIAR_TRACK2: 
-		addi sp, sp, -4
+		addi sp, sp, -8
 		sw ra, (sp)
+		sw s0, 4(sp)
 
-		mv a0, a1
+		mv s0, a1			# guarda o argumento fornecido (nome do arquivo)
+
+		mv a0, s0
 		la a1, TRACK2_BUFFER
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
+		la t0, TRACK2_ARQUIVO
+		copiar_n_string_reg(s0, t0, TAMANHO_STRING_METADATA)
+
 		blez a0, P_TA1_INICIAR_TRACK2_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
-		sw a1, TRACK2_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
-		sw a1, TRACK2_POINTER, t1	# salva o audio como o ponteiro atual tbm
+		la t0, TRACK2_BUFFER
+		sw t0, TRACK2_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
+		sw t0, TRACK2_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
       		sw t0, TRACK2_ATIVO, t1		# ativa a track
       		csrr t0, time
@@ -203,7 +220,8 @@ P_TA1_INICIAR_TRACK2_ERR:
 
 P_TA1_INICIAR_TRACK2_RET:
 		lw ra, (sp)
-		addi sp, sp, 4
+		lw s0, 4(sp)
+		addi sp, sp, 8
       		ret
        		
 P_TA1_TRACK2: 
@@ -261,18 +279,25 @@ P_TA1_TRACK2_FIM2:
        		
        		
 P_TA1_INICIAR_TRACK3: 	
-		addi sp, sp, -4
+		addi sp, sp, -8
 		sw ra, (sp)
+		sw s0, 4(sp)
 
-		mv a0, a1
+		mv s0, a1			# guarda o argumento fornecido (nome do arquivo)
+
+		mv a0, s0
 		la a1, TRACK1_BUFFER
 		li a2, TAMANHO_MAX_ARQ_DE_MUSICA			
 		jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
 
 		blez a0, P_TA1_INICIAR_TRACK3_ERR# desativa se o tamanho for 0 ou menos (no caso, -1 indica erro)
 
-		sw a1, TRACK3_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
-		sw a1, TRACK3_POINTER, t1	# salva o audio como o ponteiro atual tbm
+		la t0, TRACK3_ARQUIVO
+		copiar_n_string_reg(s0, t0, TAMANHO_STRING_METADATA)
+
+		la t0, TRACK1_BUFFER
+		sw t0, TRACK3_INICIO_POINTER, t1# salva o audio como o ponteiro de inicio
+		sw t0, TRACK3_POINTER, t1	# salva o audio como o ponteiro atual tbm
        		li t0, 1
       		sw t0, TRACK3_ATIVO, t1		# ativa a track
       		csrr t0, time
@@ -286,7 +311,8 @@ P_TA1_INICIAR_TRACK3_ERR:
 
 P_TA1_INICIAR_TRACK3_RET:
 		lw ra, (sp)
-		addi sp, sp, 4
+		lw s0, 4(sp)
+		addi sp, sp, 8
       		ret
        		
 P_TA1_TRACK3: 
