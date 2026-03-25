@@ -20,14 +20,13 @@ P_CS_LOOP:
         addi a0, a0, 1
         addi a1, a1, 1
         addi a2, a2, -1
-        beqz a2, P_CS1_RET
-        j P_CS_LOOP
+        bnez a2, P_CS_LOOP
+        j P_CS1_RET
 P_CS_LOOP_ATE_O_FINAL_DA_ORIGEM:
         lb t0, (a0)
         sb t0, (a1)
-        beqz t0, P_CS1_RET
         addi a0, a0, 1
         addi a1, a1, 1
-        j P_CS_LOOP_ATE_O_FINAL_DA_ORIGEM
+        bnez t0, P_CS_LOOP_ATE_O_FINAL_DA_ORIGEM
 P_CS1_RET:
         ret
