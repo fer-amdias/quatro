@@ -325,6 +325,27 @@ MACRO_DATA_QUEBRA_DE_LINHA: .string "\n"
 	jal PROC_COPIAR_STRING
 .end_macro
 
+.macro copiar_n_string(%origem, %destino, %bytes)
+	la a0, %origem
+	la a1, %destino
+	li a2, %bytes		# somente ateh essa quantidade
+	jal PROC_COPIAR_STRING
+.end_macro
+
+.macro copiar_string_reg(%origem, %destino)
+	mv a0, %origem
+	mv a1, %destino
+	mv a2, zero		# ate o final
+	jal PROC_COPIAR_STRING
+.end_macro
+
+.macro copiar_n_string_reg(%origem, %destino, %bytes)
+	mv a0, %origem
+	mv a1, %destino
+	li a2, %bytes		# somente ateh essa quantidade
+	jal PROC_COPIAR_STRING
+.end_macro
+
 .macro sleep(%seg)
 	.text
 	li a0, %seg
