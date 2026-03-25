@@ -81,9 +81,11 @@ CAP2:
 
 # FASE
 .include "./fase/fase.s"
-.include "./fase/carregar_fase.s"
 .include "./fase/criar_fase_na_memoria.s"
 .include "./fase/inicializar_posicao_do_mapa.s"
+#	-> CARREGAMENTO DE FASE
+.include "./fase/carregar_fase/carregar_fase.s"
+.include "./fase/carregar_fase/carregar_fase_v1_0.s"
 
 # ARQUIVOS
 .include "./arquivos/carregar_textura.s"
@@ -105,6 +107,13 @@ CAP2:
 # GUI
 .include "./gui/imprimir_hud.s"
 .include "./gui/mostrar_pergaminho.s"
+
+# LOCALIZACAO
+.include "./localizacao/obter_traducao.s" 
+
+# STRINGS
+.include "./strings/comparar_strings.s"
+.include "./strings/copiar_string.s"
 
 # MENUS
 .include "./menus/menu_principal.s"

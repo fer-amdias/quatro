@@ -143,7 +143,7 @@ P_MP1_CONT:		addi sp, sp, -4
 			li a1, 40
 			li a2, 38
 			li a3, 0x0000C700
-			mv a4, zero		# imprime do arquivo de localisacao	
+			li a4, 1		# imprime diretamente do endereco
 			jal PROC_IMPRIMIR_STRING
 
 			la a0, locale_SCROLL_ENTER

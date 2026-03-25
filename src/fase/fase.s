@@ -1,133 +1,51 @@
-#FASE         (1,       0,       ch0_fase1,      ch0,            MENOS_UM,              inimigos,              jogador,     internationale,          powerup,                  morte,           abertura_pergaminho,          ch0_fase1.scroll,      pergaminho,                    1,                       1,			 fundo_tutorial)
-.macro FASE(%fase, %capitulo, %nome_mapa, %textura_do_mapa, %tempo_limite, %textura_dos_npcs, %textura_do_jogador, %musica_de_fundo, %audioefeito_de_powerup, %audioefeito_de_morte, %audioefeito_de_pergaminho, %endereco_pergaminho, %textura_do_pergaminho, %mostrar_pergaminho_no_inicio, %modo_saida_livre, %textura_de_fundo)
-	
-	# se a saida estah coberta por um bloco quebravel ou nao
-	li t0, %modo_saida_livre
-	sw t0, MODO_SAIDA_LIVRE, t1
-	
-	# se hah pergaminho no inicio
-	li t0, %mostrar_pergaminho_no_inicio
-	sw t0, PERGAMINHO_NO_INICIO, t1
-	
+.macro FASE(%fase, %capitulo, %nome_mapa, %label_de_morte)
 	la a0, %nome_mapa
-	la a1, %musica_de_fundo
-	li a2, %tempo_limite
-	li a3, %fase
-	li a4, %capitulo
-	la a5, %endereco_pergaminho
-	la a6, %audioefeito_de_powerup
-	la a7, %audioefeito_de_morte
-	
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS
-	
-	la t1, %audioefeito_de_pergaminho
-	sw t1, 0(t0)
-	la t1, %textura_dos_npcs
-	sw t1, 4(t0)
-	la t1, %textura_do_jogador
-	sw t1, 8(t0)
-	la t1, %textura_do_mapa
-	sw t1, 12(t0)
-	la t1, %textura_do_pergaminho
-	sw t1, 16(t0)
-	la t1, %textura_de_fundo
-	sw t1, 20(t0)
-
-	# se tempo limite < SEM_TEMPO_LIMITE, a2 = 1, senao a2 = 0
-	slti a2, a2, SEM_LIMITE_DE_TEMPO		 
-	li t0, %tempo_limite
-	addi t0, t0, 1			
-	mul t0, t0, a2		# multiplica a2 por tempo limite + 1
-	addi a2, t0, -1		# tempo_limite = a2 - 1 (tempo_limite se tempo limite < SEM_TEMPO_LIMITE, -1 caso contrario)
-
-        sb zero, FASE_DESLOCAMENTO_X, t0
-        sb zero, FASE_DESLOCAMENTO_Y, t0
-	
+	li a1, %fase
+	li a2, %capitulo
 	jal PROC_FASE
-	
+	beqz a0, %label_de_morte	
 .end_macro
 
 
 #################################################################
-# PROC_CAPITULO_0				       	     	#
-# Coloca uma bomba na posicao escolhida.            		#
+# PROC_FASE							#
+# Carrega uma fase e coloca ela para o jogador.			#
 # 							     	#
 # ARGUMENTOS:						     	#
-#	A0 : Arquivo do mapa da fase				#
-#	A1 : Musica de fundo					#
-# 	A2 : Tempo limite					#
-#	A3 : Numero da fase					#
-#	A4 : Numero do capitulo					#
-#	A5 : Endereco (na memoria) do pergaminho da fase	#
-#		(pode ser omitido se nao houver)		#
-#	A6 : Endereco do audioefeito de powerup			#
-#	A7 : Endereco do audioefeito de morte			#
-#								#
-#	P_F1_ARGUMENTOS_ADICIONAIS - AA				#
-#	0(AA) : Endereco do audioefeito de pergaminho		#
-#	4(AA) : Endereco da textura de npcs			#
-#	8(AA) : Endereco da textura do jogador			#
-#	12(AA): Textura do mapa da fase				#
-#	16(AA): Textura do pergaminho da fase			#
+#	A0 : Nome do arquivo do mapa da fase			#
+#	A1 : Numero da fase					#
+#	A2 : Numero do capitulo					#
 # RETORNOS:                                                  	#
 #       A0: Se o jogador estah vivo ou nao			#
 #################################################################
 .data
 
-	# argumentos adicionais que nao couberam nos registradores de argumento
-	PERGAMINHO_NO_INICIO: .word 0
-	P_F1_ARGUMENTOS_ADICIONAIS: .space 24
-	
+# onde vamos guardar a musica tocando atualmente.
+# vamos usar isso para so tocar uma nova musica quando mudarmos de soundtrack
+SOUNDTRACK_ATUAL: .space TAMANHO_STRING_METADATA
 
 .text
 
 .eqv $NOME_MAPA 		s0
-.eqv $MUSICA_DE_FUNDO 		s1
-.eqv $TEMPO_LIMITE 		s2
-.eqv $FASE 			s3
-.eqv $CAPITULO 			s4
-.eqv $ENDERECO_PERGAMINHO	s5
-.eqv $AUDIOEFEITO_DE_POWERUP	s6
-.eqv $AUDIOEFEITO_DE_MORTE	s7
-.eqv $AUDIOEFEITO_DE_PERGAMINHO s8
-.eqv $TEXTURA_DOS_NPCS		s9
-.eqv $TEXTURA_DO_JOGADOR	s10
-.eqv $TEXTURA_DO_MAPA		s11
-.eqv TEXTURA_PERGAMINHO		16
-.eqv TEXTURA_FUNDO		20
+.eqv $TEMPO_LIMITE 		s1
+.eqv $FASE 			s2
+.eqv $CAPITULO 			s3
+.eqv $ENDERECO_PERGAMINHO	s4
 
 
 PROC_FASE:
-	addi sp, sp, -52
+	addi sp, sp, -24
 	sw   s0, 0(sp)
 	sw   s1, 4(sp)
 	sw   s2, 8(sp)
 	sw   s3, 12(sp)
 	sw   s4, 16(sp)
-	sw   s5, 20(sp)
-	sw   s6, 24(sp)
-	sw   s7, 28(sp)
-	sw   s8, 32(sp)
-	sw   s9, 36(sp)
-	sw   s10, 40(sp)
-	sw   s11, 44(sp)
-	sw   ra,  48(sp)
+	sw   ra,  20(sp)
 	
-	mv $NOME_MAPA, 			a0			
-	mv $MUSICA_DE_FUNDO, 		a1			
-	mv $TEMPO_LIMITE, 		a2
-	mv $FASE, 			a3
-	mv $CAPITULO, 			a4
-	mv $ENDERECO_PERGAMINHO, 	a5
-	mv $AUDIOEFEITO_DE_POWERUP, 	a6
-	mv $AUDIOEFEITO_DE_MORTE, 	a7
+	mv $NOME_MAPA, 			a0		
+	mv $FASE, 			a1
+	mv $CAPITULO, 			a2	
 	
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS
-	
-	lw $AUDIOEFEITO_DE_PERGAMINHO, 	0(t0)
-	lw $TEXTURA_DOS_NPCS,       	4(t0)
-	lw $TEXTURA_DO_JOGADOR,		8(t0)
-	lw $TEXTURA_DO_MAPA,		12(t0)	
 
 P_F1_ADICIONAR_VIDA:
 	la t0, VIDAS_RESTANTES
@@ -138,10 +56,35 @@ P_F1_ADICIONAR_VIDA:
 	sb t1, (t0)
 	
 P_F1_FASE_INICIO:			
+	# carrega a fase, primeiro de tudo
+	mv a0, $NOME_MAPA
+	jal PROC_CARREGAR_FASE
+
+	# retorna que o jogador "venceu" a fase se ela nao existir
+	bltz a0, P_F1_VITORIA
+
+	# pega o texto do pergaminho e salva ele
+	la a0, FASE_TEXTO_PERGAMINHO
+	jal PROC_OBTER_TRADUCAO
+	mv $ENDERECO_PERGAMINHO, a0
+	
+	# reseta algumas variaveis
+	sb zero, FASE_DESLOCAMENTO_X, t0
+        sb zero, FASE_DESLOCAMENTO_Y, t0
 	sb x0, NPC_2_FUGINDO, t0	
 
-	lw t1, TRACK1_INICIO_POINTER
-	bne t1, $MUSICA_DE_FUNDO, P_F1_TOCAR_MUSICA	# se a musica de fundo antiga eh diferente, toca a nova
+	# carrega o limite de tempo
+	lw $TEMPO_LIMITE, SEGUNDOS_RESTANTES
+
+	la t0, FASE_AUDIO_SOUNDTRACK
+	la t1, FASE_AUDIO_SOUNDTRACK
+
+	la a0, TRACK1_ARQUIVO
+	la a1, FASE_AUDIO_SOUNDTRACK
+	jal PROC_COMPARAR_STRINGS
+
+	# se as strings sao iguais, a0 = 0, ent...
+	bnez a0, P_F1_TOCAR_MUSICA	# se a musica de fundo antiga eh diferente, toca a nova
 	
 	#senao
 	lw t0, TRACK1_ATIVO			
@@ -150,7 +93,7 @@ P_F1_FASE_INICIO:
 P_F1_TOCAR_MUSICA: 
 	## tocar musica	
 	li a0, 1			# modo (adicionar audio)
-	mv a1, $MUSICA_DE_FUNDO		# a musica da fase
+	la a1, FASE_AUDIO_SOUNDTRACK	# a musica da fase
 	li a2, 1			# na track 1
 	li a3, 1			# no modo de loop
 	jal PROC_TOCAR_AUDIO   
@@ -159,14 +102,11 @@ P_F1_PULAR_MUSICA:
 
 	setar_tempo($TEMPO_LIMITE)	# seta o tempo limite
 
-	mv a0, $NOME_MAPA
-	jal PROC_CARREGAR_FASE
-
-	mv a0, $TEXTURA_DO_MAPA
+	la a0, BUFFER_TEXTURA
 	jal PROC_IMPRIMIR_TILEMAP_NO_FASE_BUFFER
 	
 	### PEGAR LARGURA E ALTURA DO JOGADOR ###
-	mv t0, $TEXTURA_DO_JOGADOR
+	la t0, BUFFER_TEXTURA_JOGADOR
 	lw t1, (t0)		
 	lw t2, 4(t0)
 	
@@ -185,26 +125,25 @@ P_F1_LOOP:
 
 P_F1_SEM_DEBUG:
 
-
 	# imprime o padrao de fundo
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS
-	lw a0, TEXTURA_FUNDO(t0)
+	la a0, BUFFER_TEXTURA_DE_FUNDO
 	jal PROC_IMPRIMIR_PADRAO_DE_FUNDO
 					
 	jal PROC_IMPRIMIR_BUFFER_DE_FASE
 	
 	li a0, 1			# modo (0 = mover sem checar paredes, 1 = modo mover, 2 = modo posicionar)
-	mv a1, $TEXTURA_DO_JOGADOR	# endereco da textura do jogador
+	la a1, BUFFER_TEXTURA_JOGADOR	# endereco da textura do jogador
+
 	la a2, TILEMAP_BUFFER		# endereco do mapa (nesse caso o buffer mesmo)
 	jal PROC_REGISTRAR_MOVIMENTO
-	
-	mv a0, $TEXTURA_DOS_NPCS
+
+	la a0, BUFFER_TEXTURA_NPCS
 	jal PROC_NPCS_MANAGER	
 
 	# efeito de explosao, se houver
 	li a0, 1
 	jal PROC_EFEITO_EXPLOSAO
-	
+
 	jal PROC_CHECAR_COLISOES
 	# retorna a0 : se o jogador ainda estah vivo
 	# 	  a1 : qual tile o jogador estah
@@ -224,7 +163,7 @@ P_F1_SEM_DEBUG:
 	li t0, 100
 	bge a1, t0, P_F1_MORTE		# jogador esteve na explosao
 	
-	lw t0, PERGAMINHO_NO_INICIO
+	lw t0, FASE_PERGAMINHO_NO_INICIO
 	bnez t0, P_F1_MOSTRAR_TUTORIAL	# se pergaminho_no_inicio = 1, mostra o pergaminho
 
 	li t0, TILE_SAIDA
@@ -238,7 +177,7 @@ P_F1_SEM_DEBUG:
 P_F1_RECEBER_POWERUP_TAMANHO_BOMBA:	
 
 	li a0, 1			# toca
-	mv a1, $AUDIOEFEITO_DE_POWERUP	# o efeito de powerup
+	la a1, FASE_AUDIO_POWERUP	# o efeito de powerup
 	li a2, 2			# no track 2
 	li a3, 0			# sem loop
 	jal PROC_TOCAR_AUDIO  
@@ -250,7 +189,7 @@ P_F1_RECEBER_POWERUP_TAMANHO_BOMBA:
 	
 P_F1_RECEBER_POWERUP_QTD_BOMBAS:	
 	li a0, 1			# toca
-	mv a1, $AUDIOEFEITO_DE_POWERUP	# o efeito de powerup
+	la a1, FASE_AUDIO_POWERUP	# o efeito de powerup
 	li a2, 2			# no track 2
 	li a3, 0			# sem loop
 	jal PROC_TOCAR_AUDIO  
@@ -291,7 +230,7 @@ P_F1_LIMPAR_POWERUP:
 
 	addi sp, sp, 8 # joga fora o espaco reservado que nao vamos mais precisar
 	
-	mv a0, $TEXTURA_DO_MAPA		# carrega a textura
+	la a0, BUFFER_TEXTURA		# carrega a textura
 	addi a0, a0, 8			# pula words de informacao
 	
 	normalizar_posicao(a1, a2)
@@ -310,7 +249,7 @@ P_F1_CHECAR_PERGAMINHO:
 	bnez t0, P_F1_MOSTRAR_PERGAMINHO
 	# toca efeito sonoro de abertura de pergaminho
 	li a0, 1
-	mv a1, $AUDIOEFEITO_DE_PERGAMINHO
+	la a1, FASE_AUDIO_PERGAMINHO
 	li a2, 2
 	li a3, 0
 	jal PROC_TOCAR_AUDIO  
@@ -318,10 +257,9 @@ P_F1_MOSTRAR_PERGAMINHO:
 	#	A0 : endereco da textura de pergaminho			
 	#	A1 : endereco do texto do pergaminho			
 	#	A2 : endereco da textura do mapa	
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS		
-	lw a0, TEXTURA_PERGAMINHO(t0)
+	la a0, BUFFER_TEXTURA_PERGAMINHO
 	mv a1, $ENDERECO_PERGAMINHO
-	mv a2, $TEXTURA_DO_MAPA
+	la a2, BUFFER_TEXTURA
 	jal PROC_MOSTRAR_PERGAMINHO
 P_F1_LOOP_CONT:
 	lb t0, PERGAMINHO_NA_TELA
@@ -329,25 +267,23 @@ P_F1_LOOP_CONT:
 	
 	# se o pergaminho estah na tela, devemos continuar a mostra-lo
 	
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS
-	lw a0, TEXTURA_PERGAMINHO(t0)
+	la a0, BUFFER_TEXTURA_PERGAMINHO
 	mv a1, $ENDERECO_PERGAMINHO
-	mv a2, $TEXTURA_DO_MAPA
+	la a2, BUFFER_TEXTURA
 	jal PROC_MOSTRAR_PERGAMINHO
 	
 	j P_F1_LOOP_CONT2
 P_F1_MOSTRAR_TUTORIAL:
-	la t0, P_F1_ARGUMENTOS_ADICIONAIS
-	lw a0, TEXTURA_PERGAMINHO(t0)
+	la a0, BUFFER_TEXTURA_PERGAMINHO
 	mv a1, $ENDERECO_PERGAMINHO
-	mv a2, $TEXTURA_DO_MAPA
+	la a2, BUFFER_TEXTURA
 	jal PROC_MOSTRAR_PERGAMINHO
 	
 	lb t0, PERGAMINHO_NA_TELA
 	bnez t0, P_F1_LOOP_CONT2
 
-	sw zero, PERGAMINHO_NO_INICIO, t0		# desativa o pergaminho na tela
-	sobrescrever_tile_atual_rg(2, $TEXTURA_DO_MAPA)			# desfaz a destruicao do tile atual pelo proc mostrar_pergaminho
+	sw zero, FASE_PERGAMINHO_NO_INICIO, t0		# desativa o pergaminho na tela
+	sobrescrever_tile_atual(2, BUFFER_TEXTURA)	# desfaz a destruicao do tile atual pelo proc mostrar_pergaminho
 	
 P_F1_LOOP_CONT2:	
 	lw t0, SEGUNDOS_RESTANTES
@@ -359,7 +295,7 @@ P_F1_LOOP_CONT2:
 
 P_F1_LOOP_CONT3:
 	la a0, explosivos
-	mv a1, $TEXTURA_DO_MAPA
+	la a1, BUFFER_TEXTURA
 	la a2, MAPA_ORIGINAL_BUFFER
 	jal PROC_BOMBA_MANAGER
 
@@ -388,7 +324,7 @@ P_F1_MORTE_SEM_GRAYSCALE:
 	jal PROC_DESENHAR	
 
 	li a0, 1			# modo tocar
-	mv a1, $AUDIOEFEITO_DE_MORTE
+	la a1, FASE_AUDIO_MORTE
 	li a2, 1		# track 1 pra sobrescrever a musica
 	li a3, 0		# sem loop
 	jal PROC_TOCAR_AUDIO 
@@ -423,14 +359,7 @@ P_F1_FIM:
 	lw   s2, 8(sp)
 	lw   s3, 12(sp)
 	lw   s4, 16(sp)
-	lw   s5, 20(sp)
-	lw   s6, 24(sp)
-	lw   s7, 28(sp)
-	lw   s8, 32(sp)
-	lw   s9, 36(sp)
-	lw   s10, 40(sp)
-	lw   s11, 44(sp)	
-	lw   ra,  48(sp)
-	addi sp, sp, 52
+	lw   ra,  20(sp)
+	addi sp, sp, 24
 	
 	ret

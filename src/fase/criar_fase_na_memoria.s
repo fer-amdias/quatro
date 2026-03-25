@@ -1,7 +1,7 @@
 #################################################################
 # PROC_CRIAR_FASE_NA_MEMORIA                                    #
 # Carrega as informacoes de uma fase, como tilemap, NPCs e      #
-# posicao do jogador.                                           #
+# posicao do jogador, alem de texturas.                         #
 # 							        #
 # ARGUMENTOS:						        #
 #	(nenhum)                                                #
@@ -45,8 +45,8 @@ PROC_CRIAR_FASE_NA_MEMORIA:
 	la s3, MAPA_ORIGINAL_BUFFER
         addi s3, s3, 8
 
-        # s4 = MODO_SAIDA_LIVRE
-	lw s4, MODO_SAIDA_LIVRE		# ver se podemos deixar a saida descoberta
+        # s4 = FASE_SAIDA_LIVRE
+	lw s4, FASE_SAIDA_LIVRE		# ver se podemos deixar a saida descoberta
 
         jal PROC_INICIALIZAR_POSICAO_DO_MAPA
 
@@ -145,6 +145,41 @@ P_CF1_LOOP_BOMBAS:
         addi t0, t0, STRUCT_BOMBAS_OFFSET 	# desloca o array em uma posicao
         addi t1, t1, 1				# i++
         blt t1, t2, P_CF1_LOOP_BOMBAS		# se i < 4, continuar
+
+P_CF1_CARREGAR_METADADOS:
+        # carrega todas as texturas do mapa
+
+        la a0, FASE_TEXTURA_DE_FUNDO
+        la a1, BUFFER_TEXTURA_DE_FUNDO
+        li a2, TAMANHO_MAX_TEXTURA_DE_FUNDO
+        jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+        la a0, FASE_TEXTURA
+        la a1, BUFFER_TEXTURA
+        li a2, TAMANHO_MAX_TEXTURA_DE_MAPA
+        jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+        la a0, FASE_TEXTURA_NPCS
+        la a1, BUFFER_TEXTURA_NPCS
+        li a2, TAMANHO_MAX_TEXTURA_DOS_NPCS
+        jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+        la a0, FASE_TEXTURA_JOGADOR
+        la a1, BUFFER_TEXTURA_JOGADOR
+        li a2, TAMANHO_MAX_TEXTURA_DO_JOGADOR
+        jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+        la a0, FASE_TEXTURA_PERGAMINHO
+        la a1, BUFFER_TEXTURA_PERGAMINHO
+        li a2, TAMANHO_MAX_TEXTURA_DO_PERGAMINHO
+        jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+
+        # salva outros dados
+        lw t0, FASE_LIMITE_DE_TEMPO
+
+        addi t0, t0, -1 # correcao
+        
+        sw t0, SEGUNDOS_RESTANTES, t1
 
 P_CF1_RET:
         lw ra, (sp)

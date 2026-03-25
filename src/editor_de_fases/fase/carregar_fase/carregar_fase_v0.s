@@ -71,6 +71,8 @@ E_CF3_LER_ARQUIVO:
         li a7, 57               # fecha o arquivo
         ecall
 
+        mv a0, zero             # retorna sucesso
+
 E_CF3_RET:
         lw ra, (sp)
         lw s0, 4(sp)

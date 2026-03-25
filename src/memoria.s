@@ -56,11 +56,7 @@
 
 .eqv MAX_VIDAS 4	# maximo de vidas possiveis
 
-.eqv SEM_LIMITE_DE_TEMPO 999	# um contorno para poder usar numeros negativos em macros (o FPGRARS nao deixa) -- 
-
 .eqv COR_TRANSPARENTE 199 
-
-.eqv TAMANHO_MAX_TEXTURA_DE_MAPA 15000	# o maximo de bytes que uma textura de mapa pode ter
 
 .eqv TAMANHO_MAX_TILEMAP 192		# o armazenamento maximo de tiles em um tilemap (L * H) sem contar os 2 bytes iniciais
 
@@ -76,14 +72,7 @@ GRAYSCALE:		.byte 0
 EFEITO_EXPLOSAO:	.byte 1
 MODO_DEBUG:		.byte 0
 
-
-
-PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
-MODO_SAIDA_LIVRE:       .word 0
-
 ENTER_COOLDOWN: .word 0
-
-SEGUNDOS_RESTANTES:	.word 100		# quantos segundos ateh a fase acabar. Padrao: 100 segundos  
 
 VIDAS_RESTANTES:	.byte 1			# quantas vidas o jogador ainda tem (1 inicial + 1 por fase)
 # caso esteje cacando onde que os segundos sao atualizados: npcs manager, P_IM1_PROSSEGUIR2. eu sei, lugar nada a ver, mas eh o mais pratico.
@@ -122,19 +111,8 @@ CONTADOR_NPCS: 		.byte 0		# quantidade de npcs atualmente vivos
 
 CONTADOR_INIMIGOS: 	.byte 0		# quantidade de inimigos atualmente vivos
 
-FASE_BUFFER: 	  	.byte 0 
-		  	.space 76799	# onde manteremos o background de cada nivel, quase como uma layer
-FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
-FASE_BUFFER_LIN:  	.half 0		# quantas linhas tem no mapa no buffer
-
 FRAME_BUFFER_PTR: 	.word 0xFF100000		# buffer onde vamos guardar todas as mudancas antes de desenha-las na tela
 FRAME_BUFFER_FIM_PTR:	.word 0xFF112C00		# endereco final do buffer
-
-TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
-			.space TAMANHO_MAX_TILEMAP
-
-MAPA_ORIGINAL_BUFFER:	.word 0 0	# buffer onde vamos guardar a versao original do mapa
-			.space TAMANHO_MAX_TILEMAP
 			
 			# struct BOMBAS {
 BOMBAS:			.half 0   	# short int POSICAO_X;			(0 a 240)
@@ -160,4 +138,47 @@ MORTE_TIMESTAMP:	.word 0 	# timestamp de quando o jogador morreu
 FASE_DESLOCAMENTO_X:    .byte 0
 FASE_DESLOCAMENTO_Y:	.byte 0
 
-TEXTURA_DO_MAPA_BUFFER:	.space TAMANHO_MAX_TEXTURA_DE_MAPA
+# definicao do max de tamanho em bytes
+.eqv TAMANHO_MAX_TEXTURA_DE_FUNDO 10000 
+.eqv TAMANHO_MAX_TEXTURA_DE_MAPA 30000	
+.eqv TAMANHO_MAX_TEXTURA_DOS_NPCS 60000	
+.eqv TAMANHO_MAX_TEXTURA_DO_JOGADOR 1000	
+.eqv TAMANHO_MAX_TEXTURA_DO_PERGAMINHO 76800
+
+# definicao do tamanho max de uma string
+.eqv TAMANHO_STRING_METADATA            128   
+
+BUFFER_TEXTURA_DE_FUNDO:                  .space TAMANHO_MAX_TEXTURA_DE_FUNDO
+BUFFER_TEXTURA:                           .space TAMANHO_MAX_TEXTURA_DE_MAPA
+BUFFER_TEXTURA_NPCS:                      .space TAMANHO_MAX_TEXTURA_DOS_NPCS
+BUFFER_TEXTURA_JOGADOR:                   .space TAMANHO_MAX_TEXTURA_DO_JOGADOR
+BUFFER_TEXTURA_PERGAMINHO:                .space TAMANHO_MAX_TEXTURA_DO_PERGAMINHO
+SEGUNDOS_RESTANTES:	.space 4		# limite de tempo da fase, em segundos 
+PERGAMINHO_NA_TELA: 	.byte 0			# se eh para estarmos mostrando um scroll na tela atualmente
+
+FASE_METADATA:
+FASE_TEXTURA_DE_FUNDO:                  .space TAMANHO_STRING_METADATA
+FASE_TEXTURA:                           .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_NPCS:                      .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_JOGADOR:                   .space TAMANHO_STRING_METADATA
+FASE_TEXTURA_PERGAMINHO:                .space TAMANHO_STRING_METADATA
+FASE_AUDIO_SOUNDTRACK:                  .space TAMANHO_STRING_METADATA
+FASE_AUDIO_POWERUP:                     .space TAMANHO_STRING_METADATA
+FASE_AUDIO_MORTE:                       .space TAMANHO_STRING_METADATA
+FASE_AUDIO_PERGAMINHO:                  .space TAMANHO_STRING_METADATA
+FASE_TEXTO_PERGAMINHO:                  .space TAMANHO_STRING_METADATA
+FASE_LIMITE_DE_TEMPO:                   .space 4
+FASE_PERGAMINHO_NO_INICIO:              .space 4
+FASE_SAIDA_LIVRE:                       .space 4
+TAMANHO_STRUCT_TILE:                    .word 1  
+
+TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
+			.space TAMANHO_MAX_TILEMAP
+
+MAPA_ORIGINAL_BUFFER:	.word 0 0	# buffer onde vamos guardar a versao original do mapa
+			.space TAMANHO_MAX_TILEMAP
+
+FASE_BUFFER: 	  	.byte 0 
+		  	.space 76799	# onde manteremos o background de cada nivel, quase como uma layer
+FASE_BUFFER_COL:  	.half 0		# quantas colunas tem no mapa no buffer
+FASE_BUFFER_LIN:  	.half 0		# quantas linhas tem no mapa no buffer
