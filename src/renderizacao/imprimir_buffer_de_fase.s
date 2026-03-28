@@ -60,13 +60,13 @@ PROC_IMPRIMIR_BUFFER_DE_FASE:	la t0, POSICOES_MAPA		# pega as posicoes do canto 
 				lhu t3, (t0)
 				
 
-P_IB1_LOOP_PRINTAR_NA_TELA:	lw t0, (t6)			# carrega o pixel localizado em IDX_BUFFER
-				sw t0, (t1)			# salva o pixel localizado em IDX_BUFFER em IDX_FRAME_BUFFER
+P_IB1_LOOP_PRINTAR_NA_TELA:	lw t0, (t6)			# carrega 4 pixeis localizado em IDX_BUFFER
+				sw t0, (t1)			# salva 4 pixeis localizado em IDX_BUFFER em IDX_FRAME_BUFFER
 				
-				addi t5, t5, 4			# CC++
+				addi t5, t5, 4			# CC += 4
 				
-				addi t1, t1, 4			# IDX_FRAME_BUFFER++
-				addi t6, t6, 4			# IDX_FASE_BUFFER++
+				addi t1, t1, 4			# IDX_FRAME_BUFFER += 4
+				addi t6, t6, 4			# IDX_FASE_BUFFER += 4
 				
 				# se CC >= nC: proxima linha
 				bge t5, t3, P_IB1_TELA_PROX_LINHA
