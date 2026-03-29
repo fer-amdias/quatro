@@ -25,11 +25,11 @@ MUTADO: .byte 0 # boolean
 
 # uma fase padrao para quando criarmos um novo arquivo
 FASE_TEMPLATE: .word 5 5
-.byte 1, 1, 1, 1, 1,
-      1, 0, 0, 0, 1,
-      1, 2, 0, 3, 1,
-      1, 0, 0, 0, 1,
-      1, 1, 1, 1, 1,
+.byte 1, 0, 1, 0, 1, 0, 1, 0, 1, 0,
+      1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+      1, 0, 2, 0, 0, 0, 3, 0, 1, 0,
+      1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+      1, 0, 1, 0, 1, 0, 1, 0, 1, 0,
 
 POSICOES_MAPA: .half 0, 0
 
@@ -71,7 +71,7 @@ TEXTURA_FUNDO_BUFFER: .space 10000  # para a textura de fundo a ser carregada, s
 .eqv TAMANHO_STRING_METADATA            128     
 
 FASE_ARQUIVO_HEADER:                    .byte '4', 'L', 'V', 'L'# marcador de header de arquivo
-FASE_ARQUIVO_VERSAO:                    .byte 1, 0, 0, 0        # versao 1.0.0.0
+FASE_ARQUIVO_VERSAO:                    .byte 1, 0, 0, 1        # versao 1.0.0.1
 
 FASE_METADATA:
 FASE_TEXTURA_DE_FUNDO:                  .space TAMANHO_STRING_METADATA
@@ -87,7 +87,7 @@ FASE_TEXTO_PERGAMINHO:                  .space TAMANHO_STRING_METADATA
 FASE_LIMITE_DE_TEMPO:                   .space 4
 FASE_PERGAMINHO_NO_INICIO:              .space 4
 FASE_SAIDA_LIVRE:                       .space 4
-TAMANHO_STRUCT_TILE:                    .word 1       
+TAMANHO_STRUCT_TILE:                    .word 2      
 
 TILEMAP_BUFFER:		.word 0 0	# buffer onde vamos guardar uma versao modificavel do mapa
 			.space 1024
