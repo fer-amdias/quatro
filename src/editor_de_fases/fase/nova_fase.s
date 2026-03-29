@@ -36,6 +36,8 @@ EDITOR_NOVA_FASE:
         sw zero, FASE_SAIDA_LIVRE, t0
         li t0, 1
         sw t0, TAMANHO_STRUCT_TILE, t1
+        # remove o texto do pergaminho
+        sb zero, FASE_TEXTO_PERGAMINHO, t1
 
         jal EDITOR_CARREGAR_METADADOS
 
