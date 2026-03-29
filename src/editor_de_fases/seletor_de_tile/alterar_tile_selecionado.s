@@ -14,10 +14,13 @@ lw t3, 4(t2)     # pega a quantidade de colunas
 addi t2, t2, 8          # pula informacoes
 
 mul t1, t1, t3   # pula Y linhas
-add t2, t2, t1
-add t2, t2, t0   # pula X colunas
+add t1, t1, t0   # pula X colunas
 
-sb a0, (t2)
+lw t0, TAMANHO_STRUCT_TILE
+mul t1, t1, t0   # ajusta para o tamanho certo por tile
+
+add t2, t2, t1   # vai para o endereco
+sb a0, (t2)      # salva o novo valor
 
 ret
 

@@ -64,6 +64,9 @@ P_MT1_CONT:
 			
 			mul t1, a2, t1				# t1 = idx = N_linha * n de colunas
 			add t1, t1, a1				# idx += N_coluna
+
+			lw t2, TAMANHO_STRUCT_TILE
+			mul t1, t1, t2				# idx *= sizeof(tile)
 			
 			add t0, t0, t1				# buffer += idx (pula pra posicao desejada)
 			

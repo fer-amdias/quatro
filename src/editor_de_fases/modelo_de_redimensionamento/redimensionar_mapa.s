@@ -73,7 +73,11 @@ E_RM3_LOOP:
 E_RM3_NO_TILEMAP_ORIGINAL:
         mul t0, t4, t5   # pula Y linhas
         add t0, t0, t3   # e X colunas
+        lw a2, TAMANHO_STRUCT_TILE
+        mul t0, t0, a2   # pula a quantidade certa de tiles
         add t0, t0, t1   # vai no endereco do tile X,Y
+        
+
         lb t0, (t0)      # pega a informacao dele
 
         sb t0, (t2)      # salva no endereco atual do tilemap temp
@@ -101,7 +105,8 @@ E_RM3_DELETAR_BORDA:
         sb t0, (t2)     # guarda uma parede no lugar
 
 E_RM3_LOOP_CONT:
-        addi t2, t2, 1  # vai pro proximo tile
+        lw t0, TAMANHO_STRUCT_TILE
+        add t2, t2, t0  # vai pro proximo tile
         addi t3, t3, 1  # X++
         beq t3, a0, E_RM3_PROXIMA_LINHA # vai pra proxima linha se X = L
         j E_RM3_LOOP    # continua o loop
@@ -109,8 +114,11 @@ E_RM3_LOOP_CONT:
 E_RM3_LOOP_FIM:
 
 # agora devemos copiar o conteudo do novo tilemap pro antigo
-        mul t0, a0, a1  # pega a quantidade de bytes que devemos copiar (L * H)
+        mul t0, a0, a1  # pega a quantidade de tiles que devemos copiar (L * H)
+        lw t3, TAMANHO_STRUCT_TILE
+        mul t0, t0, t3  # pega qtd de bytes por tile e multiplica pela qtd de tiles
         addi t0, t0, 8  # mais os bytes de informacao
+
         la t1, TEMP_TILEMAP_BUFFER
         la t2, TILEMAP_BUFFER
 E_RM3_LOOP_2:

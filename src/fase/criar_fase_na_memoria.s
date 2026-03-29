@@ -13,7 +13,7 @@
 # Prefixo interno: P_CF1_
 
 PROC_CRIAR_FASE_NA_MEMORIA:
-        addi sp, sp, -36
+        addi sp, sp, -40
         sw ra, (sp)
         sw s0, 4(sp)
         sw s1, 8(sp)
@@ -23,6 +23,7 @@ PROC_CRIAR_FASE_NA_MEMORIA:
         sw s5, 24(sp)
         sw s6, 28(sp)
         sw s7, 32(sp)
+        sw s8, 36(sp)
 
         la t0, MAPA_ORIGINAL_BUFFER
         # salva as linhas e colunas no buffer de tilemap
@@ -38,8 +39,10 @@ PROC_CRIAR_FASE_NA_MEMORIA:
 
         # s1 = N de colunas (C)
 
-        # s2 = linhas * colunas (total de bytes)
+        # s2 = linhas * colunas * bytes/tile (total de bytes)
+        lw t0, TAMANHO_STRUCT_TILE
 	mul s2, s1, t1
+        mul s2, s2, t0
 
 	# s3 = Em = endereco inicial do mapa (sem contar words de linha e coluna)	
 	la s3, MAPA_ORIGINAL_BUFFER
@@ -58,6 +61,9 @@ PROC_CRIAR_FASE_NA_MEMORIA:
 
         # s7 = CC, contador de colunas
         mv s7, zero
+        
+        # s8 = Tamanho_Struct_Tile
+        lw s8, TAMANHO_STRUCT_TILE
 
         # zera os NPCs e inimigos
         sw zero, NPCS_QUANTIDADE, t0
@@ -116,9 +122,9 @@ P_CF1_REGISTRAR_JOGADOR:
     	
 P_CF1_LOOP_CONT:    	
    	sb t0, 0(s0)                            # guarda o tile no tilemap
-   	addi s3, s3, 1                          # proximo tile
-    	addi s0, s0, 1                          # proximo tile
-    	addi s2, s2, -1                         # diminui o contador de bytes em 1
+   	add s3, s3, s8                          # proximo tile
+    	add s0, s0, s8                          # proximo tile
+    	sub s2, s2, s8                          # diminui o contador de tiles em 1
         addi s5, s5, TAMANHO_SPRITE             # X++
         addi s7, s7, 1                          # CC++
         blt s7, s1, P_CF1_LOOP                  # continua se o proximo X eh menor que a largura
@@ -191,5 +197,6 @@ P_CF1_RET:
         lw s5, 24(sp)
         lw s6, 28(sp)
         lw s7, 32(sp)
-        addi sp, sp, 36
+        lw s8, 36(sp)
+        addi sp, sp, 40
         ret

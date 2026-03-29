@@ -22,7 +22,7 @@ PROC_CALCULAR_TILE_ATUAL:
 			la t0, POSICOES_MAPA		# carregamos a posicao do mapa em t0. aqui teremos X em (t0) e Y em 2(t0).
 			lhu t1, 0(t0)			# POSICAO_MAPA_X
 			lhu t2, 2(t0)			# POSICAO_MAPA_Y
-			
+
 			# t1 = X
 			# t2 = Y
 			sub t1, a1, t1 			# X = aX - POSICAO_MAPA_X
@@ -40,6 +40,8 @@ PROC_CALCULAR_TILE_ATUAL:
 			# t0 = idx
 			mul t0, t2, t0			# idx = Y * N_COL
 			add t0, t0, t1			# idx += X
+			lw t3, TAMANHO_STRUCT_TILE
+			mul t0, t0, t3			# idx *= sizeof(tile)
 			addi t0, t0, 8			# pula os bytes de largura e altura / numero de colunas e linhas
 			add a0, a0, t0			# E += IDX (pula pro tile desejado)
 			

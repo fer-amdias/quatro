@@ -54,6 +54,9 @@ EDITOR_NOVA_FASE:
         mul t4, t4, t3  # pega uma dimensao vezes a outra
         addi t0, t0, 8
 
+        lw t5, TAMANHO_STRUCT_TILE
+        mul t4, t4, t5  # ..vezes a quantidade de bytes por tile
+
         # avanca 8 bytes
         add t1, t1, t0
         add t2, t2, t0

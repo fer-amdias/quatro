@@ -9,7 +9,7 @@
 
 EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
 
-        addi sp, sp, -40
+        addi sp, sp, -44
         sw ra, (sp)
         sw s0, 4(sp)    
         sw s1, 8(sp)
@@ -20,6 +20,7 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         sw s6, 28(sp)
         sw s7, 32(sp)   
         sw s8, 36(sp)
+        sw s9, 40(sp)
 
         # s0 = endereco do tilemap
         # s1 = altura do mapa em pixeis
@@ -30,6 +31,7 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         # s6 = contador de colunas
         # s7 = endereco da textura do mapa
         # s8 = endereco da textura dos NPCs
+        # s9 = tamanho em bytes de um tile
 
         la s0, TILEMAP_BUFFER           
         lw s1, (s0)			# carrega o n de linhas em s1 (L)
@@ -71,6 +73,8 @@ EDITOR_IMPRIMIR_FASE_NO_FASE_BUFFER:
         mv s7, a0                       # guarda a textura do mapa
 
         mv s8, a1
+
+        lw s9, TAMANHO_STRUCT_TILE
 
 E_IF1_LOOP:
 
@@ -151,7 +155,7 @@ E_IF1_LOOP_IMPRIMIR_TILE:
 
 E_IF1_LOOP_CONT:
         
-        addi s0, s0, 1			# Endereco_tilemap++
+        add s0, s0, s9			# Endereco_tilemap++
         addi s6, s6, TAMANHO_SPRITE	# CC += TAMANHO_SPRITE
         addi s4, s4, TAMANHO_SPRITE     # X += TAMANHO_SPRITE
         
@@ -182,5 +186,6 @@ P_IF1_PROXIMA_LINHA:
         lw s6, 28(sp)
         lw s7, 32(sp)  
         lw s8, 36(sp) 
-        addi sp, sp, 40
+        lw s9, 40(sp)
+        addi sp, sp, 44
 ret

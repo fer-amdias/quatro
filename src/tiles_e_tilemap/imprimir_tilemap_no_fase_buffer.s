@@ -14,7 +14,7 @@
 .text
 
 PROC_IMPRIMIR_TILEMAP_NO_FASE_BUFFER:
-        addi sp, sp, -32
+        addi sp, sp, -36
         sw ra, (sp)
         sw s0, 4(sp)
         sw s1, 8(sp)
@@ -23,6 +23,7 @@ PROC_IMPRIMIR_TILEMAP_NO_FASE_BUFFER:
         sw s4, 20(sp)
         sw s5, 24(sp)
         sw s6, 28(sp)
+        sw s7, 32(sp)
 
         # Primeiro, as dimensoes do buffer
         la s0, TILEMAP_BUFFER           # endereco do tilemap
@@ -53,13 +54,16 @@ PROC_IMPRIMIR_TILEMAP_NO_FASE_BUFFER:
         mv s6, a0
         addi s6, s6, 8                  # pula as words de dimensao
 
+        lw s7, TAMANHO_STRUCT_TILE
+
         # s0 = eT = endereco atual no tilemap_buffer
         # s1 = Xm
         # s2 = Ym
         # s3 = X
         # s4 = Y
         # s5 = AREA_SPRITE	
-        # s6 = textura do mapa        
+        # s6 = textura do mapa      
+        # s7 = qtd de bytes por tile  
 
         # t0 = tI = informacao do tile
 P_IT2_LOOP:			
@@ -81,7 +85,7 @@ P_IT2_LOOP:
         li a7, 1			# printa no BUFFER
         jal PROC_IMPRIMIR_TEXTURA	# chamada o procedimento de impressao de textura
         
-        addi s0, s0, 1			# eT++
+        add s0, s0, s7			# eT += sizeof(tile)
         addi s3, s3, TAMANHO_SPRITE     # X += TAMANHO_SPRITE
         
         # SE X != Xm, continua o loop
@@ -103,5 +107,6 @@ P_IT2_RET:
         lw s4, 20(sp)
         lw s5, 24(sp)
         lw s6, 28(sp)
-        addi sp, sp, 32
+        lw s7, 32(sp)
+        addi sp, sp, 36
         ret
