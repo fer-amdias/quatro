@@ -317,10 +317,7 @@ P_F1_SEM_GRAYSCALE:
 	
 	j P_F1_LOOP				# repete o game loop	
 P_F1_MORTE:		
-	lb t0, GRAYSCALE
-	beqz t0, P_F1_MORTE_SEM_GRAYSCALE
 	jal SHADER_GRAYSCALE
-P_F1_MORTE_SEM_GRAYSCALE:
 	jal PROC_DESENHAR	
 
 	li a0, 1			# modo tocar
