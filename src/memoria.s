@@ -58,7 +58,7 @@
 
 .eqv COR_TRANSPARENTE 199 
 
-.eqv TAMANHO_MAX_TILEMAP 192		# o armazenamento maximo de tiles em um tilemap (L * H) sem contar os 2 bytes iniciais
+.eqv TAMANHO_MAX_TILEMAP 1016		# o armazenamento maximo de bytes em um tilemap sem contar os 2 bytes iniciais
 
 .data
 
