@@ -31,11 +31,9 @@ EDITOR_NOVA_FASE:
         copiar_string(AUDIO_POWERUP_INICIAL, FASE_AUDIO_POWERUP)
         copiar_string(AUDIO_MORTE_INICIAL, FASE_AUDIO_MORTE)
         copiar_string(AUDIO_PERGAMINHO_INICIAL, FASE_AUDIO_PERGAMINHO)
-        sw zero, FASE_LIMITE_DE_TEMPO, t0
-        sw zero, FASE_PERGAMINHO_NO_INICIO, t0
-        sw zero, FASE_SAIDA_LIVRE, t0
-        li t0, 1
+        li t0, 2
         sw t0, TAMANHO_STRUCT_TILE, t1
+
         # remove o texto do pergaminho
         sb zero, FASE_TEXTO_PERGAMINHO, t1
 
