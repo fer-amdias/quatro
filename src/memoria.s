@@ -98,14 +98,10 @@ LARGURA_JOGADOR: .word 0
 # era pra npcs ser um vetor de structs mas eu soh fui ter essa ideia quando fiz as bombas serem vetores de structs, e ahi n dava mais tempo de refatorar o codigo
 
 NPCS_QUANTIDADE: 	.word 0		# quantidade de npcs inicialmente no mundo
-NPCS:         		.byte 0 	# alihamento do vetor
-	          	.space 31 	# cada npc vai ser salvo em um byte, dando um total de 32 npcs nesse vetor
-NPCS_POSICAO: 		.half 0 	# alinhamento do vetor
-	          	.space 127	# cada npc vai ter uma posicao de half-word (x) e half-word (y).
-NPCS_DIRECAO:	 	.byte 0 	# alinhamento do vetor
-		  	.space 31	# cada npc vai ter uma direcao salvo em um byte.		
-NPCS_TIMESTAMP:     	.word 0  
-			.space 127      # cada npc vai ter uma timestamp de seu ultimo movimento.	
+NPCS:         		.space 32 	# cada npc vai ser salvo em um byte, dando um total de 32 npcs nesse vetor
+NPCS_POSICAO: 		.space 128	# cada npc vai ter uma posicao de half-word (x) e half-word (y).
+NPCS_DIRECAO:	 	.space 32 	# cada npc vai ter uma direcao salvo em um byte.		
+NPCS_TIMESTAMP:     	.space 128      # cada npc vai ter uma timestamp de seu ultimo movimento.	
 
 CONTADOR_NPCS: 		.byte 0		# quantidade de npcs atualmente vivos							
 
