@@ -315,17 +315,12 @@ MACRO_DATA_ESPACO:	    .string " "
 
 .macro incrementar_direcao(%reg_direcao)
 	addi %reg_direcao, %reg_direcao, 1
-	li t1, 4
-	slt t0, %reg_direcao, t1
-	mul %reg_direcao, %reg_direcao, t0	# se a direcao for 4 ou maior, multiplica por 0 
+	andi %reg_direcao, %reg_direcao, 0x3	# pega apenas os 2 bits menos significativos (faz reg % 4)
 .end_macro
 
 .macro decrementar_direcao(%reg_direcao)
 	addi %reg_direcao, %reg_direcao, -1
-	li t1, 4
-	sltz t0, %reg_direcao
-	mul t0, t0, t1				
-	add %reg_direcao, %reg_direcao, t0					# se a direcao for -1 ou menor, adiciona 4
+	andi %reg_direcao, %reg_direcao, 0x3	# pega apenas os 2 bits menos significativos (faz reg % 4)
 .end_macro
 
 # alias para incrementar_direcao(%reg_direcao)
