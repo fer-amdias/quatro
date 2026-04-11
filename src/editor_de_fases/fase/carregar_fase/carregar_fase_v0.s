@@ -67,6 +67,10 @@ E_CF3_LER_ARQUIVO:
         li a7, 63               # LER
         ecall
 
+        # guarda que o tamanho de cada tile eh 1 BYTE POR CADA
+        li t0, 1
+        sw t0, TAMANHO_STRUCT_TILE, t1
+
         mv a0, s0               
         li a7, 57               # fecha o arquivo
         ecall
