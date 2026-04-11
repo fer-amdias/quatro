@@ -18,9 +18,10 @@
 #								#
 #################################################################
 
-.include "../assets/fases/definicoes_fases.s"
-.include "../assets/npcs/definicoes_npcs.s"
-.include "../assets/npcs/hitboxes.s"
+.include "../assets/metadata/definicoes_fases.s"
+.include "../assets/metadata/definicoes_npcs.s"
+.include "../assets/metadata/hitboxes.s"
+.include "../assets/metadata/tiles.s"
 .include "macros.s"
 
 # dimensoes da tela
