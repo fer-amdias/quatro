@@ -60,8 +60,13 @@ E_CF1_CARREGAR_ARQUIVO_V1_EM_DIANTE:
         lw t1, CF1_VERSAO_1_0_0_0
 
         # descarta o numero de build e de bug fix
-        srli t0, t0, 16
-        srli t1, t1, 16
+        # (lembre-se que a memoria eh little-endian: 
+        # quando lermos uma word, em vez de pegar B3 B2 B1 B0, 
+        # vamos pegar B0 B1 B2 B3
+        # entao devemos descartar os dois MAIORES bytes para
+        # descartar build e bug fix!)
+        slli t0, t0, 16
+        slli t1, t1, 16
 
         beq t0, t1, E_CF1_CARREGAR_ARQUIVO_V1_0
 
