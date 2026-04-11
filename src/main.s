@@ -143,6 +143,7 @@ CAP2:
 .include "./tiles_e_tilemap/manipular_tilemap.s"
 .include "./tiles_e_tilemap/tile_andavel.s"
 .include "./tiles_e_tilemap/imprimir_tilemap_no_fase_buffer.s"
+.include "./tiles_e_tilemap/redimensionar_struct_tile.s"
 
 # CAPITULOS
 .include "./capitulos/capitulo_0.s"
@@ -156,3 +157,4 @@ CAP2:
 .include "debug.s"
 .include "tempo_manager.s"
 .include "erro_fatal.s"
+.include "copiar_buffer_word.s"

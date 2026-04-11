@@ -25,6 +25,16 @@ PROC_CRIAR_FASE_NA_MEMORIA:
         sw s7, 32(sp)
         sw s8, 36(sp)
 
+        # redimensiona, primeiramente, o mapa para a quantidade de bytes que desejamos
+        la a0, MAPA_ORIGINAL_BUFFER
+        lw a1, TAMANHO_STRUCT_TILE
+        li a2, TILE_STRUCT_TAMANHO
+        jal PROC_REDIMENSIONAR_STRUCT_TILE
+
+        li t0, TILE_STRUCT_TAMANHO
+        sw t0, TAMANHO_STRUCT_TILE, t1          # salva o novo tamanho de bytes do tilemap
+        # continuando...
+
         la t0, MAPA_ORIGINAL_BUFFER
         # salva as linhas e colunas no buffer de tilemap
         la s0, TILEMAP_BUFFER                   # s0 serah o tilemap
@@ -40,7 +50,7 @@ PROC_CRIAR_FASE_NA_MEMORIA:
         # s1 = N de colunas (C)
 
         # s2 = linhas * colunas * bytes/tile (total de bytes)
-        lw t0, TAMANHO_STRUCT_TILE
+        li t0, TILE_STRUCT_TAMANHO
 	mul s2, s1, t1
         mul s2, s2, t0
 
@@ -63,7 +73,7 @@ PROC_CRIAR_FASE_NA_MEMORIA:
         mv s7, zero
         
         # s8 = Tamanho_Struct_Tile
-        lw s8, TAMANHO_STRUCT_TILE
+        li s8, TILE_STRUCT_TAMANHO
 
         # zera os NPCs e inimigos
         sw zero, NPCS_QUANTIDADE, t0
