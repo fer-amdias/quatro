@@ -29,11 +29,16 @@ PROC_CRIAR_FASE_NA_MEMORIA:
         la a0, MAPA_ORIGINAL_BUFFER
         lw a1, TAMANHO_STRUCT_TILE
         li a2, TILE_STRUCT_TAMANHO
+
+        beq a1, a2, P_CF1_PULAR_REDIMENSIONAMENTO       # pula se o tamanho de tiles jah eh o certo!
+
         jal PROC_REDIMENSIONAR_STRUCT_TILE
 
         li t0, TILE_STRUCT_TAMANHO
         sw t0, TAMANHO_STRUCT_TILE, t1          # salva o novo tamanho de bytes do tilemap
         # continuando...
+
+P_CF1_PULAR_REDIMENSIONAMENTO:
 
         la t0, MAPA_ORIGINAL_BUFFER
         # salva as linhas e colunas no buffer de tilemap
