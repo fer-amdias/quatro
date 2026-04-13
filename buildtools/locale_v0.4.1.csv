@@ -459,3 +459,7 @@ locale_EDITOR_MENU_PERGAMINHO_INICIO_ENABLE,1. Habilitar pergaminho no inicio,1.
 locale_EDITOR_MENU_PERGAMINHO_INICIO_DISABLE,1. Desabilitar pergaminho no inicio,1. Disable scroll at start,1. DO NOT SHOW SCROLL AT START
 locale_EDITOR_MENU_SAIDA_LIVRE_ENABLE,2. Habilitar saida liberada,2. Enable free exit,2. REVEAL EXIT AT START
 locale_EDITOR_MENU_SAIDA_LIVRE_DISABLE,2. Desabilitar saida liberada,2. Disable free exit,2. DO NOT REVEAL EXIT AT START
+locale_EDITOR_MENU_SAIR_PROMPT,Salvar antes de sair?,Save before exiting?,SAVE YER CHART 'FORE YE LEAVE?
+locale_EDITOR_MENU_SAIR_PROMPT_OPCAO1,1. Salvar fase,1. Save level,1. SAVE CHART
+locale_EDITOR_MENU_SAIR_PROMPT_OPCAO2,2. Sair sem salvar,2. Exit without saving,2. FORSAKE CHART
+locale_EDITOR_MENU_SAIR_PROMPT_OPCAO3,3. Cancelar,3. Cancel,3. NEVERMIND
