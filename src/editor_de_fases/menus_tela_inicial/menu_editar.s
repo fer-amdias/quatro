@@ -63,6 +63,7 @@ E_ME1_MENU_CARREGAR:
 	j E_ME1_MENU
 
 E_ME1_MENU_NOVO:
+	sb zero, STR_NOME_ARQUIVO, t0	# reseta o nome do arquivo
 	jal EDITOR_NOVA_FASE
 	jal EDITOR_DE_FASES
 	li a0, 1
