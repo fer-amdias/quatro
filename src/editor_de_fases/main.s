@@ -69,6 +69,7 @@ ecall
 .include "./editor/menu_redimensionar_mapa.s"
 .include "./editor/menu_salvar_fase_como.s"
 .include "./editor/menu_fase_salva.s"
+.include "./editor/menu_salvar_e_sair.s" 
 .include "./editor/menus_metadata/menu_config_de_metadata.s"
 .include "./editor/menus_metadata/menu_config_de_texturas.s"
 .include "./editor/menus_metadata/menu_config_de_audio.s"

@@ -33,7 +33,7 @@ E_DF1_LOOP:
   	lw t2,4(t1)  			# le o valor da tecla 
   	
         li t0, 8
-	beq t2, t0, E_DF1_RET
+	beq t2, t0, E_DF1_SAIR_PROMPT
 
         li t0, 'W'
         beq t2, t0, E_DF1_W
@@ -136,7 +136,7 @@ E_DF1_MOVER_SELETOR_DE_PALETA:
 
 E_DF1_ESC:
         jal EDITOR_MENU_EDITOR_DE_FASES
-        bnez a0, E_DF1_RET # se a flag de retorno nao for zero, retorna ao menu principal
+        bnez a0, E_DF1_SAIR_PROMPT # se a flag de retorno nao for zero, retorna ao menu principal
         j E_DF1_RECARREGAR_EDITOR_DE_FASES      # recalcula o editor
 
 E_DF1_DRAW_CYCLE:
@@ -192,6 +192,12 @@ E_DF1_DRAW_CYCLE:
         jal PROC_DESENHAR               # imprime tudo no ciclo
 
         j E_DF1_LOOP
+
+E_DF1_SAIR_PROMPT:
+
+        jal EDITOR_MENU_SALVAR_E_SAIR_PROMPT
+        beqz a0, E_DF1_RECARREGAR_EDITOR_DE_FASES # se status = Nao Sair, nao sai
+        # j E_DF1_RET
 
 E_DF1_RET:
 
