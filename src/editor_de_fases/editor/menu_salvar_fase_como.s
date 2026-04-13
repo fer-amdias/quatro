@@ -1,5 +1,7 @@
 # EDITOR_MENU_SALVAR_FASE_COMO
 # Mostra o menu de salvamento.
+#
+# Retorno: a0: Quantidade de bytes salvos
 
 .eqv MENU_SALVAR_FASE_X 0
 .eqv MENU_SALVAR_FASE_Y 69
@@ -55,7 +57,7 @@ E_SF1_LOOP:
   	lw t2,4(t1)  			# le o valor da tecla 
 
         li t0, 27       # ESC
-        beq t2, t0, E_SF1_RET
+        beq t2, t0, E_SF1_ESC
 	li t0, 8		
 	beq t2, t0, E_SF1_REMOVE_CARACTERE
 	li t0, '\n'
@@ -103,6 +105,11 @@ E_SF1_ENTER:
 	sb zero, SF1_NOME_ARQUIVO, t0
 
 	j E_SF1_DRAW_CYCLE
+
+E_SF1_ESC:
+        # retorna nenhum byte escrito
+        mv a0, zero
+        j E_SF1_RET
 
 E_SF1_DRAW_CYCLE:
         jal SHADER_OBSCURECER_TELA
@@ -165,6 +172,8 @@ E_SF1_DRAW_CYCLE_CONT:
         j E_SF1_LOOP
 
 E_SF1_SALVAR_FIM:
+        mv s0, a0                       # guarda a quantidade de bytes lida
+
         # salva o novo path
         la a0, SF1_STR_PATH
         la a1, ARQUIVO_STR_PATH
@@ -173,6 +182,8 @@ E_SF1_SALVAR_FIM:
 
         mv a0, zero             # status: sucesso
         jal EDITOR_MENU_FASE_SALVA
+
+        mv a0, s0                       # retorna a quantidade de bytes lida
 
 E_SF1_RET:
         lw ra, (sp)
