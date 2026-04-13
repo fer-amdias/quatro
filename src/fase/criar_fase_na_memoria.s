@@ -174,6 +174,14 @@ P_CF1_CARREGAR_METADADOS:
         la a1, BUFFER_TEXTURA_DE_FUNDO
         li a2, TAMANHO_MAX_TEXTURA_DE_FUNDO
         jal PROC_CARREGAR_ARQUIVO_EM_BUFFER
+        bgtz a0, P_CF1_CARREGAR_METADADOS_CONT  # se um arquivo foi carregado, continua
+
+        # senao, apaga a textura de fundo
+        la t0, BUFFER_TEXTURA_DE_FUNDO
+        sw zero, (t0)
+        sw zero, 4(t0)
+
+P_CF1_CARREGAR_METADADOS_CONT:
 
         la a0, FASE_TEXTURA
         la a1, BUFFER_TEXTURA
