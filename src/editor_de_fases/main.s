@@ -65,6 +65,7 @@ ecall
 .include "./editor/carregar_textura.s"
 
 # MENUS DO EDITOR
+.include "./editor/popup_ajuda.s"
 .include "./editor/menu_editor_de_fases.s"
 .include "./editor/menu_redimensionar_mapa.s"
 .include "./editor/menu_salvar_fase_como.s"

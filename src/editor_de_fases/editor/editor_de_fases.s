@@ -72,8 +72,9 @@ E_DF1_LOOP:
         beq t2, t0, E_DF1_K
         li t0, 'l'
         beq t2, t0, E_DF1_L
-        li t0, '\n'
-        beq t2, t0, E_DF1_ENTER
+
+        li t0, '?'
+        beq t2, t0, E_DF1_AJUDA
 
         li t0, 27
         beq t2, t0, E_DF1_ESC
@@ -113,6 +114,10 @@ E_DF1_L:
         li a0, 1
         li a1, 0
         j E_DF1_MOVER_SELETOR_DE_PALETA
+
+E_DF1_AJUDA:
+        jal EDITOR_POPUP_AJUDA
+        j E_DF1_DRAW_CYCLE
 
 E_DF1_ENTER:
 

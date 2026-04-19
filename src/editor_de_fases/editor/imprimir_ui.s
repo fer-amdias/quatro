@@ -27,6 +27,17 @@ E_IU1_CONT:
         imprimir_string(locale_EDITOR_UI_ESC, 234, 45, 0xC7FF, 0)
         imprimir_string(locale_EDITOR_UI_OPTIONS, 234, 55, 0xC7FF, 0)
 
+E_IU1_IMPRIMIR_CENTRAL:
+
+        # pega o tamanho da string
+        selecionar_texto(a0, t1, t2, locale_EDITOR_AJUDA_DICA)
+        jal PROC_TAMANHO_STRING
+        slli a0, a0, 2  # multiplica por 8 (sizeof(char)) e pega a metade = offset_central
+        li t0, 120      # pos X
+        sub t0, t0, a0  # pega X-offset_central para calcular onde devemos colocar o texto para que ele apareca centralizado
+        li t1, 232      # pos Y 
+        imprimir_string_reg(locale_EDITOR_AJUDA_DICA, t0, t1, 0xC7F6, 0) #imprime cinza
+
 E_IU1_IMPRIMIR_DIMENSOES:
         lw a0, TILEMAP_BUFFER
         li t0, 10
@@ -214,8 +225,6 @@ E_IU1_PULAR_SETA_PARA_BAIXO_PALETA_NPCS:
         jal EDITOR_IMPRIMIR_PALETAS
 
         jal EDITOR_IMPRIMIR_SELETOR_DE_PALETA
-
-
 
 E_IU1_RET:
         lw ra, (sp)
