@@ -463,3 +463,23 @@ locale_EDITOR_MENU_SAIR_PROMPT,Salvar antes de sair?,Save before exiting?,SAVE Y
 locale_EDITOR_MENU_SAIR_PROMPT_OPCAO1,1. Salvar fase,1. Save level,1. SAVE CHART
 locale_EDITOR_MENU_SAIR_PROMPT_OPCAO2,2. Sair sem salvar,2. Exit without saving,2. FORSAKE CHART
 locale_EDITOR_MENU_SAIR_PROMPT_OPCAO3,3. Cancelar,3. Cancel,3. NEVERMIND
+locale_EDITOR_AJUDA,"Use W A S D para mover o seletor de tiles no mapa.
+
+Use I J K L para mover a paleta de tiles/NPCs.
+
+Aperte ENTER para substituir o tile selecionado pelo na paleta.
+
+Aperte ESC para acessar o menu e editar os metadados e o tamanho do mapa.","Use W A S D to move the tile selector on the map.
+
+Use I J K L to move the tile/NPC palette.
+
+Press ENTER to replace the selected tile by the palette one.
+
+Press ESC to access the menu and edit map metadata and size.","USE W A S D TO MOVE THE TILE SELECTOR THING
+
+USE I J K L TO MOVE THE TILE/NPC PALETTE
+
+HIT ENTER TO SWAP THE CHOSEN TILE FER THE PALETTE ONE
+
+HIT ESC TO OPEN THE MENU AN' TINKER WITH THE CHART'S SIZE AN' SECRETS"
+locale_EDITOR_AJUDA_DICA,Aperte ? para ajuda,Press ? for help,PRESS ? FOR GUIDANCE
