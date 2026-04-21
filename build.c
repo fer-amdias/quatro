@@ -5,6 +5,61 @@
 #include <ctype.h>
 #include <windows.h>
 
+void criar_executaveis_windows(){
+    printf("Buildando executavel windows...\n");
+    if (system("gcc -o run.exe run.c") != 0) {
+        printf("Build windows falhou.\n");
+        exit(1);
+    }
+    if (system("gcc -o editor.exe editor.c") != 0) {
+        printf("Build windows falhou.\n");
+        exit(1);
+    }
+}
+
+void path_windows_para_linux(char * original_windows, char * buff_linux, size_t size_buff){
+    char cmd[256];
+
+    _fullpath(buff_linux, original_windows, size_buff);
+
+    // converte path windows para path wsl (C:\Users → /mnt/c/Users)
+    for (char *p = buff_linux; *p; ++p) {
+        if (*p == '\\') *p = '/';
+    }
+
+    // builda cmd pra converter path
+    snprintf(cmd, sizeof(cmd), "wsl wslpath -a \"%s\"", buff_linux);
+
+    // abre um pipe pra ler o path convertido
+    FILE *pipe = _popen(cmd, "r");
+    fgets(buff_linux, size_buff, pipe);
+    _pclose(pipe);
+
+    // tira o enter no final, se houver
+    buff_linux[strcspn(buff_linux, "\n")] = '\0';
+}
+
+void criar_executaveis_linux(){
+    printf("Buildando executavel linux...\n");
+    char wsl_path[256];
+    char cmd[256];
+
+    // builda
+    path_windows_para_linux("run.c", wsl_path, 256);
+    snprintf(cmd, sizeof(cmd), "wsl gcc -static -o run \"%s\" ", wsl_path);
+    if (system(cmd) != 0) {
+        printf("Build linux falhou.\n");
+        exit(1);
+    }
+
+    path_windows_para_linux("editor.c", wsl_path, 256);
+    snprintf(cmd, sizeof(cmd), "wsl gcc -static -o editor \"%s\" ", wsl_path);
+    if (system(cmd) != 0) {
+        printf("Build linux falhou.\n");
+        exit(1);
+    }
+}
+
 void build(const char * versao){
     char pasta[256];
     char cmd[256];
@@ -24,50 +79,23 @@ void build(const char * versao){
     snprintf(subpasta, sizeof(subpasta), "%s//linux", pasta);
     _mkdir(subpasta);
 
+    criar_executaveis_windows();
+    criar_executaveis_linux();
 
+    printf("Movendo arquivos...\n");
 
-    printf("Buildando executavel windows...\n");
-    if (system("gcc -o run.exe run.c") != 0) {
-        printf("Build windows falhou.\n");
-        exit(1);
-    }
-
-    #pragma region 
-        char linux_path[256];
-        _fullpath(linux_path, "run.c", sizeof(linux_path));
-
-        // converte path windows para path wsl (C:\Users → /mnt/c/Users)
-        for (char *p = linux_path; *p; ++p) {
-            if (*p == '\\') *p = '/';
-        }
-        char wsl_path[256];
-
-        // builda cmd pra converter path
-        snprintf(cmd, sizeof(cmd), "wsl wslpath -a \"%s\"", linux_path);
-
-        // abre um pipe pra ler o path convertido
-        FILE *pipe = _popen(cmd, "r");
-        fgets(wsl_path, sizeof(wsl_path), pipe);
-        _pclose(pipe);
-
-        // tira o enter no final, se houver
-        wsl_path[strcspn(wsl_path, "\n")] = 0;
-
-        printf("Buildando executavel linux...\n");
-        // builda
-        snprintf(cmd, sizeof(cmd), "wsl gcc -static -o run \"%s\" ", wsl_path);
-        system(cmd);
-
-        // move o binario linux pra subpasta linux
-        snprintf(cmd, sizeof(cmd), "move /Y run %s\\%s\\Quatro", pasta, "linux");
-        system(cmd);
-    #pragma endregion
-
-    // copia o binario linux pra subpasta windows
-    snprintf(cmd, sizeof(cmd), "copy /Y run.exe %s\\%s\\Quatro.exe", pasta, "windows");
+    // move os binarios linux pra subpasta linux
+    snprintf(cmd, sizeof(cmd), "move /Y run %s\\%s\\Quatro", pasta, "linux");
     system(cmd);
+    snprintf(cmd, sizeof(cmd), "move /Y editor \"%s\\%s\\Editor de Fases\"", pasta, "linux");
+    system(cmd);
+    
 
-
+    // move os binarios windows pra subpasta windows
+    snprintf(cmd, sizeof(cmd), "move /Y run.exe %s\\%s\\Quatro.exe", pasta, "windows");
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "move /Y editor.exe \"%s\\%s\\Editor de Fases.exe\"", pasta, "windows");
+    system(cmd);
 
     char copy_cmd[512];
 
@@ -107,11 +135,15 @@ void build(const char * versao){
     remove(redundantfile);
     snprintf(redundantfile, sizeof(redundantfile), "%s\\linux\\src\\fpgrars-x86_64-apple-darwin--8-bit-display", pasta);
     remove(redundantfile);
+    snprintf(redundantfile, sizeof(redundantfile), "%s\\linux\\src\\fpgrars-overflow.exe", pasta);
+    remove(redundantfile);
 
     // deleta os FPGRARS redundantes (windows)
     snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-x86_64-unknown-linux-gnu--8-bit-display", pasta);
     remove(redundantfile);
     snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-x86_64-apple-darwin--8-bit-display", pasta);
+    remove(redundantfile);
+    snprintf(redundantfile, sizeof(redundantfile), "%s\\windows\\src\\fpgrars-overflow.exe", pasta);
     remove(redundantfile);
 
     return;
