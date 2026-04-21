@@ -484,7 +484,7 @@ HIT ENTER TO SWAP THE CHOSEN TILE FER THE PALETTE ONE
 HIT ESC TO OPEN THE MENU AN' TINKER WITH THE CHART'S SIZE AN' SECRETS"
 locale_EDITOR_AJUDA_DICA,Aperte ? para ajuda,Press ? for help,PRESS ? FOR GUIDANCE
 locale_EDITOR_FECHAR,Aperte qualquer tecla para fechar.,Press any key to close.,HIT ANY KEY TO CLOSE
-locale_SOBRESCREVER_PROMPT,"Um arquivo com esse nome já existe na
+locale_SOBRESCREVER_PROMPT,"Um arquivo com esse nome ja existe na
 pasta destino. Sobrescrever arquivo
 existente?","A file with this name already exists
 in the destination folder. Overwrite
@@ -492,4 +492,4 @@ existing file?","A CHART WITH THIS NAME ALREADY EXISTS
 IN THE TARGET FOLDER. REPLACE
 THE EXISTING CHART?"
 locale_SOBRESCREVER_SIM,1. Sim (sobrescrever),1. Yes (Overwrite),1. YES (REPLACE)
-locale_SOBRESCREVER_NAO,2. Cancelar,2. Cancelar,2. Cancelar
+locale_SOBRESCREVER_NAO,2. Cancelar,2. Cancel,2. NEVERMIND
