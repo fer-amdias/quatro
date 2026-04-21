@@ -93,6 +93,20 @@ E_SF1_REMOVE_CARACTERE:
 	j E_SF1_DRAW_CYCLE
 
 E_SF1_ENTER:
+        # checa se existe!
+        la a0, SF1_STR_PATH
+        jal PROC_ARQUIVO_EXISTE         
+        beqz a0, E_SF1_ENTER_CONT
+
+        # SE o arquivo existe, mostra o popup de sobrescrita
+        jal EDITOR_MENU_SOBRESCREVER_POPUP
+        # a0 - 1 se sobrescrever, 0 se nao
+        beqz a0, E_SF1_DRAW_CYCLE       # se 0, cancelar
+        # senao, continua!
+
+E_SF1_ENTER_CONT:
+
+
         la a0, SF1_STR_PATH
 	jal EDITOR_SALVAR_FASE
         bgtz a0, E_SF1_SALVAR_FIM    # se conseguimos escrever mais de 0 bytes, finalize. Senao, grite com o usuario.

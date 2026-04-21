@@ -71,6 +71,7 @@ ecall
 .include "./editor/menu_salvar_fase_como.s"
 .include "./editor/menu_fase_salva.s"
 .include "./editor/menu_salvar_e_sair.s" 
+.include "./editor/menu_sobrescrever_popup.s"
 .include "./editor/menus_metadata/menu_config_de_metadata.s"
 .include "./editor/menus_metadata/menu_config_de_texturas.s"
 .include "./editor/menus_metadata/menu_config_de_audio.s"
@@ -115,3 +116,4 @@ ecall
 
 # ARQUIVOS
 .include "../arquivos/carregar_arquivo_em_buffer.s"
+.include "../arquivos/arquivo_existe.s"
