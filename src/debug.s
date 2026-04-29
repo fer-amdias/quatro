@@ -5,42 +5,75 @@
 
 # prefixo_interno: R_D1_ 
 
-.eqv PRINT_INTERVALO 500
-
 .data
 
-        ULTIMO_FRAME_TIMESTAMP: .word 0
-        DEBUG_FRASE: .asciz "FPS: "
+        CONTADOR_FRAMES: .word 0
+        DEBUG_FRASE_FPS: .asciz "FPS: "
+        DEBUG_FRASE_CICLOS: .asciz "FREQ: ~"
+        DEBUG_FRASE_CICLOS_CONT: .asciz " MHz"
+        DEBUG_FRASE_CUSTO: .asciz "FPS/100MHz: "
 
         PRINT_TIMESTAMP:        .word 0
-
 .text
 
 ROTINA_DEBUG:
-        csrr t0, time
-        lw t1, ULTIMO_FRAME_TIMESTAMP
-        sw t0, ULTIMO_FRAME_TIMESTAMP, t2
+        addi sp, sp, -4
+        sw ra, (sp)
+
+        # adiciona um ao contador
+        la t0, CONTADOR_FRAMES
+        lw t1, (t0)
+        addi t1, t1, 1
+        sw t1, (t0)
+
+        csrr t4, time
 
         lw t2, PRINT_TIMESTAMP
-        sub t2, t0, t2          # t2 = tempo desde PRINT_TIMESTAMP
-        li t3, PRINT_INTERVALO
-        sub t2, t2, t3          # t2 = tempo desde PRINT_TIMESTAMP - PRINT_INTERVALO
-        bltz t2, ROTINA_DEBUG_RET       # se ainda nao se passaram PRINT_INTERVALO milissegundos, nao imprime
+        sub t2, t4, t2          # t2 = tempo desde PRINT_TIMESTAMP
+        li t3, 1000
+        sub t5, t2, t3          # t5 = tempo desde PRINT_TIMESTAMP - 1 segundo
+        bltz t5, R_D1_RET       # se ainda nao se passou 1 segundo, nao imprime
 
-        sw t0, PRINT_TIMESTAMP, t2 # salva que printamos
+        sw t4, PRINT_TIMESTAMP, t2 # salva que printamos
 
-        sub t0, t0, t1  # periodo = ms entre o frame atual e o frame passado
+        print(DEBUG_FRASE_FPS)
+        print_int_ln(t1)
 
-        seqz t3, t0
-        add t0, t3, t0 # adiciona 1 se o frame atual e passado ocorreram no mesmo ms
+        addi sp, sp, -4
+        sw s0, (sp)             # empilha s0
 
-        li t1, 1000     # 1 segundo = 1000 ms
-        div t2, t1, t0  # F/S = 1000 * 1/periodo = 1000/periodo
+        mv s0, t1               # guarda a qtd de FPS
 
-        print(DEBUG_FRASE)
-        safe_print_int_ln(t2)
+        # agora calcular a frequencia
+        li a0, 10               # argumento: levar em media 10 milissegundos
+        jal ROTINA_CALCULAR_FREQUENCIA_CPU
+        mv t0, a0               # retorno: frequencia medida
 
-ROTINA_DEBUG_RET:
+        li t1, 1000000
+        div t1, t0, t1          # pega em MHz
+
+        li t2, 100
+        mul t2, s0, t2          # pega 100*FPS
+        div t2, t2, t1          # pega 100*FPS / MHz (= FPS/100MHz)
+
+        # imprime o numero de frames no ultimo segundo e a frequencia da CPU
+        print(DEBUG_FRASE_CICLOS)
+        print_int(t1)
+        print(DEBUG_FRASE_CICLOS_CONT)
+        quebra_de_linha
+        print(DEBUG_FRASE_CUSTO)
+        print_int(t2)
+        quebra_de_linha
+        quebra_de_linha
+
+        sw zero, CONTADOR_FRAMES, t0 # reseta o contador
+
+        lw s0, (sp)
+        addi sp, sp, 4  # desempilha s0
+
+R_D1_RET:
+        lw ra, (sp)
+        addi sp, sp, 4
         ret
 
 

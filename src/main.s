@@ -155,6 +155,7 @@ CAP2:
 
 # OUTROS
 .include "debug.s"
+.include "calcular_frequencia_cpu.s"
 .include "tempo_manager.s"
 .include "erro_fatal.s"
 .include "copiar_buffer_word.s"
