@@ -47,8 +47,8 @@ P_BM1_SUBPROC_EXPLODIR:
 			sub t1, t2, t1				# y final do mapa = vga - y do mapa
 			
 			# se x ou y estiverem fora do mapa, nao explode
-			bgt a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
-			bgt a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
+			bge a3, t0, P_BM1_SUBPROC_EXPLODIR_FIM
+			bge a4, t1, P_BM1_SUBPROC_EXPLODIR_FIM
 						
 			# PROC_CALCULAR_TILE_ATUAL			           						     
 			# ARGUMENTOS:						     
@@ -166,8 +166,8 @@ P_BM1_SUBPROC_RESTAURAR:
 			sub t1, t2, t1				# y final do mapa = vga - y do mapa
 			
 			# se x ou y estiverem fora do mapa, nao restaura.
-			bgt a3, t0, P_BM1_SUBPROC_RESTAURAR_FIM
-			bgt a4, t1, P_BM1_SUBPROC_RESTAURAR_FIM
+			bge a3, t0, P_BM1_SUBPROC_RESTAURAR_FIM
+			bge a4, t1, P_BM1_SUBPROC_RESTAURAR_FIM
 			
 			# PROC_CALCULAR_TILE_ATUAL			           						     
 			# ARGUMENTOS:						     
