@@ -11,6 +11,7 @@ NULL: .word 0
 .include "../../assets/metadata/definicoes_fases.s"
 .include "../../assets/locale.s" 
 .include "../../assets/logoeditor.data"
+.include "../../assets/logoquatro.data"
 .include "../../assets/elementos_de_ui/seta_para_baixo.data"
 .include "../../assets/elementos_de_ui/seta_para_cima.data"
 
