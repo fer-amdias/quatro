@@ -72,8 +72,12 @@ P_IS1_LOOP:		lb	a0, 0(s0)                 	# le em a0 o caracter a ser impresso
 	    		
 	    		li 	t0, '\n'
 	    		beq	a0, t0, P_IS1_PulaLinha		# se o caractere for enter, pula linha
-	
+
+			bltz a2, P_IS1_PulaCaractere		# pula se y < 0 
+
 	    		jal     SUBPROC_IMPRIMIR_CARACTERE 	# imprime char
+
+P_IS1_PulaCaractere:
 	    		
 			addi    a1, a1, 8                 	# incrementa a coluna
 			li 	t6, LARGURA_VGA
