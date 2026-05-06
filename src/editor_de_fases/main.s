@@ -116,4 +116,4 @@ ecall
 
 # ARQUIVOS
 .include "../arquivos/carregar_arquivo_em_buffer.s"
-.include "../arquivos/arquivo_existe.s
+.include "../arquivos/arquivo_existe.s"

@@ -98,6 +98,7 @@ CAP2:
 .include "./renderizacao/imprimir_padrao_de_fundo.s"
 .include "./renderizacao/imprimir_string.s"
 .include "./renderizacao/imprimir_textura.s"
+.include "./renderizacao/imprimir_retangulo.s"
 .include "./renderizacao/preencher_tela.s"
 .include "./renderizacao/efeito_explosao.s"
 
