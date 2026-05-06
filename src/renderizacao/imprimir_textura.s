@@ -30,12 +30,10 @@ PROC_IMPRIMIR_TEXTURA:
 			# primeiro checamos que nao estamos out of bounds
 			bltz a1, P_IT1_FIM
 			bltz a2, P_IT1_FIM
-			add t0, a1, a4
-			add t1, a2, a3
-			li t2, LARGURA_VGA
-			li t3, ALTURA_VGA
-			bgt t0, t2, P_IT1_FIM
-			bgt t1, t3, P_IT1_FIM
+			li t0, LARGURA_VGA
+			li t1, ALTURA_VGA
+			bgt a2, t0, P_IT1_FIM
+			bgt a3, t1, P_IT1_FIM
 
 			bne a7, x0, P_IT1_MODO_1	# se n for o modo 0, carrega o buffer
 
