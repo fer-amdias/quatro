@@ -8,13 +8,17 @@
 #	A1 : ENDERECO DE TEXTURA DO JOGADOR			#
 #	A2 : ENDERECO DO MAPA					#
 # RETORNOS:                                                  	#
-#       A0 : SE O JOGADOR DECIDIU SAIR DO JOGO (0 ou 1)		#
+#       A0 : 2, se o jogador apertar para avancar de fase	#
+#            1, se o jogador decidir sair pro menu principal	#
+#	     0, se o movimento ocorreu normalmente		#
 #################################################################
 
 .eqv COOLDOWN_MOVIMENTO 21 # milissegundos
+.eqv COOLDOWN_CHEAT_VIRGULA 500
 .data
 
 COOLDOWN_MOVIMENTO_TIMESTAMP: .word 0
+COOLDOWN_CHEAT_VIRGULA_TIMESTAMP: .word 0
 
 .text
 
@@ -80,6 +84,8 @@ PROC_REGISTRAR_MOVIMENTO:
 			beq t2, t0, P_RM1_SPACEBAR
 			li t0, 8	# backspace
 			beq t2, t0, P_RM1_BACKSPACE
+			li t0, ','
+			beq t2, t0, P_RM1_CHEAT_PULAR_FASE
 			li t0, '.'
 			bne t2, t0, P_RM1_SEM_MOVIMENTO_3
 			
@@ -139,9 +145,21 @@ P_RM1_SPACEBAR:
 			addi sp, sp, 12
 			j P_RM1_MOVER
 			
-P_RM1_BACKSPACE:	lw ra, (sp)
-			addi sp, sp, 4	
-			j MENU 		# alguem ta vendo isso? acaso nao hah justica nessa terra?
+P_RM1_BACKSPACE:	
+			li a0, 1		# retorna para sair do jogo
+			j P_RM1_RET
+
+P_RM1_CHEAT_PULAR_FASE:
+			# nao aplica o cheat se nao passou o cooldown necessario
+			la t0, COOLDOWN_CHEAT_VIRGULA_TIMESTAMP
+			lw t1, (t0)
+			csrr t2, time
+			addi t1, t1, COOLDOWN_CHEAT_VIRGULA
+			bge t1, t2, P_RM1_SEM_MOVIMENTO_3
+
+			li a0, 2		# retorna avancar de fase
+			sw t2, (t0)		# salva o novo timestamp		
+			j P_RM1_RET
 
 P_RM1_SEM_MOVIMENTO_1:  mv a5, a3
 			mv a4, a2
@@ -165,11 +183,11 @@ P_RM1_MOVER:
 			sw t0, COOLDOWN_MOVIMENTO_TIMESTAMP, t1
 P_RM1_MOVER_FIM:
 			jal PROC_MOVER_JOGADOR		# finaliza o movimento	
+P_RM1_FIM:
+			mv a0, zero			# retorna movimento normal
 	
-P_RM1_FIM:		lw ra, (sp)
+P_RM1_RET:		lw ra, (sp)
 			addi sp, sp, 4			# recupera o registrador de retorno anterior
-			
-	
 			ret
 
 	

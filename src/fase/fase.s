@@ -136,6 +136,12 @@ P_F1_SEM_DEBUG:
 
 	la a2, TILEMAP_BUFFER		# endereco do mapa (nesse caso o buffer mesmo)
 	jal PROC_REGISTRAR_MOVIMENTO
+	
+	li t0, 2
+	beq a0, t0, P_F1_VITORIA
+
+	li t0, 1
+	beq a0, t0, P_F1_DERROTA
 
 	la a0, BUFFER_TEXTURA_NPCS
 	jal PROC_NPCS_MANAGER	
