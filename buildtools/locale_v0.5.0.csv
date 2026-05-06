@@ -11,34 +11,80 @@ locale_JOGAR_OPCAO2,2. Capitulo 2 ,2. Chapter 2 ,2. ROME
 locale_JOGAR_OPCAO3,3. Capitulo 3 (em construcao),3. Chapter 3 (under construction),3. CHINA
 locale_JOGAR_OPCAO4,4. Capitulo 4 (em construcao),4. Chapter 4 (under construction),"4. NO SPOILERS, SCALLYWAG!"
 locale_JOGAR_OPCAO5,9. voltar,9. return,9. SCUTTLE
-locale_CREDITOS_1,Desenvolvimento e Programacao:,Coding and Development:,FINANCIAL SUPPORT:
-locale_CREDITOS_2,Arte e Design:,Art and Design:,RUM SUPPLIES:
-locale_CREDITOS_3,Agradecimentos Especiais: ,Special Thanks to:,SPECIAL THANKS TO:
-locale_CREDITOS_FERNANDO,Fernando A. M. Dias,Fernando A. M. Dias,Me captain
-locale_CREDITOS_AS11,"- Joialoxi, pelas nossas","- Joialoxi, for our",END OF LIST!
-locale_CREDITOS_AS12,deliberacoes que desatolaram,deliberations that got, 
-locale_CREDITOS_AS13,o jogo,the project off the ground, 
-locale_CREDITOS_AS21,"- Minha mae, que pacientemente","- My mom, who patiently","- The Spanish, for"
-locale_CREDITOS_AS22,assistiu eu mostrar como,watched me show her how,all the loot! Yohoho!
-locale_CREDITOS_AS23,tava a cada 2 dias,"this was, every two days",Aaaarrrrgggghhhh!
-locale_CREDITOS_AS31,"- Felipe Fontela, pelo apoio,","- Felipe Fontela, for the","- Me buckos, for"
-locale_CREDITOS_AS32,pelas conversas e pelas,"support, talks and for the",all the chases and
-locale_CREDITOS_AS33,ideias que deram caminho,ideas that paved the way,plunder
-locale_CREDITOS_AS34,ao projeto,for this project, 
-locale_CREDITOS_FIM1, <<< fim >>> , <<< end >>>,AVAST YE!
-locale_CREDITOS_FIM2, pode ir embora, you may leave now,SCURRY!
-locale_CREDITOS_FIM3,...........,..........., 
-locale_CREDITOS_FIM4,nao vai embora?,youre not leaving?, 
-locale_CREDITOS_FIM5,deve ter mais credito em algum lugar aqui...,there oughta be more credits sumwhere here..., 
-locale_CREDITOS_FIM6,Inspiracao: Bomberman para o NES,Inspiration: Bomberman for NES, 
-locale_CREDITOS_FIM7,Feito como projeto de,Created as a first semester project, 
-locale_CREDITOS_FIM0,primeiro semestre,of the component, 
-locale_CREDITOS_FIM8,do componente Introducao a Sistemas,Introducao a Sistemas, 
-locale_CREDITOS_FIM9,Computacionais na Universidade de,Computacionais in the University, 
-locale_CREDITOS_FIM10,Brasilia. 24/07/2025,of Brasilia. 2025/07/24, 
-locale_CREDITOS_FIM11,agora pode ir,now you may go, 
-locale_CREDITOS_FIM12,...era so isso mesmo. nao tem mais nada.,...that was really it. theres nothing left., 
-locale_CREDITOS_FIM13,<<< FIM >>>,<<< END >>>, 
+locale_CREDITOS,"Desenvolvido integralmente por 
+Fernando A.M. Dias.
+
+Feito originalmente como projeto
+de primeiro semestre para a
+disciplina de Introducao a
+Sistemas Computacionais na 
+Universidade de Brasilia, com
+base no Bomberman para o NES.
+(24/07/2025)
+
+Com agradecimentos especiais aos
+playtesters:
+- Flakes Kerr
+- Joialoxi
+- Fernando 'Dandan' Daniel
+
+Melodias utilizadas:
+- A Internacional (Versao MIDI)
+- Hino Hurriano para Nikkal (Versao
+MIDI por M.L. West)
+- Epitafio de Seikilos (Adaptado)
+
+Obrigado por jogar!
+
+
+","Designed & developed by
+Fernando A.M. Dias.
+
+Originally created as a first-
+semester project for
+Introduction to Computational
+Systems course at the University 
+of Brasilia, inspired by 
+Bomberman for NES.
+(July 24th 2025)
+
+Special thanks to the playtesters:
+- Flakes Kerr
+- Joialoxi
+- Fernando 'Dandan' Daniel
+
+Featured melodies:
+- The Internationale (MIDI)
+- Hurrian Hymn to Nikkel (MIDI
+version by M.L. West)
+- Seikilos Epitaph (adapted)
+
+Thank you 4 playing!
+
+","CRAFTED BY ME CAPT'N
+FERNANDO A.M. DIAS
+
+FIRST MADE AS A FIRST-SEMESTER
+THINGY FER THE INTRODUCTION
+TO COMPUTATIONAL SYSTEMS COURSE
+AT THE UNIVERSITY O' BRASILIA.
+TAKIN' AFTER BOMBERMAN FER NES.
+(JULY 24 2025)
+
+SPECIAL THANKS TO THE CREW
+O' PLAYTESTERS:
+- FLAKES KERR
+- JOIALOXI
+- FERNANDO 'DANDAN' DANIEL
+
+TUNES ABOARD:
+- THE INTERNATIONALE OR SOMETHING
+- HURRIAN HYMN NUMBER 6, VERSION
+BY EM EL WEST.
+- SEIKILOS EPITAPH BUT SLIGHTLY
+DIFFERENT
+
+THANK YE 4 PLAYIN'!"
 locale_CREDITOS_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
 locale_CONFIG_VOLTAR,Pressione 9 pra voltar ao menu principal,Press 9 to return to the main menu,PRESS 9 TO RETURN TO SHORE
 locale_CONFIG_OPCAO_IDIOMA,1. Alterar idioma,1. Switch Language,1. PICK 'NOTHER LINGO
